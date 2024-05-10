@@ -584,11 +584,6 @@ section
 	padding-top: 32px;
 	padding-bottom: 25px;
 }
-
-/*********************************
-6.1 Search Box Title
-*********************************/
-
 .search_box_title
 {
 	position: absolute;
@@ -599,7 +594,7 @@ section
 	-ms-transform: translateX(-50%);
 	-o-transform: translateX(-50%);
 	transform: translateX(-50%);
-	width: 43.97%;
+	width: 100%;
 	height: 51px;
 }
 .search_box_title_inner
@@ -2044,9 +2039,12 @@ label[for="search_features_24"] {
 .form-check-input{
 	margin-left: 0px;
 }
+.dropdown-menu {
+    background-color: #8d92c2; 
+}
 
-.dropdown-item{
-	color: #485165;
+.dropdown-item {
+    color: yellow; 
 }
 
 .post_button {
