@@ -2053,3 +2053,19 @@ label[for="search_features_23"] {
 .search_submit_button{
 	border-radius: 10px;
 }
+
+input[type=range] {
+	width: 100%;
+	background-color: yellow; 
+	height: 10px; 
+	outline: none; 
+}
+  
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px; 
+	height: 20px; 
+	background: blue; 
+	cursor: pointer;
+}
