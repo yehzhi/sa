@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['account'])) {
+    header("Location: login.html");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,25 +91,30 @@
 							<ul class="dropdown_row clearfix">
 								<div class="dropdown_item_title_login">標題</div>
 								<div class="mb-3">
-									<input type="title" class="form-control" id="account" name="title"
+									<input type="text" class="form-control" id="article" name="title"
 										placeholder="文章標題">
+								</div>
+								<div class="dropdown_item_title_login">租屋位置</div>
+								<div class="mb-3">
+									<input type="text" class="form-control" id="address" name="address"
+										placeholder="租屋位置">
 								</div>
 								<div class="dropdown_item_title_login">租房心得</div>
 								<div class="mb-3">
-									<textarea class="form-control" id="password" name="text"
+									<textarea class="form-control" id="content" name="text"
 										style="height: 300px; resize: none;" placeholder="寫下你的真實租房心得!"></textarea>
 								</div>
 								<div class="dropdown_item_title_login">評分</div>
-								<input type="range" id="star" name="star" min="0" max="5" value="1" step="1">
+								<input type="range" id="star_rate" name="star" min="0" max="5" value="1" step="1">
 								<br><br>
 								<div class="dropdown_item_title_login">租屋照片</div>
 								<div class="mb-3">
-									<input type="file" class="form-control" id="pic" name="pic">
+									<input type="file" class="form-control" id="house_photo" name="pic">
 								</div>
 								<br>
 								<div class="dropdown_item_title_login">上傳租屋證明(人工審核工作天約一周)</div>
 								<div class="mb-3">
-									<input type="file" class="form-control" id="pic" name="pic">
+									<input type="file" class="form-control" id="livedhouse" name="pic">
 								</div>
 							</ul>
 						</div>
