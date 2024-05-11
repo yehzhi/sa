@@ -116,35 +116,37 @@
 				<div class="col-lg-4 sidebar_col">
 					<!-- Search Box -->
 
-					<div class="search_box" style="margin-top: -70px;">
+					<div class="search_box" style="margin-top: -70px;margin-left: 55px;">
 
 						<div class="search_box_content_sign">
 
 							
 							<!-- Search Form -->
-							<form class="search_form" action="#">
+							<form class="search_form">
+								<form action = "verify.php" method="post" enctype="multipart/form-data">
 								<div class="search_box_container" style="margin-left:-20px;">
 									<ul class="dropdown_row clearfix">
+											
 										
 										<li class="dropdown_item">
 											<div class="dropdown_item_title_login">土地所有權狀</div>
-												<div class="mb-3">
-												<input class="form-control" type="file" id="formFileMultiple" multiple required>
-											  </div>
+											<div class="mb-3">
+												<input type="file" name="land" id="land">
+											</div>
 										</li>
 										<li class="dropdown_item">
 											<div class="dropdown_item_title_login">出租證明</div>
-												<div class="mb-3">
-												<input class="form-control" type="file" id="formFileMultiple" multiple required>
-											  </div>
+											<div class="mb-3">
+												<input type="file" name="prove" id="prove">
+											</div>
 										</li>
 										<li class="dropdown_item">
 											<div class="dropdown_item_title1">房屋地址</div>
 											<div class="mb-3">
-												<input type="text" class="form-control"
-													id="exampleFormControlInput2" placeholder="請輸入欲驗證房屋的地址"  required>
+												<input type="text" class="form-control" name = "vaddress"  required>
 											</div>
 										</li>
+										
 									</ul>
 								</div>
 
@@ -152,9 +154,11 @@
 									
 
 									<div class="search_button">
-										<input value="送出驗證" type="submit" class="search_submit_button" >
+										<input value="送出驗證" type="submit" class="search_submit_button">
 									</div>
+								
 								</div>
+							    </form>
 							</form>
 						</div>
 					</div>
