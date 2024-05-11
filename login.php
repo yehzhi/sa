@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$servername = "127.0.0.1";
+$servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dt_m";
+$dbname = "sa";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -46,9 +46,14 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['uu'])
         $user = $result->fetch_assoc();
         if ($usertype === 'l') {
             $_SESSION['landlord'] = $user;
+            $_SESSION['landlord']['account'] = $user['account'];
+            $_SESSION['landlord']['gender'] = $user['gender'];
             header("Location: index-lan.html");
         } elseif ($usertype === 't') {
             $_SESSION['tenant'] = $user;
+            $_SESSION['tenant']['account'] = $user['account'];
+            $_SESSION['tenant']['gender'] = $user['gender'];
+            $_SESSION['tenant']['lastname'] = $user['lastname'];
             header("Location: index-te.html");
         }
         exit(); 

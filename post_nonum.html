@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>有編號發文</title> 
+	<title>發文</title> 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="The Estate Teplate">
@@ -78,14 +78,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="search_box_content" style="margin-top: -50px;">
-					<form class="search_form" action="post_num.php" method="post">
+					<form class="search_form"  action="post_nonum.html" method="post">
 						<div class="search_box_container">
 							<ul class="dropdown_row clearfix">
-								<div class="dropdown_item_title_login">房屋編號</div>
-								<div class="mb-3">
-									<input type="title" class="form-control" id="account" name="verify_id"
-										placeholder="房屋編號">
-								</div>
 								<div class="dropdown_item_title_login">標題</div>
 								<div class="mb-3">
 									<input type="text" class="form-control" id="article" name="article"
@@ -109,15 +104,12 @@
 									<input type="file" class="form-control" id="house_photo" name="house_photo">
 								</div>
 								<br>
-								<div class="dropdown_item_title_login">上傳租屋證明(人工審核工作天約一周)</div>
-								<div class="mb-3">
-									<input type="file" class="form-control" id="livedhouse" name="livedhouse">
-								</div>
+								
 							</ul>
 						</div>
 						<div class="post_button">
 							<div class="search_button">
-								<input value="發布" type="submit" formaction="post_num.php" formmethod="post" class="search_submit_button">
+								<input value="發布" type="submit" formaction="post_nonum.php" formmethod="post" class="search_submit_button">
 							</div>
 						</div>
 					</form>
