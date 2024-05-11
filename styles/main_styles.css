@@ -2070,3 +2070,33 @@ input[type=range]::-webkit-slider-thumb {
 	background: blue; 
 	cursor: pointer;
 }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.fixed-button-container {
+    position: relative; 
+    min-height: 100vh; 
+}
+
+.fixed-button {
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+	width: 60px;
+	height: 60px;
+    background-color: #ddcf82;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	
+}
+
+.fixed-button-container a {
+    color: inherit; /* 繼承父級元素的文字顏色 */
+    text-decoration: none; /* 去除下劃線 */
+}
