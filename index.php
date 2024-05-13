@@ -89,13 +89,8 @@
 					</div>
 				</div>
 			</div>
-
-			
-
 		</header>
-
-		<!-- Search Box -->
-
+		
 		<div class="search_box">
 			<div class="container">
 				<div class="row">
