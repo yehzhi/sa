@@ -22,7 +22,17 @@
 <body>
 
     <div class="super_container">
+    <!-- Home -->
+		<div class="home1">
 
+
+
+</div>
+
+<!-- Home Slider Nav -->
+
+
+<div class="hello" style="color: #555e81;"></div>
         <!-- Header -->
         <header class="header trans_300">
             <div class="container">
