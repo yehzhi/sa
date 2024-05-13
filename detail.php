@@ -107,7 +107,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>修改房屋資訊</b></h1>
+                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>詳細資訊</b></h1>
                     </div>
 
                 </div>
@@ -117,133 +117,134 @@
             <div class="listings">
                 <div class="container" style="margin-top:-100px;">
                     <div class="row">
-                    <form action = "fixdata.php" method = "post">
+                        <form action="fixdata.php" method="post">
 
-                        <!-- Search Sidebar -->
+                            <!-- Search Sidebar -->
 
-                        <div class="col-lg-6 sidebar_col">
+                            <div class="col-lg-6 sidebar_col">
 
-                            <?php
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "19990817";
-                            $dbname = "sa";
-                            $conn = new mysqli($servername, $username, $password, $dbname);
-                            $sql = "SELECT * FROM information";
+                                <?php
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "19990817";
+                                $dbname = "sa";
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+                                $sql = "SELECT * FROM information";
 
-                            $result = $conn->query($sql);
-
-
-
-                            if ($result->num_rows > 0) {
+                                $result = $conn->query($sql);
 
 
-                                while ($row = $result->fetch_assoc()) {
-				                    $id = $row["vid"];
-                                    $title = $row["i_title"];
-                                    $address = $row["i_address"];
-                                    $rent = $row["i_rent"];
-                                    $gender = $row["i_gender"];
-                                    $equip = $row["i_equip"];
-                                    $roomstyle = $row["roomstyle"];
-                                    $entrance = $row["i_entrance"];
-                                    $walktime = $row["i_walktime"];
-                                    $introduce = $row["i_introduce"];
+
+                                if ($result->num_rows > 0) {
+
+
+                                    while ($row = $result->fetch_assoc()) {
+                                        $id = $row["vid"];
+                                        $title = $row["i_title"];
+                                        $address = $row["i_address"];
+                                        $rent = $row["i_rent"];
+                                        $gender = $row["i_gender"];
+                                        $equip = $row["i_equip"];
+                                        $roomstyle = $row["roomstyle"];
+                                        $entrance = $row["i_entrance"];
+                                        $walktime = $row["i_walktime"];
+                                        $introduce = $row["i_introduce"];
+
+
+                                        if ($gender == "man") {
+                                            $g = "男";
+                                        }
+                                        if($gender == "woman"){
+                                            $g = "女";
+
+                                        }
+                                        if($gender == "nol"){
+                                            $g = "無限制";
+
+                                        }
+                                        
+
+                                        if ($roomstyle == "nor") {
+                                            $r = "無";
+                                        } 
+                                        if ($roomstyle == "room") {
+                                            $r = "房間";
+                                        }
+                                        if ($roomstyle == "suite") {
+                                            $r = "套房";
+                                        }
+                                        if($roomstyle =="wholehouse"){
+                                            $r = "整棟";
+                                        }
+
+                                        if ($entrance == "noe") {
+                                            $e = "無";
+                                        } 
+                                        if ($entrance == "door") {
+                                            $e = "大門";
+                                        }
+                                        if ($entrance == "sidedoor") {
+                                            $e = "514側門";
+                                        }
+                                        if($entrance == "backdoor"){
+                                            $e = "貴子路門(後門)";
+                                        }
+
+                                        if ($walktime == "not") {
+                                            $w = "無";
+                                        }
+                                        if ($walktime == "five") {
+                                            $w = "5分鐘內";
+                                        }
+                                        if ($walktime == "fifteen") {
+                                            $w = "5到15分鐘";
+                                        }
+                                        if($walktime == "above"){
+                                            $w = "15分鐘以上";
+                                        }
+                                    }
+                                } else {
+                                    echo "";
                                 }
-                            } else {
-                                echo "";
-                            }
 
 
-                            ?>
+                                ?>
 
-                            <!-- Search Box -->
+                                <!-- Search Box -->
 
-                            <div class="search_box1">
-                                <div class="up3" style="display: flex;margin-left: 320px;">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="out" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">已出租</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="stay" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">出租中</label>
-                                    </div>
-                                </div>
-                                <div class="search_box_content1" style="height: auto;">
-                                    <!-- Search Form -->
-                                    <form class="search_form" action="#">
-                                        <div class="search_box_container1">
-                                            <ul class="dropdown_row clearfix" style="margin-left: -25px;">
-                                                <br>
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">房屋編號</div>
-                                                    <div class="mb-3">
-                                                        <input type="text" disabled="false" class="form-control" name = "fid" value = <?php echo $id; ?>>
-                                                    </div>
-                                                </li>
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">標題</div>
-                                                    <div class="mb-3">
-                                                        <input type="text" class="form-control" name="fixtitle" value=<?php echo $title; ?>>
-                                                    </div>
-                                                </li>
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">房屋地址</div>
-                                                    <div class="mb-3">
-                                                        <input type="text" class="form-control" name="fixaddress" value=<?php echo $address; ?>>
-                                                    </div>
-                                                </li>
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">上傳房屋圖片</div>
-                                                    <div class="mb-3">
-                                                        <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                                    </div>
-                                                </li>
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">租金</div>
-                                                    <div class="mb-3">
-                                                        <input type="text" class="form-control" name="fixrent" value=<?php echo $rent; ?>>
-                                                    </div>
-                                                </li>
+                                <div class="search_box1">
 
-                                                <div class="up2" style="margin-left: 30px;">
-                                                    <h6 style="color: #FFFFFF;">性別:</h6>
-                                                    <?php
-                                                    if (strpos($gender, 'man') !== false) {
-                                                    ?>
-                                                        <select name="fixgender">
-                                                            <option value="man" selected>男</option>
-                                                            <option value="woman">女</option>
-                                                            <option value="nol">不限制</option>
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
+                                    <div class="search_box_content1" style="height: auto;">
+                                        <!-- Search Form -->
+                                        <form class="search_form" action="#">
+                                            <div class="search_box_container1">
+                                                <ul class="dropdown_row clearfix" style="margin-left: -25px;">
+                                                    <br>
+                                                    <li class="dropdown_item">
+                                                        <div class="dropdown_item_title1">標題</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" name="fixtitle" value=<?php echo $title; ?>>
+                                                        </div>
+                                                    </li>
+                                                    <li class="dropdown_item">
+                                                        <div class="dropdown_item_title1">房屋地址</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" name="fixaddress" value=<?php echo $address; ?>>
+                                                        </div>
+                                                    </li>
+                                                    <li class="dropdown_item">
+                                                        <div class="dropdown_item_title1">租金</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" name="fixrent" value=<?php echo $rent; ?>>
+                                                        </div>
+                                                    </li>
 
-                                                    if (strpos($gender, 'woman') !== false) {
-                                                    ?>
-                                                        <select name="fixgender">
-                                                            <option value="man">男</option>
-                                                            <option value="woman" selected>女</option>
-                                                            <option value="nol">不限制</option>
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($gender, 'nol') !== false) {
-                                                    ?>
-                                                        <select name="fixgender">
-                                                            <option value="man">男</option>
-                                                            <option value="woman">女</option>
-                                                            <option value="nol" selected>不限制</option>
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-                                                    ?>
-                                                    <br><br>
+                                                    <li class="dropdown_item">
+                                                        <div class="dropdown_item_title1">性別限制</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" name="fixgender" value=<?php echo $g; ?>>
+                                                        </div>
+                                                    </li>
                                                     <h6 style="color: #FFFFFF;">租屋設備:</h6>
 
                                                     <li class="search_features_item">
@@ -588,323 +589,176 @@
                                                             ?>
                                                         </div>
                                                     </li>
-                                            
-                                            <div class="drop" style="margin-top: -100px;margin-left: 15px;">
-                                                <li class="dropdown_item dropdown_item_5" style="width: 100px;">
-                                                    <div class="dropdown_item_title">出租類型</div>
-                                                    <?php
-                                                    if (strpos($roomstyle, 'nor') !== false) {
-                                                    ?>
-                                                        <select name="fixroomstyle">
-                                                            <option value="nor" selected>不限</option>
-                                                            <option value="room">房間</option>
-                                                            <option value="suite">套房</option>
-                                                            <option value="wholehouse">整棟</option>
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($roomstyle, 'room') !== false) {
-                                                    ?>
-                                                        <select name="fixroomstyle">
-                                                            <option value="nor">不限</option>
-                                                            <option value="room" selected>房間</option>
-                                                            <option value="suite">套房</option>
-                                                            <option value="wholehouse">整棟</option>
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($roomstyle, 'suite') !== false) {
-                                                    ?>
-                                                        <select name="fixroomstyle">
-                                                            <option value="nor">不限</option>
-                                                            <option value="room">房間</option>
-                                                            <option value="suite" selected>套房</option>
-                                                            <option value="wholehouse">整棟</option>
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($roomstyle, 'wholehouse') !== false) {
-                                                    ?>
-                                                        <select name="fixroomstyle">
-                                                            <option value="nor">不限</option>
-                                                            <option value="room">房間</option>
-                                                            <option value="suite">套房</option>
-                                                            <option value="wholehouse" selected>整棟</option>
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-                                                    ?>
-                                                </li>
-
-                                                <li class="dropdown_item dropdown_item_5" style="width: 100px;">
-                                                    <div class="dropdown_item_title">鄰近入口</div>
-                                                    <?php
-                                                    if (strpos($entrance, 'noe') !== false) {
-                                                    ?>
-                                                        <select name="fixentrance">
-                                                            <option value="noe" selected>不限</option>
-                                                            <option value="door">大門</option>
-                                                            <option value="sidedoor">514側門</option>
-                                                            <option value="backdoor">貴子路門(後門)</option>]
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($entrance, 'door') !== false) {
-                                                    ?>
-                                                        <select name="fixentrance">
-                                                            <option value="noe">不限</option>
-                                                            <option value="door" selected>大門</option>
-                                                            <option value="sidedoor">514側門</option>
-                                                            <option value="backdoor">貴子路門(後門)</option>]
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($entrance, 'sidedoor') !== false) {
-                                                    ?>
-                                                        <select name="fixentrance">
-                                                            <option value="noe">不限</option>
-                                                            <option value="door">大門</option>
-                                                            <option value="sidedoor" selected>514側門</option>
-                                                            <option value="backdoor">貴子路門(後門)</option>]
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($entrance, 'backdoor') !== false) {
-                                                    ?>
-                                                        <select name="fixentrance">
-                                                            <option value="noe">不限</option>
-                                                            <option value="door">大門</option>
-                                                            <option value="sidedoor">514側門</option>
-                                                            <option value="backdoor" selected>貴子路門(後門)</option>]
-                                                        </select>
-                                                    <?php
-                                                    } else {
-                                                    }
-                                                    ?>
-                                                </li>
-                                                <li class="dropdown_item dropdown_item_5" style="width: 100px;">
-                                                    <div class="dropdown_item_title">步行時間</div>
-                                                    <?php
-                                                    if (strpos($walktime, 'not') !== false) {
-                                                    ?>
-                                                        <select name="fixwalktime">
-															<option value = "not" selected>不限</option>
-															<option value = "five">5分鐘內</option>
-															<option value = "fifteen">5-15分鐘</option>
-															<option value = "above">15分鐘以上</option>
-														</select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($walktime, 'five') !== false) {
-                                                    ?>
-                                                        <select name="fixwalktime">
-															<option value = "not">不限</option>
-															<option value = "five" selected>5分鐘內</option>
-															<option value = "fifteen">5-15分鐘</option>
-															<option value = "above">15分鐘以上</option>
-														</select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($walktime, 'suite') !== false) {
-                                                    ?>
-                                                        <select name="fifteen">
-															<option value = "not">不限</option>
-															<option value = "five">5分鐘內</option>
-															<option value = "fifteen" selected>5-15分鐘</option>
-															<option value = "above">15分鐘以上</option>
-														</select>
-                                                    <?php
-                                                    } else {
-                                                    }
-
-                                                    if (strpos($walktime, 'above') !== false) {
-                                                    ?>
-                                                        <select name="fixwalktime">
-															<option value = "not">不限</option>
-															<option value = "five">5分鐘內</option>
-															<option value = "fifteen">5-15分鐘</option>
-															<option value = "above" selected>15分鐘以上</option>
-														</select>
-                                                    <?php
-                                                    } else {
-                                                    }
-                                                    ?>
-                                                </li>
-                                            </div>
-                                            <div class="yo" style="margin-left: -5px;">
+                                                </ul>
                                                 <li class="dropdown_item">
-                                                    <br>
-                                                    <div class="dropdown_item_title1">詳細介紹</div>
-                                                    <div class="mb-3">
-                                                        <input type="text" class="form-control1" name="fixintroduce" value=<?php echo $introduce; ?>>
-                                                    </div>
+                                                        <div class="dropdown_item_title1">出租類型</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" name="r" value=<?php echo $r; ?>>
+                                                        </div>
+                                                    </li>
+                                                <li class="dropdown_item">
+                                                        <div class="dropdown_item_title1">鄰近入口</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" name="e" value=<?php echo $e; ?>>
+                                                        </div>
                                                 </li>
+                                                <li class="dropdown_item">
+                                                        <div class="dropdown_item_title1">步行時間</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control" name="w" value=<?php echo $w; ?>>
+                                                        </div>
+                                                </li>
+                                                
+                                                <li class="dropdown_item">
+                                                        <br>
+                                                        <div class="dropdown_item_title1">詳細介紹</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" class="form-control1" name="i" value=<?php echo $introduce; ?>>
+                                                        </div>
+                                                </li>
+                                                
+                                                <br><br><br><br>
                                             </div>
-                                            <br><br><br><br>
-                                        </div>
-                                        </ul>
-                                        <div class="search_features_container"><br><br><br><br>
-                                            <div class="search_button">
-                                                <input value="修改房屋" type="submit" class="search_submit_button1" >
-                                            </div>
-                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            </form>
+                        </form>
 
 
-                        </div>
                     </div>
                 </div>
-
             </div>
 
-
-
-            <!-- Footer -->
-
-            <footer class="footer">
-                <div class="container">
-                    <div class="row">
-
-                        <!-- Footer About -->
-
-                        <div class="col-lg-3 footer_col">
-                            <div class="footer_col_title">
-                                <div class="logo_container">
-                                    <a href="#">
-                                        <div class="logo">
-                                            <img src="images/logo.png" alt="">
-                                            <span>輔仁大學租屋網</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="footer_social">
-                                <ul class="footer_social_list">
-                                    <li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a>
-                                    </li>
-                                    <li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a>
-                                    </li>
-                                    <li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="footer_about">
-                                <p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis
-                                    se tellus
-                                    eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis
-                                    ferme semper
-                                    augue.</p>
-                            </div>
-                        </div>
-
-                        <!-- Footer Useful Links -->
-
-                        <div class="col-lg-3 footer_col">
-                            <div class="footer_col_title">useful links</div>
-                            <ul class="footer_useful_links">
-                                <li class="useful_links_item"><a href="#">Listings</a></li>
-                                <li class="useful_links_item"><a href="#">Favorite Cities</a></li>
-                                <li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
-                                <li class="useful_links_item"><a href="#">Featured Listings</a></li>
-                                <li class="useful_links_item"><a href="#">Properties on Offer</a></li>
-                                <li class="useful_links_item"><a href="#">Services</a></li>
-                                <li class="useful_links_item"><a href="#">News</a></li>
-                                <li class="useful_links_item"><a href="#">Our Agents</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Footer Contact Form -->
-                        <div class="col-lg-3 footer_col">
-                            <div class="footer_col_title">say hello</div>
-                            <div class="footer_contact_form_container">
-                                <form id="footer_contact_form" class="footer_contact_form" action="post">
-                                    <input id="contact_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
-                                    <input id="contact_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
-                                    <textarea id="contact_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-                                    <button id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="Submit">send</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Footer Contact Info -->
-
-                        <div class="col-lg-3 footer_col">
-                            <div class="footer_col_title">contact info</div>
-                            <ul class="contact_info_list">
-                                <li class="contact_info_item d-flex flex-row">
-                                    <div>
-                                        <div class="contact_info_icon"><img src="images/placeholder.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
-                                </li>
-                                <li class="contact_info_item d-flex flex-row">
-                                    <div>
-                                        <div class="contact_info_icon"><img src="images/phone-call.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="contact_info_text">2556-808-8613</div>
-                                </li>
-                                <li class="contact_info_item d-flex flex-row">
-                                    <div>
-                                        <div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
-                                    </div>
-                                    <div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">contactme@gmail.com</a></div>
-                                </li>
-                                <li class="contact_info_item d-flex flex-row">
-                                    <div>
-                                        <div class="contact_info_icon"><img src="images/planet-earth.svg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </footer>
-
-            <!-- Credits -->
-
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="styles/bootstrap4/popper.js"></script>
-        <script src="styles/bootstrap4/bootstrap.min.js"></script>
-        <script src="plugins/greensock/TweenMax.min.js"></script>
-        <script src="plugins/greensock/TimelineMax.min.js"></script>
-        <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-        <script src="plugins/greensock/animation.gsap.min.js"></script>
-        <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
-        <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-        <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
-        <script src="plugins/easing/easing.js"></script>
-        <script src="js/custom.js"></script>
+
+
+
+        <!-- Footer -->
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Footer About -->
+
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_col_title">
+                            <div class="logo_container">
+                                <a href="#">
+                                    <div class="logo">
+                                        <img src="images/logo.png" alt="">
+                                        <span>輔仁大學租屋網</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer_social">
+                            <ul class="footer_social_list">
+                                <li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a>
+                                </li>
+                                <li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a>
+                                </li>
+                                <li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a>
+                                </li>
+                                <li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer_about">
+                            <p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis
+                                se tellus
+                                eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis
+                                ferme semper
+                                augue.</p>
+                        </div>
+                    </div>
+
+                    <!-- Footer Useful Links -->
+
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_col_title">useful links</div>
+                        <ul class="footer_useful_links">
+                            <li class="useful_links_item"><a href="#">Listings</a></li>
+                            <li class="useful_links_item"><a href="#">Favorite Cities</a></li>
+                            <li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
+                            <li class="useful_links_item"><a href="#">Featured Listings</a></li>
+                            <li class="useful_links_item"><a href="#">Properties on Offer</a></li>
+                            <li class="useful_links_item"><a href="#">Services</a></li>
+                            <li class="useful_links_item"><a href="#">News</a></li>
+                            <li class="useful_links_item"><a href="#">Our Agents</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Footer Contact Form -->
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_col_title">say hello</div>
+                        <div class="footer_contact_form_container">
+                            <form id="footer_contact_form" class="footer_contact_form" action="post">
+                                <input id="contact_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
+                                <input id="contact_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
+                                <textarea id="contact_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+                                <button id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="Submit">send</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Footer Contact Info -->
+
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_col_title">contact info</div>
+                        <ul class="contact_info_list">
+                            <li class="contact_info_item d-flex flex-row">
+                                <div>
+                                    <div class="contact_info_icon"><img src="images/placeholder.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
+                            </li>
+                            <li class="contact_info_item d-flex flex-row">
+                                <div>
+                                    <div class="contact_info_icon"><img src="images/phone-call.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="contact_info_text">2556-808-8613</div>
+                            </li>
+                            <li class="contact_info_item d-flex flex-row">
+                                <div>
+                                    <div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
+                                </div>
+                                <div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">contactme@gmail.com</a></div>
+                            </li>
+                            <li class="contact_info_item d-flex flex-row">
+                                <div>
+                                    <div class="contact_info_icon"><img src="images/planet-earth.svg" alt="">
+                                    </div>
+                                </div>
+                                <div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <!-- Credits -->
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/greensock/TweenMax.min.js"></script>
+    <script src="plugins/greensock/TimelineMax.min.js"></script>
+    <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="plugins/greensock/animation.gsap.min.js"></script>
+    <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="js/custom.js"></script>
 </body>
 
 </html>
