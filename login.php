@@ -54,7 +54,7 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['uu'])
             $_SESSION['tenant']['account'] = $user['account'];
             $_SESSION['tenant']['gender'] = $user['gender'];
             $_SESSION['tenant']['lastname'] = $user['lastname'];
-            header("Location: index.php");
+            header("Location: index-te.php");
         }
         exit(); 
     } else {
