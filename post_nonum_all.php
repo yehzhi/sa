@@ -25,15 +25,10 @@
 
         <!-- Home -->
         <div class="home1">
-
-
-
         </div>
 
-        <!-- Home Slider Nav -->
-
-
         <div class="hello" style="color: #555e81;"></div>
+
         <!-- Header -->
 
         <header class="header trans_300">
@@ -56,41 +51,32 @@
                             <!-- Main Navigation -->
 
                             <nav class="main_nav">
-							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index-te.html">首頁</a></li>
-								<li class="main_nav_item">
-									<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false">討論區</a>
-									<div class="dropdown-menu" style="background-color: #a1a8c6;">
-										<a class="dropdown-item" href="discuss_num.html">有編號房屋</a>
-                                        <a class="dropdown-item" href="discuss_nonum.html">無編號房屋</a>
-									</div>
-								</li>							
-								<li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
-								<li class="main_nav_item"><a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
-								<ul class="dropdown-menu" style="background-color: #a1a8c6;">
-										<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
-										<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
-										<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
-									</ul>
-								
-							</li>
-						</nav>
-
-
-
-
+                                <ul class="main_nav_list">
+                                    <li class="main_nav_item"><a href="index-te.html">首頁</a></li>
+                                    <li class="main_nav_item">
+                                        <a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>
+                                        <div class="dropdown-menu" style="background-color: #a1a8c6;">
+                                            <a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
+                                            <a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
+                                        </div>
+                                    </li>
+                                    <li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
+                                    <li class="main_nav_item">
+                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
+                                        <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
 
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </header>
-
-
 
         <!-- Featured Properties -->
 
@@ -100,340 +86,94 @@
                     <div class="col">
                         <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b></b></h1>
                     </div>
-
                 </div>
             </div>
             
             <div class="container">
-
-
-
                 <br>
                 <div class="home2" style="width: 1000px; margin: 0 auto; ">
 
                     <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $dbname = "sa";
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM post"; 
+                    // 检查是否传递了 post_id 参数
+                    if(isset($_GET['post_id'])) {
+                        $post_id = $_GET['post_id'];
 
-                    $result = $conn->query($sql);
-                    
-                    
+                        // 连接到数据库
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = ""; 
+                        $dbname = "sa";
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 
-                    if ($result->num_rows > 0) {
-                        
-                        
-                        while ($row = $result->fetch_assoc()) {
-                            $article = $row["article"];
-                            $content = $row["content"];
-                            $address = $row["address"];
-                            $star_rate = $row["star_rate"];
-                            $house_photo= $row["house_photo"];
-                            $lastname = $row["lastname"];
-                            $gender = $row["gender"];
-                            
+                        // 检查连接
+                        if ($conn->connect_error) {
+                            die("连接失败: " . $conn->connect_error);
                         }
-                        
-                        
-                        
+
+                        // 根据 post_id 查询数据库
+                        $sql = "SELECT * FROM post WHERE post_id = '$post_id'";
+                        $result = $conn->query($sql);
+
+                        // 显示查询到的数据
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                $article = $row["article"];
+                                $content = $row["content"];
+                                $address = $row["address"];
+                                $star_rate = $row["star_rate"];
+                                $post_date= $row["post_date"];
+                                $lastname = $row["lastname"];
+                                $gender = $row["gender"];
+
+                                // 設置性別稱號
+				                if ($gender === "f") {
+				                    $prefix = "小姐";
+				                } elseif ($gender === "m") {
+				                    $prefix = "先生";
+				                } else {
+				                    $prefix = "";
+				                }
+
+
+                                // 显示文章详情
+                                echo '<div class="listing_item">';
+                                echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
+                                echo '<div class="listing_content">';
+                                echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
+                                echo '<div class="listing_text">評分:' . $star_rate . '分<br>' . $content . '<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
+                                echo '<div class="listing_image">';
+                                echo '<img src="' . $house_photo . '" alt="House Photo" width="300" height="200">';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                            }
+                        } else {
+                            echo "没有找到相关文章";
+                        }
+
+                        // 关闭数据库连接
+                        $conn->close();
                     } else {
-                        echo "";
+                        echo "没有传递 post_id 参数";
                     }
-                    
-                    
                     ?>
-
-
-                    <div class="row">
-                    
-                        <div class="listing_item" style="margin-top: 30px;">
-                            <div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-                                <div class="listing_content">
-                                    <div class="listing_title1"><?php echo $article; ?></div>
-                                    <div class="listing_text">房屋編號 : 002 </div>
-
-                                    <div class="room_tags">
-                                    <?php 
-                                    if (strpos($equip, '電視') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">電視</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '冰箱') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">冰箱</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '衛浴') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">獨立衛浴</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '冷氣') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">冷氣</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '洗衣機') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">洗衣機</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '飲水機') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">飲水機</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '沙發') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">沙發</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '衣櫃') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">衣櫃</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '單人床') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">單人床</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '雙人床') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">雙人床</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '書櫃') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">書櫃</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '書桌(椅)') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">書桌(椅)</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '檯燈') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">檯燈</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '寬頻網路') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">寬頻網路</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '電話') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">電話</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '瓦斯') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">瓦斯</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '熱水器') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">熱水器</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '可養寵物') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">可養寵物</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '有對外窗') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">有對外窗</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    
-                                    
-                                    ?>
-                                        
-                                    </div>
-                                </div>
-                                <div class="listing_image">
-                                    <?php
-                                    $sql = "SELECT i_photo FROM information";
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        // 顯示圖片
-                                        while($row = $result->fetch_assoc()) {
-                                            echo '<img src="uploads/' . $row["filename"] . '" width="300" height="200"><br>';
-                                        }
-                                    } else {
-                                    }
-                                    
-                                    $conn->close();
-                                    ?>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
 
                 </div>
             </div>
         </div>
 
-
         <!-- Footer -->
 
         <footer class="footer">
             <div class="container">
-                <div class="row">
-
-                    <!-- Footer About -->
-
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_col_title">
-                            <div class="logo_container">
-                                <a href="#">
-                                    <div class="logo">
-                                        <img src="images/logo.png" alt="">
-                                        <span>輔仁大學租屋網</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="footer_social">
-                            <ul class="footer_social_list">
-                                <li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a>
-                                </li>
-                                <li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a>
-                                </li>
-                                <li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a>
-                                </li>
-                                <li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="footer_about">
-                            <p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis
-                                se tellus
-                                eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis
-                                ferme semper
-                                augue.</p>
-                        </div>
-                    </div>
-
-                    <!-- Footer Useful Links -->
-
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_col_title">useful links</div>
-                        <ul class="footer_useful_links">
-                            <li class="useful_links_item"><a href="#">Listings</a></li>
-                            <li class="useful_links_item"><a href="#">Favorite Cities</a></li>
-                            <li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
-                            <li class="useful_links_item"><a href="#">Featured Listings</a></li>
-                            <li class="useful_links_item"><a href="#">Properties on Offer</a></li>
-                            <li class="useful_links_item"><a href="#">Services</a></li>
-                            <li class="useful_links_item"><a href="#">News</a></li>
-                            <li class="useful_links_item"><a href="#">Our Agents</a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Footer Contact Form -->
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_col_title">say hello</div>
-                        <div class="footer_contact_form_container">
-                            <form id="footer_contact_form" class="footer_contact_form" action="post">
-                                <input id="contact_form_name" class="input_field contact_form_name" type="text" placeholder="Name" required="required" data-error="Name is required.">
-                                <input id="contact_form_email" class="input_field contact_form_email" type="email" placeholder="E-mail" required="required" data-error="Valid email is required.">
-                                <textarea id="contact_form_message" class="text_field contact_form_message" name="message" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
-                                <button id="contact_send_btn" type="submit" class="contact_send_btn trans_200" value="Submit">send</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Footer Contact Info -->
-
-                    <div class="col-lg-3 footer_col">
-                        <div class="footer_col_title">contact info</div>
-                        <ul class="contact_info_list">
-                            <li class="contact_info_item d-flex flex-row">
-                                <div>
-                                    <div class="contact_info_icon"><img src="images/placeholder.svg" alt="">
-                                    </div>
-                                </div>
-                                <div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
-                            </li>
-                            <li class="contact_info_item d-flex flex-row">
-                                <div>
-                                    <div class="contact_info_icon"><img src="images/phone-call.svg" alt="">
-                                    </div>
-                                </div>
-                                <div class="contact_info_text">2556-808-8613</div>
-                            </li>
-                            <li class="contact_info_item d-flex flex-row">
-                                <div>
-                                    <div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
-                                </div>
-                                <div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">contactme@gmail.com</a></div>
-                            </li>
-                            <li class="contact_info_item d-flex flex-row">
-                                <div>
-                                    <div class="contact_info_icon"><img src="images/planet-earth.svg" alt="">
-                                    </div>
-                                </div>
-                                <div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
+                <!-- Footer Content Here -->
             </div>
         </footer>
 
-        <!-- Credits -->
-
     </div>
+
+    <!-- Scripts -->
     <script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
