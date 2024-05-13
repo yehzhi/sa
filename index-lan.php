@@ -107,6 +107,7 @@
                     
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
+			    $id = $row["vid"];
                             $title = $row["i_title"];
                             $address = $row["i_address"];
                             $rent = $row["i_rent"];
@@ -123,7 +124,7 @@
                             <div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
                                 <div class="listing_content">
                                     <div class="listing_title1"><?php echo $title; ?></div>
-                                    <div class="listing_text">房屋編號 : 002 </div>
+                                    <div class="listing_text"><?php echo "房屋編號:00",$id; ?></div>
                                     <div class="room_tags">
                                         <!-- 根据数据库中的信息生成标签 -->
                                         <?php 
