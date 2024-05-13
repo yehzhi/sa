@@ -139,6 +139,7 @@
 
 
                                 while ($row = $result->fetch_assoc()) {
+				    $id = $row["vid"];
                                     $title = $row["i_title"];
                                     $address = $row["i_address"];
                                     $rent = $row["i_rent"];
@@ -178,7 +179,7 @@
                                                 <li class="dropdown_item">
                                                     <div class="dropdown_item_title1">房屋編號</div>
                                                     <div class="mb-3">
-                                                        <input type="text" disabled="false" class="form-control" id="exampleFormControlInput1" placeholder="002">
+                                                        <input type="text" disabled="false" class="form-control" name = "fid" value = <?php echo $id; ?>>
                                                     </div>
                                                 </li>
                                                 <li class="dropdown_item">

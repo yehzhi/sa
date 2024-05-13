@@ -7,6 +7,8 @@ $dbname = "sa";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+$id = $_POST["vid"];
+
 $title = $_POST["title"];
 $address = $_POST["address"];
 $rent = $_POST["rent"];
@@ -28,7 +30,7 @@ if(isset($_POST['eq'])) {
     $checkbox_values = implode(",", $_POST['eq']);
 
     
-    $sql = "INSERT INTO information(i_title,i_address,i_photo,i_rent,i_gender,i_equip,i_roomstyle,i_entrance,i_walktime,i_introduce)  VALUES ('$title','$address','$filename','$rent','$gender','$checkbox_values','$roomstyle','$entrance','$walktime','$introduce')";
+    $sql = "INSERT INTO information(vid,i_title,i_address,i_photo,i_rent,i_gender,i_equip,i_roomstyle,i_entrance,i_walktime,i_introduce)  VALUES ('$id','$title','$address','$filename','$rent','$gender','$checkbox_values','$roomstyle','$entrance','$walktime','$introduce')";
     if ($conn->query($sql) !== TRUE) {
         ?>
         <script>
