@@ -107,7 +107,7 @@
 
                         
                         if ($conn->connect_error) {
-                            die("连接失败: " . $conn->connect_error);
+                            die("連接失敗: " . $conn->connect_error);
                         }
 
                         
@@ -149,13 +149,13 @@
                                 echo '</div>';
                             }
                         } else {
-                            echo "没有找到相关文章";
+                            echo "沒找到相關文章";
                         }
 
                         
                         $conn->close();
                     } else {
-                        echo "没有传递 post_id 参数";
+                        echo "沒有傳遞參數";
                     }
                     ?>
 

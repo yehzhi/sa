@@ -150,13 +150,13 @@
                                 echo '</div>';
                             }
                         } else {
-                            echo "没有找到相关文章";
+                            echo "沒有找到相關文章";
                         }
 
                         
                         $conn->close();
                     } else {
-                        echo "没有传递 post_id 参数";
+                        echo "沒有傳遞 post_id 參數";
                     }
                     ?>
 
