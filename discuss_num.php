@@ -178,6 +178,7 @@
                             while ($row = $result->fetch_assoc()) {
                                 $verify_id = $row["verify_id"];
                                 $article = $row["article"];
+								$post_date = $row["post_date"];
                                 $star_rate= $row["star_rate"];
                                 $lastname = $row["lastname"];
                                 $gender = $row["gender"];
@@ -196,7 +197,7 @@
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';
                                 echo '<div class="listing_title"><a href="listings_single.html">' . $article . '</a></div>';
-                                echo '<div class="listing_text">編號: ' . $verify_id . '<br>評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
+                                echo '<div class="listing_text">房屋編號: ' . $verify_id . '<br>評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';

@@ -116,7 +116,7 @@
                     $username = "root";
                     $dbname = "sa";
                     $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM information"; 
+                    $sql = "SELECT * FROM post"; 
 
                     $result = $conn->query($sql);
                     
