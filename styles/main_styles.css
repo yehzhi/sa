@@ -2097,6 +2097,6 @@ body, html {
 }
 
 .fixed-button-container a {
-    color: inherit; /* 繼承父級元素的文字顏色 */
-    text-decoration: none; /* 去除下劃線 */
+    color: inherit; 
+    text-decoration: none;
 }

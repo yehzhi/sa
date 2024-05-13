@@ -63,16 +63,19 @@
 								</a>
 							</div>
 
-							<!-- Main Navigation -->
-
 							<nav class="main_nav">
 								<ul class="main_nav_list">
 									<li class="main_nav_item"><a href="index.html">首頁</a></li>
-									<li class="main_nav_item"><a href="discuss.html">討論區</a></li>
+									<li class="main_nav_item">
+										<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">討論區</a>
+										<div class="dropdown-menu">
+											<a class="dropdown-item" href="discuss_num.html">有編號房屋</a>
+											<a class="dropdown-item" href="discuss_nonum.html">無編號房屋</a>
+										</div>
+									</li>
 								</ul>
 							</nav>
-
-							<!-- Phone Home -->
 
 							<div class="phone_home text-center" style="border-radius: 10px;">
 								<span><a href="login.html">登入</a></span>
