@@ -1,11 +1,18 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
-$password = "19990817";
+$password = "";
 $dbname = "sa";
 
+
 $conn = new mysqli($servername, $username, $password, $dbname);
+if($conn->connect_error){
+die('連線失敗'.$conn->connect_error);
+}
 $vaddress = $_POST["vaddress"];
+$account = $_SESSION['landlord']['account'];
 
 $photo1 = $_FILES['photo1']['name'];
 $tmp_name1 = $_FILES['photo1']['tmp_name'];
@@ -31,7 +38,7 @@ if ($max_id === null) {
 $new_id = $max_id + 1;
 
 
-$sql = "INSERT INTO verify (vid,v_land, v_prove,v_address) VALUES ('$new_id','$target_file1', '$target_file2','$vaddress')";
+$sql = "INSERT INTO verify (vid,v_land, v_prove,v_address,account) VALUES ('$new_id','$target_file1', '$target_file2','$vaddress','$account')";
 
 if ($conn->query($sql) !== TRUE) {
     echo "提交驗證失敗!";
