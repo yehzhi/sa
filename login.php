@@ -48,7 +48,7 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['uu'])
             $_SESSION['landlord'] = $user;
             $_SESSION['landlord']['account'] = $user['account'];
             $_SESSION['landlord']['gender'] = $user['gender'];
-            header("Location: index-lan.html");
+            header("Location: index-lan.php");
         } elseif ($usertype === 't') {
             $_SESSION['tenant'] = $user;
             $_SESSION['tenant']['account'] = $user['account'];
