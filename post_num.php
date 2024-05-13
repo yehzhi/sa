@@ -33,7 +33,7 @@ $sql = "INSERT INTO numbered_post (verify_id,article,content,address,star_rate,h
 if ($conn->query($sql) === TRUE) {?>
         <script>
             alert("發文成功!");
-            location.href = "discuss_num.php";
+            location.href = "discuss_num.html";
         </script>
      <?php
 

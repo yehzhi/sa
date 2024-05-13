@@ -31,7 +31,7 @@ $sql = "INSERT INTO post (article,content,address,star_rate,house_photo,lastname
 if ($conn->query($sql) === TRUE) {?>
         <script>
             alert("發文成功!");
-            location.href = "discuss_nonum.php";
+            location.href = "discuss_nonum.html";
         </script>
      <?php
 
