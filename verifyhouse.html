@@ -115,24 +115,46 @@
 				<div class="col-lg-4 sidebar_col">
 					<!-- Search Box -->
 
-					<div class="search_box" style="margin-top: -70px;margin-left: 55px;">
+					<div class="search_box" style="margin-top: -70px;" >
 
 						<div class="search_box_content_sign">
 
 							
 							<!-- Search Form -->
-							<form action="verify.php" method="post" enctype="multipart/form-data">
-								<label for="photo1">土地持有權狀:</label>
-								<input type="file" name="photo1" id="photo1" accept="image/*"><br><br>
-								
-								<label for="photo2">出租證明:</label>
-								<input type="file" name="photo2" id="photo2" accept="image/*"><br><br>
+							<form class="search_form"  action="verify.php" method="POST" enctype="multipart/form-data">
+								<div class="search_box_container" style="margin-left: -20px;" >
+									<ul class="dropdown_row clearfix">
+										<li class="dropdown_item">
+											<div class="dropdown_item_title_login">土地持有權狀&nbsp;</div>
+												
+											<div class="mb-3">
+												<input class="form-control" type="file" id="photo1" name="photo1" accept="image/*" required>
+											</div>
+										</li>
+										<li class="dropdown_item">
+											<div class="dropdown_item_title_login">出租證明&nbsp;</div>
+												
+											<div class="mb-3">
+												<input class="form-control" type="file" id="photo2" name="photo2" accept="image/*" required>
+											</div>
+										</li>
+										<li class="dropdown_item">
+											<div class="dropdown_item_title_login">房屋地址</div>
+											<div class="mb-3">
+												<input type="text" class="form-control" id="vaddress" name="vaddress"required>
+											</div>
+										</li>
+										
+									</ul>
+								</div>
 
-								<label for="photo2">房屋地址:
-								<input type="type" name="vaddress" id="vaddress" ><br><br>
-								</label>
-								
-								<input type="submit" value="上傳">
+								<div class="search_features_container"style="margin-top: -50px;margin-left: -5px;">
+									
+
+									<div class="search_button" align="center">
+										<input value="驗證" type="submit" class="search_submit_button">
+									</div>
+								</div>
 							</form>
 						</div>
 					</div>
