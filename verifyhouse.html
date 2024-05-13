@@ -70,13 +70,9 @@
 									</div>
 								</li>
 								<li class="main_nav_item"><a href="about.html">討論區</a></li>
-								<li class="main_nav_item"><a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
-									<ul class="dropdown-menu" style="background-color: #a1a8c6;">
-											<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
-											<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
-										</ul>
-				
-								</li>
+								<li class="main_nav_item"><a href="discuss.html"><i
+											class="fa-solid fa-circle-user fa-2xl"
+											style="color: #f9e46c;"></i></i></a></li>
 							</ul>
 						</nav>
 
@@ -120,49 +116,24 @@
 				<div class="col-lg-4 sidebar_col">
 					<!-- Search Box -->
 
-					<div class="search_box" style="margin-top: -70px;margin-left: -20px;">
+					<div class="search_box" style="margin-top: -70px;margin-left: 55px;">
 
 						<div class="search_box_content_sign">
 
 							
 							<!-- Search Form -->
-							<form class="search_form" action ="verify.php" method="post" ><!--enctype="multipart/form-data"加在左邊裡面-->
-							
-								<div class="search_box_container" style="margin-left:-20px;">
-									<ul class="dropdown_row clearfix">
-											
-										
-										<li class="dropdown_item">
-											<div class="dropdown_item_title_login">土地所有權狀</div>
-											<div class="mb-3">
-												<input type="file" name="land" id="land">
-											</div>
-										</li>
-										<li class="dropdown_item">
-											<div class="dropdown_item_title_login">出租證明</div>
-											<div class="mb-3">
-												<input type="file" name="prove" id="prove">
-											</div>
-										</li>
-										<li class="dropdown_item">
-											<div class="dropdown_item_title1">房屋地址</div>
-											<div class="mb-3">
-												<input type="text" class="form-control" name = "vaddress"  required>
-											</div>
-										</li>
-										
-									</ul>
-								</div>
-
-								<div class="search_features_container" style="margin-top: -50px;margin-left: -5px;">
-									
-
-									<div class="search_button" align="center">
-										<input value="送出驗證" type="submit" class="search_submit_button" >
-									</div>
+							<form action="verify.php" method="post" enctype="multipart/form-data">
+								<label for="photo1">土地持有權狀:</label>
+								<input type="file" name="photo1" id="photo1" accept="image/*"><br><br>
 								
-								</div>
-							    
+								<label for="photo2">出租證明:</label>
+								<input type="file" name="photo2" id="photo2" accept="image/*"><br><br>
+
+								<label for="photo2">房屋地址:
+								<input type="type" name="vaddress" id="vaddress" ><br><br>
+								</label>
+								
+								<input type="submit" value="上傳">
 							</form>
 						</div>
 					</div>
