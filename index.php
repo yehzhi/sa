@@ -358,232 +358,226 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>我的房屋</b></h1>
+                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>最新上架</b></h1>
                     </div>
 
                 </div>
             </div>
             <hr>
-            <div class="container">
+      
+			<style>
+        .flat-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+			margin:50px 80px;
+        }
+		.flat-container {
+			flex:1;
+		}
+        .flat {
+            width: 30%;
+            /* border: 1px solid #ccc; */
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+		
+		.flat-container img{
+			position:absolue;
+			width:100%;
+			height:250px;
+			overflow:hidden;
+			display:block;
+		}
+		.flat-container .image_wrapper {
+    margin: 10px;
+    /* padding: 10px; */
+    border: 1px solid #ccc;
+    background-color:#eeeff3;
+	transition: background-color 0.3s, box-shadow 0.3s; 
+}
 
 
+.flat-container .t_wrapper {
+    /* margin: 10px; */
+    padding: 30px;
+    /* border: 1px solid #ccc; */ 
+	color:  #555e81;
+}
+p{
+	font-size: 16px;
 
-                <br>
-                <div class="home2" style="width: 1000px; margin: 0 auto; ">
+}
+.flat-container .image_wrapper:hover {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.flat-container a {
+    text-decoration: none;
+    color: inherit;
+}
+.icon{
+	max-width:40px;
+	max-height:40px;
+}
+.equip{
+	display: flex;
+	flex-wrap:wrap;
+	flex-basis: calc(25% - 20px);
+	justify-content: flex-start;
+	/* text-align: center; */
+	/* align-items: center; */
+}
+.equip> * {
+	flex-basis: calc(25% - 20px);
+	margin-right: 20px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+.e_icon{
+	max-width:30px;
+	max-height:30px;
+	display: inline-block;
 
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "19990817";
-                    $dbname = "sa";
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM information"; 
+}
+.e_text {
+    font-size: 16px; 
+	display: inline-block;
+}
+.room_tag{
+	padding:5px 10px;
+	font-size: 16px;
+}
 
-                    $result = $conn->query($sql);
+ </style>
+
+<div class="flat-container">  
+		          
+<?php
+
+$servername="127.0.0.1";
+    $username="root";
+    $password="";
+    $dbname="dt_m";
+
+$conn=new mysqli($servername,$username,$password,$dbname);
+if($conn->connect_error){
+    die('連線失敗'.$conn->connect_error);
+}
+
+$sql = "SELECT * FROM information";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<div class='flat'>";
+        
+		$i_photo=$row["i_photo"];
+		$path="file/" .$i_photo;
+		echo "<a href='detail_page.php?id=$i_photo'>";
+		echo "<div class='image_wrapper'>";
+        echo "<img src='$path' alt=''>";
+		$s=$row["i_roomstyle"];
+		echo"<div class='featured_panel'> ".$row["i_roomstyle"] ." </div>";
+		echo "<div class='t_wrapper'>";
+		echo "<h2> " . $row["i_title"] . "</h2>";
+        echo "<p>地址: " . $row["i_address"] . "</p>";
+		echo "" . $row["i_introduce"] . "</p>";
+       
+		$e=$row["i_equip"];
+		if(!empty($e)){
+			echo"<div class='equip'>";
+		if (strpos($e, "電視") !== false) {
+			echo "<img class='e_icon' img src='images/icon/tv.svg' alt=''> <p class='e_text'>電視</p>";
+		}
+		if (strpos($e, "冰箱") !== false) {
+			echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>冰箱</p>";
+		} 
+		if (strpos($e, "衛浴") !== false) {
+			echo "<img class='e_icon' img src='images/icon/bathroom.svg' alt=''><p class='e_text'>衛浴</p>";
+		} 
+		if (strpos($e, "冷氣") !== false) {
+			echo "<img class='e_icon' img src='images/icon/air.svg' alt=''><p class='e_text'>冷氣</p>";
+		} 
+		if (strpos($e, "洗衣機") !== false) {
+			echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>洗衣機</p>";
+		} 
+		if (strpos($e, "飲水機") !== false) {
+			echo "<img class='e_icon' img src='images/icon/drink.svg' alt=''><p class='e_text'>飲水機</p>";
+		} 
+		if (strpos($e, "沙發") !== false) {
+			echo "<img class='e_icon' img src='images/icon/sofa.svg' alt=''><p class='e_text'>沙發</p>";
+		} 
+		if (strpos($e, "衣櫃") !== false) {
+			echo "<img class='e_icon' img src='images/icon/closet.svg' alt=''><p class='e_text'>衣櫃</p>";
+		} 
+		if (strpos($e, "單人床") !== false) {
+			echo "<img class='e_icon' img src='images/icon/1.svg' alt=''><p class='e_text'>單人床</p>";
+		} 
+		if (strpos($e, "雙人床") !== false) {
+			echo "<img class='e_icon' img src='images/icon/2.svg' alt=''><p class='e_text'>雙人床</p>";
+
+		} 
+		if (strpos($e, "書櫃") !== false) {
+			echo "<img class='e_icon' img src='images/icon/book.svg' alt=''><p class='e_text'>書櫃</p>";
+		} 
+		if (strpos($e, "書桌(椅)") !== false) {
+			echo "<img class='e_icon' img src='images/icon/table.svg' alt=''><p class='e_text'>書桌椅</p>";
+		} 
+		if (strpos($e, "檯燈") !== false) {
+			echo "<img class='e_icon' img src='images/icon/lamp.svg' alt=''><p class='e_text'>檯燈</p>";
+		} 
+		if (strpos($e, "寬頻網路") !== false) {
+			echo "<img class='e_icon' img src='images/icon/internet.svg' alt=''><p class='e_text'>寬頻網路</p>";
+		} 
+		if (strpos($e, "電話") !== false) {
+			echo "<img class='e_icon' img src='images/icon/phone.svg' alt=''><p class='e_text'>電話</p>";
+		} 
+		if (strpos($e, "瓦斯") !== false) {
+			echo "<img class='e_icon' img src='images/icon/fire.svg' alt=''><p class='e_text'>瓦斯</p>";
+		} 
+		if (strpos($e, "熱水器") !== false) {
+			echo "<img class='e_icon' img src='images/icon/heat.svg' alt=''><p class='e_text'>熱水器</p>";
+		} 
+		if (strpos($e, "可養寵物") !== false) {
+			echo "<img class='e_icon' img src='images/icon/wolf.svg' alt=''><p class='e_text'>可養寵物</p>";
+		} 
+		if (strpos($e, "有對外窗") !== false) {
+			echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>有對外窗</p>";
+		} 
+
+		echo"</div>";
+	}
+		else{
+			"";
+		}
+		echo"<div class='room_tags'>";
+				echo"<span class='room_tag'>". $row["i_gender"] ."</span>";
+				echo"<span class='room_tag'>". $row["i_entrance"] ."</span>";
+				echo"<span class='room_tag'>". $row["i_walktime"] ."</span>";
+									echo"</div>";
+		echo "</div>";
+		echo "</div>";
+        
+		echo "</a>";
+		echo"<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
+								echo"<img class='icon' img src='images/icon/m.svg' alt=''>";
+								echo"<div class='featured_card_box_content'>";
+									echo"<div class='featured_card_price_title'>每月</div>";
+									echo"<div class='featured_card_price'>" . $row["i_rent"] ."元</div>";
+									echo "</div>";
+									echo "</div>";
+		echo "</div>";
+	}
+} else {
+    echo "無";
+}
+
+$conn->close();
+?>
+</div>                     
                     
-                    
-
-                    if ($result->num_rows > 0) {
-                        
-                        
-                        while ($row = $result->fetch_assoc()) {
-                            $title = $row["i_title"];
-                            $address = $row["i_address"];
-                            $rent = $row["i_rent"];
-                            $gender = $row["i_gender"];
-                            $equip= $row["i_equip"];
-                            $roomstyle = $row["roomstyle"];
-                            $entrance = $row["i_entrance"];
-                            $walktime = $row["i_walktime"];
-                            $introduce = $row["i_introduce"];
-                            
-                        }
-                        
-                        
-                        
-                    } else {
-                        echo "";
-                    }
-                    
-                    
-                    ?>
-
-
-                    <div class="row">
-                    
-                        <div class="listing_item" style="margin-top: 30px;">
-                            <div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-                                <div class="listing_content">
-                                    <div class="listing_title1"><?php echo $title; ?></div>
-                                    <div class="listing_text">房屋編號 : 002 </div>
-
-                                    <div class="room_tags">
-                                    <?php 
-                                    if (strpos($equip, '電視') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">電視</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '冰箱') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">冰箱</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '衛浴') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">獨立衛浴</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '冷氣') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">冷氣</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '洗衣機') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">洗衣機</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '飲水機') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">飲水機</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '沙發') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">沙發</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '衣櫃') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">衣櫃</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '單人床') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">單人床</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '雙人床') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">雙人床</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '書櫃') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">書櫃</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '書桌(椅)') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">書桌(椅)</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '檯燈') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">檯燈</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '寬頻網路') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">寬頻網路</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '電話') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">電話</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '瓦斯') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">瓦斯</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '熱水器') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">熱水器</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '可養寵物') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">可養寵物</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '有對外窗') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">有對外窗</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    
-                                    
-                                    ?>
-                                        
-                                    </div>
-                                </div>
-                                <div class="listing_image">
-                                    <?php
-                                    $sql = "SELECT i_photo FROM information";
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        // 顯示圖片
-                                        while($row = $result->fetch_assoc()) {
-                                            echo '<img src="uploads/' . $row["filename"] . '" width="300" height="200"><br>';
-                                        }
-                                    } else {
-                                    }
-                                    
-                                    $conn->close();
-                                    ?>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
+					
+                                
 		<!-- Cities -->
 
 		<div class="cities">

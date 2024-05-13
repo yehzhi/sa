@@ -105,12 +105,12 @@
 			
 
 		</header>
-
-
-
-		<!-- Featured Properties -->
-
-		<div class="featured">
+		
+ <div class="featured"> 
+		
+		</div>
+	
+		 <div class="featured">
 			<div class="container">
 				<div class="row">
 					<div class="col">
@@ -124,14 +124,16 @@
 			<div class="listings">
 				<div class="container" style="margin-top:-100px;">
 					
-					<div class="row">
+					<div class="row"> 
 						<!-- Search Sidebar -->
-						<div class="col-lg-6 sidebar_col">
+						<div class="col-lg-6 sidebar_col"> 
 							<!-- Search Box -->
-							<div class="search_box1">
-								<form action = "upload.php" method = "post" enctype = "multipart/form-data">
+							 <div class="search_box1">
+								<form action="upload.php" enctype="multipart/form-data" method="post">
+									
+									
 								<div class="search_box_content1" style="height: auto;">
-									<!-- Search Form -->
+									 <!-- Search Form -->
 									<form class="search_form" action="#">
 										<div class="search_box_container1">
 											<ul class="dropdown_row clearfix" style="margin-left: -25px;">
@@ -163,8 +165,8 @@
 												<li class="dropdown_item">
 													<div class="dropdown_item_title1">上傳房屋圖片</div>
 													<div class="mb-3">
-														
-														<input class="form-control" type="file" name = "fileToUpload" id = "fileToUpload" >
+									
+														<input class="form-control" input id="file" name="file" type="file" value="開始上傳" >
 														
 													</div>
 												</li>
@@ -181,7 +183,7 @@
 														<option value = "man">男</option>
 														<option value = "woman">女</option>
 														<option value = "nol">不限制</option>
-													</select>	
+													</select>
 													<!-- More radio buttons -->
 													<br><br>
 													<h6 style="color: #FFFFFF;">租屋設備:</h6>
@@ -298,18 +300,18 @@
 															<input type="checkbox" name = "eq[]" value = "有對外窗" >
 															<label for="search_features_23">有對外窗</label>
 														</div>
-													</li>
+													</li> -->
 													<!-- More checkboxes -->
-												</div>
+												 </div>
 												<div class="drop" style="margin-top: -100px;margin-left: 15px;">
 													<li class="dropdown_item dropdown_item_5" style="width: 100px;">
 														<div class="dropdown_item_title">出租類型</div>
 														<select name="roomstyle" id="property_ID"
 															class="dropdown_item_select" required>
-															<option value = "nor">不限</option>
-															<option value = "room">房間</option>
-															<option value = "suite">套房</option>
-															<option value = "wholehouse">整棟</option>
+															<option value = "不限">不限</option>
+															<option value = "房間">房間</option>
+															<option value = "套房">套房</option>
+															<option value = "整棟">整棟</option>
 														</select>
 													</li>
 		
@@ -333,10 +335,10 @@
 															<option value = "above">15分鐘以上</option>
 														</select>
 													</li>
-												</div>
+												</div> 
 												<!-- More dropdowns -->
 												
-												<div class="yo" style="margin-left: -5px;">
+												 <div class="yo" style="margin-left: -5px;">
 													<li class="dropdown_item">
 														<br><div class="dropdown_item_title1">詳細介紹</div>
 														<div class="mb-3">
@@ -348,7 +350,9 @@
 											</ul>
 											<div class="search_features_container">
 												<div class="search_button">
-													<input value="上架房屋" type="submit" class="search_submit_button1" style="margin-left: 150px;">
+													<input value="上架房屋" type="submit"  id="submit" class="search_submit_button1" style="margin-left: 150px;">
+												
+									</form>
 												</div>
 											</div>
 										</div>
@@ -358,8 +362,8 @@
 						</form>
 						</div>
 					</div>
-				</div>
-			</div>
+				</div> -->
+			<!-- </div> -->
 
 
 

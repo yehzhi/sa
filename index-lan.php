@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>輔仁大學租屋上架房屋</title>
     <meta charset="utf-8">
@@ -20,316 +19,214 @@
 </head>
 
 <body>
+<?php
+        session_start();
 
-    <div class="super_container">
+// if (isset($_SESSION['landlord']['account'])) {
 
-        <!-- Home -->
-        <div class="home1">
+//     echo "：" . $_SESSION['landlord']['account'];
+// } else {
+//    
+//     echo "無";
+// }
+        if (!isset($_SESSION['landlord'])) {
+            header("Location: login.html");
+            exit;
+        }
+        ?>
+
+<div class="super_container">
+
+<!-- Home -->
+<div class="home1">
 
 
+
+</div>
+
+<!-- Home Slider Nav -->
+
+
+<div class="hello" style="color: #555e81;"></div>
+<!-- Header -->
+
+<header class="header trans_300">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="header_container d-flex flex-row align-items-center trans_300">
+
+                    <!-- Logo -->
+
+                    <div class="logo_container">
+                        <a href="#">
+                            <div class="logo">
+                                <img src="images/logo_fju.jpg" alt="" style="width: 65px; height: 65px;margin-right: 10px;">
+                                <span style="margin-left:1px;margin-top: 0.5px;">輔仁大學租屋網</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Main Navigation -->
+
+                    <nav class="main_nav">
+                        <ul class="main_nav_list">
+                            <li class="main_nav_item"><a href="index-lan.html">我的房屋</a></li>
+                            <li class="main_nav_item">
+                                <div class="dropdown">
+                                    <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        新增房屋
+                                    </a>
+
+                                    <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="verifyhouse.html">驗證房屋</a></li>
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="upload.html">上架房屋</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="main_nav_item"><a href="about.html">討論區</a></li>
+                            <li class="main_nav_item"><a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
+                                <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+                                    </ul>
+            
+                            </li>
+                    </nav>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</header>
+
+
+
+<!-- Featured Properties -->
+
+<div class="featured">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>我的房屋</b></h1>
+            </div>
 
         </div>
-
-        <!-- Home Slider Nav -->
-
-
-        <div class="hello" style="color: #555e81;"></div>
-        <!-- Header -->
-
-        <header class="header trans_300">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="header_container d-flex flex-row align-items-center trans_300">
-
-                            <!-- Logo -->
-
-                            <div class="logo_container">
-                                <a href="#">
-                                    <div class="logo">
-                                        <img src="images/logo_fju.jpg" alt="" style="width: 65px; height: 65px;margin-right: 10px;">
-                                        <span style="margin-left:1px;margin-top: 0.5px;">輔仁大學租屋網</span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- Main Navigation -->
-
-                            <nav class="main_nav">
-                                <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a href="index-lan.html">我的房屋</a></li>
-                                    <li class="main_nav_item">
-                                        <div class="dropdown">
-                                            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                新增房屋
-                                            </a>
-
-                                            <ul class="dropdown-menu" style="background-color: #a1a8c6;">
-                                                <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="verifyhouse.html">驗證房屋</a></li>
-                                                <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="upload.html">上架房屋</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="main_nav_item"><a href="about.html">討論區</a></li>
-                                    <ul class="dropdown-menu" style="background-color: #a1a8c6;">
-											<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
-											<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
-											<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
-										</ul>
-									</div>
-								</li>
-                            </nav>
-
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </header>
-
-
-
-        <!-- Featured Properties -->
-
-        <div class="featured">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>我的房屋</b></h1>
-                    </div>
-
-                </div>
-            </div>
-            <hr>
-            <div class="container">
-
+    </div>
+    <hr>
+   
 
 
                 <br>
-                <div class="home2" style="width: 1000px; margin: 0 auto; ">
-
-                    <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "19990817";
-                    $dbname = "sa";
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM information"; 
-
-                    $result = $conn->query($sql);
-                    
-                    
-
-                    if ($result->num_rows > 0) {
-                        
-                        
-                        while ($row = $result->fetch_assoc()) {
-                            $title = $row["i_title"];
-                            $address = $row["i_address"];
-                            $rent = $row["i_rent"];
-                            $gender = $row["i_gender"];
-                            $equip= $row["i_equip"];
-                            $roomstyle = $row["roomstyle"];
-                            $entrance = $row["i_entrance"];
-                            $walktime = $row["i_walktime"];
-                            $introduce = $row["i_introduce"];
-                            
-                        }
-                        
-                        
-                        
-                    } else {
-                        echo "";
-                    }
-                    
-                    
-                    ?>
+                <!-- <div class="home2" style="width: 50%; margin: 0 auto; "> -->
+<?php
+        $servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dt_m";
 
 
-                    <div class="row">
-                    
-                        <div class="listing_item" style="margin-top: 30px;">
-                            <div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-                                <div class="listing_content">
-                                    <div class="listing_title1"><?php echo $title; ?></div>
-                                    <div class="listing_text">房屋編號 : 002 </div>
+        
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("連接失敗：" . $conn->connect_error);
+        }
+        $lan_ac=$_SESSION['landlord']['account'];
+        $sql = "SELECT * FROM information WHERE l_name='$lan_ac'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                        $title = $row["i_title"];
+                        $address = $row["i_address"];
+                        $rent = $row["i_rent"];
+                        $gender = $row["i_gender"];
+                        $equip= $row["i_equip"];
+                        $roomstyle = $row["i_roomstyle"];
+                        $entrance = $row["i_entrance"];
+                        $walktime = $row["i_walktime"];
+                        $introduce = $row["i_introduce"];
+                        $i_photo=$row["i_photo"];
+		$path="file/" .$i_photo;
+                ?>
+             <style>
+    .house_item {
+        display: flex;
+        align-items: center;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
 
-                                    <div class="room_tags">
-                                    <?php 
-                                    if (strpos($equip, '電視') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">電視</a></span>
-                                        <?php
-                                    }
-                                    else {}
+    .house_text {
+        flex: 1;
+        padding-right: 20px;
+        padding-left: 100px; /* 調整右側內邊距 */
+    }
 
-                                    if (strpos($equip, '冰箱') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">冰箱</a></span>
-                                        <?php
-                                    }
-                                    else {}
+    .house_photo {
+        margin-left: 20px; /* 調整左側外邊距 */
+        flex-shrink: 0; /* 防止圖片縮小以適應容器 */
+    }
 
-                                    if (strpos($equip, '衛浴') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">獨立衛浴</a></span>
-                                        <?php
-                                    }
-                                    else {}
+    .house_info img {
+        max-width: 100%; /* 讓圖片充滿容器 */
+        height: auto;
+    }
+</style>
 
-                                    if (strpos($equip, '冷氣') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">冷氣</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '洗衣機') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">洗衣機</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '飲水機') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">飲水機</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '沙發') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">沙發</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '衣櫃') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">衣櫃</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '單人床') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">單人床</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '雙人床') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">雙人床</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '書櫃') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">書櫃</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '書桌(椅)') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">書桌(椅)</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '檯燈') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">檯燈</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '寬頻網路') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">寬頻網路</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '電話') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">電話</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '瓦斯') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">瓦斯</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '熱水器') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">熱水器</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '可養寵物') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">可養寵物</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    if (strpos($equip, '有對外窗') !== false) {
-                                        ?>
-                                        <span class="room_tag"><a href="#">有對外窗</a></span>
-                                        <?php
-                                    }
-                                    else {}
-
-                                    
-                                    
-                                    ?>
-                                        
-                                    </div>
-                                </div>
-                                <div class="listing_image">
-                                    <?php
-                                    $sql = "SELECT i_photo FROM information";
-                                    $result = $conn->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        // 顯示圖片
-                                        while($row = $result->fetch_assoc()) {
-                                            echo '<img src="uploads/' . $row["filename"] . '" width="300" height="200"><br>';
-                                        }
-                                    } else {
-                                    }
-                                    
-                                    $conn->close();
-                                    ?>
-                                </div>
-                                <a class="btn btn-custom" href="fix.php" role="button" style="position: absolute; bottom: 10px; left: 0; margin: 10px;">修改房屋</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
+<div class="container">
+    <div class="house_container">
+        <!-- 房屋資訊 -->
+        <div class="house_item">
+            <!-- 文字部分 -->
+            <div class="house_text">
+                <h2><?php echo $row['i_title']; ?></h2>
+                <p>地址: <?php echo $row['i_address'] ?></p>
+                <p>租金: <?php echo $row['i_rent']; ?></p>
+                <p>性別: <?php echo $row['i_gender']?></p>
+                <p>設備: <?php echo $row['i_equip'] ?></p>
+                <div class="room_tags">
+				<span class='room_tag'><?php echo $row['i_roomstyle'] ?></span>
+                <span class='room_tag'><?php echo $row['i_entrance'] ?></span>
+                <span class='room_tag'><?php echo $row['i_walktime'] ?></span>
                 </div>
+                <p> <?php echo $row['i_introduce']; ?></p>
+            
+                <a class="btn btn-custom" href="fix.php" role="button" style="margin-top: 10px;">修改房屋</a>
+            </div>
+            <!-- 圖片部分 -->
+            <div class="house_photo">
+                <?php 
+                    echo "<a href='detail_page.php?id=$i_photo'>";
+                    echo "<div class='image_wrapper'>";
+                    echo "<img src='$path' alt=''>";
+                ?>
             </div>
         </div>
-
-
+    </div>
+</div>
+</div>
+            <?php
+        }
+    } else {
+        echo "沒有找到任何房屋資訊";
+    }
+    ?>
+</div>
+</div>
+</div>
+</div>
+</div>
         <!-- Footer -->
-
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -437,6 +334,7 @@
                 </div>
             </div>
         </footer>
+      
 
         <!-- Credits -->
 
