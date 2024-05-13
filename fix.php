@@ -139,7 +139,7 @@
 
 
                                 while ($row = $result->fetch_assoc()) {
-				    $id = $row["vid"];
+				                    $id = $row["vid"];
                                     $title = $row["i_title"];
                                     $address = $row["i_address"];
                                     $rent = $row["i_rent"];
@@ -163,7 +163,7 @@
                                 <div class="up3" style="display: flex;margin-left: 320px;">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="out" value="option1">
-                                        <label class="form-check-label" for="inlineRadio1">已出售</label>
+                                        <label class="form-check-label" for="inlineRadio1">已出租</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="stay" value="option2">
@@ -186,16 +186,6 @@
                                                     <div class="dropdown_item_title1">標題</div>
                                                     <div class="mb-3">
                                                         <input type="text" class="form-control" name="fixtitle" value=<?php echo $title; ?>>
-                                                    </div>
-                                                </li>
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">選擇房屋</div>
-                                                    <div class="mb-3">
-                                                        <select name="property_ID" id="property_ID" class="dropdown_item_select1">
-                                                            <option></option>
-                                                            <option>001</option>
-                                                            <option>002</option>
-                                                        </select>
                                                     </div>
                                                 </li>
                                                 <li class="dropdown_item">
@@ -598,7 +588,7 @@
                                                             ?>
                                                         </div>
                                                     </li>
-                                            </ul>
+                                            
                                             <div class="drop" style="margin-top: -100px;margin-left: 15px;">
                                                 <li class="dropdown_item dropdown_item_5" style="width: 100px;">
                                                     <div class="dropdown_item_title">出租類型</div>
@@ -769,7 +759,7 @@
                                             </div>
                                             <br><br><br><br>
                                         </div>
-
+                                        </ul>
                                         <div class="search_features_container"><br><br><br><br>
                                             <div class="search_button">
                                                 <input value="修改房屋" type="submit" class="search_submit_button1" >
