@@ -126,15 +126,13 @@
                         
                         
                         while ($row = $result->fetch_assoc()) {
-                            $title = $row["i_title"];
-                            $address = $row["i_address"];
-                            $rent = $row["i_rent"];
-                            $gender = $row["i_gender"];
-                            $equip= $row["i_equip"];
-                            $roomstyle = $row["roomstyle"];
-                            $entrance = $row["i_entrance"];
-                            $walktime = $row["i_walktime"];
-                            $introduce = $row["i_introduce"];
+                            $article = $row["article"];
+                            $content = $row["content"];
+                            $address = $row["address"];
+                            $star_rate = $row["star_rate"];
+                            $house_photo= $row["house_photo"];
+                            $lastname = $row["lastname"];
+                            $gender = $row["gender"];
                             
                         }
                         
@@ -153,7 +151,7 @@
                         <div class="listing_item" style="margin-top: 30px;">
                             <div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
                                 <div class="listing_content">
-                                    <div class="listing_title1"><?php echo $title; ?></div>
+                                    <div class="listing_title1"><?php echo $article; ?></div>
                                     <div class="listing_text">房屋編號 : 002 </div>
 
                                     <div class="room_tags">
