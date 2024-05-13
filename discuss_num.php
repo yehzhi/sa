@@ -14,51 +14,21 @@
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 </head>
 
-<?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $dbname = "sa";
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                    $sql = "SELECT * FROM numbered_post"; 
-
-                    $result = $conn->query($sql);
-                    
-                    
-
-                    if ($result->num_rows > 0) {
-                        
-                        
-                        while ($row = $result->fetch_assoc()) {
-                            $verify_id = $row["verify_id"];
-                            $article = $row["article"];
-                            $star_rate= $row["star_rate"];
-                            $lastname = $row["lastname"];
-                            $gender = $row["gender"];
-                        }
-                        
-                        
-                        
-                    } else {
-                        echo "";
-                    }
-                    
-                    
-                    ?>
 <body>
 	<div class="super_container"></div>
 	<div class="home1">
 		<div class="hello" style="color: #555e81;"></div>
 	</div>
 	</div>
-	
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_content">
-					</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="home_content">
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 
 	<header class="header trans_300">
@@ -82,21 +52,28 @@
 									<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">討論區</a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="discuss_num.html">有編號房屋</a>
-										<a class="dropdown-item" href="discuss_nonum.html">無編號房屋</a>
+										<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
+										<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
 									</div>
-								</li>								<li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
-								<li class="main_nav_item"><a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
-								<ul class="dropdown-menu" style="background-color: #a1a8c6;">
-										<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
-										<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
-										<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+								</li>
+								<li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
+								<li class="main_nav_item"><a href="info.html" class="dropdown-toggle"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+											class="fa-solid fa-circle-user fa-2xl"
+											style="color: #f9e46c;"></i></i></a>
+									<ul class="dropdown-menu" style="background-color: #a1a8c6;">
+										<li style="background-color: #a1a8c6;"><a class="dropdown-item"
+												href="info.html">修改個人資料</a></li>
+										<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a>
+										</li>
+										<li style="background-color: #a1a8c6;"><a class="dropdown-item"
+												href="logout.php">登出</a></li>
 									</ul>
 								</div>
 							</li>
 						</nav>
 
-						
+
 						<div class="hamburger_container menu_mm">
 							<div class="hamburger menu_mm">
 								<i class="fas fa-bars trans_200 menu_mm"></i>
@@ -185,55 +162,53 @@
 					</div>
 				</div>
 				<div class="col-lg-8 listings_col">
-					<div class="listing_item">
-						<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-							<div class="listing_content">
-								<div class="listing_title"><a href="listings_single.html">輔大工商城一年租屋心得</a></div>
-								<div class="listing_text">房屋編號 : 019 <br> 評分:3分<br>日期 : 2024/4/10 <br> 發文者 : 詹小姐</div>
+					<?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $dbname = "sa";
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $sql = "SELECT * FROM numbered_post"; 
 
-							</div>
-						</div>
-					</div>
+                        $result = $conn->query($sql);
+                        
 
+                        if ($result->num_rows > 0) {
+                            
+                            
+                            while ($row = $result->fetch_assoc()) {
+                                $verify_id = $row["verify_id"];
+                                $article = $row["article"];
+                                $star_rate= $row["star_rate"];
+                                $lastname = $row["lastname"];
+                                $gender = $row["gender"];
 
-					<div class="listing_item">
-						<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-							<div class="listing_content">
-								<div class="listing_title"><a href="listings_single.html">拜託大家避雷這間!</a></div>
-								<div class="listing_text">房屋編號 : 026 <br>評分:1分<br> 日期 : 2024/4/10 <br> 發文者 : 李小姐</div>
-							</div>
-						</div>
-					</div>
+                                // 根据性别设置前缀
+                                if ($gender === "f") {
+                                    $prefix = "小姐";
+                                } elseif ($gender === "m") {
+                                    $prefix = "先生";
+                                } else {
+                                    $prefix = "";
+                                }
 
-					<div class="listing_item">
-						<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-							<div class="listing_content">
-								<div class="listing_title"><a href="listings_single.html">!!!大學年租過最超值</a></div>
-								<div class="listing_text">房屋編號 : 073 <br>評分:5分<br> 日期 : 2024/4/10 <br> 發文者 : 張先生</div>
-							
-							</div>
-						</div>
-					</div>
-
-					<div class="listing_item">
-						<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-							<div class="listing_content">
-							  <div class="listing_title"><a href="listings_single.html">輔大金包銀心得</a></div>
-								<div class="listing_text">房屋編號 : 032 <br> 日期 : 2024/4/10 <br> 發文者 : 賴先生</div>
-								
-							</div>
-						</div>
-					</div>
-
-					<div class="listing_item">
-						<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
-							<div class="listing_content">
-								<div class="listing_title"><a href="listings_single.html">輔大工商城心得</a></div>
-								<div class="listing_text">房屋編號 : 002 <br> 日期 : 2024/4/10 <br> 發文者 : 葉小姐</div>
-								
-							</div>
-						</div>
-					</div>
+                                // 输出 HTML 代码，显示帖子信息
+                                echo '<div class="listing_item">';
+                                echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
+                                echo '<div class="listing_content">';
+                                echo '<div class="listing_title"><a href="listings_single.html">' . $article . '</a></div>';
+                                echo '<div class="listing_text">編號: ' . $verify_id . '<br>評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                            }
+                            
+                            
+                        } else {
+                            echo "";
+                        }
+                        
+                        
+                        ?>
 				</div>
 			</div>
 		</div>
