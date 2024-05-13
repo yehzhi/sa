@@ -63,22 +63,23 @@
 								</a>
 							</div>
 
+							<!-- Main Navigation -->
+
 							<nav class="main_nav">
 								<ul class="main_nav_list">
 									<li class="main_nav_item"><a href="index.html">首頁</a></li>
-									<li class="main_nav_item">
-										<a href="discuss_num.php" class="dropdown-toggle" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false">討論區</a>
-										<div class="dropdown-menu">
-											<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
-											<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
-										</div>
-									</li>
+									<li class="main_nav_item"><a href="discuss.html">討論區</a></li>
 								</ul>
 							</nav>
+
+							<!-- Phone Home -->
+
 							<div class="phone_home text-center" style="border-radius: 10px;">
 								<span><a href="login.html">登入</a></span>
 							</div>
+
+							<!-- Hamburger -->
+
 							<div class="hamburger_container menu_mm">
 								<div class="hamburger menu_mm">
 									<i class="fas fa-bars trans_200 menu_mm"></i>
@@ -89,8 +90,13 @@
 					</div>
 				</div>
 			</div>
+
+			
+
 		</header>
-		
+
+		<!-- Search Box -->
+
 		<div class="search_box">
 			<div class="container">
 				<div class="row">
@@ -352,7 +358,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>我的房屋</b></h1>
+                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>最新上架</b></h1>
                     </div>
 
                 </div>
@@ -381,6 +387,7 @@
                         
                         
                         while ($row = $result->fetch_assoc()) {
+							$id = $row["vid"];
                             $title = $row["i_title"];
                             $address = $row["i_address"];
                             $rent = $row["i_rent"];
@@ -409,7 +416,8 @@
                             <div class="listing_item_inner d-flex flex-md-row flex-column trans_300">
                                 <div class="listing_content">
                                     <div class="listing_title1"><?php echo $title; ?></div>
-                                    <div class="listing_text">房屋編號 : 002 </div>
+                                    <div class="listing_text"><?php echo "房屋編號:00",$id; ?></div>
+
 
                                     <div class="room_tags">
                                     <?php 
@@ -567,6 +575,7 @@
                                     $conn->close();
                                     ?>
                                 </div>
+								<a class="btn btn-custom" href="detail.php" role="button" style="position: absolute; bottom: -10px; left: 0; margin: 10px;">詳細介紹</a>
                             </div>
 
                         </div>
