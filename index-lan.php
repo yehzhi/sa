@@ -22,13 +22,6 @@
 <?php
         session_start();
 
-// if (isset($_SESSION['landlord']['account'])) {
-
-//     echo "：" . $_SESSION['landlord']['account'];
-// } else {
-//    
-//     echo "無";
-// }
         if (!isset($_SESSION['landlord'])) {
             header("Location: login.html");
             exit;
@@ -137,7 +130,7 @@
 
 
                 <br>
-                <!-- <div class="home2" style="width: 50%; margin: 0 auto; "> -->
+                
 <?php
         $servername = "localhost";
 $username = "root";

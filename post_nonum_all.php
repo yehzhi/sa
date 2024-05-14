@@ -107,18 +107,17 @@
 
                         
                         if ($conn->connect_error) {
-                            die("连接失败: " . $conn->connect_error);
+                            die("連接失敗: " . $conn->connect_error);
                         }
 
                         
-                        $sql = "SELECT * FROM numbered_post WHERE post_id = '$post_id'";
+                        $sql = "SELECT * FROM post WHERE post_id = '$post_id'";
                         $result = $conn->query($sql);
 
                         
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
                                 $article = $row["article"];
-                                $verify_id = $row["verify_id"];
                                 $content = $row["content"];
                                 $address = $row["address"];
                                 $star_rate = $row["star_rate"];
@@ -140,8 +139,8 @@
                                 echo '<div class="listing_item">';
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';
-                                echo '<div class="listing_title"><a href="post_num_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
-                                echo '<div class="listing_text">房屋編號:' . $verify_id . '<br>評分:' . $star_rate . '分<br>' . $content . '<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
+                                echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
+                                echo '<div class="listing_text">評分:' . $star_rate . '分<br>' . $content . '<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
                                 echo '<div class="listing_image">';
                                 echo '<img src="' . $house_photo . '" alt="House Photo" width="300" height="200">';
                                 echo '</div>';
@@ -150,13 +149,13 @@
                                 echo '</div>';
                             }
                         } else {
-                            echo "没有找到相关文章";
+                            echo "沒找到相關文章";
                         }
 
                         
                         $conn->close();
                     } else {
-                        echo "没有传递 post_id 参数";
+                        echo "沒有傳遞參數";
                     }
                     ?>
 

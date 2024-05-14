@@ -19,9 +19,15 @@
 <body>
 
 	<div class="super_container">
+
+		<!-- Home -->
 		<div class="home">
+
+			<!-- Home Slider -->
 			<div class="home_slider_container">
+				<!-- Home Slider Item -->
 				<div class="owl-item home_slider_item">
+					<!-- Image by https://unsplash.com/@aahubs -->
 					<div class="home_slider_background" style="background-image:url(images/fju.png)"></div>
 					<div class="home_slider_content_container text-center">
 						<div class="home_slider_content">
@@ -29,23 +35,34 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Home Slider Nav -->
+
+
 			</div>
+
 		</div>
+
+		<!-- Header -->
 
 		<header class="header trans_300">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="header_container d-flex flex-row align-items-center trans_300">
+
+							<!-- Logo -->
+
 							<div class="logo_container">
 								<a href="#">
 									<div class="logo">
-										<img src="images/logo_fju.jpg"
+										<img src="images/logo_fju.jpg" alt=""
 											style="width: 65px; height: 65px;margin-right: 10px;">
 										<span style="margin-left:1px;margin-top: 0.5px;">輔仁大學租屋網</span>
 									</div>
 								</a>
 							</div>
+
 							<nav class="main_nav">
 								<ul class="main_nav_list">
 									<li class="main_nav_item"><a href="index.html">首頁</a></li>
@@ -58,37 +75,62 @@
 										</div>
 									</li>
 								</ul>
+                                <li class="main_nav_item"><a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
+                                <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
+                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+                                    </ul>
+            
+                            </li>
 							</nav>
-							<div class="phone_home text-center" style="border-radius: 10px;">
-								<span><a href="login.html">登入</a></span>
-							</div>
+
+                           
+
+							<!-- Hamburger -->
+
 							<div class="hamburger_container menu_mm">
 								<div class="hamburger menu_mm">
 									<i class="fas fa-bars trans_200 menu_mm"></i>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
+
+			
+
 		</header>
+
+		<!-- Search Box -->
 
 		<div class="search_box">
 			<div class="container">
 				<div class="row">
 					<div class="col">
+
 						<div class="search_box_outer">
 							<div class="search_box_inner">
-								<div class="search_box_title">
+
+								<!-- Search Box Title -->
+								<div class="search_box_title text-center">
 									<form action="#">
 										<div class="newsletter_form_content d-flex flex-row">
 											<input class="custom-input" type="text"
 												placeholder="關鍵字:路名|街道|房屋名(EX:南京東路五段)">
-											<button ype="submit" class="newsletter_submit_btn"
+											<button ype="submit" class="newsletter_submit_btn "
 												value="Submit">搜尋</button>
 										</div>
 									</form>
 								</div>
+
+
+								<!-- Search Arrow -->
+
+
+								<!-- Search Form -->
 								<form class="search_form" action="#">
 									<div class="search_box_container">
 										<ul class="dropdown_row clearfix">
@@ -139,11 +181,17 @@
 											</ul>
 										</ul>
 									</div>
+
+									<div class="search_box_container">
+
+										</ul>
+									</div>
+
 									<div class="search_features_container">
-										<div class="search_features_trigger" style="margin-left: 5px;">
+										<div class="search_features_trigger">
 											<a href="#">更多條件</a>
 										</div>
-										<ul class="search_features clearfix" style="margin-left: 5px;">
+										<ul class="search_features clearfix">
 											<h6 style="color: #FFFFFF;"><b>性別:</b></h6>
 											<li class="search_features_item">
 												<div>
@@ -303,212 +351,243 @@
 											</li>
 										</ul>
 									</div>
+
 								</form>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- Featured Properties -->
 
 		<div class="featured">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="section_title text-center">
-							<h3 style="color: #555e81;"><b>最新上架</b></h3>
-						</div>
-					</div>
-				</div>
-				<div class="row featured_row">
-					<div class="col-lg-4 featured_card_col">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>最新上架</b></h1>
+                    </div>
 
-						<div class="featured_card_container">
-							<div class="card featured_card trans_300">
-								<div class="featured_panel">套房</div>
-								<img class="card-img-top" src="images/featured_1.jpg"
-									alt="https://unsplash.com/@breather">
-								<div class="card-body">
-									<div class="card-title"><a href="listings_single.html"><b>工商城套房出租</b></a></div>
-									<div class="card-text">離校150公尺，只租女學生，價格低廉，物超所值，房屋清靜明亮；通過消局安檢合格</div>
-									<div class="rooms">
-										<div class="room">
-											<span class="room_title">電視</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/bedroom.png" alt=""></div>
-											</div>
-										</div>
+                </div>
+            </div>
+            <hr>
+      
+			<style>
+        .flat-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+			margin:50px 80px;
+        }
+		.flat-container {
+			flex:1;
+		}
+        .flat {
+            width: 30%;
+            /* border: 1px solid #ccc; */
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+		
+		.flat-container img{
+			position:absolue;
+			width:100%;
+			height:250px;
+			overflow:hidden;
+			display:block;
+		}
+		.flat-container .image_wrapper {
+    margin: 10px;
+    /* padding: 10px; */
+    border: 1px solid #ccc;
+    background-color:#eeeff3;
+	transition: background-color 0.3s, box-shadow 0.3s; 
+}
 
-										<div class="room">
-											<span class="room_title">寬頻網路</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/shower.png" alt=""></div>
-											</div>
-										</div>
 
-										<div class="room">
-											<span class="room_title">單人床</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/area.png" alt=""></div>
-												<span class="room_number">7100 Sq Ft</span>
-											</div>
-										</div>
+.flat-container .t_wrapper {
+    /* margin: 10px; */
+    padding: 30px;
+    /* border: 1px solid #ccc; */ 
+	color:  #555e81;
+}
+p{
+	font-size: 16px;
 
-										<div class="room">
-											<span class="room_title">書櫃</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/patio.png" alt=""></div>
-											</div>
-										</div>
+}
+.flat-container .image_wrapper:hover {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.flat-container a {
+    text-decoration: none;
+    color: inherit;
+}
+.icon{
+	max-width:40px;
+	max-height:40px;
+}
+.equip{
+	display: flex;
+	flex-wrap:wrap;
+	flex-basis: calc(25% - 20px);
+	justify-content: flex-start;
+	/* text-align: center; */
+	/* align-items: center; */
+}
+.equip> * {
+	flex-basis: calc(25% - 20px);
+	margin-right: 20px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+.e_icon{
+	max-width:30px;
+	max-height:30px;
+	display: inline-block;
 
-										<div class="room">
-											<span class="room_title">飲水機</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/garage.png" alt=""></div>
-											</div>
-										</div>
-									</div>
+}
+.e_text {
+    font-size: 16px; 
+	display: inline-block;
+}
+.room_tag{
+	padding:5px 10px;
+	font-size: 16px;
+}
 
-									<div class="room_tags">
-										<span class="room_tag"><a href="#">女</a></span>
-										<span class="room_tag"><a href="#">514側門</a></span>
-										<span class="room_tag"><a href="#">走路5分鐘</a></span>
-										<span class="room_tag"><a href="#">可養寵物</a></span>
-										<span class="room_tag"><a href="#">Hard Wood Floor</a></span>
-									</div>
-								</div>
-							</div>
+ </style>
 
-							<div class="featured_card_box d-flex flex-row align-items-center trans_300">
-								<img src="images/tag.svg" alt="https://www.flaticon.com/authors/lucy-g">
-								<div class="featured_card_box_content">
-									<div class="featured_card_price_title">每月</div>
-									<div class="featured_card_price">$6,500元</div>
-								</div>
-							</div>
-						</div>
-					</div>
+<div class="flat-container">  
+		          
+<?php
 
-					<div class="col-lg-4 featured_card_col">
-						<div class="featured_card_container">
-							<div class="card featured_card trans_300">
-								<div class="featured_panel">房間</div>
-								<img class="card-img-top" src="images/featured_2.jpg"
-									alt="https://unsplash.com/@astute">
-								<div class="card-body">
-									<div class="card-title"><a href="listings_single.html"><b>輔大名廈</b></a></div>
-									<div class="card-text">位於捷運站 1號出口旁，公寓(1樓)整層出租(含客廳)，共需4位房客，歡迎結伴參觀</div>
-									<div class="rooms">
-										<div class="room">
-											<span class="room_title">寬頻網路</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/bedroom.png" alt=""></div>
-											</div>
-										</div>
+$servername="127.0.0.1";
+    $username="root";
+    $password="";
+    $dbname="dt_m";
 
-										<div class="room">
-											<span class="room_title">書櫃</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/shower.png" alt=""></div>
-											</div>
-										</div>
+$conn=new mysqli($servername,$username,$password,$dbname);
+if($conn->connect_error){
+    die('連線失敗'.$conn->connect_error);
+}
 
-										<div class="room">
-											<span class="room_title">冷氣</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/area.png" alt=""></div>
-												<span class="room_number">7100 Sq Ft</span>
-											</div>
-										</div>
-									</div>
+$sql = "SELECT * FROM information";
+$result = $conn->query($sql);
 
-									<div class="room_tags">
-										<span class="room_tag"><a href="#">性別不限</a></span>
-										<span class="room_tag"><a href="#">正門</a></span>
-										<span class="room_tag"><a href="#">走路5分鐘內</a></span>
-										<span class="room_tag"><a href="#">可養寵物</a></span>
-									</div>
-								</div>
-							</div>
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<div class='flat'>";
+        
+		$i_photo=$row["i_photo"];
+		$path="file/" .$i_photo;
+		echo "<a href='detail_page.php?id=$i_photo'>";
+		echo "<div class='image_wrapper'>";
+        echo "<img src='$path' alt=''>";
+		$s=$row["i_roomstyle"];
+		echo"<div class='featured_panel'> ".$row["i_roomstyle"] ." </div>";
+		echo "<div class='t_wrapper'>";
+		echo "<h2> " . $row["i_title"] . "</h2>";
+        echo "<p>地址: " . $row["i_address"] . "</p>";
+		echo "" . $row["i_introduce"] . "</p>";
+       
+		$e=$row["i_equip"];
+		if(!empty($e)){
+			echo"<div class='equip'>";
+		if (strpos($e, "電視") !== false) {
+			echo "<img class='e_icon' img src='images/icon/tv.svg' alt=''> <p class='e_text'>電視</p>";
+		}
+		if (strpos($e, "冰箱") !== false) {
+			echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>冰箱</p>";
+		} 
+		if (strpos($e, "衛浴") !== false) {
+			echo "<img class='e_icon' img src='images/icon/bathroom.svg' alt=''><p class='e_text'>衛浴</p>";
+		} 
+		if (strpos($e, "冷氣") !== false) {
+			echo "<img class='e_icon' img src='images/icon/air.svg' alt=''><p class='e_text'>冷氣</p>";
+		} 
+		if (strpos($e, "洗衣機") !== false) {
+			echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>洗衣機</p>";
+		} 
+		if (strpos($e, "飲水機") !== false) {
+			echo "<img class='e_icon' img src='images/icon/drink.svg' alt=''><p class='e_text'>飲水機</p>";
+		} 
+		if (strpos($e, "沙發") !== false) {
+			echo "<img class='e_icon' img src='images/icon/sofa.svg' alt=''><p class='e_text'>沙發</p>";
+		} 
+		if (strpos($e, "衣櫃") !== false) {
+			echo "<img class='e_icon' img src='images/icon/closet.svg' alt=''><p class='e_text'>衣櫃</p>";
+		} 
+		if (strpos($e, "單人床") !== false) {
+			echo "<img class='e_icon' img src='images/icon/1.svg' alt=''><p class='e_text'>單人床</p>";
+		} 
+		if (strpos($e, "雙人床") !== false) {
+			echo "<img class='e_icon' img src='images/icon/2.svg' alt=''><p class='e_text'>雙人床</p>";
 
-							<div class="featured_card_box d-flex flex-row align-items-center trans_300">
-								<img src="images/tag.svg" alt="https://www.flaticon.com/authors/lucy-g">
-								<div class="featured_card_box_content">
-									<div class="featured_card_price_title">每月</div>
-									<div class="featured_card_price">$3,500元</div>
-								</div>
-							</div>
-						</div>
-					</div>
+		} 
+		if (strpos($e, "書櫃") !== false) {
+			echo "<img class='e_icon' img src='images/icon/book.svg' alt=''><p class='e_text'>書櫃</p>";
+		} 
+		if (strpos($e, "書桌(椅)") !== false) {
+			echo "<img class='e_icon' img src='images/icon/table.svg' alt=''><p class='e_text'>書桌椅</p>";
+		} 
+		if (strpos($e, "檯燈") !== false) {
+			echo "<img class='e_icon' img src='images/icon/lamp.svg' alt=''><p class='e_text'>檯燈</p>";
+		} 
+		if (strpos($e, "寬頻網路") !== false) {
+			echo "<img class='e_icon' img src='images/icon/internet.svg' alt=''><p class='e_text'>寬頻網路</p>";
+		} 
+		if (strpos($e, "電話") !== false) {
+			echo "<img class='e_icon' img src='images/icon/phone.svg' alt=''><p class='e_text'>電話</p>";
+		} 
+		if (strpos($e, "瓦斯") !== false) {
+			echo "<img class='e_icon' img src='images/icon/fire.svg' alt=''><p class='e_text'>瓦斯</p>";
+		} 
+		if (strpos($e, "熱水器") !== false) {
+			echo "<img class='e_icon' img src='images/icon/heat.svg' alt=''><p class='e_text'>熱水器</p>";
+		} 
+		if (strpos($e, "可養寵物") !== false) {
+			echo "<img class='e_icon' img src='images/icon/wolf.svg' alt=''><p class='e_text'>可養寵物</p>";
+		} 
+		if (strpos($e, "有對外窗") !== false) {
+			echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>有對外窗</p>";
+		} 
 
-					<div class="col-lg-4 featured_card_col">
-						<div class="featured_card_container">
-							<div class="card featured_card trans_300">
-								<div class="featured_panel">套房</div>
-								<img class="card-img-top" src="images/featured_3.jpg"
-									alt="https://unsplash.com/@marcusneto">
-								<div class="card-body">
-									<div class="card-title"><a href="listings_single.html"><b>貴子路套房</b></a></div>
-									<div class="card-text">獨立衛浴套房、走路到學校</div>
-									<div class="rooms">
+		echo"</div>";
+	}
+		else{
+			"";
+		}
+		echo"<div class='room_tags'>";
+				echo"<span class='room_tag'>". $row["i_gender"] ."</span>";
+				echo"<span class='room_tag'>". $row["i_entrance"] ."</span>";
+				echo"<span class='room_tag'>". $row["i_walktime"] ."</span>";
+									echo"</div>";
+		echo "</div>";
+		echo "</div>";
+        
+		echo "</a>";
+		echo"<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
+								echo"<img class='icon' img src='images/icon/m.svg' alt=''>";
+								echo"<div class='featured_card_box_content'>";
+									echo"<div class='featured_card_price_title'>每月</div>";
+									echo"<div class='featured_card_price'>" . $row["i_rent"] ."元</div>";
+									echo "</div>";
+									echo "</div>";
+		echo "</div>";
+	}
+} else {
+    echo "無";
+}
 
-										<div class="room">
-											<span class="room_title">Bedrooms</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/bedroom.png" alt=""></div>
-											</div>
-										</div>
-
-										<div class="room">
-											<span class="room_title">衛浴</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/shower.png" alt=""></div>
-											</div>
-										</div>
-
-										<div class="room">
-											<span class="room_title">瓦斯</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/area.png" alt=""></div>
-												<span class="room_number">7100 Sq Ft</span>
-											</div>
-										</div>
-
-										<div class="room">
-											<span class="room_title">寬頻網路</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/patio.png" alt=""></div>
-											</div>
-										</div>
-
-										<div class="room">
-											<span class="room_title">電視</span>
-											<div class="room_content">
-												<div class="room_image"><img src="images/garage.png" alt=""></div>
-											</div>
-										</div>
-									</div>
-
-									<div class="room_tags">
-										<span class="room_tag"><a href="#">性別不限</a></span>
-										<span class="room_tag"><a href="#">貴子路門(後門)</a></span>
-										<span class="room_tag"><a href="#">走路10分鐘</a></span>
-									</div>
-								</div>
-							</div>
-
-							<div class="featured_card_box d-flex flex-row align-items-center trans_300">
-								<img src="images/tag.svg" alt="https://www.flaticon.com/authors/lucy-g">
-								<div class="featured_card_box_content">
-									<div class="featured_card_price_title">每月</div>
-									<div class="featured_card_price">$4,000元</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+$conn->close();
+?>
+</div>                     
+                    
+					
+                                
+		<!-- Cities -->
 
 		<div class="cities">
 			<div class="cities_background"></div>
@@ -523,8 +602,13 @@
 
 				<div class="row">
 					<div class="col">
+
+						<!-- Cities Slider -->
+
 						<div class="cities_slider_container">
 							<div class="owl-carousel owl-theme cities_slider">
+
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -534,6 +618,8 @@
 										<div class="city_name"><span>玫瑰公寓</span></div>
 									</a>
 								</div>
+
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -543,6 +629,8 @@
 										<div class="city_name"><span>果汁霸樓上</span></div>
 									</a>
 								</div>
+
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -552,6 +640,8 @@
 										<div class="city_name"><span>輔大站一號出口旁</span></div>
 									</a>
 								</div>
+
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -561,6 +651,8 @@
 										<div class="city_name"><span>新莊站步行3分鐘</span></div>
 									</a>
 								</div>
+
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -570,6 +662,8 @@
 										<div class="city_name"><span>輔大醫院旁</span></div>
 									</a>
 								</div>
+
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -579,6 +673,7 @@
 										<div class="city_name"><span>三泰路步行1分鐘到校</span></div>
 									</a>
 								</div>
+
 							</div>
 
 							<div
@@ -590,11 +685,125 @@
 								class="cities_next cities_nav d-flex flex-row align-items-center justify-content-center trans_200">
 								<img src="images/nav_right.png" alt="">
 							</div>
+
 						</div>
+
 					</div>
+
 				</div>
+
 			</div>
 		</div>
+
+
+		<!-- Footer -->
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+
+					<!-- Footer About -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">
+							<div class="logo_container">
+								<a href="#">
+									<div class="logo">
+										<img src="images/logo.png" alt="">
+										<span>輔仁大學租屋網</span>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="footer_social">
+							<ul class="footer_social_list">
+								<li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a></li>
+							</ul>
+						</div>
+						<div class="footer_about">
+							<p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis se tellus
+								eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis ferme semper
+								augue.</p>
+						</div>
+					</div>
+
+					<!-- Footer Useful Links -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">useful links</div>
+						<ul class="footer_useful_links">
+							<li class="useful_links_item"><a href="#">Listings</a></li>
+							<li class="useful_links_item"><a href="#">Favorite Cities</a></li>
+							<li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
+							<li class="useful_links_item"><a href="#">Featured Listings</a></li>
+							<li class="useful_links_item"><a href="#">Properties on Offer</a></li>
+							<li class="useful_links_item"><a href="#">Services</a></li>
+							<li class="useful_links_item"><a href="#">News</a></li>
+							<li class="useful_links_item"><a href="#">Our Agents</a></li>
+						</ul>
+					</div>
+
+					<!-- Footer Contact Form -->
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">say hello</div>
+						<div class="footer_contact_form_container">
+							<form id="footer_contact_form" class="footer_contact_form" action="post">
+								<input id="contact_form_name" class="input_field contact_form_name" type="text"
+									placeholder="Name" required="required" data-error="Name is required.">
+								<input id="contact_form_email" class="input_field contact_form_email" type="email"
+									placeholder="E-mail" required="required" data-error="Valid email is required.">
+								<textarea id="contact_form_message" class="text_field contact_form_message"
+									name="message" placeholder="Message" required="required"
+									data-error="Please, write us a message."></textarea>
+								<button id="contact_send_btn" type="submit" class="contact_send_btn trans_200"
+									value="Submit">send</button>
+							</form>
+						</div>
+					</div>
+
+					<!-- Footer Contact Info -->
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">contact info</div>
+						<ul class="contact_info_list">
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
+							</li>
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text">2556-808-8613</div>
+							</li>
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello"
+										target="_top">contactme@gmail.com</a></div>
+							</li>
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/planet-earth.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</footer>
+
+		<!-- Credits -->
+
 	</div>
 
 	<script src="js/jquery-3.2.1.min.js"></script>
