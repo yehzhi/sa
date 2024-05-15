@@ -17,11 +17,6 @@ $address = $_POST['address'];
 $star_rate = $_POST['star_rate'];
 $lastname = $conn->real_escape_string($_SESSION['tenant']['lastname']);
 $gender = $_SESSION['tenant']['gender'];
-$target_dir = "uploads/"; 
-$target_file = $target_dir . basename($_FILES["house_photo"]["name"]); 
-$house_photo = basename($_FILES["house_photo"]["name"]);
-
-move_uploaded_file($_FILES['house_photo']['tmp_name'],'post/'.$_FILES['house_photo']['name']);
 
 // $account_parts = explode('@', $account);
 // $account = $conn->real_escape_string($account_parts[0]);
@@ -50,10 +45,8 @@ if ($conn->query($sql) == TRUE) {
             location.href = "post_nonum.html";
         </script>
        <?php
-    if($_FILES['file']['error']>0){
-            exit("檔案上傳失敗！");//如果出現錯誤則停止程式
-          }
-          move_uploaded_file($_FILES['file']['tmp_name'],'file/'.$_FILES['file']['name']);
+   
+        
 }
 
 $conn->close();
