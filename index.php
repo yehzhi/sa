@@ -65,7 +65,7 @@
 
 							<nav class="main_nav">
 								<ul class="main_nav_list">
-									<li class="main_nav_item"><a href="index.html">首頁</a></li>
+									<li class="main_nav_item"><a href="index.php">首頁</a></li>
 									<li class="main_nav_item">
 										<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">討論區</a>

@@ -65,7 +65,7 @@
 
 							<nav class="main_nav">
 						<ul class="main_nav_list">
-							<li class="main_nav_item"><a href="index-te.html">首頁</a></li>
+							<li class="main_nav_item"><a href="index-te.php">首頁</a></li>
 							<li class="main_nav_item">
 								<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>
 								<div class="dropdown-menu">
@@ -75,15 +75,13 @@
 							</li>
 							<li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
 							<li class="main_nav_item">
-								<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i>
-								</a>
-								<ul class="dropdown-menu" style="background-color: #a1a8c6;">
-									<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
-									<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
-									<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
-								</ul>
-							</li>
+                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
+                                        <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+                                        </ul>
+                                    </li>
 						</ul>
 					</nav>
 
