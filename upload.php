@@ -8,7 +8,7 @@ if (!isset($_SESSION['landlord']['account'])) {
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dt_m";
+$dbname = "sa";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

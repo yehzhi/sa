@@ -149,8 +149,8 @@
 				        $gender = $row["gender"];
 				        $lastname = $row["lastname"];
 						$house_photo=$row["house_photo"];
-		                $path="post/" .$house_photo;
-		                echo "<a href='post_nonum_all.php?post_id=$post_id'>";
+		                // $path="post/" .$house_photo;
+		                // echo "<a href='post_nonum_all.php?post_id=$post_id'>";
 
 				        // 設置性別稱號
 				        if ($gender === "f") {
@@ -167,7 +167,7 @@
 				        echo '<div class="listing_content">';
 						echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
 				        echo '<div class="listing_text">評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
-						echo "<img src='$path' alt=''>";
+						// echo "<img src='$path' alt=''>";
 				        echo '</div>';
 				        echo '</div>';
 				        echo '</div>';
