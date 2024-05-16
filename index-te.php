@@ -467,16 +467,16 @@ p{
 		          
 <?php
 
-$servername="127.0.0.1";
+$servername="localhost";
     $username="root";
     $password="";
-    $dbname="dt_m";
+    $dbname="sa";
 
 $conn=new mysqli($servername,$username,$password,$dbname);
 if($conn->connect_error){
     die('連線失敗'.$conn->connect_error);
 }
-
+$te_ac=$_SESSION['tenant']['account'];
 $sql = "SELECT * FROM information";
 $result = $conn->query($sql);
 
@@ -572,14 +572,74 @@ if ($result->num_rows > 0) {
 		echo "</div>";
         
 		echo "</a>";
-		echo"<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
-								echo"<img class='icon' img src='images/icon/m.svg' alt=''>";
-								echo"<div class='featured_card_box_content'>";
-									echo"<div class='featured_card_price_title'>每月</div>";
-									echo"<div class='featured_card_price'>" . $row["i_rent"] ."元</div>";
-									echo "</div>";
-									echo "</div>";
+		echo "<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
+		echo "<img class='icon' src='images/icon/m.svg' alt=''>";
+		echo "<div class='featured_card_box_content d-flex flex-row align-items-center'>";
+		echo "<div>";
+		echo "<div class='featured_card_price_title'>每月</div>";
+		echo "<div class='featured_card_price'>" . $row["i_rent"] . "元</div>";
 		echo "</div>";
+		echo "<i class='heart-icon heart-empty ml-2' data-id='" . $row["collect_id"] . "'></i>"; // 添加愛心圖標
+echo "</div>";
+echo "</div>";
+
+echo "</div>";
+echo "<style>
+.heart-icon {
+    cursor: pointer;
+    font-size: 2.5rem;
+    position: absolute; /* 使用絕對定位 */
+    left: 170px; /* 向右移動 */
+    bottom: -8px; /* 向下移動 */
+}
+
+/* 點擊前的愛心 */
+.heart-empty::before {
+    content: '♡'; /* 使用 Unicode 字符代表空心愛心 */
+    color: white; /* 白色的線條 */
+}
+
+/* 點擊後的愛心 */
+.heart-filled::before {
+    content: '♡'; /* 使用 Unicode 字符代表實心愛心 */
+    color: red; /* 紅色 */
+}
+</style>";
+
+echo "<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const heartIcons = document.querySelectorAll('.heart-icon');
+    
+    heartIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const isFavorited = this.classList.contains('heart-filled');
+            const id = this.getAttribute('data-id');
+
+            if (isFavorited) {
+                this.classList.remove('heart-filled');
+                this.classList.add('heart-empty');
+            } else {
+                this.classList.remove('heart-empty');
+                this.classList.add('heart-filled');
+            }
+
+            fetch('favorite.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: id, favorited: !isFavorited }),
+            }).then(response => response.json())
+              .then(data => {
+                  console.log('Success:', data);
+              })
+              .catch((error) => {
+                  console.error('Error:', error);
+              });
+        });
+    });
+});
+</script>";
 	}
 } else {
     echo "無";

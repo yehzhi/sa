@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>無編號討論區</title>
+	<title>我的收藏</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="The Estate Teplate">
@@ -66,7 +66,7 @@
 	<div class="hello" style="color: #555e81;"></div>
 </div>
 
-<div class="container">
+<div class="container" >
 	<div class="row">
 		<div class="col">
 			<div class="home_content">
@@ -78,48 +78,8 @@
 <div class="listings">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4 sidebar_col">
-				<div class="search_box">
-					<div class="search_box_content">
-						<div class="search_box_title text-center">
-							<form action="#">
-								<div class="newsletter_form_content d-flex flex-row">
-									<input class="custom-input" type="text" placeholder=" 文章關鍵字">
-									<button ype="submit" class="newsletter_submit_btn" value="Submit">搜尋</button>
-								</div>
-							</form>
-						</div>
-						<div class="fixed-button-container">
-							<button class="fixed-button">
-								<a href="post_nonum.html"><b><h2>+</h2></b></a>
-							</button>
-							<form class="search_form" action="#">
-								<div class="search_box_container">
-									<ul class="dropdown_row clearfix">
-										<br>
-										<div class="dropdown_item_title">標題</div>
-										<input name="title" type="text" placeholder="ex:玫瑰公寓">
-										<div class="dropdown_item_title">日期</div>
-										<input type="date" id="post_date" name="post_date" value="2024-04-16"
-											min="2018-01-1" max="2050-12-31" />
-										<div class="dropdown_item_title">評分</div>
-										<input type="range" id="star" name="star" min="0" max="5" value="1"
-											step="1" />
-										<div class="dropdown_item_title">地址</div>
-										<input name="title" type="text" placeholder="ex:南京東路五段">
-									</ul>
-								</div>
-								<div class="search_features_container">
-									<div class="search_button">
-										<input value="搜尋" type="submit" class="search_submit_button">
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-8 listings_col">
+			
+			<div class="col-lg-12 listings_col">
 				<?php
 				$servername = "localhost";
 				$username = "root";
@@ -135,38 +95,24 @@
 				}
 
 				
-				$sql = "SELECT * FROM post";
+				$sql = "SELECT * FROM collect";
 				$result = $conn->query($sql);
 
 				
 				if ($result->num_rows > 0) {
 				   
 				    while($row = $result->fetch_assoc()) {  
-						$post_id = $row["post_id"];
-				        $article = $row["article"];
-				        $star_rate = $row["star_rate"];
-				        $post_date = $row["post_date"];
-				        $gender = $row["gender"];
-				        $lastname = $row["lastname"];
-						$house_photo=$row["house_photo"];
-		                // $path="post/" .$house_photo;
-		                // echo "<a href='post_nonum_all.php?post_id=$post_id'>";
-
-				        // 設置性別稱號
-				        if ($gender === "f") {
-				            $prefix = "小姐";
-				        } elseif ($gender === "m") {
-				            $prefix = "先生";
-				        } else {
-				            $prefix = "";
-				        }
+						$collect_id = $row["collect_id"];
+				        $account = $row["account"];
+				        $verify_id = $row["verify_id"];
+				       
 
 				        
 				        echo '<div class="listing_item">';
 				        echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
 				        echo '<div class="listing_content">';
-						echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
-				        echo '<div class="listing_text">評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
+						echo '<div class="listing_title"><a href="detail.php?verify_id=' . $verify_id . '">房屋編號' . $verify_id . '</a></div>';
+				        echo '<div class="listing_text"><br>收藏編號:' . $collect_id .'</div>';
 						// echo "<img src='$path' alt=''>";
 				        echo '</div>';
 				        echo '</div>';
@@ -188,6 +134,8 @@
 <div class="credits">
 	<span><i class="fa"></i></span>
 </div>
+
+
 
 <script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>	
 <script src="js/jquery-3.2.1.min.js"></script>
