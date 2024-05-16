@@ -49,16 +49,11 @@
 								<ul class="main_nav_list">
 									<li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>
 									<li class="main_nav_item">
-										<div class="dropdown">
-											<a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-												新增房屋
-											</a>
-											<ul class="dropdown-menu" style="background-color: #a1a8c6;">
-												<li style="background-color: #a1a8c6;"><a class="dropdown-item"
-														href="verifyhouse.html">驗證房屋</a></li>
-												<li style="background-color: #a1a8c6;"><a class="dropdown-item"
-														href="upload.html">上架房屋</a></li>
-											</ul>
+										<a href="" class="dropdown-toggle" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">新增房屋</a>
+										<div class="dropdown-menu" style="background-color: #a1a8c6;">
+											<a class="dropdown-item" href="verifyhouse.html">驗證房屋</a>
+											<a class="dropdown-item" href="upload.html">上架房屋</a>
 										</div>
 									</li>
 									<li class="main_nav_item">
@@ -70,10 +65,13 @@
 										</div>
 									</li>
 									<li class="main_nav_item">
-										<a href="discuss.html">
-											<i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i>
-										</a>
-									</li>
+                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
+                                        <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+                                        </ul>
+                                    </li>
 								</ul>
 							</nav>
 
