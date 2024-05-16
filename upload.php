@@ -23,10 +23,19 @@ $roomstyle = $_POST["roomstyle"];
 $entrance = $_POST["entrance"];
 $walktime = $_POST["walktime"];
 $introduce = $_POST["introduce"];
+$filename = $_FILES['file']['name']; 
 
-$target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["file"]["name"]);
-    $filename = basename($_FILES["file"]["name"]);
+$target_dir = "uploads/"; 
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]); 
+
+$filename = basename($_FILES["fileToUpload"]["name"]);
+
+
+echo "".$_FILES['file']['name'];
+move_uploaded_file($_FILES['fileToUpload']['tmp_name'],'file/'.$_FILES['fileToUpload']['name']);
+
+
+
 if(isset($_POST['eq'])) {
     
     $checkbox_values = implode(",", $_POST['eq']);
@@ -47,10 +56,7 @@ if(isset($_POST['eq'])) {
             location.href = "index-lan.php";
         </script>
     <?php
-    if($_FILES['file']['error']>0){
-            exit("檔案上傳失敗！");//如果出現錯誤則停止程式
-          }
-          move_uploaded_file($_FILES['file']['tmp_name'],'file/'.$_FILES['file']['name']);//複製檔案
+
     }
     
 } else {
