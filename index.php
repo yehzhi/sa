@@ -72,7 +72,6 @@
 									<i class="fas fa-bars trans_200 menu_mm"></i>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -88,7 +87,6 @@
 						<div class="search_box_outer">
 							<div class="search_box_inner">
 								<div class="search_box_title text-center">
-									
 										<div class="newsletter_form_content d-flex flex-row">
 											<input class="custom-input" type="text" name = "keywords"
 												placeholder="關鍵字:路名|街道|房屋名(EX:南京東路五段)">

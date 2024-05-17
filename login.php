@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST)) {
         echo "表單中沒有任何字段被提交";
     } else {
-        // 如果有提交，則顯示所有提交的數據
         echo "提交的數據：";
         print_r($_POST);
     }
@@ -28,7 +27,6 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['uu'])
     $account = $_POST['account'];
     $password = $_POST['password'];
     $usertype = $_POST['uu'];
-    // echo "Usertype: " . $usertype;
 
     if ($usertype === 'l') {
         $sql = "SELECT * FROM lan_member WHERE account=? AND password=?";
@@ -59,11 +57,10 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['uu'])
         exit(); 
     } else {
         echo "帳號密碼錯誤";
-        // header("Location: login.html");
         exit();
     }
 } else {
-    var_dump($_POST); // 檢查 POST 請求中的數據
+    var_dump($_POST); 
     echo "錯誤"; 
 }
 
