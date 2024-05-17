@@ -19,15 +19,9 @@
 <body>
 
 	<div class="super_container">
-
-		<!-- Home -->
 		<div class="home">
-
-			<!-- Home Slider -->
 			<div class="home_slider_container">
-				<!-- Home Slider Item -->
 				<div class="owl-item home_slider_item">
-					<!-- Image by https://unsplash.com/@aahubs -->
 					<div class="home_slider_background" style="background-image:url(images/fju.png)"></div>
 					<div class="home_slider_content_container text-center">
 						<div class="home_slider_content">
@@ -35,24 +29,15 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Home Slider Nav -->
-
-
 			</div>
-
 		</div>
 
-		<!-- Header -->
 
 		<header class="header trans_300">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="header_container d-flex flex-row align-items-center trans_300">
-
-							<!-- Logo -->
-
 							<div class="logo_container">
 								<a href="#">
 									<div class="logo">
@@ -81,7 +66,6 @@
 								<span><a href="login.html">登入</a></span>
 							</div>
 
-							<!-- Hamburger -->
 
 							<div class="hamburger_container menu_mm">
 								<div class="hamburger menu_mm">
@@ -93,23 +77,16 @@
 					</div>
 				</div>
 			</div>
-
-			
-
 		</header>
 
-		<!-- Search Box -->
 
 		<div class="search_box">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 					<form action = "filter.php" method = "post">	
-
 						<div class="search_box_outer">
 							<div class="search_box_inner">
-
-								
 								<div class="search_box_title text-center">
 									
 										<div class="newsletter_form_content d-flex flex-row">
@@ -118,14 +95,9 @@
 											<input type="submit" class="newsletter_submit_btn "
 												value="搜尋"></button>
 										</div>
-									
 								</div>
 
 
-								<!-- Search Arrow -->
-
-
-								<!-- Search Form -->
 								<form class="search_form" action="#">
 									<div class="search_box_container">
 										<ul class="dropdown_row clearfix">
@@ -177,11 +149,7 @@
 										</ul>
 									</div>
 
-									<div class="search_box_container">
-
-										</ul>
-									</div>
-
+									<div class="search_box_container"></div>
 									<div class="search_features_container">
 										<div class="search_features_trigger">
 											<a href="#">更多條件</a>
@@ -338,7 +306,6 @@
 			</div>
 		</div>
 
-		<!-- Featured Properties -->
 
 		<div class="featured">
             <div class="container">
@@ -363,7 +330,6 @@
 		}
         .flat {
             width: 30%;
-            /* border: 1px solid #ccc; */
             padding: 10px;
             margin-bottom: 20px;
         }
@@ -377,7 +343,6 @@
 		}
 		.flat-container .image_wrapper {
     margin: 10px;
-    /* padding: 10px; */
     border: 1px solid #ccc;
     background-color:#eeeff3;
 	transition: background-color 0.3s, box-shadow 0.3s; 
@@ -385,9 +350,7 @@
 
 
 .flat-container .t_wrapper {
-    /* margin: 10px; */
     padding: 30px;
-    /* border: 1px solid #ccc; */ 
 	color:  #555e81;
 }
 p{
@@ -410,8 +373,6 @@ p{
 	flex-wrap:wrap;
 	flex-basis: calc(25% - 20px);
 	justify-content: flex-start;
-	/* text-align: center; */
-	/* align-items: center; */
 }
 .equip> * {
 	flex-basis: calc(25% - 20px);
@@ -578,13 +539,8 @@ $conn->close();
 
 				<div class="row">
 					<div class="col">
-
-						<!-- Cities Slider -->
-
 						<div class="cities_slider_container">
 							<div class="owl-carousel owl-theme cities_slider">
-
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -595,7 +551,6 @@ $conn->close();
 									</a>
 								</div>
 
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -606,7 +561,6 @@ $conn->close();
 									</a>
 								</div>
 
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -617,7 +571,6 @@ $conn->close();
 									</a>
 								</div>
 
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -628,7 +581,6 @@ $conn->close();
 									</a>
 								</div>
 
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -639,7 +591,6 @@ $conn->close();
 									</a>
 								</div>
 
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -672,14 +623,10 @@ $conn->close();
 		</div>
 
 
-		<!-- Footer -->
 
 		<footer class="footer">
 			<div class="container">
 				<div class="row">
-
-					<!-- Footer About -->
-
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">
 							<div class="logo_container">
@@ -707,7 +654,6 @@ $conn->close();
 						</div>
 					</div>
 
-					<!-- Footer Useful Links -->
 
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">useful links</div>
@@ -723,7 +669,6 @@ $conn->close();
 						</ul>
 					</div>
 
-					<!-- Footer Contact Form -->
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">say hello</div>
 						<div class="footer_contact_form_container">
@@ -741,7 +686,6 @@ $conn->close();
 						</div>
 					</div>
 
-					<!-- Footer Contact Info -->
 
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">contact info</div>
@@ -777,9 +721,6 @@ $conn->close();
 				</div>
 			</div>
 		</footer>
-
-		<!-- Credits -->
-
 	</div>
 
 	<script src="js/jquery-3.2.1.min.js"></script>
