@@ -584,6 +584,7 @@ echo "</div>";
 echo "</div>";
 
 echo "</div>";
+
 echo "<style>
 .heart-icon {
     cursor: pointer;
