@@ -72,7 +72,7 @@
 							<li class="main_nav_item"><a href="index-te.php">首頁</a></li>
 							<li class="main_nav_item">
 								<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>
-								<div class="dropdown-menu">
+								<div class="dropdown-menu" style="background-color: #a1a8c6;">
 									<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
 									<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
 								</div>
