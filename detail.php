@@ -117,7 +117,7 @@
             <div class="listings">
                 <div class="container" style="margin-top:-100px;">
                     <div class="row">
-                        <form action="fixdata.php" method="post">
+                        
 
                             <!-- Search Sidebar -->
 
@@ -129,7 +129,10 @@
                                 $password = "19990817";
                                 $dbname = "sa";
                                 $conn = new mysqli($servername, $username, $password, $dbname);
-                                $sql = "SELECT * FROM information";
+
+                                if(isset($_GET['vid']) && !empty($_GET['vid'])){
+                                $vid = $_GET['vid'];
+                                $sql = "SELECT * FROM information WHERE vid = $vid ";
 
                                 $result = $conn->query($sql);
 
@@ -145,7 +148,7 @@
                                         $rent = $row["i_rent"];
                                         $gender = $row["i_gender"];
                                         $equip = $row["i_equip"];
-                                        $roomstyle = $row["roomstyle"];
+                                        $roomstyle = $row["i_roomstyle"];
                                         $entrance = $row["i_entrance"];
                                         $walktime = $row["i_walktime"];
                                         $introduce = $row["i_introduce"];
@@ -206,6 +209,7 @@
                                 } else {
                                     echo "";
                                 }
+                            }
 
 
                                 ?>
