@@ -138,20 +138,26 @@
 				                    $prefix = "";
 				                }
 
+                                ?>
 
                                 
-                                echo '<div class="listing_item">';
-                                echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
-                                echo '<div class="listing_content">';
-                                echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
-                                echo '<div class="listing_text">評分:' . $star_rate . '分<br>' . $content . '<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
-                                echo '<div class="listing_image">';
-                                echo "<img src='$path' alt='House Photo' width='300' height='200'>";
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</div>';
-                                echo '</div>';
-                            }
+                                <div class="listing_item">
+                                    <div class="listing_item_inner d-flex flex-md-row-reverse flex-column trans_300">
+                                        <div class="listing_content">
+                                            <div class="listing_title"><a href="post_nonum_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
+                                            <div class="listing_text">
+                                                評分: <?php echo $star_rate; ?>分<br>
+                                                <?php echo $content; ?><br>
+                                                日期: <?php echo $post_date; ?><br>
+                                                發文者: <?php echo $lastname . $prefix; ?>
+                                            </div>
+                                        </div>
+                                        <div class="listing_image ml-md-auto">
+                                            <img src="<?php echo $path; ?>" alt="House Photo" width="300" height="200">
+                                        </div>
+                                    </div>
+                                </div>
+                                                          <?php  }
                         } else {
                             echo "沒找到相關文章";
                         }
