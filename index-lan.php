@@ -227,7 +227,7 @@ $dbname = "sa";
                 <?php 
                     echo "<a href='detail_page.php?id=$i_photo'>";
                     echo "<div class='image_wrapper'>";
-                    echo "<img src='$path' alt=''>";
+                    echo "<img src='$path' alt='' width='600' height='450'>";
                 ?>
             </div>
         </div>
