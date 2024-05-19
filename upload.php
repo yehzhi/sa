@@ -8,12 +8,11 @@ if (!isset($_SESSION['landlord']['account'])) {
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "dt_m";
+$dbname = "sa";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-
-
+$vid = $_POST["vid"];
 $title = $_POST["title"];
 $address = $_POST["address"];
 $rent = $_POST["rent"];
@@ -41,7 +40,7 @@ if(isset($_POST['eq'])) {
     $checkbox_values = implode(",", $_POST['eq']);
 
     
-    $sql = "INSERT INTO information(l_name,i_title,i_address,i_photo,i_rent,i_gender,i_equip,i_roomstyle,i_entrance,i_walktime,i_introduce)  VALUES ('". $_SESSION['landlord']['account'] ."','$title','$address','$filename','$rent','$gender','$checkbox_values','$roomstyle','$entrance','$walktime','$introduce')";
+    $sql = "INSERT INTO information(l_name,i_title,i_address,i_photo,i_rent,i_gender,i_equip,i_roomstyle,i_entrance,i_walktime,i_introduce,vid)  VALUES ('". $_SESSION['landlord']['account'] ."','$title','$address','$filename','$rent','$gender','$checkbox_values','$roomstyle','$entrance','$walktime','$introduce','$vid')";
         if ($conn->query($sql) !== TRUE) {
             ?>
         <script>
