@@ -23,28 +23,14 @@
 <body>
 
     <div class="super_container">
-
-        <!-- Home -->
         <div class="home1">
-
-
-
         </div>
-
-        <!-- Home Slider Nav -->
-
-
         <div class="hello" style="color: #555e81;"></div>
-        <!-- Header -->
-
         <header class="header trans_300">
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <div class="header_container d-flex flex-row align-items-center trans_300">
-
-                            <!-- Logo -->
-
                             <div class="logo_container">
                                 <a href="#">
                                     <div class="logo">
@@ -53,8 +39,6 @@
                                     </div>
                                 </a>
                             </div>
-
-                            <!-- Main Navigation -->
 
                             <nav class="main_nav">
                                 <ul class="main_nav_list">
@@ -75,15 +59,6 @@
                                     <li class="main_nav_item"><a href="discuss.html"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a></li>
                                 </ul>
                             </nav>
-
-
-
-                            <!-- Phone Home -->
-
-
-
-                            <!-- Hamburger -->
-
                             <div class="hamburger_container menu_mm">
                                 <div class="hamburger menu_mm">
                                     <i class="fas fa-bars trans_200 menu_mm"></i>
@@ -94,14 +69,8 @@
                     </div>
                 </div>
             </div>
-
-
-
         </header>
 
-
-
-        <!-- Featured Properties -->
 
         <div class="featured">
             <div class="container">
@@ -118,11 +87,8 @@
                 <div class="container" style="margin-top:-100px;">
                     <div class="row">
                         <form action="fixdata.php" method="post">
-
-                            <!-- Search Sidebar -->
-
                             <div class="col-lg-6 sidebar_col">
-
+                                
                                 <?php
                                 $servername = "localhost";
                                 $username = "root";

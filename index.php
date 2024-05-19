@@ -108,7 +108,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-
+					<form action = "filter.php" method = "post">	
 						<div class="search_box_outer">
 							<div class="search_box_inner">
 
@@ -125,10 +125,6 @@
 								</div>
 
 
-								<!-- Search Arrow -->
-
-
-								<!-- Search Form -->
 								<form class="search_form" action="#">
 									<div class="search_box_container">
 										<ul class="dropdown_row clearfix">
@@ -326,7 +322,6 @@
 													</li>
 										</ul>
 									</div>
-
 								</form>
 							</div>
 						</div>
@@ -686,14 +681,10 @@ $conn->close();
 		</div>
 
 
-		<!-- Footer -->
 
 		<footer class="footer">
 			<div class="container">
 				<div class="row">
-
-					<!-- Footer About -->
-
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">
 							<div class="logo_container">
@@ -721,7 +712,6 @@ $conn->close();
 						</div>
 					</div>
 
-					<!-- Footer Useful Links -->
 
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">useful links</div>
@@ -737,7 +727,6 @@ $conn->close();
 						</ul>
 					</div>
 
-					<!-- Footer Contact Form -->
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">say hello</div>
 						<div class="footer_contact_form_container">
@@ -755,7 +744,6 @@ $conn->close();
 						</div>
 					</div>
 
-					<!-- Footer Contact Info -->
 
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">contact info</div>
@@ -791,9 +779,6 @@ $conn->close();
 				</div>
 			</div>
 		</footer>
-
-		<!-- Credits -->
-
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
