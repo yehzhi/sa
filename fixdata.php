@@ -2,41 +2,37 @@
 session_start();
 $servername = "localhost";
 $username = "root";
-$password = "19990817";
-$dbname = "sa";
+$password = "";
+$dbname = "s";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$vid = $_POST["fid"];
-
-$ftitle = $_POST['fixtitle'];
+$ftitle = $_POST["fixtitle"];
 $faddress = $_POST["fixaddress"];
+
 $frent = $_POST["fixrent"];
 $fgender = $_POST["fixgender"];
+$fequip = $_POST["fixeq"];
 $froomstyle = $_POST["fixroomstyle"];
 $fentrance = $_POST["fixentrance"];
 $fwalktime = $_POST["fixwalktime"];
 $fintroduce = $_POST["fixintroduce"];
-$fcheckbox_values = implode(",", $_POST['fixeq']);
 
+if(isset($_POST['fixeq'])) {
+    
+    $fcheckbox_values = implode(",", $_POST['fixeq']);
 
-$sql = "UPDATE information SET i_title='$ftitle', i_address='$faddress',i_rent='$frent',i_gender='$fgender',i_equip='$fcheckbox_values',i_roomstyle='$froomstyle',i_entrance='$fentrance',i_walktime='$fwalktime',i_introduce='$fintroduce' WHERE vid=$vid";
-
-if ($conn->query($sql) !== TRUE) {
-    ?>
-    <script>
-        alert("修改失敗!");
-        location.href = "index-lan.php";
-    </script>
-<?php
+    
+    $sql = "UPDATE information SET i_title = '$ftitle',i_address = '$faddress',i_rent = '$frent',i_gender = '$fgender',i_equip = '$fcheckbox_values',i_roomstyle = '$froomstyle',i_entrance = '$fentrance',i_walktime = '$fwalktime',i_introduce = '$fintroduce'";
+    if ($conn->query($sql) !== TRUE) {
+        echo "修改失敗!";
+    } else {
+        echo "修改成功!";
+    }
 } else {
-    ?>
-    <script>
-        alert("修改成功!");
-        location.href = "index-lan.php";
-    </script>
-<?php
+    echo "請選擇房屋設備!";
 }
+
 
 $conn->close();
 ?>
