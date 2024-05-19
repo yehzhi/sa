@@ -542,7 +542,7 @@ if ($result->num_rows > 0) {
 									echo"</div>";
 		echo "</div>";
 		echo "</div>";
-        
+                echo " <a href='detail.php?vid=".$row["vid"]."'>詳細資料</a><br>";
 		echo "</a>";
 		echo "<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
 		echo "<img class='icon' src='images/icon/m.svg' alt=''>";
