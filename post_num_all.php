@@ -60,7 +60,7 @@
                                             <a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
                                         </div>
                                     </li>
-                                    <li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
+                                    <li class="main_nav_item"><a href="collect.php">我的收藏</a></li>
                                     <li class="main_nav_item">
                                         <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
                                         <ul class="dropdown-menu" style="background-color: #a1a8c6;">

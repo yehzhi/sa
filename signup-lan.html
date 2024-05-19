@@ -57,18 +57,21 @@
 
 						<nav class="main_nav">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index.html">首頁</a></li>
-								<li class="main_nav_item"><a href="about.html">租屋資訊</a></li>
-								<li class="main_nav_item"><a href="listings.html">討論區</a></li>
+								<li class="main_nav_item"><a href="index.php">首頁</a></li>
+								<li class="main_nav_item">
+									<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false">討論區</a>
+									<div class="dropdown-menu"  style="background-color: #a1a8c6;">
+										<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
+										<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
+									</div>
+								</li>
 							</ul>
 						</nav>
-
-						<!-- Phone Home -->
 
 						<div class="phone_home text-center" style="border-radius: 10px;">
 							<span><a href="login.html">登入</a></span>
 						</div>
-
 						<!-- Hamburger -->
 
 						<div class="hamburger_container menu_mm">

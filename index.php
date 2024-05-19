@@ -12,16 +12,26 @@
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="styles/listings_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/listings_responsive.css">
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
 
 	<div class="super_container">
+
+		<!-- Home -->
 		<div class="home">
+
+			<!-- Home Slider -->
 			<div class="home_slider_container">
+				<!-- Home Slider Item -->
 				<div class="owl-item home_slider_item">
+					<!-- Image by https://unsplash.com/@aahubs -->
 					<div class="home_slider_background" style="background-image:url(images/fju.png)"></div>
 					<div class="home_slider_content_container text-center">
 						<div class="home_slider_content">
@@ -29,15 +39,24 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Home Slider Nav -->
+
+
 			</div>
+
 		</div>
 
+		<!-- Header -->
 
 		<header class="header trans_300">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="header_container d-flex flex-row align-items-center trans_300">
+
+							<!-- Logo -->
+
 							<div class="logo_container">
 								<a href="#">
 									<div class="logo">
@@ -54,46 +73,58 @@
 									<li class="main_nav_item">
 										<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">討論區</a>
-										<div class="dropdown-menu">
+										<div class="dropdown-menu"  style="background-color: #a1a8c6;">
 											<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
 											<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
 										</div>
 									</li>
 								</ul>
 							</nav>
-
 							<div class="phone_home text-center" style="border-radius: 10px;">
-								<span><a href="login.html">登入</a></span>
-							</div>
+							<span><a href="login.html">登入</a></span>
+						</div>
+                           
 
+							<!-- Hamburger -->
 
 							<div class="hamburger_container menu_mm">
 								<div class="hamburger menu_mm">
 									<i class="fas fa-bars trans_200 menu_mm"></i>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
 			</div>
+
+			
+
 		</header>
 
+		<!-- Search Box -->
 
 		<div class="search_box">
 			<div class="container">
 				<div class="row">
 					<div class="col">
-					<form action="filter.php" method = "post">	
+					<form action = "filter.php" method = "post">	
 						<div class="search_box_outer">
 							<div class="search_box_inner">
+
+								<!-- Search Box Title -->
 								<div class="search_box_title text-center">
+									<form action="#">
 										<div class="newsletter_form_content d-flex flex-row">
-											<input class="custom-input" type="text" name = "keywords"
+											<input class="custom-input" type="text"
 												placeholder="關鍵字:路名|街道|房屋名(EX:南京東路五段)">
-											<input type="submit" class="newsletter_submit_btn "
-												value="搜尋"></button>
+											<button ype="submit" class="newsletter_submit_btn "
+												value="Submit">搜尋</button>
 										</div>
+									</form>
 								</div>
+
+
 								<form class="search_form" action="#">
 									<div class="search_box_container">
 										<ul class="dropdown_row clearfix">
@@ -294,13 +325,16 @@
 								</form>
 							</div>
 						</div>
-					</form>	
+					</form>
+							</div>
+						</div>
 
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<!-- Featured Properties -->
 
 		<div class="featured">
             <div class="container">
@@ -325,6 +359,7 @@
 		}
         .flat {
             width: 30%;
+            /* border: 1px solid #ccc; */
             padding: 10px;
             margin-bottom: 20px;
         }
@@ -338,6 +373,7 @@
 		}
 		.flat-container .image_wrapper {
     margin: 10px;
+    /* padding: 10px; */
     border: 1px solid #ccc;
     background-color:#eeeff3;
 	transition: background-color 0.3s, box-shadow 0.3s; 
@@ -345,7 +381,9 @@
 
 
 .flat-container .t_wrapper {
+    /* margin: 10px; */
     padding: 30px;
+    /* border: 1px solid #ccc; */ 
 	color:  #555e81;
 }
 p{
@@ -368,6 +406,8 @@ p{
 	flex-wrap:wrap;
 	flex-basis: calc(25% - 20px);
 	justify-content: flex-start;
+	/* text-align: center; */
+	/* align-items: center; */
 }
 .equip> * {
 	flex-basis: calc(25% - 20px);
@@ -396,20 +436,33 @@ p{
 		          
 <?php
 
-$servername="127.0.0.1";
+$servername="localhost";
     $username="root";
+    $password="";
     $dbname="sa";
 
 $conn=new mysqli($servername,$username,$password,$dbname);
 if($conn->connect_error){
     die('連線失敗'.$conn->connect_error);
 }
-
-$sql = "SELECT * FROM information";
+$sql = "SELECT * FROM verify WHERE status='approved' ";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+// 存全部地址到陣列
+$alladdresse = array();
+
+// 將符合條件的地址存入陣列
+while ($row = mysqli_fetch_assoc($result)) {
+    $alladdresses[] = $row['vaddress'];
+}
+
+// 如果找到了符合條件的地址，則從 information 表中檢索其他相關資料
+if (!empty($alladdresses)) {
+    $query = "SELECT * FROM information WHERE i_address IN ('" . implode("','", $alladdresses) . "')";
+    $result = mysqli_query($conn, $query);
+
+    // 在首頁上顯示其他欄位資訊
+    while ($row = mysqli_fetch_assoc($result)) {
         echo "<div class='flat'>";
         
 		$i_photo=$row["i_photo"];
@@ -515,7 +568,7 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
-</div>                     
+</div>         
                     
 					
                                 
@@ -534,8 +587,13 @@ $conn->close();
 
 				<div class="row">
 					<div class="col">
+
+						<!-- Cities Slider -->
+
 						<div class="cities_slider_container">
 							<div class="owl-carousel owl-theme cities_slider">
+
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -546,6 +604,7 @@ $conn->close();
 									</a>
 								</div>
 
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -556,6 +615,7 @@ $conn->close();
 									</a>
 								</div>
 
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -566,6 +626,7 @@ $conn->close();
 									</a>
 								</div>
 
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -576,6 +637,7 @@ $conn->close();
 									</a>
 								</div>
 
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -586,6 +648,7 @@ $conn->close();
 									</a>
 								</div>
 
+								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -616,8 +679,111 @@ $conn->close();
 
 			</div>
 		</div>
-	</div>
 
+
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">
+							<div class="logo_container">
+								<a href="#">
+									<div class="logo">
+										<img src="images/logo.png" alt="">
+										<span>輔仁大學租屋網</span>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="footer_social">
+							<ul class="footer_social_list">
+								<li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
+								<li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a></li>
+							</ul>
+						</div>
+						<div class="footer_about">
+							<p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis se tellus
+								eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis ferme semper
+								augue.</p>
+						</div>
+					</div>
+
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">useful links</div>
+						<ul class="footer_useful_links">
+							<li class="useful_links_item"><a href="#">Listings</a></li>
+							<li class="useful_links_item"><a href="#">Favorite Cities</a></li>
+							<li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
+							<li class="useful_links_item"><a href="#">Featured Listings</a></li>
+							<li class="useful_links_item"><a href="#">Properties on Offer</a></li>
+							<li class="useful_links_item"><a href="#">Services</a></li>
+							<li class="useful_links_item"><a href="#">News</a></li>
+							<li class="useful_links_item"><a href="#">Our Agents</a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">say hello</div>
+						<div class="footer_contact_form_container">
+							<form id="footer_contact_form" class="footer_contact_form" action="post">
+								<input id="contact_form_name" class="input_field contact_form_name" type="text"
+									placeholder="Name" required="required" data-error="Name is required.">
+								<input id="contact_form_email" class="input_field contact_form_email" type="email"
+									placeholder="E-mail" required="required" data-error="Valid email is required.">
+								<textarea id="contact_form_message" class="text_field contact_form_message"
+									name="message" placeholder="Message" required="required"
+									data-error="Please, write us a message."></textarea>
+								<button id="contact_send_btn" type="submit" class="contact_send_btn trans_200"
+									value="Submit">send</button>
+							</form>
+						</div>
+					</div>
+
+
+					<div class="col-lg-3 footer_col">
+						<div class="footer_col_title">contact info</div>
+						<ul class="contact_info_list">
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
+							</li>
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text">2556-808-8613</div>
+							</li>
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello"
+										target="_top">contactme@gmail.com</a></div>
+							</li>
+							<li class="contact_info_item d-flex flex-row">
+								<div>
+									<div class="contact_info_icon"><img src="images/planet-earth.svg" alt=""></div>
+								</div>
+								<div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="styles/bootstrap4/popper.js"></script>
 	<script src="styles/bootstrap4/bootstrap.min.js"></script>
