@@ -33,11 +33,11 @@ if (isset($data['id']) && isset($data['favorited'])) {
         exit();
     }
     
-    $vid = $collect_id; // 假設 collect_id 即為 vid
+    //$vid = $collect_id; // 假設 collect_id 即為 vid
 
     if ($favorited) {
         // 插入收藏
-        $sql = "INSERT INTO collect (account, vid) VALUES ('$account', '$vid')";
+        $sql = "INSERT INTO collect (collect_id,account, vid) VALUES ('$collect_id','$account', '$vid')";
         if ($conn->query($sql) === TRUE) {
             echo json_encode(["success" => true, "message" => "Favorite added successfully"]);
         } else {
