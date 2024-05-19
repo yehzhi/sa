@@ -97,242 +97,227 @@
 					</div>
 				</div>
 			</div>
-
-			
-
 		</header>
 
-		<!-- Search Box -->
-
 		<div class="search_box">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-					<form action = "filter.php" method = "post">	
-						<div class="search_box_outer">
-							<div class="search_box_inner">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="filter.php" method="post">
+                    <div class="search_box_outer">
+                        <div class="search_box_inner">
+                            <div class="search_box_title text-center">
+                                <div class="newsletter_form_content d-flex flex-row">
+                                    <input class="custom-input" type="text" name="keyword"
+                                        placeholder="關鍵字:路名|街道|房屋名(EX:南京東路五段)">
+                                    <button type="submit" class="newsletter_submit_btn" value="Submit">搜尋</button>
+                                </div>
+                            </div>
 
-								<!-- Search Box Title -->
-								<div class="search_box_title text-center">
-									<form action="#">
-										<div class="newsletter_form_content d-flex flex-row">
-											<input class="custom-input" type="text"
-												placeholder="關鍵字:路名|街道|房屋名(EX:南京東路五段)">
-											<button ype="submit" class="newsletter_submit_btn "
-												value="Submit">搜尋</button>
-										</div>
-									</form>
-								</div>
+                            <div class="search_box_container">
+                                <ul class="dropdown_row clearfix">
+                                    <ul class="dropdown_container">
+                                        <li class="dropdown_item dropdown_item_5">
+                                            <div class="dropdown_item_title">房屋租金</div>
+                                            <select name="krent" id="krent" class="dropdown_item_select">
+                                                <option value="租金無限制">不限</option>
+                                                <option value="3000元以下">3000元以下</option>
+                                                <option value="3000元-5000元">3000元-5000元</option>
+                                                <option value="5000元-10000元">5000元-10000元</option>
+                                                <option value="10000元-15000元">10000元-15000元</option>
+                                                <option value="15000元-20000元">15000元-20000元</option>
+                                                <option value="20000元以上">20000元以上</option>
+                                            </select>
+                                        </li>
+                                        <li class="dropdown_item dropdown_item_5">
+                                            <div class="dropdown_item_title">出租類型</div>
+                                            <select name="kroomstyle" id="kroomstyle"
+                                                class="dropdown_item_select">
+                                                <option value="出租無限制">不限</option>
+                                                <option value="房間">房間</option>
+                                                <option value="套房">套房</option>
+                                                <option value="整棟">整棟</option>
+                                            </select>
+                                        </li>
 
+                                        <li class="dropdown_item dropdown_item_5">
+                                            <div class="dropdown_item_title">鄰近入口</div>
+                                            <select name="kentrance" id="kentrance"
+                                                class="dropdown_item_select">
+                                                <option value="入口無限制">不限</option>
+                                                <option value="大門">大門</option>
+                                                <option value="514側門">514側門</option>
+                                                <option value="貴子路門(後門)">貴子路門(後門)</option>
+                                            </select>
+                                        </li>
+                                        <li class="dropdown_item dropdown_item_5">
+                                            <div class="dropdown_item_title">步行時間</div>
+                                            <select name="kwalktime" id="kwalktime"
+                                                class="dropdown_item_select">
+                                                <option value="步行無限制">不限</option>
+                                                <option value="5分鐘內">5分鐘內</option>
+                                                <option value="5-15分鐘">5-15分鐘</option>
+                                                <option value="15分鐘以上">15分鐘以上</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                </ul>
+                            </div>
 
-								<form class="search_form" action="#">
-									<div class="search_box_container">
-										<ul class="dropdown_row clearfix">
-											<ul class="dropdown_container">
-												<li class="dropdown_item dropdown_item_5">
-													<div class="dropdown_item_title">房屋租金</div>
-													<select name="krent" id="krent" class="dropdown_item_select">
-														<option value = "租金無限制">不限</option>
-														<option value = "3000元以下">3000元以下</option>
-														<option value = "3000元-5000元">3000元-5000元</option>
-														<option value = "5000元-10000元">5000元-10000元</option>
-														<option value = "10000元-15000元">10000元-15000元</option>
-														<option value = "15000元-20000元">15000元-20000元</option>
-														<option value = "20000元以上">20000元以上</option>
-													</select>
-												</li>
-												<li class="dropdown_item dropdown_item_5">
-													<div class="dropdown_item_title">出租類型</div>
-													<select name="kroomstyle" id="kroomstyle"
-														class="dropdown_item_select">
-														<option value = "出租無限制">不限</option>
-														<option value = "房間">房間</option>
-														<option value = "套房">套房</option>
-														<option value = "整棟">整棟</option>
-													</select>
-												</li>
+                            <div class="search_box_container"></div>
+                            <div class="search_features_container">
+                                <div class="search_features_trigger">
+                                    <a href="#">更多條件</a>
+                                </div>
+                                <ul class="search_features clearfix">
+                                    <h6 style="color: #FFFFFF;"><b>性別:</b></h6>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="radio" name="kgender" id="search_features_2"
+                                                class="search_features_cb" value="man">
+                                            <label for="search_features_2">男</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="radio" name="kgender" id="search_features_3"
+                                                class="search_features_cb" value="woman">
+                                            <label for="search_features_3">女</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="radio" name="kgender" id="search_features_4"
+                                                class="search_features_cb" value="nol">
+                                            <label for="search_features_4">不限制</label>
+                                        </div>
+                                    </li>
+                                    <br><br>
+                                    <h6 style="color: #FFFFFF;"><b>租屋設備:</b></h6>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="電視">
+                                            <label for="search_features_5">電視</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="冰箱">
+                                            <label for="search_features_6">冰箱</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="衛浴">
+                                            <label for="search_features_7">衛浴</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="冷氣">
+                                            <label for="search_features_8">冷氣</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="洗衣機">
+                                            <label for="search_features_9">洗衣機</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="飲水機">
+                                            <label for="search_features_10">飲水機</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="沙發">
+                                            <label for="search_features_11">沙發</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="衣櫃">
+                                            <label for="search_features_12">衣櫃</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="單人床">
+                                            <label for="search_features_13">單人床</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="雙人床">
+                                            <label for="search_features_14">雙人床</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="書櫃">
+                                            <label for="search_features_15">書櫃</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="書桌(椅)">
+                                            <label for="search_features_16">書桌(椅)</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="檯燈">
+                                            <label for="search_features_17">檯燈</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="寬頻網路">
+                                            <label for="search_features_18">寬頻網路</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="電話">
+                                            <label for="search_features_19">電話</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="瓦斯">
+                                            <label for="search_features_20">瓦斯</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="熱水器">
+                                            <label for="search_features_21">熱水器</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="可養寵物">
+                                            <label for="search_features_22">可養寵物</label>
+                                        </div>
+                                    </li>
+                                    <li class="search_features_item">
+                                        <div>
+                                            <input type="checkbox" name="eq[]" value="有對外窗">
+                                            <label for="search_features_23">有對外窗</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-												<li class="dropdown_item dropdown_item_5">
-													<div class="dropdown_item_title">鄰近入口</div>
-													<select name="kentrance" id="kentrance"
-														class="dropdown_item_select">
-														<option value = "入口無限制">不限</option>
-														<option value = "大門">大門</option>
-														<option value = "514側門">514側門</option>
-														<option value = "貴子路門(後門)">貴子路門(後門)</option>]
-													</select>
-												</li>
-												<li class="dropdown_item dropdown_item_5">
-													<div class="dropdown_item_title">步行時間</div>
-													<select name="kwalktime" id="kwalktime"
-														class="dropdown_item_select">
-														<option value = "步行無限制">不限</option>
-														<option value = "5分鐘內">5分鐘內</option>
-														<option value = "5-15分鐘">5-15分鐘</option>
-														<option value = "15分鐘以上">15分鐘以上</option>
-													</select>
-												</li>
-											</ul>
-										</ul>
-									</div>
-
-									<div class="search_box_container"></div>
-									<div class="search_features_container">
-										<div class="search_features_trigger">
-											<a href="#">更多條件</a>
-										</div>
-										<ul class="search_features clearfix">
-											<h6 style="color: #FFFFFF;"><b>性別:</b></h6>
-											<li class="search_features_item">
-												<div>
-													<input type="radio" name="kgender" id="search_features_2"
-														class="search_features_cb" value = "man">
-													<label for="search_features_2">男</label>
-												</div>
-											</li>
-											<li class="search_features_item">
-												<div>
-													<input type="radio" name="kgender" id="search_features_3"
-														class="search_features_cb" value = "woman">
-													<label for="search_features_3">女</label>
-												</div>
-											</li>
-											<li class="search_features_item">
-												<div>
-													<input type="radio" name="kgender" id="search_features_4"
-														class="search_features_cb" value = "nol">
-													<label for="search_features_4">不限制</label>
-												</div>
-											</li>
-											<br><br>
-											<h6 style="color: #FFFFFF;"><b>租屋設備:</b></h6>
-											<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "電視">
-															<label for="search_features_5">電視</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "冰箱" >
-															<label for="search_features_6">冰箱</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "衛浴" >
-															<label for="search_features_7">衛浴</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "冷氣" >
-															<label for="search_features_8">冷氣</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "洗衣機">
-															<label for="search_features_9">洗衣機</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "飲水機">
-															<label for="search_features_10">飲水機</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "沙發">
-															<label for="search_features_11">沙發</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "衣櫃">
-															<label for="search_features_12">衣櫃</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "單人床" >
-															<label for="search_features_13">單人床</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "雙人床">
-															<label for="search_features_14">雙人床</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "書櫃" >
-															<label for="search_features_15">書櫃</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "書桌(椅)"  >
-															<label for="search_features_16">書桌(椅)</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "檯燈"  >
-															<label for="search_features_17">檯燈</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "寬頻網路">
-															<label for="search_features_18">寬頻網路</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "電話">
-															<label for="search_features_19">電話</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "瓦斯" >
-															<label for="search_features_20">瓦斯</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "熱水器">
-															<label for="search_features_21">熱水器</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "可養寵物">
-															<label for="search_features_22">可養寵物</label>
-														</div>
-													</li>
-													<li class="search_features_item">
-														<div>
-															<input type="checkbox" name = "eq[]" value = "有對外窗" >
-															<label for="search_features_23">有對外窗</label>
-														</div>
-													</li>
-										</ul>
-									</div>
-								</form>
-							</div>
-						</div>
-					</form>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!-- Featured Properties -->
 
