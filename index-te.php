@@ -457,11 +457,24 @@ if($conn->connect_error){
     die('連線失敗'.$conn->connect_error);
 }
 $te_ac=$_SESSION['tenant']['account'];
-$sql = "SELECT * FROM information";
+$sql = "SELECT * FROM verify WHERE status='approved' ";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+// 存全部地址到陣列
+$alladdresse = array();
+
+// 將符合條件的地址存入陣列
+while ($row = mysqli_fetch_assoc($result)) {
+    $alladdresses[] = $row['vaddress'];
+}
+
+// 如果找到了符合條件的地址，則從 information 表中檢索其他相關資料
+if (!empty($alladdresses)) {
+    $query = "SELECT * FROM information WHERE i_address IN ('" . implode("','", $alladdresses) . "')";
+    $result = mysqli_query($conn, $query);
+
+    // 在首頁上顯示其他欄位資訊
+    while ($row = mysqli_fetch_assoc($result)) {
         echo "<div class='flat'>";
         
 		$i_photo=$row["i_photo"];
