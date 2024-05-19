@@ -95,7 +95,7 @@
 				}
 
 				
-				$sql = "SELECT * FROM collect";
+				$sql = "SELECT * FROM collect WHERE account = '$_SESSION['tenant']['account']'";
 				$result = $conn->query($sql);
 
 				
