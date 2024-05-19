@@ -579,7 +579,7 @@ if ($result->num_rows > 0) {
 		echo "<div class='featured_card_price_title'>每月</div>";
 		echo "<div class='featured_card_price'>" . $row["i_rent"] . "元</div>";
 		echo "</div>";
-		echo "<i class='heart-icon heart-empty ml-2' data-id='" . $row["collect_id"] . "'></i>"; // 添加愛心圖標
+		echo "<i class='heart-icon heart-empty ml-2' data-id='" . $row["vid"] . "'></i>"; // 添加愛心圖標
 echo "</div>";
 echo "</div>";
 
