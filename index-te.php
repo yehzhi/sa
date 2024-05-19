@@ -86,13 +86,8 @@
                                             <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
                                         </ul>
                                     </li>
-						</ul>
-					</nav>
-
-                           
-
-							<!-- Hamburger -->
-
+								</ul>
+							</nav>
 							<div class="hamburger_container menu_mm">
 								<div class="hamburger menu_mm">
 									<i class="fas fa-bars trans_200 menu_mm"></i>
@@ -131,10 +126,6 @@
 								</div>
 
 
-								<!-- Search Arrow -->
-
-
-								<!-- Search Form -->
 								<form class="search_form" action="#">
 									<div class="search_box_container">
 										<ul class="dropdown_row clearfix">
@@ -794,8 +785,6 @@ $conn->close();
 								augue.</p>
 						</div>
 					</div>
-
-					<!-- Footer Useful Links -->
 
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">useful links</div>

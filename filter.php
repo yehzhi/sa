@@ -5,7 +5,7 @@ $username = "root";
 $password = "19990817";
 $dbname = "sa";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, 3307);
 
 $krent = $_POST["krent"];
 $kgender = $_POST["kgender"];
