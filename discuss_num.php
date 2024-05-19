@@ -47,16 +47,16 @@
 						</div>
 						<nav class="main_nav">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index-te.html">首頁</a></li>
+								<li class="main_nav_item"><a href="index-te.php">首頁</a></li>
 								<li class="main_nav_item">
 									<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">討論區</a>
-									<div class="dropdown-menu">
+									<div class="dropdown-menu"  style="background-color: #a1a8c6;">
 										<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
 										<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
 									</div>
 								</li>
-								<li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
+								<li class="main_nav_item"><a href="collect.php">我的收藏</a></li>
 								<li class="main_nav_item"><a href="info.html" class="dropdown-toggle"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
 											class="fa-solid fa-circle-user fa-2xl"
@@ -184,7 +184,7 @@
                                 $lastname = $row["lastname"];
                                 $gender = $row["gender"];
 
-                                // 根据性别设置前缀
+                                //設置性別
                                 if ($gender === "f") {
                                     $prefix = "小姐";
                                 } elseif ($gender === "m") {
@@ -193,7 +193,7 @@
                                     $prefix = "";
                                 }
 
-                                // 输出 HTML 代码，显示帖子信息
+                                // 
                                 echo '<div class="listing_item">';
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';

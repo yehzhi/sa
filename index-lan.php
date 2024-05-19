@@ -141,6 +141,7 @@ $dbname = "sa";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
+		        $id = $row["vid"];
                         $title = $row["i_title"];
                         $address = $row["i_address"];
                         $rent = $row["i_rent"];
