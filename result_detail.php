@@ -114,7 +114,7 @@
                                 echo '<div class="listing_item">';
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';
-                                echo '<div class="listing_title"><a href="result_detail.php?post_id=' . $i_id . '">' . $i_title . '</a></div>';
+                                echo '<div class="listing_title"><a href="result_detail.php?i_id=' . $i_id . '">' . $i_title . '</a></div>';
                                 echo '<div class="listing_text">地址: ' . $i_address . '<br>租金:' . $i_rent . '元<br>出租類型: ' . $i_roomstyle . '<br>鄰近入口: ' . $i_entrance . '<br>步行時間: '.$i_walktime.'</div>';
                                 echo '<div class="listing_image">';
                                 echo '<img src="' . $i_photo . '" alt="House Photo" width="300" height="200">';

@@ -81,6 +81,8 @@
 				</div>
 			</div>
 		</header>
+        
+        <button class="back-button" onclick="history.back()">返回</button>
 
     <div class="search_box_inner listings_col">
         <?php
