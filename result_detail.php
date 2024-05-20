@@ -81,7 +81,7 @@
                 <div class="home2" style="width: 1000px; margin: 0 auto; ">
 
                     <?php
-                    if(isset($_GET['i_id'])) {
+                    if(isset($_GET['i_id'])) 
                         $i_id = $_GET['i_id'];
 
                         
@@ -115,7 +115,9 @@
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';
                                 echo '<div class="listing_title"><a href="result_detail.php?post_id=' . $i_id . '">' . $i_title . '</a></div>';
-                                echo '<div class="listing_text">地址: ' . $i_address . '<br>yj租金:' . $i_rent . '分<br>出租類型: ' . $i_roomstyle . '<br>鄰近入口: ' . $i_entrance . '<br>步行時間: '.$i_walktime.'</div>';
+                                echo '<div class="listing_text">地址: ' . $i_address . '<br>租金:' . $i_rent . '元<br>出租類型: ' . $i_roomstyle . '<br>鄰近入口: ' . $i_entrance . '<br>步行時間: '.$i_walktime.'</div>';
+                                echo '<div class="listing_image">';
+                                echo '<img src="' . $i_photo . '" alt="House Photo" width="300" height="200">';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';
@@ -130,17 +132,13 @@
             </div>
         </div>
 
-        <!-- Footer -->
-
         <footer class="footer">
             <div class="container">
-                <!-- Footer Content Here -->
             </div>
         </footer>
 
     </div>
 
-    <!-- Scripts -->
     <script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
