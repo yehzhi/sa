@@ -78,8 +78,6 @@
             </div>
         </header>
 
-        <!-- Featured Properties -->
-
         <div class="featured">
             <div class="container">
                 <div class="row">

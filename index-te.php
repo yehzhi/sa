@@ -745,14 +745,10 @@ $conn->close();
 		</div>
 
 
-		<!-- Footer -->
 
 		<footer class="footer">
 			<div class="container">
 				<div class="row">
-
-					<!-- Footer About -->
-
 					<div class="col-lg-3 footer_col">
 						<div class="footer_col_title">
 							<div class="logo_container">
@@ -849,7 +845,6 @@ $conn->close();
 			</div>
 		</footer>
 
-		<!-- Credits -->
 
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
