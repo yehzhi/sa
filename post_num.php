@@ -20,6 +20,14 @@ $house_photo = $_POST['house_photo'];
 $livedhouse = $_POST['livedhouse']; 
 $lastname = $conn->real_escape_string($_SESSION['tenant']['lastname']);
 $gender = $_SESSION['tenant']['gender'];
+$target_dir = "uploads/"; 
+$target_file = $target_dir . basename($_FILES["house_photo"]["name"]); 
+$house_photo = basename($_FILES["house_photo"]["name"]);
+move_uploaded_file($_FILES['house_photo']['tmp_name'],'postn/'.$_FILES['house_photo']['name']);
+
+$target_file = $target_dir . basename($_FILES["livedhouse"]["name"]); 
+$livedhouse = basename($_FILES["livedhouse"]["name"]);
+move_uploaded_file($_FILES['livedhouse']['tmp_name'],'verify/'.$_FILES['livedhouse']['name']);
 
 
 // $account_parts = explode('@', $account);

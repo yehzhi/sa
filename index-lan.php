@@ -136,44 +136,23 @@ $dbname = "sa";
         if ($conn->connect_error) {
             die("連接失敗：" . $conn->connect_error);
         }
-        $lan_ac = $_SESSION['landlord']['account'];
-
-        // 準備查詢語句
-        // $sql = $conn->prepare("SELECT * FROM information WHERE l_name = ?");
-        // $sql->bind_param("s", $lan_ac);
-        // $sql->execute();
-        // $result = $sql->get_result();
-        $sql = "SELECT * FROM verify WHERE status='approved' ";
+        $lan_ac=$_SESSION['landlord']['account'];
+        $sql = "SELECT * FROM information WHERE l_name='$lan_ac'";
         $result = $conn->query($sql);
-        
-        // 存全部地址到陣列
-        $alladdress = array();
-        
-        // 將符合條件的地址存入陣列
-        while ($row = mysqli_fetch_assoc($result)) {
-            $alladdress[] = $row['vaddress'];
-        }
-        
-        // 如果找到了符合條件的地址，則從 information 表中檢索其他相關資料
-        if (!empty($alladdress)) {
-            $query = "SELECT i.*, v.id AS id FROM information i JOIN verify v ON i.i_address =v.vaddress WHERE v.status='approved'AND i.i_address IN ('" . implode("','", $alladdress) . "')";
-            $result = mysqli_query($conn, $query);
-        
-            // 在首頁上顯示其他欄位資訊
-            while ($row = mysqli_fetch_assoc($result)) {
-                
-                $title = $row["i_title"];
-                $address = $row["i_address"];
-                $id=$row["id"];
-                $rent = $row["i_rent"];
-                $gender = $row["i_gender"];
-                $equip = $row["i_equip"];
-                $roomstyle = $row["i_roomstyle"];
-                $entrance = $row["i_entrance"];
-                $walktime = $row["i_walktime"];
-                $introduce = $row["i_introduce"];
-                $i_photo = $row["i_photo"];
-                $path = "file/" . $i_photo;
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+		        $id = $row["vid"];
+                        $title = $row["i_title"];
+                        $address = $row["i_address"];
+                        $rent = $row["i_rent"];
+                        $gender = $row["i_gender"];
+                        $equip= $row["i_equip"];
+                        $roomstyle = $row["i_roomstyle"];
+                        $entrance = $row["i_entrance"];
+                        $walktime = $row["i_walktime"];
+                        $introduce = $row["i_introduce"];
+                        $i_photo=$row["i_photo"];
+		$path="file/" .$i_photo;
                 ?>
              <style>
     .house_item {
@@ -220,14 +199,14 @@ $dbname = "sa";
                 </div>
                 <p> <?php echo $row['i_introduce']; ?></p>
             
-                <a class="btn btn-custom" href="fix.php" role="button" style="margin-top: 10px;">修改房屋</a>
+                <a class="btn btn-custom" href="fix.php?vid=<?php echo $id; ?>" role="button" style="margin-top: 10px;">修改房屋</a>
             </div>
             <!-- 圖片部分 -->
             <div class="house_photo">
                 <?php 
-                    echo "<a href='detail_page.php?id=$i_photo'>";
-                    echo "<div class='image_wrapper'>";
-                    echo "<img src='$path' alt='' width='600' height='450'>";
+                     echo "<a href='detail_page.php?id=$i_photo'>";
+                     echo "<div class='image_wrapper'>";
+                     echo "<img src='$path' alt='' width='600' height='450'>";
                 ?>
             </div>
         </div>

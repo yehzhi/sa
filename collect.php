@@ -29,7 +29,7 @@
 					</div>
 					<nav class="main_nav">
 						<ul class="main_nav_list">
-							<li class="main_nav_item"><a href="index-te.html">首頁</a></li>
+							<li class="main_nav_item"><a href="index-te.php">首頁</a></li>
 							<li class="main_nav_item">
 								<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>
 								<div class="dropdown-menu">
@@ -37,7 +37,7 @@
 									<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
 								</div>
 							</li>
-							<li class="main_nav_item"><a href="discuss.html">我的收藏</a></li>
+							<li class="main_nav_item"><a href="collect.php">我的收藏</a></li>
 							<li class="main_nav_item">
 								<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i>
@@ -80,52 +80,47 @@
 		<div class="row">
 			
 			<div class="col-lg-12 listings_col">
-				<?php
+			<?php
+				session_start(); // 啟動 PHP 會話
+
 				$servername = "localhost";
 				$username = "root";
 				$password = ""; 
 				$dbname = "sa";
 
-				
 				$conn = new mysqli($servername, $username, $password, $dbname);
 
-				
 				if ($conn->connect_error) {
-				    die("连接失败: " . $conn->connect_error);
+					die("连接失败: " . $conn->connect_error);
 				}
-				$_account=$_SESSION['tenant']['account']
-				
+
+				$_account = $_SESSION['tenant']['account']; // 確保 $_SESSION['tenant']['account'] 正確設置
+
 				$sql = "SELECT * FROM collect WHERE account = '$_account'";
 				$result = $conn->query($sql);
 
-				
 				if ($result->num_rows > 0) {
-				   
-				    while($row = $result->fetch_assoc()) {  
+					while($row = $result->fetch_assoc()) {  
 						$collect_id = $row["collect_id"];
-				        $account = $row["account"];
-				        $vid = $row["vid"];
-				       
+						$account = $row["account"];
+						$vid = $row["vid"];
 
-				        
-				        echo '<div class="listing_item">';
-				        echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
-				        echo '<div class="listing_content">';
-						echo '<div class="listing_title"><a href="detail.php?vid=' . $vid . '">房屋編號' . $vid . '</a></div>';
-				        echo '<div class="listing_text"><br>收藏編號:' . $collect_id .'</div>';
-						// echo "<img src='$path' alt=''>";
-				        echo '</div>';
-				        echo '</div>';
-				        echo '</div>';
-				    }
+						echo '<div class="listing_item">';
+						echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
+						echo '<div class="listing_content">';
+						echo '<div class="listing_title"><a href="detail.php?vid=' . $vid . '">房屋編號:' . $vid . '</a></div>';
+						echo '<div class="listing_text"><br>收藏編號:' . $collect_id .'</div>';
+						echo '</div>';
+						echo '</div>';
+						echo '</div>';
+					}
 				} else {
-				   
-				    echo "0 结果";
+					echo "0 结果";
 				}
 
-				
 				$conn->close();
 				?>
+
 			</div>
 		</div>
 	</div>
