@@ -136,7 +136,6 @@
             <div class="container">
             </div>
         </footer>
-
     </div>
 
     <script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>
