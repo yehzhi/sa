@@ -166,7 +166,7 @@
                         $servername = "localhost";
                         $username = "root";
                         $dbname = "sa";
-                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $conn = new mysqli($servername, $username, $password, $dbnam);
                         $sql = "SELECT * FROM numbered_post"; 
 
                         $result = $conn->query($sql);
