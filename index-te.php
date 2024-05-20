@@ -586,13 +586,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const isFavorited = this.classList.contains('heart-filled');
             const id = this.getAttribute('data-id');
 
-            if (isFavorited) {
-                this.classList.remove('heart-filled');
-                this.classList.add('heart-empty');
-            } else {
-                this.classList.remove('heart-empty');
-                this.classList.add('heart-filled');
-            }
+            // 禁用多次
+            this.style.pointerEvents = 'none';
 
             fetch('favorite.php', {
                 method: 'POST',
@@ -602,10 +597,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify({ id: id, favorited: !isFavorited }),
             }).then(response => response.json())
               .then(data => {
-                  console.log('Success:', data);
+                  if (data.success) {
+                      this.classList.toggle('heart-filled');
+                      this.classList.toggle('heart-empty');
+
+                  } else {
+                      console.error('Error:', data.message);
+                      // 如果后端返回不成功，不做任何样式更改
+                  }
               })
               .catch((error) => {
                   console.error('Error:', error);
+                  // 如果请求出错，不做任何样式更改
+              })
+              .finally(() => {
+                  // 请求完成后重新启用按钮
+                  this.style.pointerEvents = 'auto';
               });
         });
     });

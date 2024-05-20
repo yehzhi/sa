@@ -34,35 +34,21 @@ if (isset($data['id']) && isset($data['favorited'])) {
     }
 
     if ($favorited) {
-        // 插入收藏
-        $stmt = $conn->prepare("INSERT INTO collect (vid, account) VALUES (?, ?)");
-        $stmt->bind_param("ss", $vid, $account);
-        if ($stmt->execute()) {
-            echo json_encode(["success" => true, "message" => "Favorite added successfully"]);
-        } else {
-            if ($conn->errno === 1062) {
-                // 重复插入错误
-                echo json_encode(["success" => false, "message" => "Already favorited"]);
-            } else {
-                echo json_encode(["success" => false, "message" => "Error adding favorite: " . $conn->error]);
-            }
-        }
-        $stmt->close();
+    // 插入收藏
+    $stmt = $conn->prepare("INSERT INTO collect (vid, account) VALUES (?, ?)");
+    $stmt->bind_param("ss", $vid, $account);
+    if ($stmt->execute()) {
+        echo json_encode(["success" => true, "message" => "Favorite added successfully", "favorited" => true]);
     } else {
-        // 删除收藏
-        $stmt = $conn->prepare("DELETE FROM collect WHERE account = ? AND vid = ?");
-        $stmt->bind_param("ss", $account, $vid);
-        if ($stmt->execute()) {
-            if ($stmt->affected_rows > 0) {
-                echo json_encode(["success" => true, "message" => "Favorite removed successfully"]);
-            } else {
-                echo json_encode(["success" => false, "message" => "Favorite not found"]);
-            }
+        if ($conn->errno === 1062) {
+            // 重复插入错误
+            echo json_encode(["success" => false, "message" => "Already favorited", "favorited" => true]);
         } else {
-            echo json_encode(["success" => false, "message" => "Error removing favorite: " . $conn->error]);
+            echo json_encode(["success" => false, "message" => "Error adding favorite: " . $conn->error, "favorited" => false]);
         }
-        $stmt->close();
     }
+    $stmt->close();
+    } 
 } else {
     echo json_encode(["success" => false, "message" => "Invalid data"]);
 }
