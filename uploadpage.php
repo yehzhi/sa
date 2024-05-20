@@ -122,13 +122,7 @@
 						WHERE status='approved' AND account='$account'";
 				$result = $conn->query($sql);
 				
-				/*$vidAddresses = array();
-
-				if ($result->num_rows > 0) {
-				while ($row = $result->fetch_assoc()) {
-				$vidAddresses[$row["vid"]] = $row["address"];
-				}
-				}*/
+				
 				
 				?>
 			<hr>
@@ -176,17 +170,23 @@
                                             echo '</li>';
                                         }
 
-                                        // 關閉連線
-                                        $conn->close();
-                                        ?>
-										
-                                        <li class="dropdown_item">
-														<div class="dropdown_item_title1">房屋地址</div>
-														<div class="mb-3">
-															<input type="text" class="form-control" name="address"
-																placeholder="請輸入上述選擇房屋的地址" required>
-														</div>
-													</li>
+										$vidAddresses = array();
+										if ($result->num_rows > 0) {
+											// 重置指標，確保 $result 可以被再次讀取
+											$result->data_seek(0);
+											while ($row = $result->fetch_assoc()) {
+												$vidAddresses[$row["vid"]] = $row["address"];
+											}
+										}
+										$conn->close();
+									?>
+										<li class="dropdown_item">
+                                                        <div class="dropdown_item_title1">地址</div>
+                                                        <div class="mb-3">
+                                                            <input type="text" id="address" class="form-control" name="address" placeholder="填入地址" required >
+                                                        </div>
+                                                    </li>
+                                        
 													<li class="dropdown_item">
 														<div class="dropdown_item_title1">上傳房屋圖片</div>
 														<div class="mb-3">
@@ -388,7 +388,31 @@
 					</div>
 				</div>
 			</div>
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					// 將 PHP 變量傳遞到 JavaScript
+					var vidAddresses = <?php echo json_encode($vidAddresses); ?>;
+					var selectVid = document.querySelector('select[name="vid"]');
+					var addressInput = document.getElementById('address');
 
+					// 當選擇房屋（vid）時，自動填充地址字段
+					selectVid.addEventListener('change', function() {
+						// 獲取選擇的房屋（vid）
+						var selectedVid = this.value;
+						// 根據選擇的 vid 更新地址字段
+						if (vidAddresses[selectedVid]) {
+							addressInput.value = vidAddresses[selectedVid];
+						} else {
+							addressInput.value = '';
+						}
+					});
+
+					// 頁面加載後自動填充地址字段
+					if (selectVid.value) {
+						addressInput.value = vidAddresses[selectVid.value];
+					}
+				});
+			</script>
 
 
 			<!-- Footer -->
