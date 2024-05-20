@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// 連接數據庫
+// 连接数据库
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -9,22 +9,22 @@ $dbname = "sa";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// 檢查連接
+// 检查连接
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die(json_encode(["success" => false, "message" => "Connection failed: " . $conn->connect_error]));
 }
 
-// 設置返回的內容類型為 JSON
+// 设置返回的内容类型为 JSON
 header('Content-Type: application/json');
 
-// 獲取 POST 數據
+// 获取 POST 数据
 $data = json_decode(file_get_contents('php://input'), true);
 
 if (isset($data['id']) && isset($data['favorited'])) {
-    $collect_id = $data['id'];
+    $vid = $data['id'];
     $favorited = $data['favorited'];
-    
-    // 檢查 session 中的用戶賬號
+
+    // 检查 session 中的用户账户
     if (isset($_SESSION['tenant']['account'])) {
         $account = $_SESSION['tenant']['account'];
     } else {
@@ -32,27 +32,28 @@ if (isset($data['id']) && isset($data['favorited'])) {
         $conn->close();
         exit();
     }
-    
-    //$vid = $collect_id; // 假設 collect_id 即為 vid
 
     if ($favorited) {
         // 插入收藏
-        $sql = "INSERT INTO collect (collect_id,account, vid) VALUES ('$collect_id','$account', '$vid')";
-        if ($conn->query($sql) === TRUE) {
+        $stmt = $conn->prepare("INSERT INTO collect (vid, account) VALUES (?, ?)");
+        $stmt->bind_param("ss", $vid, $account);
+        if ($stmt->execute()) {
             echo json_encode(["success" => true, "message" => "Favorite added successfully"]);
         } else {
             if ($conn->errno === 1062) {
-                // 重複插入錯誤
+                // 重复插入错误
                 echo json_encode(["success" => false, "message" => "Already favorited"]);
             } else {
                 echo json_encode(["success" => false, "message" => "Error adding favorite: " . $conn->error]);
             }
         }
+        $stmt->close();
     } else {
-        // 刪除收藏
-        $sql = "DELETE FROM collect WHERE account = '$account' AND vid = '$vid'";
-        if ($conn->query($sql) === TRUE) {
-            if ($conn->affected_rows > 0) {
+        // 删除收藏
+        $stmt = $conn->prepare("DELETE FROM collect WHERE account = ? AND vid = ?");
+        $stmt->bind_param("ss", $account, $vid);
+        if ($stmt->execute()) {
+            if ($stmt->affected_rows > 0) {
                 echo json_encode(["success" => true, "message" => "Favorite removed successfully"]);
             } else {
                 echo json_encode(["success" => false, "message" => "Favorite not found"]);
@@ -60,6 +61,7 @@ if (isset($data['id']) && isset($data['favorited'])) {
         } else {
             echo json_encode(["success" => false, "message" => "Error removing favorite: " . $conn->error]);
         }
+        $stmt->close();
     }
 } else {
     echo json_encode(["success" => false, "message" => "Invalid data"]);

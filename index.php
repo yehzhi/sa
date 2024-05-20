@@ -80,7 +80,9 @@
 									</li>
 								</ul>
 							</nav>
-
+							<div class="phone_home text-center" style="border-radius: 10px;">
+							<span><a href="login.html">登入</a></span>
+						</div>
                            
 
 							<!-- Hamburger -->
