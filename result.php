@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>輔仁大學租屋 首頁</title>
+	<title>房屋資訊</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="The Estate Teplate">
