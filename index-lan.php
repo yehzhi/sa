@@ -199,7 +199,7 @@ $dbname = "sa";
                 </div>
                 <p> <?php echo $row['i_introduce']; ?></p>
             
-                <a class="btn btn-custom" href="fix.php" role="button" style="margin-top: 10px;">修改房屋</a>
+                <a class="btn btn-custom" href="fix.php?vid=<?php echo $id; ?>" role="button" style="margin-top: 10px;">修改房屋</a>
             </div>
             <!-- 圖片部分 -->
             <div class="house_photo">
