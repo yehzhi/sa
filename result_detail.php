@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>文章詳細內容</title>
+    <title>房屋資訊</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="The Estate Teplate">
@@ -22,23 +22,15 @@
 <body>
 
     <div class="super_container">
-
-        <!-- Home -->
         <div class="home1">
         </div>
 
         <div class="hello" style="color: #555e81;"></div>
-
-        <!-- Header -->
-
         <header class="header trans_300">
             <div class="container">
                 <div class="row">
                     <div class="col">
                         <div class="header_container d-flex flex-row align-items-center trans_300">
-
-                            <!-- Logo -->
-
                             <div class="logo_container">
                                 <a href="#">
                                     <div class="logo">
@@ -47,8 +39,6 @@
                                     </div>
                                 </a>
                             </div>
-
-                            <!-- Main Navigation -->
 
                             <nav class="main_nav">
                                 <ul class="main_nav_list">
@@ -71,7 +61,6 @@
                                     </li>
                                 </ul>
                             </nav>
-
                         </div>
                     </div>
                 </div>
@@ -92,9 +81,8 @@
                 <div class="home2" style="width: 1000px; margin: 0 auto; ">
 
                     <?php
-                    
-                    if(isset($_GET['post_id'])) {
-                        $post_id = $_GET['post_id'];
+                    if(isset($_GET['i_id'])) {
+                        $i_id = $_GET['i_id'];
 
                         
                         $servername = "localhost";
@@ -105,57 +93,37 @@
 
                         
                         if ($conn->connect_error) {
-                            die("连接失败: " . $conn->connect_error);
+                            die("連接失败: " . $conn->connect_error);
                         }
-
                         
-                        $sql = "SELECT * FROM numbered_post WHERE post_id = '$post_id'";
+                        $sql = "SELECT * FROM information WHERE i_id = '$i_id'";
                         $result = $conn->query($sql);
-
-                        
+            
                         if ($result->num_rows > 0) {
+                            $_SESSION['results'] = [];
                             while($row = $result->fetch_assoc()) {
-                                $article = $row["article"];
-                                $verify_id = $row["verify_id"];
-                                $content = $row["content"];
-                                $address = $row["address"];
-                                $star_rate = $row["star_rate"];
-                                $post_date= $row["post_date"];
-                                $lastname = $row["lastname"];
-                                $gender = $row["gender"];
-
-                                // 設置性別稱號
-				                if ($gender === "f") {
-				                    $prefix = "小姐";
-				                } elseif ($gender === "m") {
-				                    $prefix = "先生";
-				                } else {
-				                    $prefix = "";
-				                }
-
-
-                                
+                                $_SESSION['results'][] = $row;
+                            }
+                        } else {
+                            echo "没有找到匹配的结果";
+                        }
+                        $conn->close();
+                        if (isset($_SESSION['results']) && count($_SESSION['results']) > 0) {
+                            $results = $_SESSION['results'];
+                            foreach ($results as $row) {
                                 echo '<div class="listing_item">';
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';
-                                echo '<div class="listing_title"><a href="post_num_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
-                                echo '<div class="listing_text">房屋編號:' . $verify_id . '<br>評分:' . $star_rate . '分<br>' . $content . '<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
-                                echo '<div class="listing_image">';
-                                echo '<img src="' . $house_photo . '" alt="House Photo" width="300" height="200">';
-                                echo '</div>';
+                                echo '<div class="listing_title"><a href="result_detail.php?post_id=' . $i_id . '">' . $i_title . '</a></div>';
+                                echo '<div class="listing_text">地址: ' . $i_address . '<br>yj租金:' . $i_rent . '分<br>出租類型: ' . $i_roomstyle . '<br>鄰近入口: ' . $i_entrance . '<br>步行時間: '.$i_walktime.'</div>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';
                             }
+                            unset($_SESSION['results']);
                         } else {
-                            echo "沒有找到相關文章";
+                            echo "没有傳遞i_id參數";
                         }
-
-                        
-                        $conn->close();
-                    } else {
-                        echo "沒有傳遞 post_id 參數";
-                    }
                     ?>
 
                 </div>

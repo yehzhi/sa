@@ -73,7 +73,6 @@
 							</li>
 						</nav>
 
-
 						<div class="hamburger_container menu_mm">
 							<div class="hamburger menu_mm">
 								<i class="fas fa-bars trans_200 menu_mm"></i>
@@ -184,7 +183,6 @@
                                 $lastname = $row["lastname"];
                                 $gender = $row["gender"];
 
-                                //設置性別
                                 if ($gender === "f") {
                                     $prefix = "小姐";
                                 } elseif ($gender === "m") {
@@ -193,7 +191,6 @@
                                     $prefix = "";
                                 }
 
-                                // 
                                 echo '<div class="listing_item">';
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';

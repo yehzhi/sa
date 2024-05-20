@@ -308,46 +308,48 @@
 			</div>
 		</div>
 	</div>
-    <?php
-        session_start();
-        $servername = "localhost";
-        $username = "root";
-        $password = ""; 
-        $dbname = "sa";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        $sql = "SELECT * FROM information";
+    <div class="search_box_inner listings_col">
+        <?php
+            session_start();
+            $servername = "localhost";
+            $username = "root";
+            $password = ""; 
+            $dbname = "sa";
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            $sql = "SELECT * FROM information";
 
-        if ($conn->connect_error) {
-            die("連接失敗: " . $conn->connect_error);
-        }
-        
-        $result = $conn->query($sql);
+            if ($conn->connect_error) {
+                die("連接失敗: " . $conn->connect_error);
+            }
+            
+            $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            $_SESSION['results'] = [];
-            while($row = $result->fetch_assoc()) {
-                $_SESSION['results'][] = $row;
+            if ($result->num_rows > 0) {
+                $_SESSION['results'] = [];
+                while($row = $result->fetch_assoc()) {
+                    $_SESSION['results'][] = $row;
+                }
+            } else {
+                echo "没有找到匹配的结果";
             }
-        } else {
-            echo "没有找到匹配的结果";
-        }
-        $conn->close();
-        if (isset($_SESSION['results']) && count($_SESSION['results']) > 0) {
-            $results = $_SESSION['results'];
-            foreach ($results as $row) {
-                echo '<div class="listing_item">';
-                echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
-                echo '<div class="listing_content">';
-				echo '<div class="listing_title"><a href="result_detail.php?post_id=' . $i_id . '">' . $i_title . '</a></div>';
-                echo '<div class="listing_text">地址: ' . $i_address . '<br>yj租金:' . $i_rent . '分<br>出租類型: ' . $i_roomstyle . '<br>鄰近入口: ' . $i_entrance . '<br>步行時間: '.$i_walktime.'</div>';
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
+            $conn->close();
+            if (isset($_SESSION['results']) && count($_SESSION['results']) > 0) {
+                $results = $_SESSION['results'];
+                foreach ($results as $row) {
+                    echo '<div class="listing_item">';
+                    echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
+                    echo '<div class="listing_content">';
+                    echo '<div class="listing_title"><a href="result_detail.php?post_id=' . $i_id . '">' . $i_title . '</a></div>';
+                    echo '<div class="listing_text">地址: ' . $i_address . '<br>yj租金:' . $i_rent . '分<br>出租類型: ' . $i_roomstyle . '<br>鄰近入口: ' . $i_entrance . '<br>步行時間: '.$i_walktime.'</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                unset($_SESSION['results']);
+            } else {
+                echo "没有找到匹配的结果";
             }
-            unset($_SESSION['results']);
-        } else {
-            echo "没有找到匹配的结果";
-        }
-?>
+        ?>
+    </div>
 
 
