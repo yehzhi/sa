@@ -93,9 +93,9 @@
 				if ($conn->connect_error) {
 				    die("连接失败: " . $conn->connect_error);
 				}
-
+				$_account=$_SESSION['tenant']['account']
 				
-				$sql = "SELECT * FROM collect WHERE account = '$_SESSION['tenant']['account']'";
+				$sql = "SELECT * FROM collect WHERE account = '$_account'";
 				$result = $conn->query($sql);
 
 				
@@ -104,14 +104,14 @@
 				    while($row = $result->fetch_assoc()) {  
 						$collect_id = $row["collect_id"];
 				        $account = $row["account"];
-				        $verify_id = $row["verify_id"];
+				        $vid = $row["vid"];
 				       
 
 				        
 				        echo '<div class="listing_item">';
 				        echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
 				        echo '<div class="listing_content">';
-						echo '<div class="listing_title"><a href="detail.php?verify_id=' . $verify_id . '">房屋編號' . $verify_id . '</a></div>';
+						echo '<div class="listing_title"><a href="detail.php?vid=' . $vid . '">房屋編號' . $vid . '</a></div>';
 				        echo '<div class="listing_text"><br>收藏編號:' . $collect_id .'</div>';
 						// echo "<img src='$path' alt=''>";
 				        echo '</div>';

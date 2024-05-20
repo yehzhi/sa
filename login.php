@@ -7,7 +7,7 @@ $password = "";
 $dbname = "sa";
 
 
-$conn = new mysqli($servername, $username, $password, $dbname, 3307) ;
+$conn = new mysqli($servername, $username, $password, $dbname) ;
 if ($conn->connect_error) {
     die('連線失敗' . $conn->connect_error);
 }
@@ -46,7 +46,7 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['uu'])
             $_SESSION['landlord'] = $user;
             $_SESSION['landlord']['account'] = $user['account'];
             $_SESSION['landlord']['gender'] = $user['gender'];
-            header("Location: index-lan.php");
+            header("Location: uploadpage.php");
         } elseif ($usertype === 't') {
             $_SESSION['tenant'] = $user;
             $_SESSION['tenant']['account'] = $user['account'];
