@@ -207,34 +207,34 @@
                                                     <div class="up2" style="margin-left: 30px;">
                                                         <h6 style="color: #FFFFFF;">性別:</h6>
                                                         <?php
-                                                        if ($gender == "man") {
+                                                        if ($gender == "男") {
                                                         ?>
                                                             <select name="fixgender">
-                                                                <option value="man" selected>男</option>
-                                                                <option value="woman">女</option>
-                                                                <option value="nol">不限制</option>
+                                                                <option value="男" selected>男</option>
+                                                                <option value="女">女</option>
+                                                                <option value="不限制">不限制</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($gender == "woman") {
+                                                        if ($gender == "女") {
                                                         ?>
                                                             <select name="fixgender">
-                                                                <option value="man">男</option>
-                                                                <option value="woman" selected>女</option>
-                                                                <option value="nol">不限制</option>
+                                                                <option value="男">男</option>
+                                                                <option value="女" selected>女</option>
+                                                                <option value="不限制">不限制</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($gender == "nol") {
+                                                        if ($gender == "不限制") {
                                                         ?>
                                                             <select name="fixgender">
-                                                                <option value="man">男</option>
-                                                                <option value="woman">女</option>
-                                                                <option value="nol" selected>不限制</option>
+                                                                <option value="男">男</option>
+                                                                <option value="女">女</option>
+                                                                <option value="不限制" selected>不限制</option>
                                                             </select>
                                                         <?php
                                                         } else {
@@ -590,49 +590,49 @@
                                                     <li class="dropdown_item dropdown_item_5" style="width: 100px;">
                                                         <div class="dropdown_item_title">出租類型</div>
                                                         <?php
-                                                        if ($roomstyle == "nor") {
+                                                        if ($roomstyle == "不限") {
                                                         ?>
                                                             <select name="fixroomstyle">
-                                                                <option value="nor" selected>不限</option>
-                                                                <option value="room">房間</option>
-                                                                <option value="suite">套房</option>
-                                                                <option value="wholehouse">整棟</option>
+                                                                <option value="不限" selected>不限</option>
+                                                                <option value="房間">房間</option>
+                                                                <option value="套房">套房</option>
+                                                                <option value="整棟">整棟</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($roomstyle == "room") {
+                                                        if ($roomstyle == "房間") {
                                                         ?>
                                                             <select name="fixroomstyle">
-                                                                <option value="nor">不限</option>
-                                                                <option value="room" selected>房間</option>
-                                                                <option value="suite">套房</option>
-                                                                <option value="wholehouse">整棟</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="房間" selected>房間</option>
+                                                                <option value="套房">套房</option>
+                                                                <option value="整棟">整棟</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($roomstyle == "suite") {
+                                                        if ($roomstyle == "套房") {
                                                         ?>
                                                             <select name="fixroomstyle">
-                                                                <option value="nor">不限</option>
-                                                                <option value="room">房間</option>
-                                                                <option value="suite" selected>套房</option>
-                                                                <option value="wholehouse">整棟</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="房間">房間</option>
+                                                                <option value="套房" selected>套房</option>
+                                                                <option value="整棟">整棟</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($roomstyle == "wholehouse") {
+                                                        if ($roomstyle == "整棟") {
                                                         ?>
                                                             <select name="fixroomstyle">
-                                                                <option value="nor">不限</option>
-                                                                <option value="room">房間</option>
-                                                                <option value="suite">套房</option>
-                                                                <option value="wholehouse" selected>整棟</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="房間">房間</option>
+                                                                <option value="套房">套房</option>
+                                                                <option value="整棟" selected>整棟</option>
                                                             </select>
                                                         <?php
                                                         } else {
@@ -643,49 +643,49 @@
                                                     <li class="dropdown_item dropdown_item_5" style="width: 60px;">
                                                         <div class="dropdown_item_title">鄰近入口</div>
                                                         <?php
-                                                        if ($entrance == "noe") {
+                                                        if ($entrance == "不限") {
                                                         ?>
                                                             <select name="fixentrance">
-                                                                <option value="noe" selected>不限</option>
-                                                                <option value="door">大門</option>
-                                                                <option value="sidedoor">514側門</option>
-                                                                <option value="backdoor">貴子路門(後門)</option>
+                                                                <option value="不限" selected>不限</option>
+                                                                <option value="大門">大門</option>
+                                                                <option value="514側門">514側門</option>
+                                                                <option value="貴子路門">貴子路門(後門)</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($entrance == "door") {
+                                                        if ($entrance == "大門") {
                                                         ?>
                                                             <select name="fixentrance">
-                                                                <option value="noe">不限</option>
-                                                                <option value="door" selected>大門</option>
-                                                                <option value="sidedoor">514側門</option>
-                                                                <option value="backdoor">貴子路門(後門)</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="大門" selected>大門</option>
+                                                                <option value="514側門">514側門</option>
+                                                                <option value="貴子路門">貴子路門(後門)</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($entrance == "sidedoor") {
+                                                        if ($entrance == "514側門") {
                                                         ?>
                                                             <select name="fixentrance">
-                                                                <option value="noe">不限</option>
-                                                                <option value="door">大門</option>
-                                                                <option value="sidedoor" selected>514側門</option>
-                                                                <option value="backdoor">貴子路門(後門)</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="大門">大門</option>
+                                                                <option value="514側門" selected>514側門</option>
+                                                                <option value="貴子路門">貴子路門(後門)</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($entrance == "backdoor") {
+                                                        if ($entrance == "貴子路門") {
                                                         ?>
                                                             <select name="fixentrance">
-                                                                <option value="noe">不限</option>
-                                                                <option value="door">大門</option>
-                                                                <option value="sidedoor">514側門</option>
-                                                                <option value="backdoor" selected>貴子路門(後門)</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="大門">大門</option>
+                                                                <option value="514側門">514側門</option>
+                                                                <option value="貴子路門" selected>貴子路門(後門)</option>
                                                             </select>
                                                         <?php
                                                         } else {
@@ -695,49 +695,49 @@
                                                     <li class="dropdown_item dropdown_item_5" style="width: 100px;">
                                                         <div class="dropdown_item_title">步行時間</div>
                                                         <?php
-                                                        if ($walktime == "not") {
+                                                        if ($walktime == "不限") {
                                                         ?>
                                                             <select name="fixwalktime">
-                                                                <option value="not" selected>不限</option>
-                                                                <option value="five">5分鐘內</option>
-                                                                <option value="fifteen">5-15分鐘</option>
-                                                                <option value="above">15分鐘以上</option>
+                                                                <option value="不限" selected>不限</option>
+                                                                <option value="5分鐘內">5分鐘內</option>
+                                                                <option value="5-15分鐘">5-15分鐘</option>
+                                                                <option value="15分鐘以上">15分鐘以上</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($walktime == "five") {
+                                                        if ($walktime == "5分鐘內") {
                                                         ?>
                                                             <select name="fixwalktime">
-                                                                <option value="not">不限</option>
-                                                                <option value="five" selected>5分鐘內</option>
-                                                                <option value="fifteen">5-15分鐘</option>
-                                                                <option value="above">15分鐘以上</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="5分鐘內" selected>5分鐘內</option>
+                                                                <option value="5-15分鐘">5-15分鐘</option>
+                                                                <option value="15分鐘以上">15分鐘以上</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($walktime == "fifteen") {
+                                                        if ($walktime == "5-15分鐘") {
                                                         ?>
                                                             <select name="fixwalktime">
-                                                                <option value="not">不限</option>
-                                                                <option value="five">5分鐘內</option>
-                                                                <option value="fifteen" selected>5-15分鐘</option>
-                                                                <option value="above">15分鐘以上</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="5分鐘內">5分鐘內</option>
+                                                                <option value="5-15分鐘" selected>5-15分鐘</option>
+                                                                <option value="15分鐘以上">15分鐘以上</option>
                                                             </select>
                                                         <?php
                                                         } else {
                                                         }
 
-                                                        if ($walktime == "above") {
+                                                        if ($walktime == "15分鐘以上") {
                                                         ?>
                                                             <select name="fixwalktime">
-                                                                <option value="not">不限</option>
-                                                                <option value="five">5分鐘內</option>
-                                                                <option value="fifteen">5-15分鐘</option>
-                                                                <option value="above" selected>15分鐘以上</option>
+                                                                <option value="不限">不限</option>
+                                                                <option value="5分鐘內">5分鐘內</option>
+                                                                <option value="5-15分鐘">5-15分鐘</option>
+                                                                <option value="15分鐘以上" selected>15分鐘以上</option>
                                                             </select>
                                                         <?php
                                                         } else {
