@@ -45,7 +45,7 @@ if(isset($_POST['eq'])) {
             ?>
         <script>
             alert("上架失敗!");
-            location.href = "upload.html";
+            location.href = "uploadpage.php";
         </script>
     <?php
     } else {

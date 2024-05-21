@@ -41,10 +41,23 @@ $new_id = $max_id + 1;
 $sql = "INSERT INTO verify (vid,v_land, v_prove,v_address,account) VALUES ('$new_id','$target_file1', '$target_file2','$vaddress','$account')";
 
 if ($conn->query($sql) !== TRUE) {
-    echo "提交驗證失敗!";
-
+    ?>
+    <script>
+            alert("驗證失敗!");
+            location.href = "verifyhouse.html";
+        </script>
+<?php
 } else {
-    echo "提交驗證成功!你的房屋編號是:",$new_id ;   
+    echo "提交驗證成功!你的房屋編號是:",$new_id ;
+    ?>
+    <script>
+    setTimeout(function() {
+        window.location.href = 'uploadpage.php';
+    }, 3000); // 3000 毫秒等於 3 秒
+</script>
+
+        <?php
+       
 }
 
 
