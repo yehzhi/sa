@@ -464,6 +464,7 @@ if ($result->num_rows > 0) {
 		echo"<div class='featured_panel'> ".$row["i_roomstyle"] ." </div>";
 		echo "<div class='t_wrapper'>";
 		echo "<h2> " . $row["i_title"] . "</h2>";
+		echo "<p>房屋編號: " . $row["vid"] . "</p>";
         echo "<p>地址: " . $row["i_address"] . "</p>";
 		echo "" . $row["i_introduce"] . "</p>";
 		$e=$row["i_equip"];
