@@ -70,7 +70,7 @@
 											aria-haspopup="true" aria-expanded="false">新增房屋</a>
 										<div class="dropdown-menu" style="background-color: #a1a8c6;">
 											<a class="dropdown-item" href="verifyhouse.html">驗證房屋</a>
-											<a class="dropdown-item" href="upload.html">上架房屋</a>
+											<a class="dropdown-item" href="uploadpage.php">上架房屋</a>
 										</div>
 									</li>
 									<li class="main_nav_item">
