@@ -52,7 +52,7 @@
 
                             <nav class="main_nav">
                                 <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a href="index-te.html">首頁</a></li>
+                                    <li class="main_nav_item"><a href="index-te.php">首頁</a></li>
                                     <li class="main_nav_item">
                                         <a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>
                                         <div class="dropdown-menu" style="background-color: #a1a8c6;">
