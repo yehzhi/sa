@@ -143,6 +143,7 @@
                                     <div class="listing_content">
                                         <div class="listing_title"><a href="post_num_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
                                         <div class="listing_text">
+                                            房屋編號: <?php echo $verify_id; ?><br>
                                             評分: <?php echo $star_rate; ?>分<br>
                                             <?php echo $content; ?><br>
                                             日期: <?php echo $post_date; ?><br>
