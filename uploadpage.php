@@ -116,14 +116,14 @@
 					die("連接失敗: " . $conn->connect_error);
 				}
 				$account = $_SESSION['landlord']['account'];
-				// SQL 查詢，檢查已驗證過的房屋
-				$sql = "SELECT v.vid 
-						FROM verify v
-						WHERE status='approved' AND account='$account'";
-				$result = $conn->query($sql);
-				
-				
-				
+
+				// 第一個 SQL 查詢，顯示下拉選單
+				$sql1 = "SELECT vid FROM verify WHERE status='approved' AND account='$account'";
+				$result1 = $conn->query($sql1);
+
+
+
+				$conn->close();
 				?>
 			<hr>
 			<div class="listings">
@@ -144,49 +144,51 @@
                                                     placeholder="例如:鄰近的捷運站、房屋特色、幾房幾廳、幾人居住、房屋類型" required>
                                             </div>
                                         </li>
-                                        <?php
-                                        if ($result->num_rows > 0) {
-                                            echo '<li class="dropdown_item">';
-                                            echo '    <div class="dropdown_item_title1">選擇房屋</div>';
-                                            echo '    <div class="mb-3">';
-                                            echo '        <select name="vid" class="dropdown_item_select1">';
-                                            while ($row = $result->fetch_assoc()) {
-                                                // 只顯示 vid
-                                                echo '<option value="' . $row["vid"] . '">' . $row["vid"] . '</option>';
-                                            }
-                                            echo '        </select>';
-											echo' <input type="hidden" name="selected_vid" value="<?php echo $selected_vid; ?>">';
-                                            echo '    </div>';
-                                            echo '</li>';
-                                        } else {
-                                            // 如果沒有找到已驗證的房屋，顯示一個空的下拉選單
-                                            echo '<li class="dropdown_item">';
-                                            echo '    <div class="dropdown_item_title1">選擇房屋</div>';
-                                            echo '    <div class="mb-3">';
-                                            echo '        <select name="vid" class="dropdown_item_select1">';
-                                            echo '            <option value="">沒有可用的房屋</option>';
-                                            echo '        </select>';
-                                            echo '    </div>';
-                                            echo '</li>';
-                                        }
-
-										$vidAddresses = array();
-										if ($result->num_rows > 0) {
-											// 重置指標，確保 $result 可以被再次讀取
-											$result->data_seek(0);
-											while ($row = $result->fetch_assoc()) {
-												$vidAddresses[$row["vid"]] = $row["address"];
-											}
-										}
-										$conn->close();
-									?>
+                                        <?php if ($result1->num_rows > 0): ?>
+											<li class="dropdown_item">
+												<div class="dropdown_item_title1">選擇房屋</div>
+												<div class="mb-3">
+													<select name="vid" id="vid" class="dropdown_item_select1" onchange="getAddress(this.value)">
+														<?php while ($row = $result1->fetch_assoc()): ?>
+															<option value="<?php echo $row["vid"]; ?>"><?php echo $row["vid"]; ?></option>
+														<?php endwhile; ?>
+													</select>
+												</div>
+											</li>
+										<?php else: ?>
+											<!-- 如果沒有驗證的房屋，顯示空的下拉選單 -->
+											<li class="dropdown_item">
+												<div class="dropdown_item_title1">選擇房屋</div>
+												<div class="mb-3">
+													<select name="vid" class="dropdown_item_select1">
+														<option value="">沒有可用的房屋</option>
+													</select>
+												</div>
+											</li>
+										<?php endif; ?>
+									
 										<li class="dropdown_item">
-                                                        <div class="dropdown_item_title1">地址</div>
-                                                        <div class="mb-3">
-                                                            <input type="text" id="address" class="form-control" name="address" placeholder="填入地址" required >
-                                                        </div>
-                                                    </li>
-                                        
+											<div class="dropdown_item_title1">地址</div>
+											<div class="mb-3">
+												<input type="text" id="address" class="form-control" name="address" value="<?php echo htmlspecialchars($address); ?>" placeholder="填入地址" required>
+											</div>
+										</li>
+										<script>
+											// JavaScript 函數，當下拉選單變更時觸發
+											function getAddress(selectedValue) {
+												// 執行 AJAX 請求到後端 PHP 檔案
+												var xhr = new XMLHttpRequest();
+												xhr.onreadystatechange = function() {
+													if (this.readyState == 4 && this.status == 200) {
+														// 如果請求成功，更新地址欄位的值
+														document.getElementById("address").value = this.responseText;
+													}
+												};
+												xhr.open("POST", "get_address.php", true);
+												xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+												xhr.send("vid=" + selectedValue);
+											}
+											</script>
 													<li class="dropdown_item">
 														<div class="dropdown_item_title1">上傳房屋圖片</div>
 														<div class="mb-3">
@@ -388,31 +390,7 @@
 					</div>
 				</div>
 			</div>
-			<script>
-				document.addEventListener('DOMContentLoaded', function() {
-					// 將 PHP 變量傳遞到 JavaScript
-					var vidAddresses = <?php echo json_encode($vidAddresses); ?>;
-					var selectVid = document.querySelector('select[name="vid"]');
-					var addressInput = document.getElementById('address');
-
-					// 當選擇房屋（vid）時，自動填充地址字段
-					selectVid.addEventListener('change', function() {
-						// 獲取選擇的房屋（vid）
-						var selectedVid = this.value;
-						// 根據選擇的 vid 更新地址字段
-						if (vidAddresses[selectedVid]) {
-							addressInput.value = vidAddresses[selectedVid];
-						} else {
-							addressInput.value = '';
-						}
-					});
-
-					// 頁面加載後自動填充地址字段
-					if (selectVid.value) {
-						addressInput.value = vidAddresses[selectVid.value];
-					}
-				});
-			</script>
+			
 
 
 			<!-- Footer -->
