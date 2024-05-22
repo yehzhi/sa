@@ -132,9 +132,40 @@
 										<div class="dropdown_item_title">日期</div>
 										<input type="date" id="post_date" name="post_date" value="2024-04-16"
 											min="2018-01-1" max="2050-12-31" />
-										<div class="dropdown_item_title">評分</div>
-										<input type="range" id="star" name="star" min="0" max="5" value="1"
-											step="1" />
+											<div class="dropdown_item_title">評分</div>
+											<div class="slider-container">
+												<input type="range" id="star_rate" name="star_rate" min="0" max="5" value="1" step="1" required>
+												<div class="slider-values" style="color: white;">
+													<span>0</span>
+													<span>1</span>
+													<span>2</span>
+													<span>3</span>
+													<span>4</span>
+													<span>5</span>
+												</div>
+											</div>
+											<style>
+												.slider-container {
+													position: relative;
+													width: 200px; /* 根據需要調整寬度 */
+												}
+
+												input[type="range"] {
+													width: 100%;
+												}
+
+												.slider-values {
+													display: flex;
+													justify-content: space-between;
+													margin-top: 5px;
+												}
+
+												.slider-values span {
+													font-size: 14px; /* 根據需要調整字體大小 */
+													position: relative;
+												}
+											</style>
+								
 										<div class="dropdown_item_title">地址</div>
 										<input name="title" type="text" placeholder="ex:南京東路五段">
 									</ul>

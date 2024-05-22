@@ -121,7 +121,7 @@
 								<?php
 									if (isset($_SESSION['tenant']['account'])) {
 									echo '<button class="fixed-button">';
-									echo '<a href="post_nonum.html"><b><h2>+</h2></b></a>';
+									echo '<a href="post_numpage.php"><b><h2>+</h2></b></a>';
 									echo '</button>';
 									}
 									else{
@@ -143,9 +143,39 @@
 
 
                                                 <div class="dropdown_item_title">評分</div>
-                                                <input type="range" id="star" name="star" min="0" max="5" value="1" step="1" />
+											<div class="slider-container">
+												<input type="range" id="star_rate" name="star_rate" min="0" max="5" value="1" step="1" required>
+												<div class="slider-values" style="color: white;">
+													<span>0</span>
+													<span>1</span>
+													<span>2</span>
+													<span>3</span>
+													<span>4</span>
+													<span>5</span>
+												</div>
+											</div>
+											<style>
+												.slider-container {
+													position: relative;
+													width: 200px; /* 根據需要調整寬度 */
+												}
 
-                                                <div class="dropdown_item_title">地址</div>
+												input[type="range"] {
+													width: 100%;
+												}
+
+												.slider-values {
+													display: flex;
+													justify-content: space-between;
+													margin-top: 5px;
+												}
+
+												.slider-values span {
+													font-size: 14px; /* 根據需要調整字體大小 */
+													position: relative;
+												}
+											</style>
+								                <div class="dropdown_item_title">地址</div>
                                                 <input name="title" type="text" placeholder="ex:南京東路五段">
                                             </ul>
                                         </div>
@@ -165,7 +195,7 @@
                         $username = "root";
                         $dbname = "sa";
                         $conn = new mysqli($servername, $username, $password, $dbname);
-                        $sql = "SELECT * FROM numbered_post"; 
+                        $sql = "SELECT * FROM numbered_post WHERE status='approved'"; 
 
                         $result = $conn->query($sql);
                         

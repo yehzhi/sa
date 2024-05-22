@@ -35,7 +35,7 @@
 						</div>
 						<nav class="main_nav">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index-te.html">首頁</a></li>
+								<li class="main_nav_item"><a href="index-te.php">首頁</a></li>
 								<li class="main_nav_item">
 									<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">討論區</a>
@@ -97,14 +97,44 @@
 										style="height: 300px; resize: none;" placeholder="寫下你的真實租房心得!" required></textarea>
 								</div>
 								<div class="dropdown_item_title_login">評分</div>
-								<input type="range" id="star_rate" name="star_rate" min="0" max="5" value="1" step="1" required>
-								<br><br>
+								<div class="slider-container">
+									<input type="range" id="star_rate" name="star_rate" min="0" max="5" value="1" step="1" required>
+									<div class="slider-values" style="color: white;">
+										<span>0</span>
+										<span>1</span>
+										<span>2</span>
+										<span>3</span>
+										<span>4</span>
+										<span>5</span>
+									</div>
+								</div>
+								<style>
+									.slider-container {
+										position: relative;
+										width: 800px; /* 根據需要調整寬度 */
+									}
+
+									input[type="range"] {
+										width: 100%;
+									}
+
+									.slider-values {
+										display: flex;
+										justify-content: space-between;
+										margin-top: 5px;
+									}
+
+									.slider-values span {
+										font-size: 14px; /* 根據需要調整字體大小 */
+										position: relative;
+									}
+								</style>
+								<br>
 								<div class="dropdown_item_title_login">租屋照片</div>
 								<div class="mb-3">
 									<input type="file" class="form-control" id="house_photo" name="house_photo">
 								</div>
-								<br>
-								
+									
 							</ul>
 						</div>
 						<div class="post_button">

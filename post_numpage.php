@@ -35,7 +35,7 @@
 						</div>
 						<nav class="main_nav">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="index-te.html">首頁</a></li>
+								<li class="main_nav_item"><a href="index-te.php">首頁</a></li>
 								<li class="main_nav_item">
 									<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">討論區</a>
@@ -73,19 +73,48 @@
 			</div>
 		</div>
 	</div>
+	
 	<hr>
 	<div class="listings">
-		<div class="container">
-			<div class="row">
-				<div class="search_box_content" style="margin-top: -50px;">
-					<form class="search_form" action="post_num.php" method="post" enctype="multipart/form-data">
-						<div class="search_box_container">
-							<ul class="dropdown_row clearfix">
-								<div class="dropdown_item_title_login">房屋編號</div>
-								<div class="mb-3">
-									<input type="title" class="form-control" id="account" name="verify_id"
-										placeholder="房屋編號">
-								</div>
+        <div class="container">
+            <div class="row">
+                <div class="search_box_content" style="margin-top: -50px;">
+                    <form class="search_form" action="post_num.php" method="post" enctype="multipart/form-data">
+                        <div class="search_box_container">
+                            <ul class="dropdown_row clearfix">
+                                <div class="dropdown_item_title_login">房屋編號</div>
+                                <div class="mb-3">
+                                    <select class="form-control" id="verify_id" name="verify_id" required onchange="getAddress(this.value)">
+                                        <option value="">選擇房屋編號</option>
+                                        <?php
+                                        // 建立數據庫連接
+                                        $servername = "localhost";
+                                        $username = "root";
+                                        $password = "";
+                                        $dbname = "sa";
+                                        $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                        // 檢查連接
+                                        if ($conn->connect_error) {
+                                            die("連接失敗: " . $conn->connect_error);
+                                        }
+
+                                        // 從 information 表中檢索已上架的房屋編號
+                                        $sql = "SELECT vid FROM information";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while($row = $result->fetch_assoc()) {
+                                                echo "<option value='" . $row['vid'] . "'>" . $row['vid'] . "</option>";
+                                            }
+                                        } else {
+                                            echo "<option value=''>沒有找到上架的房屋</option>";
+                                        }
+
+                                        $conn->close();
+                                        ?>
+                                    </select>
+                                </div>
 								<div class="dropdown_item_title_login">標題</div>
 								<div class="mb-3">
 									<input type="text" class="form-control" id="article" name="article"
@@ -93,9 +122,25 @@
 								</div>
 								<div class="dropdown_item_title_login">租屋位置</div>
 								<div class="mb-3">
-									<input type="text" class="form-control" id="address" name="address"
-										placeholder="租屋位置" required>
-								</div>
+								<input type="text" id="address" class="form-control" name="address" value="<?php echo htmlspecialchars($address); ?>" placeholder="填入地址" required>
+											</div>
+										
+										<script>
+											// JavaScript 函數，當下拉選單變更時觸發
+											function getAddress(selectedValue) {
+												// 執行 AJAX 請求到後端 PHP 檔案
+												var xhr = new XMLHttpRequest();
+												xhr.onreadystatechange = function() {
+													if (this.readyState == 4 && this.status == 200) {
+														// 如果請求成功，更新地址欄位的值
+														document.getElementById("address").value = this.responseText;
+													}
+												};
+												xhr.open("POST", "get_address.php", true);
+												xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+												xhr.send("vid=" + selectedValue);
+											}
+										</script>	
 								<div class="dropdown_item_title_login">租房心得</div>
 								<div class="mb-3">
 									<textarea class="form-control" id="content" name="content"
@@ -133,6 +178,7 @@
 										font-size: 14px; /* 根據需要調整字體大小 */
 										position: relative;
 									}
+									
 								</style>
 								<br>
 								<div class="dropdown_item_title_login">租屋照片</div>

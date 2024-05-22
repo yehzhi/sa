@@ -115,16 +115,28 @@
 				if ($conn->connect_error) {
 					die("連接失敗: " . $conn->connect_error);
 				}
+
 				$account = $_SESSION['landlord']['account'];
+				// 查詢已經上架的房屋ID
+				$used_vid_query = "SELECT vid FROM information WHERE l_name='$account'";
+				$used_vid_result = $conn->query($used_vid_query);
 
-				// 第一個 SQL 查詢，顯示下拉選單
-				$sql1 = "SELECT vid FROM verify WHERE status='approved' AND account='$account'";
-				$result1 = $conn->query($sql1);
+				$used_vids = array();
+				if ($used_vid_result->num_rows > 0) {
+					while ($row = $used_vid_result->fetch_assoc()) {
+						$used_vids[] = $row["vid"];
+					}
+				}
 
-
-
+				// 查詢當前房東未上架的已驗證房屋ID
+				if (count($used_vids) > 0) {
+					$vid_query = "SELECT vid FROM verify WHERE account='$account' AND status='approved' AND vid NOT IN ('" . implode("','", $used_vids) . "')";
+				} else {
+					$vid_query = "SELECT vid FROM verify WHERE account='$account' AND status='approved'";
+				}
+				$vid_result = $conn->query($vid_query);
 				$conn->close();
-				?>
+			?>
 			<hr>
 			<div class="listings">
     <div class="container" style="margin-top:-100px;">
@@ -144,28 +156,28 @@
                                                     placeholder="例如:鄰近的捷運站、房屋特色、幾房幾廳、幾人居住、房屋類型" required>
                                             </div>
                                         </li>
-                                        <?php if ($result1->num_rows > 0): ?>
-											<li class="dropdown_item">
-												<div class="dropdown_item_title1">選擇房屋</div>
-												<div class="mb-3">
-													<select name="vid" id="vid" class="dropdown_item_select1" onchange="getAddress(this.value)">
-														<?php while ($row = $result1->fetch_assoc()): ?>
-															<option value="<?php echo $row["vid"]; ?>"><?php echo $row["vid"]; ?></option>
-														<?php endwhile; ?>
-													</select>
-												</div>
-											</li>
-										<?php else: ?>
-											<!-- 如果沒有驗證的房屋，顯示空的下拉選單 -->
-											<li class="dropdown_item">
-												<div class="dropdown_item_title1">選擇房屋</div>
-												<div class="mb-3">
-													<select name="vid" class="dropdown_item_select1">
-														<option value="">沒有可用的房屋</option>
-													</select>
-												</div>
-											</li>
-										<?php endif; ?>
+                                        <?php if ($vid_result->num_rows > 0): ?>
+                                                <li class="dropdown_item">
+                                                    <div class="dropdown_item_title1">選擇房屋</div>
+                                                    <div class="mb-3">
+                                                        <select name="vid" id="vid" class="dropdown_item_select1" onchange="getAddress(this.value)">
+                                                            <?php while ($row = $vid_result->fetch_assoc()): ?>
+                                                                <option value="<?php echo $row["vid"]; ?>"><?php echo $row["vid"]; ?></option>
+                                                            <?php endwhile; ?>
+                                                        </select>
+                                                    </div>
+                                                </li>
+                                            <?php else: ?>
+                                                <!-- 如果沒有可用的房屋，顯示空的下拉選單 -->
+                                                <li class="dropdown_item">
+                                                    <div class="dropdown_item_title1">選擇房屋</div>
+                                                    <div class="mb-3">
+                                                        <select name="vid" class="dropdown_item_select1">
+                                                            <option value="">沒有可用的房屋</option>
+                                                        </select>
+                                                    </div>
+                                                </li>
+                                            <?php endif; ?>
 									
 										<li class="dropdown_item">
 											<div class="dropdown_item_title1">地址</div>
