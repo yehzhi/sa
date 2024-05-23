@@ -535,9 +535,7 @@ if ($result->num_rows > 0) {
 		if (strpos($e, "ele") !== false) {
 			echo "<img class='e_icon' img src='images/icon/elevator.svg' alt=''><p class='e_text'>有電梯</p>";
 		} 
-		if (strpos($e, "balc") !== false) {
-			echo "<img class='e_icon' img src='images/icon/balcony.svg' alt=''><p class='e_text'>有陽台</p>";
-		} 
+		
 
 		echo"</div>";
 	}
@@ -546,8 +544,8 @@ if ($result->num_rows > 0) {
 		}
 		echo"<div class='room_tags'>";
 				echo"<span class='room_tag'>". $row["i_gender"] ."</span>";
-				echo"<span class='room_tag'>". $row["i_entrance"] ."</span>";
-				echo"<span class='room_tag'>". $row["i_walktime"] ."</span>";
+				echo"<span class='room_tag'>離". $row["i_entrance"] ." ". $row["i_walktime"] ."</span>";
+				
 									echo"</div>";
 		echo "</div>";
 		echo "</div>";

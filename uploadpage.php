@@ -385,7 +385,7 @@
 															<div class="dropdown_item_title">步行時間</div>
 															<select name="walktime" id="property_status"
 																class="dropdown_item_select"  required>
-																<option value="不限">不限</option>
+																
 																<option value="5分鐘內">5分鐘內</option>
 																<option value="5-15分鐘">5-15分鐘</option>
 																<option value="15分鐘以上">15分鐘以上</option>

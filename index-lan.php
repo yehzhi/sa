@@ -142,17 +142,24 @@ $dbname = "sa";
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
 		        $id = $row["vid"];
-                        $title = $row["i_title"];
-                        $address = $row["i_address"];
-                        $rent = $row["i_rent"];
-                        $gender = $row["i_gender"];
-                        $equip= $row["i_equip"];
-                        $roomstyle = $row["i_roomstyle"];
-                        $entrance = $row["i_entrance"];
-                        $walktime = $row["i_walktime"];
-                        $introduce = $row["i_introduce"];
-                        $i_photo=$row["i_photo"];
-		$path="file/" .$i_photo;
+                $title = $row["i_title"];
+                $address = $row["i_address"];
+                $id=$row["id"];
+                $price_min = $row["i_min"];
+        $price_max = $row["i_max"];
+                $gender = $row["i_gender"];
+                $equip = $row["i_equip"];
+                $roomstyle = $row["i_roomstyle"];
+                $entrance = $row["i_entrance"];
+        $deposit=$row["i_deposit"];
+        $deposit_amount=$row["i_deposit_amount"];
+        $utility=$row["i_utility"];
+        $u_amount=$row["u_amount"];
+        $u_cal=$row["u_cal"];
+                $walktime = $row["i_walktime"];
+                $introduce = $row["i_introduce"];
+                $i_photo = $row["i_photo"];
+                $path = "file/" . $i_photo;
                 ?>
              <style>
     .house_item {
@@ -188,15 +195,18 @@ $dbname = "sa";
             <!-- 文字部分 -->
             <div class="house_text">
                 <h2><?php echo $row['i_title']; ?></h2>
-                <p>地址: <?php echo $row['i_address'] ?></p>
-                <p>租金: <?php echo $row['i_rent']; ?></p>
-                <p>性別: <?php echo $row['i_gender']?></p>
-                <p>設備: <?php echo $row['i_equip'] ?></p>
-                <div class="room_tags">
-				<span class='room_tag'><?php echo $row['i_roomstyle'] ?></span>
-                <span class='room_tag'><?php echo $row['i_entrance'] ?></span>
-                <span class='room_tag'><?php echo $row['i_walktime'] ?></span>
-                </div>
+                <p>地址: <?php echo $address; ?></p>
+                        <p>房屋編號: <?php echo $id; ?></p>
+                        <p>租金: <?php echo $price_min; ?>-<?php echo $price_max; ?> </p>
+                        <p>性別: <?php echo $gender; ?></p>
+                        <p>設備: <?php echo $equip; ?></p>
+                        <p>押金: <?php echo $deposit_amount; ?></p>
+                        <p>水電費: <?php echo $u_amount; ?><?php echo $u_cal; ?></p>
+                        <div class="room_tags">
+                            <span class='room_tag'><?php echo $roomstyle; ?></span>
+                            <span class='room_tag'><?php echo $entrance; ?></span>
+                            <span class='room_tag'><?php echo $walktime; ?></span>
+                        </div>
                 <p> <?php echo $row['i_introduce']; ?></p>
             
                 <a class="btn btn-custom" href="fix.php?vid=<?php echo $id; ?>" role="button" style="margin-top: 10px;">修改房屋</a>
