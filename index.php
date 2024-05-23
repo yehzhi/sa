@@ -532,6 +532,12 @@ if ($result->num_rows > 0) {
 		if (strpos($e, "有對外窗") !== false) {
 			echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>有對外窗</p>";
 		} 
+		if (strpos($e, "ele") !== false) {
+			echo "<img class='e_icon' img src='images/icon/elevator.svg' alt=''><p class='e_text'>有電梯</p>";
+		} 
+		if (strpos($e, "balc") !== false) {
+			echo "<img class='e_icon' img src='images/icon/balcony.svg' alt=''><p class='e_text'>有陽台</p>";
+		} 
 
 		echo"</div>";
 	}

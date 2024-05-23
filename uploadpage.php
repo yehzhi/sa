@@ -211,10 +211,13 @@
 														</div>
 													</li>
 													<li class="dropdown_item">
-														<div class="dropdown_item_title1">租金</div>
+														<div class="dropdown_item_title1">租金區間：</div>
 														<div class="mb-3">
-															<input type="text" class="form-control" name="rent"
-																placeholder="每月租金（元）" required>
+									
+													<input type="number" class="form-control" id="price-min" name="price-min" placeholder="最低" required step="100">
+													<div class="dropdown_item_title1">~</div>
+													<input type="number" class="form-control" id="price-max" name="price-max" placeholder="最高" required step="100">
+											
 														</div>
 													</li>
 													<div class="up2" style="margin-left: 30px;">
@@ -340,41 +343,101 @@
 																<label for="search_features_23">有對外窗</label>
 															</div>
 														</li>
+														<li class="search_features_item">
+															<div>
+																<input type="checkbox" name="eq[]" value="ele">
+																<label for="search_features_23">電梯</label>
+															</div>
+														</li>
+														
 													</div>
-													<div class="drop" style="margin-top: -100px;margin-left: 15px;">
-														<li class="dropdown_item dropdown_item_5" style="width: 100px;">
-															<div class="dropdown_item_title">出租類型</div>
-															<select name="roomstyle" id="property_ID"
-																class="dropdown_item_select" required>
-																<option value="不限">不限</option>
-																<option value="房間">房間</option>
-																<option value="套房">套房</option>
-																<option value="整棟">整棟</option>
-															</select>
-														</li>
 
-														<li class="dropdown_item dropdown_item_5" style="width: 100px;">
-															<div class="dropdown_item_title">鄰近入口</div>
-															<select name="entrance" id="property_location"
-																class="dropdown_item_select" required>
-																<option value="不限">不限</option>
-																<option value="大門">大門</option>
-																<option value="514側門">514側門</option>
-																<option value="貴子路門">貴子路門(後門)</option>]
-															</select>
+													<div class="drop" style="margin-top: -200px;margin-left: 30px;">
+														<li class="search_features_item"  style="width: 300px;">
+															<h6 style="color: #FFFFFF;">鄰近入口:</h6>
+															<div>
+															<input type="checkbox" name="entrance[]" value="front">
+															<label for="search_features_23">大門     </label></div>
+															<div>
+															<input type="checkbox" name="entrance[]" value="next">
+															<label for="search_features_23">514側門   </label></div>
+															<div>
+															<input type="checkbox" name="entrance[]" value="back">
+															<label for="search_features_23">貴子路後門</label></div>
+															<div>
+															<input type="checkbox" name="entrance[]" value="fu">
+															<label for="search_features_23">捷運輔大站</label></div>
+															<div>
+																<input type="checkbox" name="entrance[]" value="xing">
+																<label for="search_features_23">捷運新莊站</label></div>
+																<div>
+																	<div>
+																		<input type="checkbox" name="entrance[]" value="dan">
+																		<label for="search_features_23">捷運丹鳳站</label></div>
+																	<input type="checkbox" name="entrance[]" value="hui">
+																	<label for="search_features_23">捷運迴龍站</label></div>
+																	<div>
+																		<input type="checkbox" name="entrance[]" value="xinpu">
+																		<label for="search_features_23">捷運新埔站</label></div>
 														</li>
-														<li class="dropdown_item dropdown_item_5" style="width: 100px;">
+														
+											<li class="dropdown_item dropdown_item_5" style="width: 100px;margin-left: 30px;">
 															<div class="dropdown_item_title">步行時間</div>
 															<select name="walktime" id="property_status"
-																class="dropdown_item_select" required>
+																class="dropdown_item_select"  required>
 																<option value="不限">不限</option>
 																<option value="5分鐘內">5分鐘內</option>
 																<option value="5-15分鐘">5-15分鐘</option>
 																<option value="15分鐘以上">15分鐘以上</option>
 															</select>
 														</li>
+														<li class="dropdown_item dropdown_item_5" style="width: 100px; margin-left: 30px;">
+															<div class="dropdown_item_title">出租類型</div>
+															<select name="roomstyle" id="property_ID"
+																class="dropdown_item_select" required>
+																<option value="整層住家">不限</option>
+																<option value="雅房">雅房</option>
+																<option value="套房">套房</option>
+																<option value="家庭式">家庭式</option>
+															</select>
+														</li>
+														
+														
 													</div>
-
+													<div class="yo" style="margin-left: -5px;">
+														<li class="dropdown_item">
+															<br>
+													
+															<div class="mb-3" style="margin-left: 30px;">
+																<label style="color: #FFFFFF;">需要押金：</label>
+																<input type="radio" id="deposit_yes" name="deposit" value="yes" onclick="showDepositAmount()" > <label for="deposit_yes" style="color: #FFFFFF;">是</label>
+																<input type="radio" id="deposit_no" name="deposit" value="no" onclick="hideDepositAmount()"> <label for="deposit_no" style="color: #FFFFFF;">否</label>
+																<br><br>
+																<div id="depositAmountInput" style="display: none;">
+																	<label for="deposit_amount" style="color: #FFFFFF;">押金金額：</label>
+																	<input type="text" id="deposit_amount" name="deposit_amount">
+																	<br><br>
+																</div>
+																<label style="color: #FFFFFF;">需要水電費：</label>
+																<input type="radio" id="utility_yes" name="utility" value="yes" onclick="showUtilityInput()"> <label for="utility_yes" style="color: #FFFFFF;">是</label>
+																<input type="radio" id="utility_no" name="utility" value="no" onclick="hideUtilityInput()"> <label for="utility_no" style="color: #FFFFFF;">否</label>
+																<br><br>
+																<div id="utilityInput" style="display: none;">
+																	<label for="utility_amount" style="color: #FFFFFF;">水電費金額：</label>
+																	<input type="text" id="utility_amount" name="utility_amount">
+																	<br><br>
+																	<label for="utility_calculation" style="color: #FFFFFF;">計算方式：</label>
+																	<select id="utility_calculation" name="utility_calculation">
+																		<option value="per_unit" >按月計算</option>
+																		<option value="per_unit" >按度數計算</option>
+																		<option value="fixed" >固定金額</option>
+																	</select>
+																	<br><br>
+																</div>
+															</div>
+														</li>
+													</div>
+													
 													<div class="yo" style="margin-left: -5px;">
 														<li class="dropdown_item">
 															<br>
@@ -525,7 +588,28 @@
 			<!-- Credits -->
 
 		</div>
+		<!-- 押金動動 -->
+		<script>
+			function showDepositAmount() {
+				var depositAmountInput = document.getElementById("depositAmountInput");
+				depositAmountInput.style.display = "block";
+			}
 		
+			function hideDepositAmount() {
+				var depositAmountInput = document.getElementById("depositAmountInput");
+				depositAmountInput.style.display = "none";
+			}
+		
+			function showUtilityInput() {
+				var utilityInput = document.getElementById("utilityInput");
+				utilityInput.style.display = "block";
+			}
+		
+			function hideUtilityInput() {
+				var utilityInput = document.getElementById("utilityInput");
+				utilityInput.style.display = "none";
+			}
+		</script>
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
