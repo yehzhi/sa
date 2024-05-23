@@ -528,6 +528,9 @@ if ($result->num_rows > 0) {
 		if (strpos($e, "有對外窗") !== false) {
 			echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>有對外窗</p>";
 		} 
+		if (strpos($e, "ele") !== false) {
+			echo "<img class='e_icon' img src='images/icon/elevator.svg' alt=''><p class='e_text'>有電梯</p>";
+		} 
 
 		echo"</div>";
 	}
@@ -536,8 +539,8 @@ if ($result->num_rows > 0) {
 		}
 		echo"<div class='room_tags'>";
 				echo"<span class='room_tag'>". $row["i_gender"] ."</span>";
-				echo"<span class='room_tag'>". $row["i_entrance"] ."</span>";
-				echo"<span class='room_tag'>". $row["i_walktime"] ."</span>";
+				echo"<span class='room_tag'>離". $row["i_entrance"] ." ". $row["i_walktime"] ."</span>";
+				
 									echo"</div>";
 		echo "</div>";
 		echo "</div>";
@@ -548,7 +551,7 @@ if ($result->num_rows > 0) {
 		echo "<div class='featured_card_box_content d-flex flex-row align-items-center'>";
 		echo "<div>";
 		echo "<div class='featured_card_price_title'>每月</div>";
-		echo "<div class='featured_card_price'>" . $row["i_rent"] . "元</div>";
+		echo "<div class='featured_card_price'>" . $row["i_min"] . "-" .$row["i_max"]. "元</div>";
 		echo "</div>";
 		echo "<i class='heart-icon heart-empty ml-2' data-id='" . $row["vid"] . "'></i>"; // 添加愛心圖標
 echo "</div>";

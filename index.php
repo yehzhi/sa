@@ -556,7 +556,7 @@ if ($result->num_rows > 0) {
 		echo "<div class='featured_card_box_content d-flex flex-row align-items-center'>";
 		echo "<div>";
 		echo "<div class='featured_card_price_title'>每月</div>";
-		echo "<div class='featured_card_price'>" . $row["i_rent"] . "元</div>";
+		echo "<div class='featured_card_price'>" . $row["i_min"] . "-" .$row["i_max"]. "元</div>";
 		echo "</div>";
 echo "</div>";
 echo "</div>";
