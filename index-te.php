@@ -564,7 +564,7 @@ echo "<style>
     cursor: pointer;
     font-size: 2.5rem;
     position: absolute; /* 使用絕對定位 */
-    left: 170px; /* 向右移動 */
+    left: 265px; /* 向右移動 */
     bottom: -8px; /* 向下移動 */
 }
 
@@ -607,15 +607,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
                   } else {
                       console.error('Error:', data.message);
-                      // 如果后端返回不成功，不做任何样式更改
+                      // 如果後端返回不成功，不做任何樣式修改
                   }
               })
               .catch((error) => {
                   console.error('Error:', error);
-                  // 如果请求出错，不做任何样式更改
+                  //如果請求出錯，不做任何樣式更改 
               })
               .finally(() => {
-                  // 请求完成后重新启用按钮
+                  // 請求完成後重新啟用按鈕
                   this.style.pointerEvents = 'auto';
               });
         });

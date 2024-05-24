@@ -428,9 +428,9 @@
 																	<br><br>
 																	<label for="utility_calculation" style="color: #FFFFFF;">計算方式：</label>
 																	<select id="utility_calculation" name="utility_calculation">
-																		<option value="per_unit" >按月計算</option>
-																		<option value="per_unit" >按度數計算</option>
-																		<option value="fixed" >固定金額</option>
+																		<option value="per_unit">按月計算</option>
+																		<option value="per_unit">按度數計算</option>
+																		<option value="fixed">固定金額</option>
 																	</select>
 																	<br><br>
 																</div>
