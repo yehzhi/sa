@@ -214,9 +214,9 @@
 														<div class="dropdown_item_title1">租金區間：</div>
 														<div class="mb-3">
 									
-													<input type="number" class="form-control" id="price-min" name="price-min" placeholder="最低" required step="100">
+													<input type="number" class="form-control" id="price-min" name="price_min" placeholder="最低" required step="100">
 													<div class="dropdown_item_title1">~</div>
-													<input type="number" class="form-control" id="price-max" name="price-max" placeholder="最高" required step="100">
+													<input type="number" class="form-control" id="price-max" name="price_max" placeholder="最高" required step="100">
 											
 														</div>
 													</li>
@@ -424,13 +424,13 @@
 																<br><br>
 																<div id="utilityInput" style="display: none;">
 																	<label for="utility_amount" style="color: #FFFFFF;">水電費金額：</label>
-																	<input type="text" id="utility_amount" name="utility_amount">
+																	<input type="text" id="utility_amount" name="u_amount">
 																	<br><br>
 																	<label for="utility_calculation" style="color: #FFFFFF;">計算方式：</label>
-																	<select id="utility_calculation" name="utility_calculation">
-																		<option value="per_unit">按月計算</option>
-																		<option value="per_unit">按度數計算</option>
-																		<option value="fixed">固定金額</option>
+																	<select id="utility_calculation" name="u_cal">
+																		<option value="按月計算">按月計算</option>
+																		<option value="按度數計算">按度數計算</option>
+																		<option value="固定金額">固定金額</option>
 																	</select>
 																	<br><br>
 																</div>
