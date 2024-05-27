@@ -47,7 +47,7 @@ if(isset($_POST['eq'])) {
     $checkbox2 = implode(",", $_POST['entrance']);
 
     
-    $sql = "INSERT INTO information(l_name,i_title,i_address,i_photo,i_min,i_max,i_gender,i_equip,i_roomstyle,i_entrance,i_deposit,i_deposit_amount,i_utility,u_amount,u_cal,i_walktime,i_introduce)  VALUES ('". $_SESSION['landlord']['account'] ."','$title','$address','$filename','$price_min','$price_max','$gender','$checkbox_values','$roomstyle','$checkbox2','$deposit','$deposit_amount','$utility','$u_amount','$u_cal','$walktime','$introduce')";
+    $sql = "INSERT INTO information(vid,l_name,i_title,i_address,i_photo,i_min,i_max,i_gender,i_equip,i_roomstyle,i_entrance,i_deposit,i_deposit_amount,i_utility,u_amount,u_cal,i_walktime,i_introduce)  VALUES ('$vid','". $_SESSION['landlord']['account'] ."','$title','$address','$filename','$price_min','$price_max','$gender','$checkbox_values','$roomstyle','$checkbox2','$deposit','$deposit_amount','$utility','$u_amount','$u_cal','$walktime','$introduce')";
         if ($conn->query($sql) !== TRUE) {
             ?>
         <script>
