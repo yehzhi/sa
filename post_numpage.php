@@ -84,7 +84,8 @@
                             <ul class="dropdown_row clearfix">
                                 <div class="dropdown_item_title_login">房屋編號</div>
                                 <div class="mb-3">
-                                    <select class="form-control" id="verify_id" name="verify_id" required onchange="getAddress(this.value)">
+									<input type="text" id="searchInput" onkeyup="filterOptions()" placeholder="搜尋房屋編號..." >
+                                    <select class="form-control" id="verify_id" name="verify_id" required onchange="getAddress(this.value); clearSearchInput();">
                                         <option value="">選擇房屋編號</option>
                                         <?php
                                         // 建立數據庫連接
@@ -113,6 +114,30 @@
 
                                         $conn->close();
                                         ?>
+										<script>
+											function filterOptions() {
+												// 獲取搜索框的值
+												var input, filter, select, options, option, i;
+												input = document.getElementById("searchInput");
+												filter = input.value.toUpperCase();
+												select = document.getElementById("verify_id");
+												options = select.getElementsByTagName("option");
+
+												// 循環所有選項，隱藏不匹配的選項
+												for (i = 0; i < options.length; i++) {
+													option = options[i];
+													if (option.textContent.toUpperCase().indexOf(filter) > -1) {
+														option.style.display = "";
+													} else {
+														option.style.display = "none";
+													}
+												}
+											}
+											// 在選擇選項後清空搜索框
+											function clearSearchInput() {
+												document.getElementById("searchInput").value = "";
+											}
+										</script>
                                     </select>
                                 </div>
 								<div class="dropdown_item_title_login">標題</div>
