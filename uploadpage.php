@@ -143,9 +143,8 @@
         <div class="row">
             <div class="col-lg-6 sidebar_col">
                 <div class="search_box1">
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <form class="search_form" action="upload.php" method="post" enctype="multipart/form-data">
                         <div class="search_box_content1" style="height: auto;">
-                            <form class="search_form" action="#">
                                 <div class="search_box_container1">
                                     <ul class="dropdown_row clearfix" style="margin-left: -25px;">
                                         <br>
@@ -157,27 +156,28 @@
                                             </div>
                                         </li>
                                         <?php if ($vid_result->num_rows > 0): ?>
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">選擇房屋</div>
-                                                    <div class="mb-3">
-                                                        <select name="vid" id="vid" class="dropdown_item_select1" onchange="getAddress(this.value)">
-                                                            <?php while ($row = $vid_result->fetch_assoc()): ?>
-                                                                <option value="<?php echo $row["vid"]; ?>"><?php echo $row["vid"]; ?></option>
-                                                            <?php endwhile; ?>
-                                                        </select>
-                                                    </div>
-                                                </li>
-                                            <?php else: ?>
-                                                <!-- 如果沒有可用的房屋，顯示空的下拉選單 -->
-                                                <li class="dropdown_item">
-                                                    <div class="dropdown_item_title1">選擇房屋</div>
-                                                    <div class="mb-3">
-                                                        <select name="vid" class="dropdown_item_select1">
-                                                            <option value="">沒有可用的房屋</option>
-                                                        </select>
-                                                    </div>
-                                                </li>
-                                            <?php endif; ?>
+											<li class="dropdown_item">
+												<div class="dropdown_item_title1">選擇房屋</div>
+												<div class="mb-3">
+												<?php $isSingleOption = $vid_result->num_rows === 1; ?>
+												<select name="vid" id="vid" class="dropdown_item_select1 <?php echo $isSingleOption ? 'single-option' : ''; ?>" onchange="getAddress(this.value)">
+													<?php while ($row = $vid_result->fetch_assoc()): ?>
+														<option value="<?php echo $row["vid"]; ?>"><?php echo $row["vid"]; ?></option>
+													<?php endwhile; ?>
+													</select>
+												</div>
+											</li>
+										<?php else: ?>
+											<!-- 如果沒有可用的房屋，顯示空的下拉選單 -->
+											<li class="dropdown_item">
+												<div class="dropdown_item_title1">選擇房屋</div>
+												<div class="mb-3">
+													<select name="vid" class="dropdown_item_select1" onchange="getAddress(this.value)">
+														<option value="" disabled selected>沒有可用的房屋</option>
+													</select>
+												</div>
+											</li>
+										<?php endif; ?>
 									
 										<li class="dropdown_item">
 											<div class="dropdown_item_title1">地址</div>
@@ -200,6 +200,14 @@
 												xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 												xhr.send("vid=" + selectedValue);
 											}
+											document.addEventListener('DOMContentLoaded', function () {
+											var selectElement = document.getElementById('vid');
+											if (selectElement && selectElement.classList.contains('single-option')) {
+												selectElement.addEventListener('click', function () {
+													getAddress(this.value);
+												});
+											}
+										});
 											</script>
 													<li class="dropdown_item">
 														<div class="dropdown_item_title1">上傳房屋圖片</div>
@@ -220,14 +228,15 @@
 											
 														</div>
 													</li>
-													<div class="up2" style="margin-left: 30px;">
-														<h6 style="color: #FFFFFF;">性別:</h6>
-														<select name="gender">
+													
+														<h6 style="color: #FFFFFF;margin-left: 30px;">性別:</h6>
+														<select name="gender"style="margin-left: 30px;">
 															<option value="男">男</option>
 															<option value="女">女</option>
 															<option value="不限制">不限制</option>
 														</select>
 														<br><br>
+														<div style="margin-left: 30px;" >
 														<h6 style="color: #FFFFFF;">租屋設備:</h6>
 														<li class="search_features_item">
 															<div>
@@ -349,8 +358,8 @@
 																<label for="search_features_23">電梯</label>
 															</div>
 														</li>
-														
-													</div>
+													</div>	
+													
 
 													<div class="drop" style="margin-top: -200px;margin-left: 30px;">
 														<li class="search_features_item"  style="width: 300px;">
