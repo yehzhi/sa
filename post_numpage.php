@@ -85,7 +85,7 @@
                                 <div class="dropdown_item_title_login">房屋編號</div>
                                 <div class="mb-3">
 									<input type="text" id="searchInput" onkeyup="filterOptions()" placeholder="搜尋房屋編號..." >
-                                    <select class="form-control" id="verify_id" name="verify_id" required onchange="getAddress(this.value); clearSearchInput();">
+                                    <select class="form-control" id="verify_id" name="verify_id" required onchange="getAddress(this.value); clearSearchInput();" required>
                                         <option value="">選擇房屋編號</option>
                                         <?php
                                         // 建立數據庫連接
@@ -132,11 +132,101 @@
 														option.style.display = "none";
 													}
 												}
+
+												// 添加一個提示選項，如果沒有匹配的選項
+												var noMatchOption = document.getElementById("noMatchOption");
+												if (!noMatchOption) {
+													noMatchOption = document.createElement("option");
+													noMatchOption.id = "noMatchOption";
+													noMatchOption.textContent = "無匹配的房屋編號";
+													select.appendChild(noMatchOption); // 將提示選項添加到下拉選單
+												}
+
+												// 如果所有選項都被隱藏，則顯示提示選項
+												var allHidden = true;
+												for (i = 0; i < options.length; i++) {
+													if (options[i].style.display !== "none") {
+														allHidden = false;
+														break;
+													}
+												}
+												if (allHidden) {
+													noMatchOption.style.display = ""; // 顯示提示選項
+												} else {
+													noMatchOption.style.display = "none"; // 隱藏提示選項
+												}
 											}
-											// 在選擇選項後清空搜索框
+											// 在選擇選項後清空搜索框並重置下拉選單
 											function clearSearchInput() {
-												document.getElementById("searchInput").value = "";
+												var searchInput = document.getElementById("searchInput");
+												searchInput.value = "";
+												resetOptions(); // 調用重置下拉選單的函數
 											}
+
+											// 重置下拉選單
+											function resetOptions() {
+												var select = document.getElementById("verify_id");
+												var options = select.getElementsByTagName("option");
+
+												for (var i = 0; i < options.length; i++) {
+													options[i].style.display = "";
+												}
+											}
+											
+											
+											// 獲取表單元素
+											var form = document.querySelector('.search_form');
+
+											// 添加表單提交事件監聽器
+											form.addEventListener('submit', function(event) {
+												// 獲取下拉菜單的值
+												var selectValue = document.getElementById('verify_id').value;
+
+												// 如果下拉菜單值為空或不在信息表中的有效vid列表中，阻止表單提交
+												if (!selectValue || !isValidVid(selectValue)) {
+													// 阻止表單默認提交行為
+													event.preventDefault();
+													// 提示用戶選擇有效的房屋編號
+													alert('請選擇有效的房屋編號。');
+												}
+											});
+
+											// 檢查下拉菜單值是否在信息表中的有效vid列表中
+											function isValidVid(value) {
+												// 這裡假設您有一個數組或其他方式存儲了信息表中的有效vid列表
+												var validVids = [<?php
+													// 建立數據庫連接
+													$servername = "localhost";
+													$username = "root";
+													$password = "";
+													$dbname = "sa";
+													$conn = new mysqli($servername, $username, $password, $dbname);
+
+													// 檢查連接
+													if ($conn->connect_error) {
+														die("連接失敗: " . $conn->connect_error);
+													}
+
+													// 從information表中檢索已上架的房屋編號
+													$sql = "SELECT vid FROM information";
+													$result = $conn->query($sql);
+
+													$vids = "";
+													if ($result->num_rows > 0) {
+														while($row = $result->fetch_assoc()) {
+															$vids .= "'" . $row['vid'] . "',";
+														}
+													}
+
+													$conn->close();
+
+													echo rtrim($vids, ',');
+													?>];
+												
+												// 檢查值是否在有效vid列表中
+												return validVids.includes(value);
+											}
+
 										</script>
                                     </select>
                                 </div>
