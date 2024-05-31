@@ -582,9 +582,27 @@ echo "<style>
 </style>";
 
 echo "<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const heartIcons = document.querySelectorAll('.heart-icon');
-    
+	document.addEventListener('DOMContentLoaded', function() {
+		const heartIcons = document.querySelectorAll('.heart-icon');
+		
+		// 獲取用戶收藏列表
+		fetch('favorited.php')
+		.then(response => response.json())
+		.then(data => {
+			const favorites = data.favorites;
+			
+			// 根據收藏列表修改圖標狀態
+			heartIcons.forEach(icon => {
+				const id = icon.getAttribute('data-id');
+				if (favorites.includes(id)) {
+					icon.classList.add('heart-filled');
+				}
+			});
+		})
+		.catch(error => {
+			console.error('錯誤:', error);
+		});
+		
     heartIcons.forEach(icon => {
         icon.addEventListener('click', function() {
             const isFavorited = this.classList.contains('heart-filled');

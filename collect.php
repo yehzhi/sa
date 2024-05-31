@@ -81,7 +81,7 @@
 			
 			<div class="col-lg-12 listings_col">
 			<?php
-				session_start(); // 啟動 PHP 會話
+				session_start(); 
 
 				$servername = "localhost";
 				$username = "root";
@@ -91,12 +91,12 @@
 				$conn = new mysqli($servername, $username, $password, $dbname);
 
 				if ($conn->connect_error) {
-					die("连接失败: " . $conn->connect_error);
+					die("連接失敗: " . $conn->connect_error);
 				}
 
 				$_account = $_SESSION['tenant']['account']; // 確保 $_SESSION['tenant']['account'] 正確設置
 
-				$sql = "SELECT * FROM collect WHERE account = '$_account'";
+				$sql = "SELECT * FROM collect WHERE account = '$_account' ORDER BY collect_id ASC";
 				$result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
@@ -105,14 +105,35 @@
 						$account = $row["account"];
 						$vid = $row["vid"];
 
-						echo '<div class="listing_item">';
-						echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
-						echo '<div class="listing_content">';
-						echo '<div class="listing_title"><a href="detail.php?vid=' . $vid . '">房屋編號:' . $vid . '</a></div>';
-						echo '<div class="listing_text"><br>收藏編號:' . $collect_id .'</div>';
-						echo '</div>';
-						echo '</div>';
-						echo '</div>';
+						// 檢查該 vid 是否存在於 information 表中
+						$info_sql = "SELECT * FROM information WHERE vid = '$vid'";
+						$info_result = $conn->query($info_sql);
+
+						if ($info_result->num_rows == 0) {
+							// 如果該房屋資訊已不存在，則從收藏中刪除
+							$delete_sql = "DELETE FROM collect WHERE collect_id = '$collect_id'";
+							if ($conn->query($delete_sql) === TRUE) {
+								echo "收藏編號: $collect_id 已移除，因為房屋編號 $vid 已不存在。<br>";
+							} else {
+								echo "刪除收藏編號: $collect_id 失敗: " . $conn->error;
+							}
+						} else {
+							// 如果房屋資訊存在，顯示在網頁上
+							echo '<div class="listing_item">';
+							echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
+							echo '<div class="listing_content">';
+							echo '<div class="listing_title"><a href="detail.php?vid=' . $vid . '">房屋編號:' . $vid . '</a></div>';
+							echo '<div class="listing_text"><br>收藏編號:' . $collect_id .'</div>';
+							echo '</div>';
+							echo '<div class="delete_button">';
+							echo '<form id="delete_form_'.$collect_id.'" method="post" action="delete_collect.php">';
+							echo '<input type="hidden" name="collect_id" value="' . $collect_id . '">';
+							echo '<button type="button" class="btn btn-danger" onclick="confirmDelete('.$collect_id.')"><i class="fas fa-trash"></i> 刪除</button>';
+							echo '</form>';
+							echo '</div>';
+							echo '</div>';
+							echo '</div>';
+						}
 					}
 				} else {
 					echo "0 结果";
@@ -120,7 +141,27 @@
 
 				$conn->close();
 				?>
+				<script>
+					function confirmDelete(collect_id) {
+						if (confirm("確定要刪除嗎？")) {
+							document.getElementById('delete_form_' + collect_id).submit();
+						} else {
+							//用戶點擊取消，不做任何操作
+						}
+					}
+				</script>
+				<style>
+					.listing_item_inner {
+					position: relative;
+				}
 
+				.delete_button {
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					margin: 10px;
+				}
+				</style>
 			</div>
 		</div>
 	</div>
