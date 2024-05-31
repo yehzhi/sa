@@ -135,6 +135,10 @@
 					$vid_query = "SELECT vid FROM verify WHERE account='$account' AND status='approved'";
 				}
 				$vid_result = $conn->query($vid_query);
+
+				
+
+
 				$conn->close();
 			?>
 			<hr>
@@ -172,13 +176,13 @@
 											<li class="dropdown_item">
 												<div class="dropdown_item_title1">選擇房屋</div>
 												<div class="mb-3">
-													<select name="vid" class="dropdown_item_select1" onchange="getAddress(this.value)">
+													<select name="vid" class="dropdown_item_select1" onchange="getAddress(this.value)"required> 
 														<option value="" disabled selected>沒有可用的房屋</option>
 													</select>
 												</div>
 											</li>
 										<?php endif; ?>
-									
+										
 										<li class="dropdown_item">
 											<div class="dropdown_item_title1">地址</div>
 											<div class="mb-3">
@@ -208,7 +212,8 @@
 												});
 											}
 										});
-											</script>
+
+										</script>
 													<li class="dropdown_item">
 														<div class="dropdown_item_title1">上傳房屋圖片</div>
 														<div class="mb-3">
@@ -636,6 +641,7 @@
 		<script src="plugins/scrollTo/jquery.scrollTo.min.js"></script>
 		<script src="plugins/easing/easing.js"></script>
 		<script src="js/custom.js"></script>
+		
 </body>
 
 </html>
