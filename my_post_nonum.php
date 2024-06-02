@@ -30,7 +30,7 @@
         .sidebar_item a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 22px; /* 相當於 h2 字體大小 */
+            font-size: 22px; 
             font-weight: bold; /* 字體加粗 */
         }
         .sidebar_item a:hover {
