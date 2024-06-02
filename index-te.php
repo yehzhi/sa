@@ -75,6 +75,7 @@
 								<div class="dropdown-menu" style="background-color: #a1a8c6;">
 									<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
 									<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
+									<a class="dropdown-item" href="my_post_num.php">我的發文</a>
 								</div>
 							</li>
 							<li class="main_nav_item"><a href="collect.php">我的收藏</a></li>
