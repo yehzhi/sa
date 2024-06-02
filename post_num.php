@@ -20,6 +20,7 @@ $house_photo = $_POST['house_photo'];
 $livedhouse = $_POST['livedhouse']; 
 $lastname = $conn->real_escape_string($_SESSION['tenant']['lastname']);
 $gender = $_SESSION['tenant']['gender'];
+$account=$_SESSION['tenant']['account'];
 $target_dir = "uploads/"; 
 $target_file = $target_dir . basename($_FILES["house_photo"]["name"]); 
 $house_photo = basename($_FILES["house_photo"]["name"]);
@@ -37,7 +38,7 @@ $error_message = "";
 
 
 
-$sql = "INSERT INTO numbered_post (verify_id,article,content,address,star_rate,house_photo,livedhouse,lastname,gender) VALUES ('$verify_id','$article','$content','$address','$star_rate','$house_photo','$livedhouse','$lastname','$gender')";
+$sql = "INSERT INTO numbered_post (verify_id,article,content,address,star_rate,house_photo,livedhouse,lastname,gender,account) VALUES ('$verify_id','$article','$content','$address','$star_rate','$house_photo','$livedhouse','$lastname','$gender','$account')";
 if ($conn->query($sql) === TRUE) {?>
         <script>
             alert("發文成功!");

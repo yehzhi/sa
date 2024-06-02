@@ -17,6 +17,7 @@ $address = $_POST['address'];
 $star_rate = $_POST['star_rate'];
 $lastname = $conn->real_escape_string($_SESSION['tenant']['lastname']);
 $gender = $_SESSION['tenant']['gender'];
+$account=$_SESSION['tenant']['account'];
 $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["house_photo"]["name"]);
     $house_photo = basename($_FILES["house_photo"]["name"]);
@@ -27,7 +28,7 @@ $error_message = "";
 
 
 
-$sql = "INSERT INTO post (article,content,address,star_rate,house_photo,lastname,gender) VALUES ('$article','$content','$address','$star_rate','$house_photo','$lastname','$gender')";
+$sql = "INSERT INTO post (article,content,address,star_rate,house_photo,lastname,gender,account) VALUES ('$article','$content','$address','$star_rate','$house_photo','$lastname','$gender','$account')";
 if ($conn->query($sql) == TRUE) {
     ?>
         <script>
