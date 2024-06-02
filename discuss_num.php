@@ -69,7 +69,38 @@
                                 echo '</li>';
                                 echo '</ul>';
                                 echo '</nav>';
-                            } else {
+                            } elseif(isset($_SESSION['landlord']['account'])){
+                                    echo '<nav class="main_nav">';
+                                    echo '<ul class="main_nav_list">';
+                                    echo '<li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>';
+                                    echo '<li class="main_nav_item">';
+                                    echo '<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">新增房屋</a>';
+                                    echo '<div class="dropdown-menu" style="background-color: #a1a8c6;">';
+                                    echo '<a class="dropdown-item" href="verifyhouse.html">驗證房屋</a>';
+                                    echo '<a class="dropdown-item" href="uploadpage.php">上架房屋</a>';
+                                    echo '</div>';
+                                    echo '</li>';
+                                    echo '<li class="main_nav_item">';
+                                    echo '<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
+                                    echo '<div class="dropdown-menu" style="background-color: #a1a8c6;">';
+                                    echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
+                                    echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
+                                    echo '<a class="dropdown-item" href="my_post_num.php">我的發文</a>';
+                                    echo '</div>';
+                                    echo '</li>';
+                                    echo '<li class="main_nav_item">';
+                                    echo '<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>';
+                                    echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
+                                    echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
+                                    echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>';
+                                    echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
+                                    echo '</ul>';
+                                    echo '</li>';
+                                    echo '</ul>';
+                                    echo '</nav>';
+                                
+                            }
+                            else {
                                 // 如果用戶未登入
 								echo '<nav class="main_nav">';
                                 echo '<ul class="main_nav_list">';
