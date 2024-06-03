@@ -73,7 +73,7 @@
                             echo '<div class="listing_content">';
                             echo '<div class="listing_title">' . $row["article"] . '</div>';
                             echo '<div class="listing_text">評分:' . $row["star_rate"] . '分<br>日期: ' . $row["post_date"] . '<br>發文者: ' . $row["lastname"] . '</div>';
-                            echo '<form method="post" action="report.php">';
+                            echo '<form method="post" action="delet_report_post.php">';
                             echo '<input type="hidden" name="post_id" value="' . $row["post_id"] . '">';
                             echo '<button type="submit" name="action" value="delete">刪除文章</button>';
                             echo '<button type="submit" name="action" value="fail">檢舉失敗</button>';

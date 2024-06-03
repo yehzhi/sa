@@ -126,8 +126,8 @@
                                 $lastname = $row["lastname"];
                                 $gender = $row["gender"];
                                 $house_photo=$row["house_photo"];
-		                $path="post/" .$house_photo;
-		                echo "<a href='post_nonum_all.php?post_id=$post_id'>";
+		                        $path="post/" .$house_photo;
+		                        echo "<a href='post_nonum_all.php?post_id=$post_id'>";
 
 				                if ($gender === "f") {
 				                    $prefix = "小姐";
@@ -159,6 +159,39 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <script>
+                                function reportPost(postId) {
+                                    var postData = {
+                                        post_id: postId,
+                                        article: "<?php echo $article; ?>",
+                                        star_rate: "<?php echo $star_rate; ?>",
+                                        content: "<?php echo $content; ?>",
+                                        post_date: "<?php echo $post_date; ?>",
+                                        lastname: "<?php echo $lastname; ?>",
+                                        prefix: "<?php echo $prefix; ?>",
+                                        path: "<?php echo $path; ?>"
+                                    };
+
+                                    fetch('report.php', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify(postData)
+                                    })
+                                    .then(response => {
+                                        if (response.ok) {
+                                            alert('文章已成功檢舉！');
+                                        } else {
+                                            alert('檢舉文章時發生錯誤！');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        alert('網路連線錯誤，請稍後再試！');
+                                    });
+                                }
+                                </script>
 
                                                          
                     <?php  }
