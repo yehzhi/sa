@@ -33,11 +33,17 @@
             <div class="container">
                 <div class="home2" style="width: 1000px; margin: 0 auto;">
                     <?php
-                    $mysqli = new mysqli("localhost", "username", "password", "database");
+					
+					$servername = "localhost";
+					$username = "root";
+					$password = ""; 
+					$dbname = "sa";
 
-                    if ($mysqli->connect_error) {
-                        die("Connection failed: " . $mysqli->connect_error);
-                    }
+                    $conn = new mysqli($servername, $username, $password, $dbname,3307);
+
+					if ($conn->connect_error) {
+						die("連接失败: " . $conn->connect_error);
+					}
 
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $post_id = $_POST['post_id'];
@@ -57,7 +63,8 @@
                         }
                     }
 
-                    $result = $mysqli->query("SELECT * FROM report");
+						$sql = "SELECT * FROM report";
+						$result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
@@ -79,7 +86,7 @@
                         echo "0 結果";
                     }
 
-                    $mysqli->close();
+					$conn->close();
                     ?>
                 </div>
             </div>

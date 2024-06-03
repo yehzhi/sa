@@ -104,7 +104,7 @@
                         $username = "root";
                         $password = ""; 
                         $dbname = "sa";
-                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        $conn = new mysqli($servername, $username, $password, $dbname,3307);
 
                         
                         if ($conn->connect_error) {
@@ -129,8 +129,6 @@
 		                $path="post/" .$house_photo;
 		                echo "<a href='post_nonum_all.php?post_id=$post_id'>";
 
-
-                                // 設置性別稱號
 				                if ($gender === "f") {
 				                    $prefix = "小姐";
 				                } elseif ($gender === "m") {
@@ -151,6 +149,9 @@
                                                 <?php echo $content; ?><br>
                                                 日期: <?php echo $post_date; ?><br>
                                                 發文者: <?php echo $lastname . $prefix; ?>
+                                            <div class="report_button_container">
+                                                <button onclick="reportPost(<?php echo $post_id; ?>)">檢舉文章</button>
+                                            </div>
                                             </div>
                                         </div>
                                         <div class="listing_image ml-md-auto">
@@ -158,7 +159,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                                          <?php  }
+
+                                                         
+                    <?php  }
                         } else {
                             echo "沒找到相關文章";
                         }

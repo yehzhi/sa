@@ -2114,3 +2114,16 @@ body, html {
     cursor: pointer;
 	font-size: 16px;
 }
+
+.report_button_container {
+    bottom: 30px; 
+    left: 5px; 
+	width: 60px;
+	height: 30px;
+    background-color: #ddcf82;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	font-size: 16px;
+}

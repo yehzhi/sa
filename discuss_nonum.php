@@ -254,7 +254,6 @@
 				        echo '<div class="listing_content">';
 						echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
 				        echo '<div class="listing_text">評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
-						echo '<button onclick="reportPost(' . $post_id . ')">檢舉</button>';
 				        echo '</div>';
 				        echo '</div>';
 				        echo '</div>';
@@ -266,20 +265,6 @@
 				
 				$conn->close();
 				?>
-								
-				<script>
-				function reportPost(postId) {
-					var xhr = new XMLHttpRequest();
-					xhr.open("POST", "report_post.php", true);
-					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-					xhr.onreadystatechange = function() {
-						if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-							alert("檢舉成功！");
-						}
-					};
-					xhr.send("post_id=" + postId);
-				}
-				</script>
 			</div>
 		</div>
 	</div>
