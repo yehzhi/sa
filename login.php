@@ -29,9 +29,9 @@ if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['uu'])
     $usertype = $_POST['uu'];
 
     if ($usertype === 'l') {
-        $sql = "SELECT * FROM lan_member WHERE account=? AND password=?";
+        $sql = "SELECT * FROM lan_member WHERE account=? AND password=? AND status='approved'";
     } elseif ($usertype === 't') {
-        $sql = "SELECT * FROM te_member WHERE account=? AND password=?";
+        $sql = "SELECT * FROM te_member WHERE account=? AND password=? AND status='approved'";
     }
 
     $stmt = $conn->prepare($sql);
