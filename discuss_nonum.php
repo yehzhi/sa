@@ -28,7 +28,6 @@
 						</a>
 					</div>
 					<?php
-                            session_start();
                             if (isset($_SESSION['tenant']['account'])) {
                                 // 如果用戶已登入
                                 echo '<nav class="main_nav">';
@@ -218,7 +217,7 @@
 				$dbname = "sa";
 
 				
-				$conn = new mysqli($servername, $username, $password, $dbname);
+				$conn = new mysqli($servername, $username, $password, $dbname,3307);
 
 				
 				if ($conn->connect_error) {
@@ -240,10 +239,7 @@
 				        $gender = $row["gender"];
 				        $lastname = $row["lastname"];
 						$house_photo=$row["house_photo"];
-		                // $path="post/" .$house_photo;
-		                // echo "<a href='post_nonum_all.php?post_id=$post_id'>";
-
-				        // 設置性別稱號
+						
 				        if ($gender === "f") {
 				            $prefix = "小姐";
 				        } elseif ($gender === "m") {
@@ -258,7 +254,7 @@
 				        echo '<div class="listing_content">';
 						echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
 				        echo '<div class="listing_text">評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
-						// echo "<img src='$path' alt=''>";
+						echo '<button onclick="reportPost(' . $post_id . ')">檢舉</button>';
 				        echo '</div>';
 				        echo '</div>';
 				        echo '</div>';
@@ -267,10 +263,23 @@
 				   
 				    echo "0 结果";
 				}
-
 				
 				$conn->close();
 				?>
+								
+				<script>
+				function reportPost(postId) {
+					var xhr = new XMLHttpRequest();
+					xhr.open("POST", "report_post.php", true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.onreadystatechange = function() {
+						if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+							alert("檢舉成功！");
+						}
+					};
+					xhr.send("post_id=" + postId);
+				}
+				</script>
 			</div>
 		</div>
 	</div>
