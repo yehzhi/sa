@@ -15,10 +15,17 @@ $password_check = $_POST['password_check'];
 $lastname = $conn->real_escape_string($_POST['lastname']);
 $firstname = $conn->real_escape_string($_POST['firstname']);
 $gender = $_POST['gender']; 
-$iden = $_POST['iden']; 
 
-// $account_parts = explode('@', $account);
-// $account = $conn->real_escape_string($account_parts[0]);
+
+$iden = $_FILES['iden']['name']; 
+$target_dir = "l_iden/"; 
+$target_file = $target_dir . basename($_FILES["iden"]["name"]); 
+
+$iden = basename($_FILES["iden"]["name"]);
+
+
+echo "".$_FILES['iden']['name'];
+move_uploaded_file($_FILES['iden']['tmp_name'],'l_iden/'.$_FILES['iden']['name']);
 
 $error_message = "";
 
