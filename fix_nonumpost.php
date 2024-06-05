@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>發文</title> 
+	<title>修改發文</title> 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="The Estate Teplate">
@@ -65,56 +65,80 @@
 			</div>
 		</div>
 	</header>
-	<div class="featured">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>新增文章</b></h1>
-				</div>
-			</div>
-		</div>
-	</div>
-	<style>
+    <style>
         .search_box_content {
             max-width: 600px; /* 調整表格最大寬度 */
             margin: 0 auto; /* 讓表格水平置中 */
         }
     </style>
-	<hr>
-	<div class="listings">
+	<div class="featured">
 		<div class="container">
 			<div class="row">
-				<div class="search_box_content" style="margin-top: -50px;">
-					<form class="search_form"  action="post_nonum.html" method="post" enctype="multipart/form-data">
-						<div class="search_box_container">
-							<ul class="dropdown_row clearfix">
+				<div class="col">
+					<h1 style="color: #555e81;text-align: center;margin-top: 30px;"><b>修改發文</b></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+        <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "sa";
+            $conn = new mysqli($servername, $username, $password, $dbname);
+        
+            $post_id = $_GET['post_id'];
+            $sql = "SELECT * FROM post WHERE post_id = $post_id ";
+
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+
+
+                while ($row = $result->fetch_assoc()) {
+                    
+                    $article= $row["article"];
+                    $address = $row["address"];
+                    $content = $row['content'];
+                    $star_rate = $row['star_rate'];
+                    $house_photo = $row['house_photo']; 
+                    $path = 'post/' . $house_photo;
+                    ?>
+	<hr>
+	<div class="listings">
+        <div class="container">
+            <div class="row">
+                <div class="search_box_content" style="margin-top: -50px;">
+                    <form class="search_form" action="fix_nonumpost2.php" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+
+                        <div class="search_box_container">
+                            <ul class="dropdown_row clearfix">
 								<div class="dropdown_item_title_login">標題</div>
 								<div class="mb-3">
-									<input type="text" class="form-control" id="article" name="article"
-										placeholder="文章標題" required>
+									<input type="text" class="form-control" id="article" name="article" value="<?php echo $article;?>" required>
 								</div>
 								<div class="dropdown_item_title_login">租屋位置</div>
 								<div class="mb-3">
-									<input type="text" class="form-control" id="address" name="address"
-										placeholder="租屋位置" required>
+                                <input type="text" id="address" class="form-control" name="address" value="<?php echo $address; ?>" placeholder="填入地址" required>
 								</div>
-								<div class="dropdown_item_title_login">租房心得</div>
+                                <div class="dropdown_item_title_login">租房心得</div>
 								<div class="mb-3">
-									<textarea class="form-control" id="content" name="content"
-										style="height: 300px; resize: none;" placeholder="寫下你的真實租房心得!" required></textarea>
-								</div>
-								<div class="dropdown_item_title_login">評分</div>
-								<div class="slider-container">
-									<input type="range" id="star_rate" name="star_rate" min="0" max="5" value="1" step="1" required>
-									<div class="slider-values" style="color: white;">
-										<span>0</span>
-										<span>1</span>
-										<span>2</span>
-										<span>3</span>
-										<span>4</span>
-										<span>5</span>
-									</div>
-								</div>
+                                    <textarea class="form-control" id="content" name="content"
+                                        style="height: 300px; resize: none;" required><?php echo $content;?></textarea>
+                                </div>
+                                <div class="dropdown_item_title_login">評分</div>
+                                <div class="slider-container">
+                                    <input type="range" id="star_rate" name="star_rate" min="0" max="5"
+                                        value="<?php echo $star_rate; ?>" step="1" required>
+                                    <div class="slider-values" style="color: white;">
+                                        <span>0</span>
+                                        <span>1</span>
+                                        <span>2</span>
+                                        <span>3</span>
+                                        <span>4</span>
+                                        <span>5</span>
+                                    </div>
+                                </div>
 								<style>
 									.slider-container {
 										position: relative;
@@ -135,20 +159,31 @@
 										font-size: 14px; /* 根據需要調整字體大小 */
 										position: relative;
 									}
+									
 								</style>
 								<br>
 								<div class="dropdown_item_title_login">租屋照片</div>
 								<div class="mb-3">
-									<input type="file" class="form-control" id="house_photo" name="house_photo" required>
+									<input type="file" class="form-control" id="house_photo" name="house_photo">
+                                    <img src="<?php echo $path; ?>" alt="House Photo"  width="300" height="200">
 								</div>
-									
+								<br>
 							</ul>
 						</div>
 						<div class="post_button">
 							<div class="search_button">
-								<input value="發布" type="submit" formaction="post_nonum.php" formmethod="post" class="search_submit_button">
+								<input value="送出" type="submit" class="search_submit_button">
 							</div>
 						</div>
+                        <?php
+                                }
+                            } else {
+                                
+                            }
+
+
+
+                            ?>
 					</form>
 				</div>
 			</div>

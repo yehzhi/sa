@@ -124,7 +124,7 @@
 
                     
                     if ($conn->connect_error) {
-                        die("连接失败: " . $conn->connect_error);
+                        die("連接失敗: " . $conn->connect_error);
                     }
                     $_account = $_SESSION['tenant']['account'];
                     $sql = "SELECT * FROM post WHERE account='$_account'";
@@ -160,7 +160,7 @@
                             echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
                             echo '<div class="listing_text">評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
                             // echo "<img src='$path' alt=''>";
-                            echo '<a class="btn btn-custom" href="fix.php?post_id=<?php echo $post_id; ?>" role="button" style="margin-top: 10px;">修改發文</a>';
+                            echo '<a class="btn btn-custom" href="fix_nonumpost.php?post_id=' . $post_id . '" role="button" style="margin-top: 10px; ">修改發文</a>';
                             echo '<div class="delete_button">';
                             echo '<form id="delete_form_'.$post_id.'" method="post" action="delete_post.php">';
                             echo '<input type="hidden" name="post_id" value="' . $post_id . '">';
