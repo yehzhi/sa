@@ -151,6 +151,7 @@
                                 echo '<div class="delete_button">';
                                 echo '<form id="delete_form_'.$post_id.'" method="post" action="delete_post.php">';
                                 echo '<input type="hidden" name="post_id" value="' . $post_id . '">';
+                                echo '<input type="hidden" name="verify_id" value="' . $verify_id . '">';
                                 echo '<button type="button" class="btn btn-danger" onclick="confirmDelete('.$post_id.')" style="margin-top: -63px; margin-left: 100px;"><i class="fas fa-trash"></i> 刪除</button>';
                                 echo '</form>';
                                 echo '</div>';
