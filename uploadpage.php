@@ -101,7 +101,6 @@
 				</div>
 			</div>
 			<?php
-				session_start();
 
 				$servername = "localhost";
 				$username = "root";
@@ -109,7 +108,7 @@
 				$dbname = "sa";
 
 				// 建立資料庫連線
-				$conn = new mysqli($servername, $username, $password, $dbname);
+				$conn = new mysqli($servername, $username, $password, $dbname, 3007);
 
 				// 檢查連線是否成功
 				if ($conn->connect_error) {
