@@ -614,12 +614,15 @@ echo "</div>";
 echo "</div>";
 
 echo "<style>
+.featured_card_box {
+    position: relative; 
+}
+
 .heart-icon {
     cursor: pointer;
     font-size: 2.5rem;
-    position: absolute; /* 使用絕對定位 */
-    right: -68px; 
-    bottom: -8px; /* 向下移動 */
+	margin-left: auto; /* 將圖推到右側 */
+    margin-top: 8px; /* 向下移動 */
 }
 
 /* 點擊前的愛心 */
