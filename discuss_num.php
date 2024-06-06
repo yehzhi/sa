@@ -241,6 +241,7 @@
                         <?php
                         $servername = "localhost";
                         $username = "root";
+                        $password="";
                         $dbname = "sa";
                         $conn = new mysqli($servername, $username, $password, $dbname);
                         $sql = "SELECT * FROM numbered_post WHERE status='approved'"; 
