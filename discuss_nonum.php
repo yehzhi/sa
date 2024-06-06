@@ -130,21 +130,14 @@
 </div>
 <script>
 $(document).ready(function(){
-    // 監聽兩個表單的提交事件
     $('.search_form, #keywordSearchForm').submit(function(e){
-        // 阻止表單默認提交行為
         e.preventDefault();
-        
-        // 獲取搜尋表單數據
         var formData = $(this).serialize();
-
-        // 發送 Ajax 請求
         $.ajax({
             type: "GET",
             url: "search_nonum.php", 
             data: formData,
             success: function(response){
-                // 將後端返回的結果插入到頁面中
                 $('.listings_col').html(response);
             }
         });
