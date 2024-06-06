@@ -618,7 +618,7 @@ echo "<style>
     cursor: pointer;
     font-size: 2.5rem;
     position: absolute; /* 使用絕對定位 */
-    left: 265px; /* 向右移動 */
+    right: -68px; 
     bottom: -8px; /* 向下移動 */
 }
 
