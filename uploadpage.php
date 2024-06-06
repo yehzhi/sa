@@ -105,7 +105,7 @@
 
 				$servername = "localhost";
 				$username = "root";
-				$password = "";
+				$password = "19990817";
 				$dbname = "sa";
 
 				// 建立資料庫連線
@@ -176,7 +176,7 @@
 											<li class="dropdown_item">
 												<div class="dropdown_item_title1">選擇房屋</div>
 												<div class="mb-3">
-													<select name="vid" class="dropdown_item_select1" onchange="getAddress(this.value)"required> 
+													<select name="vid" class="dropdown_item_select1" onchange="getAddress(this.value)" required> 
 														<option value="" disabled selected>沒有可用的房屋</option>
 													</select>
 												</div>
@@ -370,28 +370,28 @@
 														<li class="search_features_item"  style="width: 300px;">
 															<h6 style="color: #FFFFFF;">鄰近入口:</h6>
 															<div>
-															<input type="checkbox" name="entrance[]" value="front">
+															<input type="checkbox" name="entrance[]" value="大門">
 															<label for="search_features_23">大門     </label></div>
 															<div>
-															<input type="checkbox" name="entrance[]" value="next">
+															<input type="checkbox" name="entrance[]" value="514側門">
 															<label for="search_features_23">514側門   </label></div>
 															<div>
-															<input type="checkbox" name="entrance[]" value="back">
+															<input type="checkbox" name="entrance[]" value="貴子路後門">
 															<label for="search_features_23">貴子路後門</label></div>
 															<div>
-															<input type="checkbox" name="entrance[]" value="fu">
+															<input type="checkbox" name="entrance[]" value="捷運輔大站">
 															<label for="search_features_23">捷運輔大站</label></div>
 															<div>
-																<input type="checkbox" name="entrance[]" value="xing">
+																<input type="checkbox" name="entrance[]" value="捷運新莊站">
 																<label for="search_features_23">捷運新莊站</label></div>
 																<div>
 																	<div>
-																		<input type="checkbox" name="entrance[]" value="dan">
+																		<input type="checkbox" name="entrance[]" value="捷運丹鳳站">
 																		<label for="search_features_23">捷運丹鳳站</label></div>
-																	<input type="checkbox" name="entrance[]" value="hui">
+																	<input type="checkbox" name="entrance[]" value="捷運迴龍站">
 																	<label for="search_features_23">捷運迴龍站</label></div>
 																	<div>
-																		<input type="checkbox" name="entrance[]" value="xinpu">
+																		<input type="checkbox" name="entrance[]" value="捷運新埔站">
 																		<label for="search_features_23">捷運新埔站</label></div>
 														</li>
 														
