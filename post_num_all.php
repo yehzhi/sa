@@ -63,7 +63,7 @@
                                     </li>
                                     <li class="main_nav_item"><a href="collect.php">我的收藏</a></li>
                                     <li class="main_nav_item">
-                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
+                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>
                                         <ul class="dropdown-menu" style="background-color: #a1a8c6;">
                                             <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
                                             <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
@@ -137,40 +137,83 @@
 				                    $prefix = "";
 				                }
 
-                                $vid_check_sql = "SELECT COUNT(*) FROM information WHERE vid = '" . $verify_id . "'";
-                                $vid_result = $conn->query($vid_check_sql);
-                                $vid_exists = $vid_result->fetch_row()[0] > 0;
 
-                                // 使用條件判斷來決定是否顯示 "(已下架)"
-                                $listing_status = $vid_exists ? "" : "(已下架)";
-                                
                                 ?>
                                 <div class="listing_item">
-                                <div class="listing_item_inner d-flex flex-md-row-reverse flex-column trans_300">
-                                    <div class="listing_content">
-                                        <div class="listing_title"><a href="post_num_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
-                                        <div class="listing_text">
-                                            房屋編號: <?php echo $verify_id; ?> <?php echo $listing_status; ?><br>
-                                            評分: <?php echo $star_rate; ?>分<br>
-                                            地址: <?php echo $address; ?><br>
-                                            <span class="highlighted-content"><?php echo $content; ?></span><br> <!-- 使用highlighted-content類 -->
-                                            日期: <?php echo $post_date; ?><br>
-                                            發文者: <?php echo $lastname . $prefix; ?>
+                                    <div class="listing_item_inner d-flex flex-md-row-reverse flex-column trans_300">
+                                        <div class="listing_content">
+                                            <div class="listing_title"><a href="post_num_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
+                                            <div class="listing_text">
+                                                房屋編號: <?php echo $verify_id; ?><br>
+                                                評分: <?php echo $star_rate; ?>分<br>
+                                                <?php echo $content; ?><br>
+                                                日期: <?php echo $post_date; ?><br>
+                                                發文者: <?php echo $lastname . $prefix; ?>
+                                                <div class="report_button_container">
+                                                    <button onclick="showReportForm()">檢舉文章</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="listing_image ml-md-auto">
+                                            <img src="<?php echo $path; ?>" alt="House Photo" width="300" height="200">
                                         </div>
                                     </div>
-                                    <style>
-                                    .highlighted-content {
-                                        font-size: 16px; /* 設置字體大小 */
-                                        color: #5A6493; /* 設置字體顏色 */
-                                        font-weight: bold; /* 加粗字體 */
-                                    }
-                                    </style>
-                                    <div class="listing_image ml-md-auto">
-                                        <img src="<?php echo $path; ?>" alt="House Photo" width="300" height="200">
+                                </div>
+
+                                <!-- Report Form Modal -->
+                                <div class="modal" id="reportModal" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">檢舉文章</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="reportForm">
+                                                    <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                                                    <div class="form-group">
+                                                        <label>檢舉原因</label>
+                                                        <div>
+                                                            <input type="checkbox" name="reason[]" value="不當內容"> 不當內容<br>
+                                                            <input type="checkbox" name="reason[]" value="詐騙"> 詐騙<br>
+                                                            <input type="checkbox" name="reason[]" value="暴力內容"> 暴力內容<br>
+                                                            <input type="checkbox" name="reason[]" value="侵權"> 侵權<br>
+                                                            <input type="checkbox" name="reason[]" value="其他"> 其他<br>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">送出</button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                                                      <?php  }
+
+                                <script>
+                                function showReportForm() {
+                                    $('#reportModal').modal('show');
+                                }
+
+                                document.getElementById('reportForm').addEventListener('submit', function(event) {
+                                    event.preventDefault();
+                                    var formData = new FormData(this);
+                                    fetch('submit_numreport.php', {
+                                        method: 'POST',
+                                        body: formData
+                                    })
+                                    .then(response => response.text())
+                                    .then(data => {
+                                        alert('檢舉已提交');
+                                        $('#reportModal').modal('hide');
+                                    })
+                                    .catch(error => {
+                                        alert('提交檢舉時發生錯誤');
+                                    });
+                                });
+                                </script>
+
+                    <?php  }
                         } else {
                             echo "沒有找到相關文章";
                         }
