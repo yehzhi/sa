@@ -147,10 +147,11 @@
                                 echo '<div class="listing_content">';
                                 echo '<div class="listing_title"><a href="post_num_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
                                 echo '<div class="listing_text">房屋編號: ' . $verify_id . '<br>評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
-                                echo '<a class="btn btn-custom" href="fix.php?post_id=<?php echo $post_id; ?>" role="button" style="margin-top: 10px; ">修改發文</a>';
+                                echo '<a class="btn btn-custom" href="fix_numpost.php?post_id=' . $post_id . '" role="button" style="margin-top: 10px; ">修改發文</a>';
                                 echo '<div class="delete_button">';
                                 echo '<form id="delete_form_'.$post_id.'" method="post" action="delete_post.php">';
                                 echo '<input type="hidden" name="post_id" value="' . $post_id . '">';
+                                echo '<input type="hidden" name="verify_id" value="' . $verify_id . '">';
                                 echo '<button type="button" class="btn btn-danger" onclick="confirmDelete('.$post_id.')" style="margin-top: -63px; margin-left: 100px;"><i class="fas fa-trash"></i> 刪除</button>';
                                 echo '</form>';
                                 echo '</div>';

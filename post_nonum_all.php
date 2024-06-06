@@ -104,7 +104,7 @@
                         $username = "root";
                         $password = ""; 
                         $dbname = "sa";
-                        $conn = new mysqli($servername, $username, $password, $dbname,3307);
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 
                         
                         if ($conn->connect_error) {
@@ -146,7 +146,8 @@
                                             <div class="listing_title"><a href="post_nonum_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
                                             <div class="listing_text">
                                                 評分: <?php echo $star_rate; ?>分<br>
-                                                <?php echo $content; ?><br>
+                                                地址: <?php echo $address; ?><br>
+                                                <span class="highlighted-content"><?php echo $content; ?></span><br> <!-- 使用highlighted-content類 -->
                                                 日期: <?php echo $post_date; ?><br>
                                                 發文者: <?php echo $lastname . $prefix; ?>
                                             <div class="report_button_container">
@@ -159,7 +160,13 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <style>
+                                    .highlighted-content {
+                                        font-size: 16px; /* 設置字體大小 */
+                                        color: #5A6493; /* 設置字體顏色 */
+                                        font-weight: bold; /* 加粗字體 */
+                                    }
+                                    </style>
                                 <script>
                                 function reportPost(postId) {
                                     var postData = {

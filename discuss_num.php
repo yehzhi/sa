@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="styles/listings_styles.css">
     <link rel="stylesheet" type="text/css" href="styles/listings_responsive.css">
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -54,6 +55,7 @@
                                 echo '<div class="dropdown-menu"  style="background-color: #a1a8c6;">';
                                 echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
                                 echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
+                                echo '<a class="dropdown-item" href="my_post_num.php">我的發文</a>';
                                 echo '</div>';
                                 echo '</li>';
                                 echo '<li class="main_nav_item"><a href="collect.php">我的收藏</a></li>';
@@ -85,7 +87,6 @@
                                     echo '<div class="dropdown-menu" style="background-color: #a1a8c6;">';
                                     echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
                                     echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
-                                    echo '<a class="dropdown-item" href="my_post_num.php">我的發文</a>';
                                     echo '</div>';
                                     echo '</li>';
                                     echo '<li class="main_nav_item">';
@@ -132,7 +133,29 @@
 
 
         </header>
+        <script>
+        $(document).ready(function(){
+            // 監聽兩個表單的提交事件
+            $('.search_form, #keywordSearchForm').submit(function(e){
+                // 阻止表單默認提交行為
+                e.preventDefault();
+                
+                // 獲取搜尋表單數據
+                var formData = $(this).serialize();
 
+                // 發送 Ajax 請求
+                $.ajax({
+                    type: "GET",
+                    url: "search_num.php", 
+                    data: formData,
+                    success: function(response){
+                        // 將後端返回的結果插入到頁面中
+                        $('.listings_col').html(response);
+                    }
+                });
+            });
+        });
+        </script>
 
         <div class="listings">
             <div class="container">
@@ -140,14 +163,14 @@
                     <div class="col-lg-4 sidebar_col">
                         <div class="search_box">
                             <div class="search_box_content">
-                                <div class="search_box_title text-center">
-                                    <form action="#">
-                                        <div class="newsletter_form_content d-flex flex-row">
-                                            <input class="custom-input" type="text" placeholder=" 文章關鍵字">
-                                            <button ype="submit" class="newsletter_submit_btn" value="Submit">搜尋</button>
-                                        </div>
-                                    </form>
+                            <div class="search_box_title text-center">
+                             <form id="keywordSearchForm">
+                                <div class="newsletter_form_content d-flex flex-row">
+                                    <input class="custom-input" type="text" name="keyword" id="contentKeyword" placeholder="文章關鍵字">
+                                    <button type="submit" class="newsletter_submit_btn" value="Submit">搜尋</button>
                                 </div>
+                            </form>
+                            </div>
                                 <div class="fixed-button-container">
 								<?php
 									if (isset($_SESSION['tenant']['account'])) {
@@ -158,33 +181,34 @@
 									else{
 									}
 									?>
-                                    <form class="search_form" action="#">
+                                    <form class="search_form" action="search_num.php" method="GET">
                                         <div class="search_box_container">
                                             <ul class="dropdown_row clearfix">
 
                                                 <br>
-                                                <div class="dropdown_item_title">編號</div>
-                                                <input name="title" type="text" placeholder="ex:145">
+                                                <div class="dropdown_item_title">房屋編號</div>
+                                                <input name="verify_id" type="text" placeholder="ex:145">
 
                                                 <div class="dropdown_item_title">標題</div>
-                                                <input name="title" type="text" placeholder="ex:玫瑰公寓">
+                                                <input name="article" type="text" placeholder="ex:玫瑰公寓">
 
                                                 <div class="dropdown_item_title">日期</div>
-                                                <input type="date" id="post_date" name="post_date" value="2024-04-16" min="2018-01-1" max="2050-12-31" />
+										        <input type="month" id="month" name="month" value="" min="2018-01" max="2050-12" />
 
 
                                                 <div class="dropdown_item_title">評分</div>
-											<div class="slider-container">
-												<input type="range" id="star_rate" name="star_rate" min="0" max="5" value="1" step="1" required>
-												<div class="slider-values" style="color: white;">
-													<span>0</span>
-													<span>1</span>
-													<span>2</span>
-													<span>3</span>
-													<span>4</span>
-													<span>5</span>
-												</div>
-											</div>
+                                                    <div class="slider-container">
+                                                        <input type="range" id="star_rate" name="star_rate" min="-1" max="5" value="-1" step="1" >
+                                                        <div class="slider-values" style="color: white;">
+                                                            <span>無</span>
+                                                            <span>0</span>
+                                                            <span>1</span>
+                                                            <span>2</span>
+                                                            <span>3</span>
+                                                            <span>4</span>
+                                                            <span>5</span>
+                                                        </div>
+                                                    </div>
 											<style>
 												.slider-container {
 													position: relative;
@@ -207,7 +231,7 @@
 												}
 											</style>
 								                <div class="dropdown_item_title">地址</div>
-                                                <input name="title" type="text" placeholder="ex:南京東路五段">
+										        <input name="address" type="text" placeholder="ex:南京東路五段">
                                             </ul>
                                         </div>
                                         <div class="search_features_container">
@@ -238,6 +262,7 @@
                                 $post_id = $row["post_id"];
                                 $verify_id = $row["verify_id"];
                                 $article = $row["article"];
+                                $address = $row["address"];
                                 $post_date = $row["post_date"];
                                 $star_rate= $row["star_rate"];
                                 $lastname = $row["lastname"];
@@ -252,12 +277,18 @@
                                     $prefix = "";
                                 }
 
-                                // 
+                                $vid_check_sql = "SELECT COUNT(*) FROM information WHERE vid = '" . $verify_id . "'";
+                                $vid_result = $conn->query($vid_check_sql);
+                                $vid_exists = $vid_result->fetch_row()[0] > 0;
+
+                                // 使用條件判斷來決定是否顯示 "(已下架)"
+                                $listing_status = $vid_exists ? "" : "(已下架)";
+                                
                                 echo '<div class="listing_item">';
                                 echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
                                 echo '<div class="listing_content">';
                                 echo '<div class="listing_title"><a href="post_num_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
-                                echo '<div class="listing_text">房屋編號: ' . $verify_id . '<br>評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
+                                echo '<div class="listing_text">房屋編號: ' . $verify_id . ' ' . $listing_status . '<br>評分:' . $star_rate . '分<br>地址:' . $address . '<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</div>';

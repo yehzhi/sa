@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/listings_styles.css">
 	<link rel="stylesheet" type="text/css" href="styles/listings_responsive.css">
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -127,7 +128,29 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function(){
+    // 監聽兩個表單的提交事件
+    $('.search_form, #keywordSearchForm').submit(function(e){
+        // 阻止表單默認提交行為
+        e.preventDefault();
+        
+        // 獲取搜尋表單數據
+        var formData = $(this).serialize();
 
+        // 發送 Ajax 請求
+        $.ajax({
+            type: "GET",
+            url: "search_nonum.php", 
+            data: formData,
+            success: function(response){
+                // 將後端返回的結果插入到頁面中
+                $('.listings_col').html(response);
+            }
+        });
+    });
+});
+</script>
 <div class="listings">
 	<div class="container">
 		<div class="row">
@@ -135,12 +158,12 @@
 				<div class="search_box">
 					<div class="search_box_content">
 						<div class="search_box_title text-center">
-							<form action="#">
-								<div class="newsletter_form_content d-flex flex-row">
-									<input class="custom-input" type="text" placeholder=" 文章關鍵字">
-									<button ype="submit" class="newsletter_submit_btn" value="Submit">搜尋</button>
-								</div>
-							</form>
+						<form id="keywordSearchForm">
+							<div class="newsletter_form_content d-flex flex-row">
+								<input class="custom-input" type="text" name="keyword" id="contentKeyword" placeholder="文章關鍵字">
+								<button type="submit" class="newsletter_submit_btn" value="Submit">搜尋</button>
+							</div>
+						</form>
 						</div>
 						<div class="fixed-button-container">
 						<?php
@@ -152,19 +175,19 @@
 							else{
 							}
 							?>
-							<form class="search_form" action="#">
+							<form class="search_form" action="search_nonum.php" method="GET">
 								<div class="search_box_container">
 									<ul class="dropdown_row clearfix">
 										<br>
 										<div class="dropdown_item_title">標題</div>
-										<input name="title" type="text" placeholder="ex:玫瑰公寓">
+										<input name="article" type="text" placeholder="ex:玫瑰公寓">
 										<div class="dropdown_item_title">日期</div>
-										<input type="date" id="post_date" name="post_date" value="2024-04-16"
-											min="2018-01-1" max="2050-12-31" />
-											<div class="dropdown_item_title">評分</div>
+										<input type="month" id="month" name="month" value="" min="2018-01" max="2050-12" />
+										<div class="dropdown_item_title">評分</div>
 											<div class="slider-container">
-												<input type="range" id="star_rate" name="star_rate" min="0" max="5" value="1" step="1" required>
+												<input type="range" id="star_rate" name="star_rate" min="-1" max="5" value="-1" step="1" >
 												<div class="slider-values" style="color: white;">
+													<span>無</span>
 													<span>0</span>
 													<span>1</span>
 													<span>2</span>
@@ -194,9 +217,8 @@
 													position: relative;
 												}
 											</style>
-								
 										<div class="dropdown_item_title">地址</div>
-										<input name="title" type="text" placeholder="ex:南京東路五段">
+										<input name="address" type="text" placeholder="ex:南京東路五段">
 									</ul>
 								</div>
 								<div class="search_features_container">
@@ -211,17 +233,19 @@
 			</div>
 			<div class="col-lg-8 listings_col">
 				<?php
+				
+
 				$servername = "localhost";
 				$username = "root";
 				$password = ""; 
 				$dbname = "sa";
 
 				
-				$conn = new mysqli($servername, $username, $password, $dbname,3307);
+				$conn = new mysqli($servername, $username, $password, $dbname);
 
 				
 				if ($conn->connect_error) {
-				    die("连接失败: " . $conn->connect_error);
+				    die("連接失敗: " . $conn->connect_error);
 				}
 
 				
@@ -234,6 +258,7 @@
 				    while($row = $result->fetch_assoc()) {  
 						$post_id = $row["post_id"];
 				        $article = $row["article"];
+						$address = $row["address"];
 				        $star_rate = $row["star_rate"];
 				        $post_date = $row["post_date"];
 				        $gender = $row["gender"];
@@ -253,7 +278,7 @@
 				        echo '<div class="listing_item_inner d-flex flex-md-row flex-column trans_300">';
 				        echo '<div class="listing_content">';
 						echo '<div class="listing_title"><a href="post_nonum_all.php?post_id=' . $post_id . '">' . $article . '</a></div>';
-				        echo '<div class="listing_text">評分:' . $star_rate . '分<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
+				        echo '<div class="listing_text">評分:' . $star_rate . '分<br>地址:' . $address . '<br>日期: ' . $post_date . '<br>發文者: ' . $lastname . $prefix . '</div>';
 				        echo '</div>';
 				        echo '</div>';
 				        echo '</div>';

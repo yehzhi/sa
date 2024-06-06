@@ -74,7 +74,12 @@
 			</div>
 		</div>
 	</div>
-	
+	<style>
+        .search_box_content {
+            max-width: 600px; /* 調整表格最大寬度 */
+            margin: 0 auto; /* 讓表格水平置中 */
+        }
+    </style>
 	<hr>
 	<div class="listings">
         <div class="container">
@@ -277,7 +282,7 @@
 								<style>
 									.slider-container {
 										position: relative;
-										width: 800px; /* 根據需要調整寬度 */
+										width: auto; /* 根據需要調整寬度 */
 									}
 
 									input[type="range"] {
@@ -299,7 +304,7 @@
 								<br>
 								<div class="dropdown_item_title_login">租屋照片</div>
 								<div class="mb-3">
-									<input type="file" class="form-control" id="house_photo" name="house_photo">
+									<input type="file" class="form-control" id="house_photo" name="house_photo" required>
 								</div>
 								<br>
 								<div class="dropdown_item_title_login">上傳租屋證明(經人工審核過後才可以發佈出去)</div>
