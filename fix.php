@@ -126,7 +126,7 @@
                             <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "19990817";
+                            $password = "";
                             $dbname = "sa";
                             $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -141,11 +141,13 @@
 
 
                                 while ($row = $result->fetch_assoc()) {
-                                    
+
                                     $id = $row["vid"];
                                     $title = $row["i_title"];
                                     $address = $row["i_address"];
-                                    $rent = $row["i_rent"];
+                                    $min = $row["i_min"];
+                                    $max = $row["i_max"];
+
                                     $gender = $row["i_gender"];
                                     $equip = $row["i_equip"];
                                     $roomstyle = $row["i_roomstyle"];
@@ -153,636 +155,857 @@
                                     $walktime = $row["i_walktime"];
                                     $introduce = $row["i_introduce"];
 
-                                    
-                                    ?>
-                                    <form action = "fixdata.php" method = "post">
-                                    <div class="search_box1">
-                                    <div class="up3" style="display: flex;margin-left: 320px;">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="out" value="option1">
-                                            <label class="form-check-label" for="inlineRadio1">已出售</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="stay" value="option2">
-                                            <label class="form-check-label" for="inlineRadio2">出租中</label>
-                                        </div>
-                                    </div>
-                                    <div class="search_box_content1" style="height: auto;">
-                                        <!-- Search Form -->
-                                        <form class="search_form" action="#">
-                                            <div class="search_box_container1">
-                                                <ul class="dropdown_row clearfix" style="margin-left: -25px;">
-                                                    <br>
-                                                    <li class="dropdown_item">
-                                                        <div class="dropdown_item_title1">房屋編號</div>
-                                                        <div class="mb-3">
-                                                            <input type="text"  class="form-control" name="fid" value=<?php echo $id; ?>>
-                                                        </div>
-                                                    </li>
-                                                    <li class="dropdown_item">
-                                                        <div class="dropdown_item_title1">標題</div>
-                                                        <div class="mb-3">
-                                                            <input type="text" class="form-control" name="fixtitle" value=<?php echo $title; ?>>
-                                                        </div>
-                                                    </li>
-                                                    <li class="dropdown_item">
-                                                        <div class="dropdown_item_title1">房屋地址</div>
-                                                        <div class="mb-3">
-                                                            <input type="text" class="form-control" name="fixaddress" value=<?php echo $address; ?>>
-                                                        </div>
-                                                    </li>
-                                                    <li class="dropdown_item">
-                                                        <div class="dropdown_item_title1">上傳房屋圖片</div>
-                                                        <div class="mb-3">
-                                                            <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                                        </div>
-                                                    </li>
-                                                    <li class="dropdown_item">
-                                                        <div class="dropdown_item_title1">租金</div>
-                                                        <div class="mb-3">
-                                                            <input type="text" class="form-control" name="fixrent" value=<?php echo $rent; ?>>
-                                                        </div>
-                                                    </li>
-
-                                                    <div class="up2" style="margin-left: 30px;">
-                                                        <h6 style="color: #FFFFFF;">性別:</h6>
-                                                        <?php
-                                                        if ($gender == "男") {
-                                                        ?>
-                                                            <select name="fixgender">
-                                                                <option value="男" selected>男</option>
-                                                                <option value="女">女</option>
-                                                                <option value="不限制">不限制</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($gender == "女") {
-                                                        ?>
-                                                            <select name="fixgender">
-                                                                <option value="男">男</option>
-                                                                <option value="女" selected>女</option>
-                                                                <option value="不限制">不限制</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($gender == "不限制") {
-                                                        ?>
-                                                            <select name="fixgender">
-                                                                <option value="男">男</option>
-                                                                <option value="女">女</option>
-                                                                <option value="不限制" selected>不限制</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-                                                        ?>
-                                                        <br><br>
-                                                        <h6 style="color: #FFFFFF;">租屋設備:</h6>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '電視') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="電視" checked>
-                                                                    <label for="search_features_5">電視</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="電視">
-                                                                    <label for="search_features_5">電視</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
+                                    $deposit = $row["i_deposit"];
+                                    $deposit_amount = $row["i_deposit_amount"];
+                                    $utility = $row["i_utility"];
+                                    $uamount = $row["u_amount"];
+                                    $ucal = $row["u_cal"];
 
 
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '冰箱') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="冰箱" checked>
-                                                                    <label for="search_features_6">冰箱</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="冰箱">
-                                                                    <label for="search_features_6">冰箱</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '衛浴') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="衛浴" checked>
-                                                                    <label for="search_features_7">衛浴</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="衛浴">
-                                                                    <label for="search_features_7">衛浴</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '冷氣') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="冷氣" checked>
-                                                                    <label for="search_features_8">冷氣</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="冷氣">
-                                                                    <label for="search_features_8">冷氣</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '洗衣機') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="洗衣機" checked>
-                                                                    <label for="search_features_9">洗衣機</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="洗衣機">
-                                                                    <label for="search_features_9">洗衣機</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '飲水機') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="飲水機" checked>
-                                                                    <label for="search_features_10">飲水機</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="飲水機">
-                                                                    <label for="search_features_10">飲水機</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '沙發') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="沙發" checked>
-                                                                    <label for="search_features_11">沙發</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="沙發">
-                                                                    <label for="search_features_11">沙發</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '衣櫃') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="衣櫃" checked>
-                                                                    <label for="search_features_12">衣櫃</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="衣櫃">
-                                                                    <label for="search_features_12">衣櫃</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '單人床') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="單人床" checked>
-                                                                    <label for="search_features_13">單人床</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="單人床">
-                                                                    <label for="search_features_13">單人床</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '雙人床') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="雙人床" checked>
-                                                                    <label for="search_features_14">雙人床</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="雙人床">
-                                                                    <label for="search_features_14">雙人床</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '書櫃') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="書櫃" checked>
-                                                                    <label for="search_features_15">書櫃</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="書櫃">
-                                                                    <label for="search_features_15">書櫃</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '書桌(椅)') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="書桌(椅)" checked>
-                                                                    <label for="search_features_16">書桌(椅)</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="書桌(椅)">
-                                                                    <label for="search_features_16">書桌(椅)</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '檯燈') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="檯燈" checked>
-                                                                    <label for="search_features_17">檯燈</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="檯燈">
-                                                                    <label for="search_features_17">檯燈</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '寬頻網路') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="寬頻網路" checked>
-                                                                    <label for="search_features_18">寬頻網路</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="寬頻網路">
-                                                                    <label for="search_features_18">寬頻網路</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '電話') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="電話" checked>
-                                                                    <label for="search_features_19">電話</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="電話">
-                                                                    <label for="search_features_19">電話</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '瓦斯') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="瓦斯" checked>
-                                                                    <label for="search_features_20">瓦斯</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="瓦斯">
-                                                                    <label for="search_features_20">瓦斯</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '熱水器') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="熱水器" checked>
-                                                                    <label for="search_features_21">熱水器</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="熱水器">
-                                                                    <label for="search_features_21">熱水器</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '可養寵物') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="可養寵物" checked>
-                                                                    <label for="search_features_22">可養寵物</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="可養寵物">
-                                                                    <label for="search_features_22">可養寵物</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-
-                                                        <li class="search_features_item">
-                                                            <div>
-                                                                <?php
-                                                                if (strpos($equip, '有對外窗') !== false) {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="有對外窗" checked>
-                                                                    <label for="search_features_23">有對外窗</label>
-                                                                <?php
-                                                                } else {
-                                                                ?>
-                                                                    <input type="checkbox" name="fixeq[]" value="有對外窗">
-                                                                    <label for="search_features_23">有對外窗</label>
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                        </li>
-                                                </ul>
-                                                <div>
-                                                    <li class="dropdown_item dropdown_item_5" style="width: 100px;">
-                                                        <div class="dropdown_item_title">出租類型</div>
-                                                        <?php
-                                                        if ($roomstyle == "不限") {
-                                                        ?>
-                                                            <select name="fixroomstyle">
-                                                                <option value="不限" selected>不限</option>
-                                                                <option value="房間">房間</option>
-                                                                <option value="套房">套房</option>
-                                                                <option value="整棟">整棟</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($roomstyle == "房間") {
-                                                        ?>
-                                                            <select name="fixroomstyle">
-                                                                <option value="不限">不限</option>
-                                                                <option value="房間" selected>房間</option>
-                                                                <option value="套房">套房</option>
-                                                                <option value="整棟">整棟</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($roomstyle == "套房") {
-                                                        ?>
-                                                            <select name="fixroomstyle">
-                                                                <option value="不限">不限</option>
-                                                                <option value="房間">房間</option>
-                                                                <option value="套房" selected>套房</option>
-                                                                <option value="整棟">整棟</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($roomstyle == "整棟") {
-                                                        ?>
-                                                            <select name="fixroomstyle">
-                                                                <option value="不限">不限</option>
-                                                                <option value="房間">房間</option>
-                                                                <option value="套房">套房</option>
-                                                                <option value="整棟" selected>整棟</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-                                                        ?>
-                                                    </li>
-
-                                                    <li class="dropdown_item dropdown_item_5" style="width: 60px;">
-                                                        <div class="dropdown_item_title">鄰近入口</div>
-                                                        <?php
-                                                        if ($entrance == "不限") {
-                                                        ?>
-                                                            <select name="fixentrance">
-                                                                <option value="不限" selected>不限</option>
-                                                                <option value="大門">大門</option>
-                                                                <option value="514側門">514側門</option>
-                                                                <option value="貴子路門">貴子路門(後門)</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($entrance == "大門") {
-                                                        ?>
-                                                            <select name="fixentrance">
-                                                                <option value="不限">不限</option>
-                                                                <option value="大門" selected>大門</option>
-                                                                <option value="514側門">514側門</option>
-                                                                <option value="貴子路門">貴子路門(後門)</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($entrance == "514側門") {
-                                                        ?>
-                                                            <select name="fixentrance">
-                                                                <option value="不限">不限</option>
-                                                                <option value="大門">大門</option>
-                                                                <option value="514側門" selected>514側門</option>
-                                                                <option value="貴子路門">貴子路門(後門)</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($entrance == "貴子路門") {
-                                                        ?>
-                                                            <select name="fixentrance">
-                                                                <option value="不限">不限</option>
-                                                                <option value="大門">大門</option>
-                                                                <option value="514側門">514側門</option>
-                                                                <option value="貴子路門" selected>貴子路門(後門)</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-                                                        ?>
-                                                    </li>
-                                                    <li class="dropdown_item dropdown_item_5" style="width: 100px;">
-                                                        <div class="dropdown_item_title">步行時間</div>
-                                                        <?php
-                                                        if ($walktime == "不限") {
-                                                        ?>
-                                                            <select name="fixwalktime">
-                                                                <option value="不限" selected>不限</option>
-                                                                <option value="5分鐘內">5分鐘內</option>
-                                                                <option value="5-15分鐘">5-15分鐘</option>
-                                                                <option value="15分鐘以上">15分鐘以上</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($walktime == "5分鐘內") {
-                                                        ?>
-                                                            <select name="fixwalktime">
-                                                                <option value="不限">不限</option>
-                                                                <option value="5分鐘內" selected>5分鐘內</option>
-                                                                <option value="5-15分鐘">5-15分鐘</option>
-                                                                <option value="15分鐘以上">15分鐘以上</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($walktime == "5-15分鐘") {
-                                                        ?>
-                                                            <select name="fixwalktime">
-                                                                <option value="不限">不限</option>
-                                                                <option value="5分鐘內">5分鐘內</option>
-                                                                <option value="5-15分鐘" selected>5-15分鐘</option>
-                                                                <option value="15分鐘以上">15分鐘以上</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-
-                                                        if ($walktime == "15分鐘以上") {
-                                                        ?>
-                                                            <select name="fixwalktime">
-                                                                <option value="不限">不限</option>
-                                                                <option value="5分鐘內">5分鐘內</option>
-                                                                <option value="5-15分鐘">5-15分鐘</option>
-                                                                <option value="15分鐘以上" selected>15分鐘以上</option>
-                                                            </select>
-                                                        <?php
-                                                        } else {
-                                                        }
-                                                        ?>
-                                                    </li>
+                            ?>
+                                    <form action="fixdata.php" method="post">
+                                        <div class="search_box1">
+                                            <div class="up3" style="display: flex;margin-left: 320px;">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="out" value="option1">
+                                                    <label class="form-check-label" for="inlineRadio1">已出售</label>
                                                 </div>
-                                                <div class="yo" style="margin-left: -42px;">
-                                                    <li class="dropdown_item">
-                                                        <br>
-                                                        <div class="dropdown_item_title1">詳細介紹</div>
-                                                        <div class="mb-3">
-                                                            <input type="text" class="form-control1" name="fixintroduce" value=<?php echo $introduce; ?>>
-                                                        </div>
-                                                    </li>
-                                                </div>
-                                                <br><br><br><br>
-                                            </div>
-
-                                            <div class="search_features_container"><br><br><br><br>
-                                                <div class="search_button">
-                                                <input type='submit' value='送出修改'>
-
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="stay" value="option2">
+                                                    <label class="form-check-label" for="inlineRadio2">出租中</label>
                                                 </div>
                                             </div>
-                                    </div>
-                            </div>
-                            
+                                            <div class="search_box_content1" style="height: auto;">
+                                                <!-- Search Form -->
+                                                <form class="search_form" action="#">
+                                                    <div class="search_box_container1">
+                                                        <ul class="dropdown_row clearfix" style="margin-left: -25px;">
+                                                            <br>
+                                                            <li class="dropdown_item">
+                                                                <div class="dropdown_item_title1">房屋編號</div>
+                                                                <div class="mb-3">
+                                                                    <input type="text" class="form-control" name="fid" value=<?php echo $id; ?>>
+                                                                </div>
+                                                            </li>
+                                                            <li class="dropdown_item">
+                                                                <div class="dropdown_item_title1">標題</div>
+                                                                <div class="mb-3">
+                                                                    <input type="text" class="form-control" name="fixtitle" value=<?php echo $title; ?>>
+                                                                </div>
+                                                            </li>
+                                                            <li class="dropdown_item">
+                                                                <div class="dropdown_item_title1">房屋地址</div>
+                                                                <div class="mb-3">
+                                                                    <input type="text" class="form-control" name="fixaddress" value=<?php echo $address; ?>>
+                                                                </div>
+                                                            </li>
+                                                            <li class="dropdown_item">
+                                                                <div class="dropdown_item_title1">上傳房屋圖片</div>
+                                                                <div class="mb-3">
+                                                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                                                </div>
+                                                            </li>
+                                                            <li class="dropdown_item">
+                                                                <div class="dropdown_item_title1">租金區間：</div>
+                                                                <div class="mb-3">
+
+                                                                    <input type="text" class="form-control" id="minfixrent" name="minfixrent" placeholder="最低" required step="100" value=<?php echo $min; ?>>
+                                                                    <div class="dropdown_item_title1">~</div>
+                                                                    <input type="text" class="form-control" id="maxfixrent" name="maxfixrent" placeholder="最高" required step="100" value=<?php echo $max; ?>>
+
+                                                                </div>
+                                                            </li>
+
+                                                            <div class="up2" style="margin-left: 30px;">
+                                                                <h6 style="color: #FFFFFF;">性別:</h6>
+                                                                <?php
+                                                                if ($gender == "男") {
+                                                                ?>
+                                                                    <select name="fixgender">
+                                                                        <option value="男" selected>男</option>
+                                                                        <option value="女">女</option>
+                                                                        <option value="不限制">不限制</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($gender == "女") {
+                                                                ?>
+                                                                    <select name="fixgender">
+                                                                        <option value="男">男</option>
+                                                                        <option value="女" selected>女</option>
+                                                                        <option value="不限制">不限制</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($gender == "不限制") {
+                                                                ?>
+                                                                    <select name="fixgender">
+                                                                        <option value="男">男</option>
+                                                                        <option value="女">女</option>
+                                                                        <option value="不限制" selected>不限制</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+                                                                ?>
+                                                                <br><br>
+                                                                <h6 style="color: #FFFFFF;">租屋設備:</h6>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '電視') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="電視" checked>
+                                                                            <label for="search_features_5">電視</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="電視">
+                                                                            <label for="search_features_5">電視</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '冰箱') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="冰箱" checked>
+                                                                            <label for="search_features_6">冰箱</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="冰箱">
+                                                                            <label for="search_features_6">冰箱</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '衛浴') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="衛浴" checked>
+                                                                            <label for="search_features_7">衛浴</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="衛浴">
+                                                                            <label for="search_features_7">衛浴</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '冷氣') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="冷氣" checked>
+                                                                            <label for="search_features_8">冷氣</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="冷氣">
+                                                                            <label for="search_features_8">冷氣</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '洗衣機') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="洗衣機" checked>
+                                                                            <label for="search_features_9">洗衣機</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="洗衣機">
+                                                                            <label for="search_features_9">洗衣機</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '飲水機') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="飲水機" checked>
+                                                                            <label for="search_features_10">飲水機</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="飲水機">
+                                                                            <label for="search_features_10">飲水機</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '沙發') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="沙發" checked>
+                                                                            <label for="search_features_11">沙發</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="沙發">
+                                                                            <label for="search_features_11">沙發</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '衣櫃') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="衣櫃" checked>
+                                                                            <label for="search_features_12">衣櫃</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="衣櫃">
+                                                                            <label for="search_features_12">衣櫃</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '單人床') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="單人床" checked>
+                                                                            <label for="search_features_13">單人床</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="單人床">
+                                                                            <label for="search_features_13">單人床</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '雙人床') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="雙人床" checked>
+                                                                            <label for="search_features_14">雙人床</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="雙人床">
+                                                                            <label for="search_features_14">雙人床</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '書櫃') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="書櫃" checked>
+                                                                            <label for="search_features_15">書櫃</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="書櫃">
+                                                                            <label for="search_features_15">書櫃</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '書桌(椅)') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="書桌(椅)" checked>
+                                                                            <label for="search_features_16">書桌(椅)</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="書桌(椅)">
+                                                                            <label for="search_features_16">書桌(椅)</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '檯燈') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="檯燈" checked>
+                                                                            <label for="search_features_17">檯燈</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="檯燈">
+                                                                            <label for="search_features_17">檯燈</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '寬頻網路') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="寬頻網路" checked>
+                                                                            <label for="search_features_18">寬頻網路</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="寬頻網路">
+                                                                            <label for="search_features_18">寬頻網路</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '電話') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="電話" checked>
+                                                                            <label for="search_features_19">電話</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="電話">
+                                                                            <label for="search_features_19">電話</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '瓦斯') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="瓦斯" checked>
+                                                                            <label for="search_features_20">瓦斯</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="瓦斯">
+                                                                            <label for="search_features_20">瓦斯</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '熱水器') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="熱水器" checked>
+                                                                            <label for="search_features_21">熱水器</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="熱水器">
+                                                                            <label for="search_features_21">熱水器</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '可養寵物') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="可養寵物" checked>
+                                                                            <label for="search_features_22">可養寵物</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="可養寵物">
+                                                                            <label for="search_features_22">可養寵物</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '有對外窗') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="有對外窗" checked>
+                                                                            <label for="search_features_23">有對外窗</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="有對外窗">
+                                                                            <label for="search_features_23">有對外窗</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+                                                                
+                                                                <li class="search_features_item">
+                                                                    <div>
+                                                                        <?php
+                                                                        if (strpos($equip, '電梯') !== false) {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="電梯" checked>
+                                                                            <label for="search_features_23">電梯</label>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <input type="checkbox" name="fixeq[]" value="電梯">
+                                                                            <label for="search_features_23">電梯</label>
+                                                                        <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </li>
+                                                                
+                                                        
+                                                        
+                                                        
+                                                        <h6 style="color: #FFFFFF;">鄰近入口:</h6>
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '大門') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="front" checked>
+                                                                    <label for="search_features_5">大門</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="front">
+                                                                    <label for="search_features_5">大門</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '514側門') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="next" checked>
+                                                                    <label for="search_features_5">514側門</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="next">
+                                                                    <label for="search_features_5">514側門</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '貴子路後門') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="back" checked>
+                                                                    <label for="search_features_5">貴子路後門</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="back">
+                                                                    <label for="search_features_5">貴子路後門</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '捷運輔大站') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="fu" checked>
+                                                                    <label for="search_features_5">捷運輔大站</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="fu">
+                                                                    <label for="search_features_5">捷運輔大站</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '捷運新莊站') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="xing" checked>
+                                                                    <label for="search_features_5">捷運新莊站</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="xing">
+                                                                    <label for="search_features_5">捷運新莊站</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '捷運丹鳳站') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="dan" checked>
+                                                                    <label for="search_features_5">捷運丹鳳站</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="dan">
+                                                                    <label for="search_features_5">捷運丹鳳站</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '捷運迴龍站') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="hui" checked>
+                                                                    <label for="search_features_5">捷運迴龍站</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="hui">
+                                                                    <label for="search_features_5">捷運迴龍站</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="search_features_item">
+                                                            <div>
+                                                                <?php
+                                                                if (strpos($entrance, '捷運新埔站') !== false) {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="xinpu" checked>
+                                                                    <label for="search_features_5">捷運新埔站</label>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <input type="checkbox" name="fixentrance[]" value="xinpu">
+                                                                    <label for="search_features_5">捷運新埔站</label>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
+                                                        </li>
+                                                            
+                                                        </ul>
+
+                                                        <div>
+                                                            
+                                                                <div class="dropdown_item_title" style="width: 100px;margin-left: 35px;">出租類型</div>
+                                                                <?php
+                                                                if ($roomstyle == "不限") {
+                                                                ?>
+                                                                    <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限" selected>不限</option>
+                                                                        <option value="房間">房間</option>
+                                                                        <option value="套房">套房</option>
+                                                                        <option value="整棟">整棟</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($roomstyle == "房間") {
+                                                                ?>
+                                                                    <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限">不限</option>
+                                                                        <option value="房間" selected>房間</option>
+                                                                        <option value="套房">套房</option>
+                                                                        <option value="整棟">整棟</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($roomstyle == "套房") {
+                                                                ?>
+                                                                    <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限">不限</option>
+                                                                        <option value="房間">房間</option>
+                                                                        <option value="套房" selected>套房</option>
+                                                                        <option value="整棟">整棟</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($roomstyle == "整棟") {
+                                                                ?>
+                                                                    <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限">不限</option>
+                                                                        <option value="房間">房間</option>
+                                                                        <option value="套房">套房</option>
+                                                                        <option value="整棟" selected>整棟</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+                                                                ?>
+                                                            
+
+                                                            
+                                                            
+                                                                <div class="dropdown_item_title" style="width: 100px;margin-left: 35px;">步行時間</div>
+                                                                <?php
+                                                                if ($walktime == "不限") {
+                                                                ?>
+                                                                    <select name="fixwalktime" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限" selected>不限</option>
+                                                                        <option value="5分鐘內">5分鐘內</option>
+                                                                        <option value="5-15分鐘">5-15分鐘</option>
+                                                                        <option value="15分鐘以上">15分鐘以上</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($walktime == "5分鐘內") {
+                                                                ?>
+                                                                    <select name="fixwalktime" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限">不限</option>
+                                                                        <option value="5分鐘內" selected>5分鐘內</option>
+                                                                        <option value="5-15分鐘">5-15分鐘</option>
+                                                                        <option value="15分鐘以上">15分鐘以上</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($walktime == "5-15分鐘") {
+                                                                ?>
+                                                                    <select name="fixwalktime" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限">不限</option>
+                                                                        <option value="5分鐘內">5分鐘內</option>
+                                                                        <option value="5-15分鐘" selected>5-15分鐘</option>
+                                                                        <option value="15分鐘以上">15分鐘以上</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($walktime == "15分鐘以上") {
+                                                                ?>
+                                                                    <select name="fixwalktime" style="width: 100px;margin-left: 35px;">
+                                                                        <option value="不限">不限</option>
+                                                                        <option value="5分鐘內">5分鐘內</option>
+                                                                        <option value="5-15分鐘">5-15分鐘</option>
+                                                                        <option value="15分鐘以上" selected>15分鐘以上</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+                                                                ?>
+                                                            
+                                                        </div>
+
+                                                        <div class="yo" style="margin-left: -5px;">
+														
+															<br>
+													
+															<div class="mb-3" style="margin-left: 30px;">
+                                                                <br><br><br>
+                                                            <label style="color: #FFFFFF;">需要押金：</label>
+                                                            <?php
+                                                                if ($deposit == "yes") {
+                                                                ?>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" checked><label for="fixdeposit" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no" ><label for="fixdeposit" style="color: #FFFFFF;">否</label>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($deposit == "no") {
+                                                                ?>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" ><label for="fixdeposit" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no"  checked><label for="fixdeposit" style="color: #FFFFFF;">否</label> 
+                                                                <?php
+                                                                } else {
+                                                                }
+                                                                ?>
+                                                                <br>
+                                                                <label for="deposit_amount" style="color: #FFFFFF;">押金金額(若無則不用填寫)：</label>
+                                                                <input type="text" id="deposit_amount" name="fixdeposit_amount" value=<?php echo $deposit_amount; ?>>
+															<br>	
+                                                            <label style="color: #FFFFFF;">需要水電費：</label>
+                                                            <?php
+                                                                if ($utility == "yes") {
+                                                                ?>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" checked><label for="fixutility" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="no" ><label for="fixutility" style="color: #FFFFFF;">否</label>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                if ($utility == "no") {
+                                                                ?>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" ><label for="fixutility" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="no"  checked><label for="fixutility" style="color: #FFFFFF;">否</label> 
+                                                                <?php
+                                                                } else {
+                                                                }
+                                                                ?>
+                                                                <br>
+                                                                <label for="utility_amount" style="color: #FFFFFF;">水電費金額(若無則不用填寫)：</label>
+																<input type="text" id="utility_amount" name="fixuamount" value=<?php echo $uamount; ?>>	
+                                                                <br>
+                                                                <label for="utility_calculation" style="color: #FFFFFF;">計算方式(若無則不用填寫)：</label>
+                                                                <?php
+
+
+                                                                if ($ucal == "按月計算") {
+                                                                ?>
+                                                                    <select id="utility_calculation" name="fixucal">
+                                                                    <option value="按月計算" selected>按月計算</option>
+																		<option value="按度數計算">按度數計算</option>
+																		<option value="固定金額">固定金額</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                
+                                                                if ($ucal == "按度數計算") {
+                                                                ?>
+                                                                    <select id="utility_calculation" name="fixucal">
+                                                                    <option value="按月計算">按月計算</option>
+																		<option value="按度數計算" selected>按度數計算</option>
+																		<option value="固定金額">固定金額</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+
+                                                                
+                                                                if ($ucal == "固定金額") {
+                                                                ?>
+                                                                    <select id="utility_calculation" name="fixucal">
+                                                                    <option value="按月計算">按月計算</option>
+																		<option value="按度數計算">按度數計算</option>
+																		<option value="固定金額" selected>固定金額</option>
+                                                                    </select>
+                                                                <?php
+                                                                } else {
+                                                                }
+                                                                ?>
+															</div>
+														
+													</div>
+
+
+                                                        <div class="yo" style="margin-left: -42px;">
+                                                            <li class="dropdown_item">
+                                                                <br>
+                                                                <div class="dropdown_item_title1">詳細介紹</div>
+                                                                <div class="mb-3">
+                                                                    <input type="text" class="form-control1" name="fixintroduce" value=<?php echo $introduce; ?>>
+                                                                </div>
+                                                            </li>
+                                                        </div>
+                                                        <br><br><br><br>
+                                                    </div>
+
+                                                    <div class="search_features_container">
+                                                        <div class="search_button">
+                                                            <input type='submit' value='送出修改' style="margin-left: 220px;">
+
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+
 
 
                         </div>
                         </form>
-                        <?php
+                <?php
                                 }
                             } else {
-                                
                             }
 
 
 
-                            ?>
+                ?>
 
-                            <!-- Search Box -->
+                <!-- Search Box -->
 
-                            
+
                     </div>
                 </div>
 
