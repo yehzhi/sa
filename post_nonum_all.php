@@ -110,7 +110,7 @@
                                 // 如果用戶未登入
 								echo '<nav class="main_nav">';
                                 echo '<ul class="main_nav_list">';
-                                echo '<li class="main_nav_item"><a href="index-te.php">首頁</a></li>';
+                                echo '<li class="main_nav_item"><a href="index.php">首頁</a></li>';
                                 echo '<li class="main_nav_item">';
                                 echo '<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
                                 echo '<div class="dropdown-menu"  style="background-color: #a1a8c6;">';
