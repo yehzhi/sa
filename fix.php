@@ -216,7 +216,7 @@
                                                                 </div>
                                                             </li>
 
-                                                            <div class="up2" style="margin-left: 30px;">
+                                                            
                                                                 <h6 style="color: #FFFFFF;">性別:</h6>
                                                                 <?php
                                                                 if ($gender == "男") {
@@ -969,7 +969,7 @@
 													</div>
 
 
-                                                        <div class="yo" style="margin-left: -42px;">
+                                                        <div class="yo" style="margin-left: -15px;">
                                                             <li class="dropdown_item">
                                                                 <br>
                                                                 <div class="dropdown_item_title1">詳細介紹</div>
