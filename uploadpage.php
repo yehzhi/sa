@@ -409,7 +409,7 @@
 															<div class="dropdown_item_title">出租類型</div>
 															<select name="roomstyle" id="property_ID"
 																class="dropdown_item_select" required>
-																<option value="整層住家">不限</option>
+																<option value="不限">不限</option>
 																<option value="雅房">雅房</option>
 																<option value="套房">套房</option>
 																<option value="家庭式">家庭式</option>
