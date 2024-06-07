@@ -27,6 +27,19 @@ $fixutility = $_POST["fixutility"];
 $fixuamount = $_POST["fixuamount"];
 $fixucal = $_POST["fixucal"];
 
+$fixrentyesno = $_POST["rentyesno"];
+if($fixrentyesno == "rentyes"){
+    $sql2 = "DELETE FROM information WHERE vid= '$vid'";
+    if ($conn->query($sql2) === TRUE) {
+        
+    } else {
+        
+    }
+
+}else{
+
+}
+
 
 $sql = "UPDATE information SET i_title='$ftitle', i_address='$faddress',i_min='$fmin',i_max='$fmax',i_gender='$fgender',i_equip='$feq',i_roomstyle='$froomstyle',i_entrance='$fen',i_walktime='$fwalktime',i_introduce='$fintroduce' ,i_deposit='$fixdeposit',i_deposit_amount='$fixdeposit_amount',i_utility='$fixutility',u_amount='$fixuamount',u_cal='$fixucal'WHERE vid=$vid";
 
@@ -48,3 +61,4 @@ if ($conn->query($sql) !== TRUE) {
 
 $conn->close();
 ?>
+
