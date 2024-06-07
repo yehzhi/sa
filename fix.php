@@ -642,12 +642,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '大門') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="front" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="大門" checked>
                                                                     <label for="search_features_5">大門</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="front">
+                                                                    <input type="checkbox" name="fixentrance[]" value="大門">
                                                                     <label for="search_features_5">大門</label>
                                                                 <?php
                                                                 }
@@ -660,12 +660,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '514側門') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="next" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="514側門" checked>
                                                                     <label for="search_features_5">514側門</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="next">
+                                                                    <input type="checkbox" name="fixentrance[]" value="514側門">
                                                                     <label for="search_features_5">514側門</label>
                                                                 <?php
                                                                 }
@@ -678,12 +678,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '貴子路後門') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="back" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="貴子路後門" checked>
                                                                     <label for="search_features_5">貴子路後門</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="back">
+                                                                    <input type="checkbox" name="fixentrance[]" value="貴子路後門">
                                                                     <label for="search_features_5">貴子路後門</label>
                                                                 <?php
                                                                 }
@@ -696,12 +696,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運輔大站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="fu" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運輔大站" checked>
                                                                     <label for="search_features_5">捷運輔大站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="fu">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運輔大站">
                                                                     <label for="search_features_5">捷運輔大站</label>
                                                                 <?php
                                                                 }
@@ -714,12 +714,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運新莊站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xing" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新莊站" checked>
                                                                     <label for="search_features_5">捷運新莊站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xing">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新莊站">
                                                                     <label for="search_features_5">捷運新莊站</label>
                                                                 <?php
                                                                 }
@@ -732,12 +732,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運丹鳳站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="dan" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運丹鳳站" checked>
                                                                     <label for="search_features_5">捷運丹鳳站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="dan">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運丹鳳站">
                                                                     <label for="search_features_5">捷運丹鳳站</label>
                                                                 <?php
                                                                 }
@@ -750,12 +750,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運迴龍站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="hui" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運迴龍站" checked>
                                                                     <label for="search_features_5">捷運迴龍站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="hui">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運迴龍站">
                                                                     <label for="search_features_5">捷運迴龍站</label>
                                                                 <?php
                                                                 }
@@ -768,12 +768,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運新埔站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xinpu" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新埔站" checked>
                                                                     <label for="search_features_5">捷運新埔站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xinpu">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新埔站">
                                                                     <label for="search_features_5">捷運新埔站</label>
                                                                 <?php
                                                                 }
@@ -892,57 +892,63 @@
                                                             
                                                         </div>
 
-                                                        <div class="yo" style="margin-left: -5px;">
+                                                       <div class="yo" style="margin-left: -5px;">
 														
-															<br>
+								<br>
 													
-															<div class="mb-3" style="margin-left: 30px;">
+								<div class="mb-3" style="margin-left: 30px;">
                                                                 <br><br><br>
                                                             <label style="color: #FFFFFF;">需要押金：</label>
                                                             <?php
                                                                 if ($deposit == "yes") {
                                                                 ?>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" checked><label for="fixdeposit" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no" ><label for="fixdeposit" style="color: #FFFFFF;">否</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" onclick="showDepositAmount()" checked><label for="fixdeposit" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no" onclick="hideDepositAmount()"><label for="fixdeposit" style="color: #FFFFFF;">否</label>
                                                                 <?php
                                                                 } else {
                                                                 }
 
                                                                 if ($deposit == "no") {
                                                                 ?>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" ><label for="fixdeposit" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no"  checked><label for="fixdeposit" style="color: #FFFFFF;">否</label> 
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" onclick="showDepositAmount()" ><label for="fixdeposit" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no"  onclick="hideDepositAmount()" checked><label for="fixdeposit" style="color: #FFFFFF;">否</label> 
                                                                 <?php
                                                                 } else {
                                                                 }
                                                                 ?>
                                                                 <br>
-                                                                <label for="deposit_amount" style="color: #FFFFFF;">押金金額(若無則不用填寫)：</label>
-                                                                <input type="text" id="deposit_amount" name="fixdeposit_amount" value=<?php echo $deposit_amount; ?>>
-															<br>	
+                                                                
+                                                                <div id="depositAmountInput" style="display: none;">
+								<label for="deposit_amount" style="color: #FFFFFF;">押金金額：</label>
+								<input type="text" id="deposit_amount" name="fixdeposit_amount" value=<?php echo $deposit_amount; ?>>
+								<br><br>
+								</div>
+								<br>	
                                                             <label style="color: #FFFFFF;">需要水電費：</label>
                                                             <?php
                                                                 if ($utility == "yes") {
                                                                 ?>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" checked><label for="fixutility" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="no" ><label for="fixutility" style="color: #FFFFFF;">否</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" onclick="showUtilityInput()" checked><label for="fixutility" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="no" onclick="hideUtilityInput()" ><label for="fixutility" style="color: #FFFFFF;">否</label>
                                                                 <?php
                                                                 } else {
                                                                 }
 
                                                                 if ($utility == "no") {
                                                                 ?>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" ><label for="fixutility" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="no"  checked><label for="fixutility" style="color: #FFFFFF;">否</label> 
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" onclick="showUtilityInput()" ><label for="fixutility" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="no"  onclick="hideUtilityInput()" checked><label for="fixutility" style="color: #FFFFFF;">否</label> 
                                                                 <?php
                                                                 } else {
                                                                 }
                                                                 ?>
-                                                                <br>
-                                                                <label for="utility_amount" style="color: #FFFFFF;">水電費金額(若無則不用填寫)：</label>
-																<input type="text" id="utility_amount" name="fixuamount" value=<?php echo $uamount; ?>>	
-                                                                <br>
-                                                                <label for="utility_calculation" style="color: #FFFFFF;">計算方式(若無則不用填寫)：</label>
+                                                                <div id="utilityInput" style="display: none;">
+									<label for="utility_amount" style="color: #FFFFFF;">水電費金額：</label>
+									<input type="text" id="utility_amount"  name="fixuamount" value=<?php echo $uamount; ?>>
+									<br><br>
+                                                                    <label for="utility_calculation" style="color: #FFFFFF;">計算方式：</label>
+
+																
                                                                 <?php
 
 
@@ -950,8 +956,8 @@
                                                                 ?>
                                                                     <select id="utility_calculation" name="fixucal">
                                                                     <option value="按月計算" selected>按月計算</option>
-																		<option value="按度數計算">按度數計算</option>
-																		<option value="固定金額">固定金額</option>
+								    <option value="按度數計算">按度數計算</option>
+								    <option value="固定金額">固定金額</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -962,8 +968,8 @@
                                                                 ?>
                                                                     <select id="utility_calculation" name="fixucal">
                                                                     <option value="按月計算">按月計算</option>
-																		<option value="按度數計算" selected>按度數計算</option>
-																		<option value="固定金額">固定金額</option>
+								    <option value="按度數計算" selected>按度數計算</option>
+								    <option value="固定金額">固定金額</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -974,19 +980,19 @@
                                                                 ?>
                                                                     <select id="utility_calculation" name="fixucal">
                                                                     <option value="按月計算">按月計算</option>
-																		<option value="按度數計算">按度數計算</option>
-																		<option value="固定金額" selected>固定金額</option>
+								    <option value="按度數計算">按度數計算</option>
+								    <option value="固定金額" selected>固定金額</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
                                                                 }
                                                                 ?>
-															</div>
+							</div>
+                                                        </div>
 														
-													</div>
+							</div>
 
-
-                                                        <div class="yo" style="margin-left: -15px;">
+                                                        <div class="yo" style="margin-left: -42px;">
                                                             <li class="dropdown_item">
                                                                 <br>
                                                                 <div class="dropdown_item_title1">詳細介紹</div>
