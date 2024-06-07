@@ -390,8 +390,6 @@
 			</div>
 		</div>
 
-		<!-- Featured Properties -->
-
 		<div class="featured">
             <div class="container">
                 <div class="row">
@@ -490,220 +488,223 @@ p{
 
 <div class="flat-container">  
 		          
-<?php
+	<?php
 
-$servername="localhost";
-    $username="root";
-    $password="";
-    $dbname="sa";
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "sa";
 
-$conn=new mysqli($servername,$username,$password,$dbname);
-if($conn->connect_error){
-    die('連線失敗'.$conn->connect_error);
-}
-$te_ac=$_SESSION['tenant']['account'];
-$sql = "SELECT * FROM information";
-$result = $conn->query($sql);
+	$conn = new mysqli($servername, $username, $password, $dbname,3307);
+	if ($conn->connect_error) {
+		die('連線失敗' . $conn->connect_error);
+	}
+	if (isset($_SESSION['tenant']['account'])) {
+		$te_ac = $_SESSION['tenant']['account'];
+	} else {
+		$te_ac = 'default_account';
+	}
+	$sql = "SELECT * FROM information";
+	$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<div class='flat'>";
-        
-		$i_photo=$row["i_photo"];
-		$path="file/" .$i_photo;
+	if ($result->num_rows > 0) {
+		while ($row = $result->fetch_assoc()) {
+		echo "<div class='flat'>";
+
+		$i_photo = $row["i_photo"];
+		$path = "file/" . $i_photo;
 		echo "<a href='detail_page.php?id=$i_photo'>";
 		echo "<div class='image_wrapper'>";
-        echo "<img src='$path' alt=''>";
-		$s=$row["i_roomstyle"];
-		echo"<div class='featured_panel'> ".$row["i_roomstyle"] ." </div>";
+		echo "<img src='$path' alt=''>";
+		$s = $row["i_roomstyle"];
+		echo "<div class='featured_panel'> " . $row["i_roomstyle"] . " </div>";
 		echo "<div class='t_wrapper'>";
 		echo "<h2> " . $row["i_title"] . "</h2>";
 		echo "<p>房屋編號: " . $row["vid"] . "</p>";
-        echo "<p>地址: " . $row["i_address"] . "</p>";
+		echo "<p>地址: " . $row["i_address"] . "</p>";
 		echo "" . $row["i_introduce"] . "</p>";
-		$e=$row["i_equip"];
-		if(!empty($e)){
-			echo"<div class='equip'>";
-		if (strpos($e, "電視") !== false) {
-			echo "<img class='e_icon' img src='images/icon/tv.svg' alt=''> <p class='e_text'>電視</p>";
-		}
-		if (strpos($e, "冰箱") !== false) {
-			echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>冰箱</p>";
-		} 
-		if (strpos($e, "衛浴") !== false) {
-			echo "<img class='e_icon' img src='images/icon/bathroom.svg' alt=''><p class='e_text'>衛浴</p>";
-		} 
-		if (strpos($e, "冷氣") !== false) {
-			echo "<img class='e_icon' img src='images/icon/air.svg' alt=''><p class='e_text'>冷氣</p>";
-		} 
-		if (strpos($e, "洗衣機") !== false) {
-			echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>洗衣機</p>";
-		} 
-		if (strpos($e, "飲水機") !== false) {
-			echo "<img class='e_icon' img src='images/icon/drink.svg' alt=''><p class='e_text'>飲水機</p>";
-		} 
-		if (strpos($e, "沙發") !== false) {
-			echo "<img class='e_icon' img src='images/icon/sofa.svg' alt=''><p class='e_text'>沙發</p>";
-		} 
-		if (strpos($e, "衣櫃") !== false) {
-			echo "<img class='e_icon' img src='images/icon/closet.svg' alt=''><p class='e_text'>衣櫃</p>";
-		} 
-		if (strpos($e, "單人床") !== false) {
-			echo "<img class='e_icon' img src='images/icon/1.svg' alt=''><p class='e_text'>單人床</p>";
-		} 
-		if (strpos($e, "雙人床") !== false) {
-			echo "<img class='e_icon' img src='images/icon/2.svg' alt=''><p class='e_text'>雙人床</p>";
 
-		} 
-		if (strpos($e, "書櫃") !== false) {
-			echo "<img class='e_icon' img src='images/icon/book.svg' alt=''><p class='e_text'>書櫃</p>";
-		} 
-		if (strpos($e, "書桌(椅)") !== false) {
-			echo "<img class='e_icon' img src='images/icon/table.svg' alt=''><p class='e_text'>書桌椅</p>";
-		} 
-		if (strpos($e, "檯燈") !== false) {
-			echo "<img class='e_icon' img src='images/icon/lamp.svg' alt=''><p class='e_text'>檯燈</p>";
-		} 
-		if (strpos($e, "寬頻網路") !== false) {
-			echo "<img class='e_icon' img src='images/icon/internet.svg' alt=''><p class='e_text'>寬頻網路</p>";
-		} 
-		if (strpos($e, "電話") !== false) {
-			echo "<img class='e_icon' img src='images/icon/phone.svg' alt=''><p class='e_text'>電話</p>";
-		} 
-		if (strpos($e, "瓦斯") !== false) {
-			echo "<img class='e_icon' img src='images/icon/fire.svg' alt=''><p class='e_text'>瓦斯</p>";
-		} 
-		if (strpos($e, "熱水器") !== false) {
-			echo "<img class='e_icon' img src='images/icon/heat.svg' alt=''><p class='e_text'>熱水器</p>";
-		} 
-		if (strpos($e, "可養寵物") !== false) {
-			echo "<img class='e_icon' img src='images/icon/wolf.svg' alt=''><p class='e_text'>可養寵物</p>";
-		} 
-		if (strpos($e, "有對外窗") !== false) {
-			echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>有對外窗</p>";
-		} 
-		if (strpos($e, "ele") !== false) {
-			echo "<img class='e_icon' img src='images/icon/elevator.svg' alt=''><p class='e_text'>有電梯</p>";
-		} 
+		$e = $row["i_equip"];
+		if (!empty($e)) {
+					echo"<div class='equip'>";
+				if (strpos($e, "電視") !== false) {
+					echo "<img class='e_icon' img src='images/icon/tv.svg' alt=''> <p class='e_text'>電視</p>";
+				}
+				if (strpos($e, "冰箱") !== false) {
+					echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>冰箱</p>";
+				} 
+				if (strpos($e, "衛浴") !== false) {
+					echo "<img class='e_icon' img src='images/icon/bathroom.svg' alt=''><p class='e_text'>衛浴</p>";
+				} 
+				if (strpos($e, "冷氣") !== false) {
+					echo "<img class='e_icon' img src='images/icon/air.svg' alt=''><p class='e_text'>冷氣</p>";
+				} 
+				if (strpos($e, "洗衣機") !== false) {
+					echo "<img class='e_icon' img src='images/icon/fridge.svg' alt=''><p class='e_text'>洗衣機</p>";
+				} 
+				if (strpos($e, "飲水機") !== false) {
+					echo "<img class='e_icon' img src='images/icon/drink.svg' alt=''><p class='e_text'>飲水機</p>";
+				} 
+				if (strpos($e, "沙發") !== false) {
+					echo "<img class='e_icon' img src='images/icon/sofa.svg' alt=''><p class='e_text'>沙發</p>";
+				} 
+				if (strpos($e, "衣櫃") !== false) {
+					echo "<img class='e_icon' img src='images/icon/closet.svg' alt=''><p class='e_text'>衣櫃</p>";
+				} 
+				if (strpos($e, "單人床") !== false) {
+					echo "<img class='e_icon' img src='images/icon/1.svg' alt=''><p class='e_text'>單人床</p>";
+				} 
+				if (strpos($e, "雙人床") !== false) {
+					echo "<img class='e_icon' img src='images/icon/2.svg' alt=''><p class='e_text'>雙人床</p>";
 
-		echo"</div>";
-	}
-		else{
-			"";
-		}
-		echo"<div class='room_tags'>";
+				} 
+				if (strpos($e, "書櫃") !== false) {
+					echo "<img class='e_icon' img src='images/icon/book.svg' alt=''><p class='e_text'>書櫃</p>";
+				} 
+				if (strpos($e, "書桌(椅)") !== false) {
+					echo "<img class='e_icon' img src='images/icon/table.svg' alt=''><p class='e_text'>書桌椅</p>";
+				} 
+				if (strpos($e, "檯燈") !== false) {
+					echo "<img class='e_icon' img src='images/icon/lamp.svg' alt=''><p class='e_text'>檯燈</p>";
+				} 
+				if (strpos($e, "寬頻網路") !== false) {
+					echo "<img class='e_icon' img src='images/icon/internet.svg' alt=''><p class='e_text'>寬頻網路</p>";
+				} 
+				if (strpos($e, "電話") !== false) {
+					echo "<img class='e_icon' img src='images/icon/phone.svg' alt=''><p class='e_text'>電話</p>";
+				} 
+				if (strpos($e, "瓦斯") !== false) {
+					echo "<img class='e_icon' img src='images/icon/fire.svg' alt=''><p class='e_text'>瓦斯</p>";
+				} 
+				if (strpos($e, "熱水器") !== false) {
+					echo "<img class='e_icon' img src='images/icon/heat.svg' alt=''><p class='e_text'>熱水器</p>";
+				} 
+				if (strpos($e, "可養寵物") !== false) {
+					echo "<img class='e_icon' img src='images/icon/wolf.svg' alt=''><p class='e_text'>可養寵物</p>";
+				} 
+				if (strpos($e, "有對外窗") !== false) {
+					echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>有對外窗</p>";
+				} 
+				if (strpos($e, "ele") !== false) {
+					echo "<img class='e_icon' img src='images/icon/elevator.svg' alt=''><p class='e_text'>有電梯</p>";
+				} 
+
+				echo"</div>";
+			}
+				else{
+					"";
+				}
+				echo"<div class='room_tags'>";
 				echo"<span class='room_tag'>". $row["i_gender"] ."</span>";
 				echo"<span class='room_tag'>離". $row["i_entrance"] ." ". $row["i_walktime"] ."</span>";
+				echo"</div>";
+				echo "</div>";
+				echo "</div>";
+				echo "</a>";
+				echo "<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
+				echo "<img class='icon' src='images/icon/m.svg' alt=''>";
+				echo "<div class='featured_card_box_content d-flex flex-row align-items-center'>";
+				echo "<div>";
+				echo "<div class='featured_card_price_title'>每月</div>";
+				echo "<div class='featured_card_price'>" . $row["i_min"] . "-" .$row["i_max"]. "元</div>";
+				echo "</div>";
+				echo "<i class='heart-icon heart-empty ml-2' data-id='" . $row["vid"] . "'></i>"; // 添加愛心圖標
+				echo "</div>";
+				echo "</div>";
+
+				echo "</div>";
+
+				echo "<style>
+		.featured_card_box {
+			position: relative; 
+		}
+
+		.heart-icon {
+			cursor: pointer;
+			font-size: 2.5rem;
+			margin-left: auto; /* 將圖推到右側 */
+			margin-top: 8px; /* 向下移動 */
+		}
+
+		/* 點擊前的愛心 */
+		.heart-empty::before {
+			content: '♡'; /* 使用 Unicode 字符代表空心愛心 */
+			color: white; /* 白色的線條 */
+		}
+
+		/* 點擊後的愛心 */
+		.heart-filled::before {
+			content: '♡'; /* 使用 Unicode 字符代表實心愛心 */
+			color: red; /* 紅色 */
+		}
+		</style>";
+
+		echo "<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const heartIcons = document.querySelectorAll('.heart-icon');
 				
-									echo"</div>";
-		echo "</div>";
-		echo "</div>";
-        
-		echo "</a>";
-		echo "<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
-		echo "<img class='icon' src='images/icon/m.svg' alt=''>";
-		echo "<div class='featured_card_box_content d-flex flex-row align-items-center'>";
-		echo "<div>";
-		echo "<div class='featured_card_price_title'>每月</div>";
-		echo "<div class='featured_card_price'>" . $row["i_min"] . "-" .$row["i_max"]. "元</div>";
-		echo "</div>";
-		echo "<i class='heart-icon heart-empty ml-2' data-id='" . $row["vid"] . "'></i>"; // 添加愛心圖標
-echo "</div>";
-echo "</div>";
-
-echo "</div>";
-
-echo "<style>
-.featured_card_box {
-    position: relative; 
-}
-
-.heart-icon {
-    cursor: pointer;
-    font-size: 2.5rem;
-	margin-left: auto; /* 將圖推到右側 */
-    margin-top: 8px; /* 向下移動 */
-}
-
-/* 點擊前的愛心 */
-.heart-empty::before {
-    content: '♡'; /* 使用 Unicode 字符代表空心愛心 */
-    color: white; /* 白色的線條 */
-}
-
-/* 點擊後的愛心 */
-.heart-filled::before {
-    content: '♡'; /* 使用 Unicode 字符代表實心愛心 */
-    color: red; /* 紅色 */
-}
-</style>";
-
-echo "<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		const heartIcons = document.querySelectorAll('.heart-icon');
-		
-		// 獲取用戶收藏列表
-		fetch('favorited.php')
-		.then(response => response.json())
-		.then(data => {
-			const favorites = data.favorites;
-			
-			// 根據收藏列表修改圖標狀態
+				// 獲取用戶收藏列表
+				fetch('favorited.php')
+				.then(response => response.json())
+				.then(data => {
+					const favorites = data.favorites;
+					
+					// 根據收藏列表修改圖標狀態
+					heartIcons.forEach(icon => {
+						const id = icon.getAttribute('data-id');
+						if (favorites.includes(id)) {
+							icon.classList.add('heart-filled');
+						}
+					});
+				})
+				.catch(error => {
+					console.error('錯誤:', error);
+				});
+				
 			heartIcons.forEach(icon => {
-				const id = icon.getAttribute('data-id');
-				if (favorites.includes(id)) {
-					icon.classList.add('heart-filled');
-				}
+				icon.addEventListener('click', function() {
+					const isFavorited = this.classList.contains('heart-filled');
+					const id = this.getAttribute('data-id');
+
+					// 禁用多次
+					this.style.pointerEvents = 'none';
+
+					fetch('favorite.php', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ id: id, favorited: !isFavorited }),
+					}).then(response => response.json())
+					.then(data => {
+						if (data.success) {
+							this.classList.toggle('heart-filled');
+							this.classList.toggle('heart-empty');
+
+						} else {
+							console.error('Error:', data.message);
+							// 如果後端返回不成功，不做任何樣式修改
+						}
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+						//如果請求出錯，不做任何樣式更改 
+					})
+					.finally(() => {
+						// 請求完成後重新啟用按鈕
+						this.style.pointerEvents = 'auto';
+					});
+				});
 			});
-		})
-		.catch(error => {
-			console.error('錯誤:', error);
 		});
-		
-    heartIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
-            const isFavorited = this.classList.contains('heart-filled');
-            const id = this.getAttribute('data-id');
+		</script>";
+			}
+		} else {
+			echo "無";
+		}
 
-            // 禁用多次
-            this.style.pointerEvents = 'none';
-
-            fetch('favorite.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id: id, favorited: !isFavorited }),
-            }).then(response => response.json())
-              .then(data => {
-                  if (data.success) {
-                      this.classList.toggle('heart-filled');
-                      this.classList.toggle('heart-empty');
-
-                  } else {
-                      console.error('Error:', data.message);
-                      // 如果後端返回不成功，不做任何樣式修改
-                  }
-              })
-              .catch((error) => {
-                  console.error('Error:', error);
-                  //如果請求出錯，不做任何樣式更改 
-              })
-              .finally(() => {
-                  // 請求完成後重新啟用按鈕
-                  this.style.pointerEvents = 'auto';
-              });
-        });
-    });
-});
-</script>";
-	}
-} else {
-    echo "無";
-}
-
-$conn->close();
-?>
+		$conn->close();
+		?>
 </div>                     
                     
 					
@@ -723,13 +724,8 @@ $conn->close();
 
 				<div class="row">
 					<div class="col">
-
-						<!-- Cities Slider -->
-
 						<div class="cities_slider_container">
 							<div class="owl-carousel owl-theme cities_slider">
-
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -739,8 +735,6 @@ $conn->close();
 										<div class="city_name"><span>玫瑰公寓</span></div>
 									</a>
 								</div>
-
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -750,8 +744,6 @@ $conn->close();
 										<div class="city_name"><span>果汁霸樓上</span></div>
 									</a>
 								</div>
-
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -761,8 +753,6 @@ $conn->close();
 										<div class="city_name"><span>輔大站一號出口旁</span></div>
 									</a>
 								</div>
-
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -772,8 +762,6 @@ $conn->close();
 										<div class="city_name"><span>新莊站步行3分鐘</span></div>
 									</a>
 								</div>
-
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -783,8 +771,6 @@ $conn->close();
 										<div class="city_name"><span>輔大醫院旁</span></div>
 									</a>
 								</div>
-
-								<!-- City Item -->
 								<div class="owl-item city_item">
 									<a href="#">
 										<div class="city_image">
@@ -794,7 +780,6 @@ $conn->close();
 										<div class="city_name"><span>三泰路步行1分鐘到校</span></div>
 									</a>
 								</div>
-
 							</div>
 
 							<div
@@ -808,114 +793,10 @@ $conn->close();
 							</div>
 
 						</div>
-
 					</div>
-
 				</div>
-
 			</div>
 		</div>
-
-
-
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 footer_col">
-						<div class="footer_col_title">
-							<div class="logo_container">
-								<a href="#">
-									<div class="logo">
-										<img src="images/logo.png" alt="">
-										<span>輔仁大學租屋網</span>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="footer_social">
-							<ul class="footer_social_list">
-								<li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-								<li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
-								<li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a></li>
-							</ul>
-						</div>
-						<div class="footer_about">
-							<p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis se tellus
-								eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis ferme semper
-								augue.</p>
-						</div>
-					</div>
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_col_title">useful links</div>
-						<ul class="footer_useful_links">
-							<li class="useful_links_item"><a href="#">Listings</a></li>
-							<li class="useful_links_item"><a href="#">Favorite Cities</a></li>
-							<li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
-							<li class="useful_links_item"><a href="#">Featured Listings</a></li>
-							<li class="useful_links_item"><a href="#">Properties on Offer</a></li>
-							<li class="useful_links_item"><a href="#">Services</a></li>
-							<li class="useful_links_item"><a href="#">News</a></li>
-							<li class="useful_links_item"><a href="#">Our Agents</a></li>
-						</ul>
-					</div>
-
-					<!-- Footer Contact Form -->
-					<div class="col-lg-3 footer_col">
-						<div class="footer_col_title">say hello</div>
-						<div class="footer_contact_form_container">
-							<form id="footer_contact_form" class="footer_contact_form" action="post">
-								<input id="contact_form_name" class="input_field contact_form_name" type="text"
-									placeholder="Name" required="required" data-error="Name is required.">
-								<input id="contact_form_email" class="input_field contact_form_email" type="email"
-									placeholder="E-mail" required="required" data-error="Valid email is required.">
-								<textarea id="contact_form_message" class="text_field contact_form_message"
-									name="message" placeholder="Message" required="required"
-									data-error="Please, write us a message."></textarea>
-								<button id="contact_send_btn" type="submit" class="contact_send_btn trans_200"
-									value="Submit">send</button>
-							</form>
-						</div>
-					</div>
-
-					<!-- Footer Contact Info -->
-
-					<div class="col-lg-3 footer_col">
-						<div class="footer_col_title">contact info</div>
-						<ul class="contact_info_list">
-							<li class="contact_info_item d-flex flex-row">
-								<div>
-									<div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div>
-								</div>
-								<div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
-							</li>
-							<li class="contact_info_item d-flex flex-row">
-								<div>
-									<div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div>
-								</div>
-								<div class="contact_info_text">2556-808-8613</div>
-							</li>
-							<li class="contact_info_item d-flex flex-row">
-								<div>
-									<div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
-								</div>
-								<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello"
-										target="_top">contactme@gmail.com</a></div>
-							</li>
-							<li class="contact_info_item d-flex flex-row">
-								<div>
-									<div class="contact_info_icon"><img src="images/planet-earth.svg" alt=""></div>
-								</div>
-								<div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
-							</li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-		</footer>
 
 
 	</div>
