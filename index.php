@@ -511,11 +511,9 @@
                     echo "<span class='room_tag'>離" . $row["i_entrance"] . " " . $row["i_walktime"] . "</span>";
                     echo "<br>";
                     echo "<a href='test.php?vid=".$row["vid"]."'>詳細資料</a><br>";
-
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
-
                     echo "</a>";
                     echo "<div class='featured_card_box d-flex flex-row align-items-center trans_300'>";
                     echo "<img class='icon' src='images/icon/m.svg' alt=''>";
