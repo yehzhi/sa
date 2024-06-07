@@ -294,6 +294,18 @@ session_start();
                                                 <label for="search_features_23">有對外窗</label>
                                             </div>
                                         </li>
+										<li class="search_features_item">
+                                            <div>
+                                                <input type="checkbox" name="equipment[]" value="有對外窗">
+                                                <label for="search_features_24">需付押金</label>
+                                            </div>
+                                        </li>
+                                        <li class="search_features_item">
+                                            <div>
+                                                <input type="checkbox" name="equipment[]" value="有對外窗">
+                                                <label for="search_features_25">水電另計</label>
+                                            </div>
+                                        </li>
                                     </ul>
                                     <button type="submit" class="newsletter_submit_btn trans_300" value="Submit">搜尋</button>
                                 </div>
@@ -510,6 +522,12 @@ session_start();
                         }
                         if (strpos($e, "有對外窗") !== false) {
                             echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>有對外窗</p>";
+                        }
+						if (strpos($e, "需付押金") !== false) {
+                            echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>需付押金</p>";
+                        }
+                        if (strpos($e, "水電另計") !== false) {
+                            echo "<img class='e_icon' img src='images/icon/windows.svg' alt=''><p class='e_text'>水電另計</p>";
                         }
                         if (strpos($e, "ele") !== false) {
                             echo "<img class='e_icon' img src='images/icon/elevator.svg' alt=''><p class='e_text'>有電梯</p>";
