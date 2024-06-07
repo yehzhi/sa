@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,14 +77,12 @@
         </div>
     </header>
 
-    <!-- Search Box -->
     <div class="search_box">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="search_box_outer">
                         <div class="search_box_inner">
-                            <!-- Search Box Title -->
                             <div class="search_box_title text-center">
                                 <form action="search_results.php" method="GET">
                                     <div class="newsletter_form_content d-flex flex-row">
@@ -94,7 +92,6 @@
                                     </div>
                                 </form>
                             </div>
-                            <!-- Search Form -->
                             <form class="search_form" action="search_results.php" method="GET">
                                 <div class="search_box_container">
                                     <ul class="dropdown_row clearfix">
@@ -295,7 +292,6 @@
         </div>
     </div>
 
-    <!-- Featured Properties -->
     <div class="featured">
         <div class="container">
             <div class="row">
@@ -411,7 +407,7 @@
             $password = "";
             $dbname = "sa";
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $username, $password, $dbname,3307);
             if ($conn->connect_error) {
                 die('連線失敗' . $conn->connect_error);
             }
@@ -542,223 +538,6 @@
             ?>
         </div>
     </div>
-
-    <!-- Cities -->
-
-    <div class="cities">
-        <div class="cities_background"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="section_title text-center">
-                        <h3>更多租屋資訊</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-
-                    <!-- Cities Slider -->
-
-                    <div class="cities_slider_container">
-                        <div class="owl-carousel owl-theme cities_slider">
-
-                            <!-- City Item -->
-                            <div class="owl-item city_item">
-                                <a href="#">
-                                    <div class="city_image">
-                                        <img src="images/city_1.jpg" alt="">
-                                    </div>
-                                    <div class="city_details"><img src="images/search.png" alt=""></div>
-                                    <div class="city_name"><span>玫瑰公寓</span></div>
-                                </a>
-                            </div>
-
-                            <!-- City Item -->
-                            <div class="owl-item city_item">
-                                <a href="#">
-                                    <div class="city_image">
-                                        <img src="images/city_2.jpg" alt="">
-                                    </div>
-                                    <div class="city_details"><img src="images/search.png" alt=""></div>
-                                    <div the="city_name"><span>果汁霸樓上</span></div>
-                                </a>
-                            </div>
-
-                            <!-- City Item -->
-                            <div class="owl-item city_item">
-                                <a href="#">
-                                    <div class="city_image">
-                                        <img src="images/city_3.jpg" alt="">
-                                    </div>
-                                    <div class="city_details"><img src="images/search.png" alt=""></div>
-                                    <div class="city_name"><span>輔大站一號出口旁</span></div>
-                                </a>
-                            </div>
-
-                            <!-- City Item -->
-                            <div class="owl-item city_item">
-                                <a href="#">
-                                    <div class="city_image">
-                                        <img src="images/city_4.jpg" alt="">
-                                    </div>
-                                    <div class="city_details"><img src="images/search.png" alt=""></div>
-                                    <div class="city_name"><span>新莊站步行3分鐘</span></div>
-                                </a>
-                            </div>
-
-                            <!-- City Item -->
-                            <div class="owl-item city_item">
-                                <a href="#">
-                                    <div class="city_image">
-                                        <img src="images/city_5.jpg" alt="">
-                                    </div>
-                                    <div class="city_details"><img src="images/search.png" alt=""></div>
-                                    <div class="city_name"><span>輔大醫院旁</span></div>
-                                </a>
-                            </div>
-
-                            <!-- City Item -->
-                            <div class="owl-item city_item">
-                                <a href="#">
-                                    <div class="city_image">
-                                        <img src="images/city_6.jpg" alt="">
-                                    </div>
-                                    <div class="city_details"><img src="images/search.png" alt=""></div>
-                                    <div class="city_name"><span>三泰路步行1分鐘到校</span></div>
-                                </a>
-                            </div>
-
-                        </div>
-
-                        <div
-                                class="cities_prev cities_nav d-flex flex-row align-items-center justify-content-center trans_200">
-                            <img src="images/nav_left.png" alt="">
-                        </div>
-
-                        <div
-                                class="cities_next cities_nav d-flex flex-row align-items-center justify-content-center trans_200">
-                            <img src="images/nav_right.png" alt="">
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- Footer -->
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-
-                <!-- Footer About -->
-
-                <div class="col-lg-3 footer_col">
-                    <div class="footer_col_title">
-                        <div class="logo_container">
-                            <a href="#">
-                                <div class="logo">
-                                    <img src="images/logo.png" alt="">
-                                    <span>輔仁大學租屋網</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="footer_social">
-                        <ul class="footer_social_list">
-                            <li class="footer_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                            <li class="footer_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="footer_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li class="footer_social_item"><a href="#"><i class="fab fa-dribbble"></i></a></li>
-                            <li class="footer_social_item"><a href="#"><i class="fab fa-behance"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="footer_about">
-                        <p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis se tellus
-                            eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis ferme semper
-                            augue.</p>
-                    </div>
-                </div>
-
-                <!-- Footer Useful Links -->
-
-                <div class="col-lg-3 footer_col">
-                    <div class="footer_col_title">useful links</div>
-                    <ul class="footer_useful_links">
-                        <li class="useful_links_item"><a href="#">Listings</a></li>
-                        <li class="useful_links_item"><a href="#">Favorite Cities</a></li>
-                        <li class="useful_links_item"><a href="#">Clients Testimonials</a></li>
-                        <li class="useful_links_item"><a href="#">Featured Listings</a></li>
-                        <li class="useful_links_item"><a href="#">Properties on Offer</a></li>
-                        <li class="useful_links_item"><a href="#">Services</a></li>
-                        <li class="useful_links_item"><a href="#">News</a></li>
-                        <li class="useful_links_item"><a href="#">Our Agents</a></li>
-                    </ul>
-                </div>
-
-                <!-- Footer Contact Form -->
-                <div class="col-lg-3 footer_col">
-                    <div class="footer_col_title">say hello</div>
-                    <div class="footer_contact_form_container">
-                        <form id="footer_contact_form" class="footer_contact_form" action="post">
-                            <input id="contact_form_name" class="input_field contact_form_name" type="text"
-                                   placeholder="Name" required="required" data-error="Name is required.">
-                            <input id="contact_form_email" class="input_field contact_form_email" type="email"
-                                   placeholder="E-mail" required="required" data-error="Valid email is required.">
-                            <textarea id="contact_form_message" class="text_field contact_form_message"
-                                      name="message" placeholder="Message" required="required"
-                                      data-error="Please, write us a message."></textarea>
-                            <button id="contact_send_btn" type="submit" class="contact_send_btn trans_200"
-                                    value="Submit">send</button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Footer Contact Info -->
-
-                <div class="col-lg-3 footer_col">
-                    <div class="footer_col_title">contact info</div>
-                    <ul class="contact_info_list">
-                        <li class="contact_info_item d-flex flex-row">
-                            <div>
-                                <div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div>
-                            </div>
-                            <div class="contact_info_text">4127 Raoul Wallenber 45b-c Gibraltar</div>
-                        </li>
-                        <li class="contact_info_item d-flex flex-row">
-                            <div>
-                                <div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div>
-                            </div>
-                            <div class="contact_info_text">2556-808-8613</div>
-                        </li>
-                        <li class="contact_info_item d-flex flex-row">
-                            <div>
-                                <div class="contact_info_icon"><img src="images/message.svg" alt=""></div>
-                            </div>
-                            <div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello"
-                                                              target="_top">contactme@gmail.com</a></div>
-                        </li>
-                        <li class="contact_info_item d-flex flex-row">
-                            <div>
-                                <div class="contact_info_icon"><img src="images/planet-earth.svg" alt=""></div>
-                            </div>
-                            <div class="contact_info_text"><a href="https://colorlib.com">www.colorlib.com</a></div>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </footer>
-
-    <!-- Credits -->
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
