@@ -100,7 +100,8 @@ $vid = $_GET['vid'];
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-		        $id = $row["vid"];
+	        $id = $row["vid"];
+		$lname = $row["l_name"];
                 $title = $row["i_title"];
                 $address = $row["i_address"];
                 $price_min = $row["i_min"];
@@ -163,6 +164,7 @@ $vid = $_GET['vid'];
                         <p>出租類型: <?php echo $roomstyle; ?></p>
                         <p>鄰近入口: <?php echo $entrance; ?></p>
                         <p>步行時間: <?php echo $walktime; ?></p>
+		        <p>聯絡方式: <?php echo $lname; ?></p>
                 <p> <?php echo $row['i_introduce']; ?></p>
             
                 
