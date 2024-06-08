@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $result2 = $updateStmt2->execute();
 
       if ($result1 || $result2) {
-          echo "密碼重置成功";
+          echo "<script>alert('密碼重置成功');</script>";
       } else {
           echo "密碼重置失敗，請重試";
       }
