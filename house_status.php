@@ -126,6 +126,7 @@
                 <th>土地持有權狀</th>
                 <th>出租證明</th>
                 <th>房屋地址</th>
+                <th>房東帳號</th>
                 <th>狀態</th>
                 <th>操作</th>
             </tr>
@@ -162,12 +163,14 @@
                         $v_land = $row["v_land"];
                         $v_prove = $row["v_prove"];
                         $v_address = $row["v_address"];
+                        $account = $row["account"];
                         $status = $row["status"];
 						echo "<tr>";
                         echo "<td>{$row['vid']}</td>";
                         echo "<td><a href='#' onclick='showImage(\"{$row['v_land']}\")'>查看照片</a></td>";
                         echo "<td><a href='#' onclick='showImage(\"{$row['v_prove']}\")'>查看照片</a></td>";
                         echo "<td>{$row['v_address']}</td>";
+                        echo "<td>{$row['account']}</td>";
                         echo "<td>{$row['status']}</td>";
                         echo "<td>";
                         echo "<form id='approve_form_$vid' method='post'>";

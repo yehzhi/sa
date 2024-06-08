@@ -98,7 +98,9 @@
             <tr>
                 <th>文章編號</th>
                 <th>房屋編號</th>
+                <th>地址</th>
                 <th>租屋證明</th>
+                <th>發文帳號</th>
                 <th>狀態</th>
                 <th>操作</th>
             </tr>
@@ -133,12 +135,16 @@
                     while($row = $result->fetch_assoc()) {  
                         $post_id = $row["post_id"];
                         $verify_id = $row["verify_id"];
+                        $address = $row["address"];
                         $livehouse = $row["livedhouse"];
+                        $account = $row["account"];
                         $status = $row["status"];
 						echo "<tr>";
                         echo "<td>{$row['post_id']}</td>";
                         echo "<td>{$row['verify_id']}</td>";
+                        echo "<td>{$row['address']}</td>";
                         echo "<td><a href='#' onclick='showImage(\"{$row['livedhouse']}\")'>查看照片</a></td>";
+                        echo "<td>{$row['account']}</td>";
                         echo "<td>{$row['status']}</td>";
                         echo "<td>";
                         echo "<form id='approve_form_$post_id' method='post'>";
