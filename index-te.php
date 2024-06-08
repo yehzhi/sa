@@ -52,39 +52,93 @@ session_start();
                                 </div>
                             </a>
                         </div>
-                        <nav class="main_nav">
-                            <ul class="main_nav_list">
-                                <li class="main_nav_item"><a href="index-te.php">首頁</a></li>
-                                <li class="main_nav_item">
-                                    <a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false">討論區</a>
-                                    <div class="dropdown-menu" style="background-color: #a1a8c6;">
-                                        <a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
-                                        <a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
-                                        <a class="dropdown-item" href="my_post_num.php">我的發文</a>
-                                    </div>
-                                </li>
-                                <li class="main_nav_item"><a href="collect.php">我的收藏</a></li>
-                                <li class="main_nav_item">
-                                    <a href="info.html" class="dropdown-toggle" data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>
-                                    <ul class="dropdown-menu" style="background-color: #a1a8c6;">
-                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
-                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
-                                        <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="hamburger_container menu_mm">
-                            <div class="hamburger menu_mm">
-                                <i class="fas fa-bars trans_200 menu_mm"></i>
+						<?php
+                            session_start();
+                            if (isset($_SESSION['tenant']['account'])) {
+                                // 如果用戶已登入
+                                echo '<nav class="main_nav">';
+                                echo '<ul class="main_nav_list">';
+                                echo '<li class="main_nav_item"><a href="index-te.php">首頁</a></li>';
+                                echo '<li class="main_nav_item">';
+                                echo '<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
+                                echo '<div class="dropdown-menu"  style="background-color: #a1a8c6;">';
+                                echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
+                                echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
+                                echo '<a class="dropdown-item" href="my_post_num.php">我的發文</a>';
+                                echo '</div>';
+                                echo '</li>';
+                                echo '<li class="main_nav_item"><a href="collect.php">我的收藏</a></li>';
+                                echo '<li class="main_nav_item">';
+                                echo '<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                                echo '<i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i>';
+                                echo '</a>';
+                                echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
+                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
+                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>';
+                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
+                                echo '</ul>';
+                                echo '</li>';
+                                echo '</ul>';
+                                echo '</nav>';
+                            } elseif(isset($_SESSION['landlord']['account'])){
+                                    echo '<nav class="main_nav">';
+                                    echo '<ul class="main_nav_list">';
+                                    echo '<li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>';
+                                    echo '<li class="main_nav_item">';
+                                    echo '<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">新增房屋</a>';
+                                    echo '<div class="dropdown-menu" style="background-color: #a1a8c6;">';
+                                    echo '<a class="dropdown-item" href="verifyhouse.html">驗證房屋</a>';
+                                    echo '<a class="dropdown-item" href="uploadpage.php">上架房屋</a>';
+                                    echo '</div>';
+                                    echo '</li>';
+                                    echo '<li class="main_nav_item">';
+                                    echo '<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
+                                    echo '<div class="dropdown-menu" style="background-color: #a1a8c6;">';
+                                    echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
+                                    echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
+                                    echo '</div>';
+                                    echo '</li>';
+                                    echo '<li class="main_nav_item">';
+                                    echo '<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>';
+                                    echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
+                                    echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
+                                    echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>';
+                                    echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
+                                    echo '</ul>';
+                                    echo '</li>';
+                                    echo '</ul>';
+                                    echo '</nav>';
+                                
+                            }
+                            else {
+                                // 如果用戶未登入
+								echo '<nav class="main_nav">';
+                                echo '<ul class="main_nav_list">';
+                                echo '<li class="main_nav_item"><a href="index.php">首頁</a></li>';
+                                echo '<li class="main_nav_item">';
+                                echo '<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
+                                echo '<div class="dropdown-menu"  style="background-color: #a1a8c6;">';
+                                echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
+                                echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
+                                echo '</div>';
+                                echo '</li>';
+								echo '</li>';
+                                echo '</ul>';
+                                echo '</nav>';
+                                echo '<div class="phone_home text-center" style="border-radius: 10px;">';
+                                echo '<span><a href="login.html">登入</a></span>';
+                                echo '</div>';
+                            }
+                            ?>
+                            <div class="hamburger_container menu_mm">
+                                <div class="hamburger menu_mm">
+                                    <i class="fas fa-bars trans_200 menu_mm"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
 
     <!-- Search Box -->
@@ -556,12 +610,97 @@ session_start();
                     echo "<div class='featured_card_price_title'>每月</div>";
                     echo "<div class='featured_card_price'>" . $row["i_min"] . "-" . $row["i_max"] . "元</div>";
                     echo "</div>";
+					echo "<i class='heart-icon heart-empty ml-2' data-id='" . $row["vid"] . "'></i>"; // 添加愛心圖標
                     echo "</div>";
                     echo "</div>";
 
                     echo "</div>";
 
-                }
+					echo "<style>
+					.featured_card_box {
+						position: relative; /*  */
+					}
+					
+					.heart-icon {
+						cursor: pointer;
+						font-size: 2.5rem;
+						margin-left: auto; /* 將圖推到右側 */
+						margin-top: 8px; /* 向下移動 */
+					}
+					
+					/* 點擊前的愛心 */
+					.heart-empty::before {
+						content: '♡'; /* 使用 Unicode 字符代表空心愛心 */
+						color: white; /* 白色的線條 */
+					}
+					
+					/* 點擊後的愛心 */
+					.heart-filled::before {
+						content: '♡'; /* 使用 Unicode 字符代表實心愛心 */
+						color: red; /* 紅色 */
+					}
+					</style>";
+					
+					echo "<script>
+						document.addEventListener('DOMContentLoaded', function() {
+							const heartIcons = document.querySelectorAll('.heart-icon');
+							
+							// 獲取用戶收藏列表
+							fetch('favorited.php')
+							.then(response => response.json())
+							.then(data => {
+								const favorites = data.favorites;
+								
+								// 根據收藏列表修改圖標狀態
+								heartIcons.forEach(icon => {
+									const id = icon.getAttribute('data-id');
+									if (favorites.includes(id)) {
+										icon.classList.add('heart-filled');
+									}
+								});
+							})
+							.catch(error => {
+								console.error('錯誤:', error);
+							});
+							
+						heartIcons.forEach(icon => {
+							icon.addEventListener('click', function() {
+								const isFavorited = this.classList.contains('heart-filled');
+								const id = this.getAttribute('data-id');
+					
+								// 禁用多次
+								this.style.pointerEvents = 'none';
+					
+								fetch('favorite.php', {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify({ id: id, favorited: !isFavorited }),
+								}).then(response => response.json())
+								  .then(data => {
+									  if (data.success) {
+										  this.classList.toggle('heart-filled');
+										  this.classList.toggle('heart-empty');
+					
+									  } else {
+										  console.error('Error:', data.message);
+										  // 如果後端返回不成功，不做任何樣式修改
+									  }
+								  })
+								  .catch((error) => {
+									  console.error('Error:', error);
+									  //如果請求出錯，不做任何樣式更改 
+								  })
+								  .finally(() => {
+									  // 請求完成後重新啟用按鈕
+									  this.style.pointerEvents = 'auto';
+								  });
+							});
+						});
+					});
+					</script>";
+						}
             } else {
                 echo "無";
             }
@@ -712,7 +851,7 @@ session_start();
                         <p>Lorem ipsum dolor sit amet, cons ectetur quis ferme adipiscing elit. Suspen dis se tellus
                             eros, placerat quis ferme ntum et, viverra sit amet lacus. Nam gravida quis ferme semper
                             augue.</p>
-                    </div
+                    </div>
                 </div>
 
                 <!-- Footer Useful Links -->

@@ -105,7 +105,7 @@
 
 				$servername = "localhost";
 				$username = "root";
-				$password = "19990817";
+				$password = "";
 				$dbname = "sa";
 
 				// 建立資料庫連線
