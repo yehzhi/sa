@@ -19,10 +19,6 @@
     <!-- 自定義CSS -->
     <style>
         /* 表格背景和文字顏色 */
-        #myTable {
-            background-color: #A1A8C6;
-            color: white;
-        }
 
         #myTable th,
         #myTable td {
@@ -108,6 +104,10 @@
         <tbody>
             <?php
                 session_start();
+                if (!isset($_SESSION['admin'])) {
+                    header("Location: login.html");
+                    exit();
+                }
                 $servername = "localhost";
                 $username = "root";
                 $password = "";

@@ -19,11 +19,7 @@
     <!-- 自定義CSS -->
     <style>
         /* 表格背景和文字顏色 */
-        #myTable {
-            background-color: #A1A8C6;
-            color: white;
-        }
-
+      
         #myTable th,
         #myTable td {
             background-color: #A1A8C6;
@@ -91,25 +87,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="row">
             <div class="col">
                 <h1 style="color: #555e81;text-align: center;"><b>驗證房屋</b></h1>
@@ -134,6 +111,10 @@
         <tbody>
             <?php
                 session_start();
+                if (!isset($_SESSION['admin'])) {
+                    header("Location: login.html");
+                    exit();
+                }
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
