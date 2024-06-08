@@ -57,34 +57,24 @@
                             <!-- Main Navigation -->
 
                             <nav class="main_nav">
-								<ul class="main_nav_list">
-									<li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>
-									<li class="main_nav_item">
-										<a href="" class="dropdown-toggle" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false">新增房屋</a>
-										<div class="dropdown-menu" style="background-color: #a1a8c6;">
-											<a class="dropdown-item" href="verifyhouse.html">驗證房屋</a>
-											<a class="dropdown-item" href="uploadpage.php">上架房屋</a>
-										</div>
-									</li>
-									<li class="main_nav_item">
-										<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown"
-											aria-haspopup="true" aria-expanded="false">討論區</a>
-										<div class="dropdown-menu" style="background-color: #a1a8c6;">
-											<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
-											<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
-										</div>
-									</li>
-									<li class="main_nav_item">
-                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
-                                        <ul class="dropdown-menu" style="background-color: #a1a8c6;">
-                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
-                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
-                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
-                                        </ul>
+                                <ul class="main_nav_list">
+                                    <li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>
+                                    <li class="main_nav_item">
+                                        <div class="dropdown">
+                                            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                新增房屋
+                                            </a>
+
+                                            <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                                <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">驗證房屋</a></li>
+                                                <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="upload.html">上架房屋</a></li>
+                                            </ul>
+                                        </div>
                                     </li>
-								</ul>
-							</nav>
+                                    <li class="main_nav_item"><a href="about.html">討論區</a></li>
+                                    <li class="main_nav_item"><a href="discuss.html"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a></li>
+                                </ul>
+                            </nav>
 
 
 
@@ -123,14 +113,7 @@
                 </div>
             </div>
             <hr>
-            <?php
-                session_start();
 
-                if (!isset($_SESSION['landlord'])) {
-                    header("Location: login.html");
-                    exit;
-                }
-            ?>
             <div class="listings">
                 <div class="container" style="margin-top:-100px;">
                     <div class="row">
@@ -143,7 +126,7 @@
                             <?php
                             $servername = "localhost";
                             $username = "root";
-                            $password = "";
+                            $password = "19990817";
                             $dbname = "sa";
                             $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -184,12 +167,12 @@
                                         <div class="search_box1">
                                             <div class="up3" style="display: flex;margin-left: 320px;">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="out" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">已出售</label>
+                                                    <input class="form-check-input" type="radio" name="rentyesno"  value="rentyes" >
+                                                    <label class="form-check-label" for="rentyesno">已出售</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="stay" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">出租中</label>
+                                                    <input class="form-check-input" type="radio" name="rentyesno"  value="rentno" checked>
+                                                    <label class="form-check-label" for="rentyesno">出租中</label>
                                                 </div>
                                             </div>
                                             <div class="search_box_content1" style="height: auto;">
@@ -201,7 +184,7 @@
                                                             <li class="dropdown_item">
                                                                 <div class="dropdown_item_title1">房屋編號</div>
                                                                 <div class="mb-3">
-                                                                    <input type="text" class="form-control" name="fid" value=<?php echo $id; ?>>
+                                                                    <input type="text" class="form-control" name="fid" value=<?php echo $id; ?> readonly>
                                                                 </div>
                                                             </li>
                                                             <li class="dropdown_item">
@@ -233,7 +216,7 @@
                                                                 </div>
                                                             </li>
 
-                                                            
+                                                            <div class="up2" style="margin-left: 30px;">
                                                                 <h6 style="color: #FFFFFF;">性別:</h6>
                                                                 <?php
                                                                 if ($gender == "男") {
@@ -791,21 +774,21 @@
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限" selected>不限</option>
-                                                                        <option value="房間">房間</option>
+                                                                        <option value="雅房">雅房</option>
                                                                         <option value="套房">套房</option>
-                                                                        <option value="整棟">整棟</option>
+                                                                        <option value="家庭式">家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
                                                                 }
 
-                                                                if ($roomstyle == "房間") {
+                                                                if ($roomstyle == "雅房") {
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限">不限</option>
-                                                                        <option value="房間" selected>房間</option>
+                                                                        <option value="雅房" selected>雅房</option>
                                                                         <option value="套房">套房</option>
-                                                                        <option value="整棟">整棟</option>
+                                                                        <option value="家庭式">家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -815,21 +798,21 @@
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限">不限</option>
-                                                                        <option value="房間">房間</option>
+                                                                        <option value="雅房">雅房</option>
                                                                         <option value="套房" selected>套房</option>
-                                                                        <option value="整棟">整棟</option>
+                                                                        <option value="家庭式">家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
                                                                 }
 
-                                                                if ($roomstyle == "整棟") {
+                                                                if ($roomstyle == "家庭式") {
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限">不限</option>
-                                                                        <option value="房間">房間</option>
+                                                                        <option value="雅房">雅房</option>
                                                                         <option value="套房">套房</option>
-                                                                        <option value="整棟" selected>整棟</option>
+                                                                        <option value="家庭式" selected>家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -892,11 +875,11 @@
                                                             
                                                         </div>
 
-                                                       <div class="yo" style="margin-left: -5px;">
+                                                        <div class="yo" style="margin-left: -5px;">
 														
-								<br>
+															<br>
 													
-								<div class="mb-3" style="margin-left: 30px;">
+															<div class="mb-3" style="margin-left: 30px;">
                                                                 <br><br><br>
                                                             <label style="color: #FFFFFF;">需要押金：</label>
                                                             <?php
@@ -919,11 +902,11 @@
                                                                 <br>
                                                                 
                                                                 <div id="depositAmountInput" style="display: none;">
-								<label for="deposit_amount" style="color: #FFFFFF;">押金金額：</label>
-								<input type="text" id="deposit_amount" name="fixdeposit_amount" value=<?php echo $deposit_amount; ?>>
-								<br><br>
-								</div>
-								<br>	
+																	<label for="deposit_amount" style="color: #FFFFFF;">押金金額：</label>
+																	<input type="text" id="deposit_amount" name="fixdeposit_amount" value=<?php echo $deposit_amount; ?>>
+																	<br><br>
+																</div>
+															<br>	
                                                             <label style="color: #FFFFFF;">需要水電費：</label>
                                                             <?php
                                                                 if ($utility == "yes") {
@@ -943,9 +926,9 @@
                                                                 }
                                                                 ?>
                                                                 <div id="utilityInput" style="display: none;">
-									<label for="utility_amount" style="color: #FFFFFF;">水電費金額：</label>
-									<input type="text" id="utility_amount"  name="fixuamount" value=<?php echo $uamount; ?>>
-									<br><br>
+																	<label for="utility_amount" style="color: #FFFFFF;">水電費金額：</label>
+																	<input type="text" id="utility_amount"  name="fixuamount" value=<?php echo $uamount; ?>>
+																	<br><br>
                                                                     <label for="utility_calculation" style="color: #FFFFFF;">計算方式：</label>
 
 																
@@ -956,8 +939,8 @@
                                                                 ?>
                                                                     <select id="utility_calculation" name="fixucal">
                                                                     <option value="按月計算" selected>按月計算</option>
-								    <option value="按度數計算">按度數計算</option>
-								    <option value="固定金額">固定金額</option>
+																		<option value="按度數計算">按度數計算</option>
+																		<option value="固定金額">固定金額</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -968,8 +951,8 @@
                                                                 ?>
                                                                     <select id="utility_calculation" name="fixucal">
                                                                     <option value="按月計算">按月計算</option>
-								    <option value="按度數計算" selected>按度數計算</option>
-								    <option value="固定金額">固定金額</option>
+																		<option value="按度數計算" selected>按度數計算</option>
+																		<option value="固定金額">固定金額</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -980,17 +963,18 @@
                                                                 ?>
                                                                     <select id="utility_calculation" name="fixucal">
                                                                     <option value="按月計算">按月計算</option>
-								    <option value="按度數計算">按度數計算</option>
-								    <option value="固定金額" selected>固定金額</option>
+																		<option value="按度數計算">按度數計算</option>
+																		<option value="固定金額" selected>固定金額</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
                                                                 }
                                                                 ?>
-							</div>
-                                                        </div>
+															</div>
+                                                            </div>
 														
-							</div>
+													</div>
+
 
                                                         <div class="yo" style="margin-left: -42px;">
                                                             <li class="dropdown_item">
@@ -1149,7 +1133,7 @@
             <!-- Credits -->
 
         </div>
-					    <script>
+        <script>
 			function showDepositAmount() {
 				var depositAmountInput = document.getElementById("depositAmountInput");
 				depositAmountInput.style.display = "block";
