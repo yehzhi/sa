@@ -19,11 +19,7 @@
     <!-- 自定義CSS -->
     <style>
         /* 表格背景和文字顏色 */
-        #myTable {
-            background-color: #A1A8C6;
-            color: white;
-        }
-
+      
         #myTable th,
         #myTable td {
             background-color: #A1A8C6;
@@ -91,25 +87,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="row">
             <div class="col">
                 <h1 style="color: #555e81;text-align: center;"><b>驗證房屋</b></h1>
@@ -126,6 +103,7 @@
                 <th>土地持有權狀</th>
                 <th>出租證明</th>
                 <th>房屋地址</th>
+                <th>房東帳號</th>
                 <th>狀態</th>
                 <th>操作</th>
             </tr>
@@ -133,6 +111,10 @@
         <tbody>
             <?php
                 session_start();
+                if (!isset($_SESSION['admin'])) {
+                    header("Location: login.html");
+                    exit();
+                }
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
@@ -162,12 +144,14 @@
                         $v_land = $row["v_land"];
                         $v_prove = $row["v_prove"];
                         $v_address = $row["v_address"];
+                        $account = $row["account"];
                         $status = $row["status"];
 						echo "<tr>";
                         echo "<td>{$row['vid']}</td>";
                         echo "<td><a href='#' onclick='showImage(\"{$row['v_land']}\")'>查看照片</a></td>";
                         echo "<td><a href='#' onclick='showImage(\"{$row['v_prove']}\")'>查看照片</a></td>";
                         echo "<td>{$row['v_address']}</td>";
+                        echo "<td>{$row['account']}</td>";
                         echo "<td>{$row['status']}</td>";
                         echo "<td>";
                         echo "<form id='approve_form_$vid' method='post'>";

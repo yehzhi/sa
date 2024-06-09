@@ -443,7 +443,7 @@
 
                     $i_photo = $row["i_photo"];
                     $path = "file/" . $i_photo;
-                    echo "<a href='detail_page.php?id=$i_photo'>";
+                    echo "<a href='detail.php?vid=".$row["vid"]."'>";
                     echo "<div class='image_wrapper'>";
                     echo "<img src='$path' alt=''>";
                     $s = $row["i_roomstyle"];
@@ -534,7 +534,7 @@
                     echo "<span class='room_tag'>" . $row["i_gender"] . "</span>";
                     echo "<span class='room_tag'>離" . $row["i_entrance"] . " " . $row["i_walktime"] . "</span>";
                     echo "<br>";
-                    echo "<a href='test.php?vid=".$row["vid"]."'>詳細資料</a><br>";
+                    echo "<a href='detail.php?vid=".$row["vid"]."'>詳細資料</a><br>";
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";

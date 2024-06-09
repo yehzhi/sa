@@ -21,7 +21,14 @@
 </head>
 
 <body>
+            <?php
+                session_start();
 
+                if (!isset($_SESSION['landlord'])) {
+                    header("Location: login.html");
+                    exit;
+                }
+            ?>
     <div class="super_container">
 
         <!-- Home -->
@@ -88,6 +95,7 @@
 
 
 
+
                             <!-- Phone Home -->
 
 
@@ -123,14 +131,7 @@
                 </div>
             </div>
             <hr>
-            <?php
-                session_start();
 
-                if (!isset($_SESSION['landlord'])) {
-                    header("Location: login.html");
-                    exit;
-                }
-            ?>
             <div class="listings">
                 <div class="container" style="margin-top:-100px;">
                     <div class="row">
@@ -171,7 +172,8 @@
                                     $entrance = $row["i_entrance"];
                                     $walktime = $row["i_walktime"];
                                     $introduce = $row["i_introduce"];
-
+                                    $i_photo = $row["i_photo"];
+                                    $path = "file/" . $i_photo;
                                     $deposit = $row["i_deposit"];
                                     $deposit_amount = $row["i_deposit_amount"];
                                     $utility = $row["i_utility"];
@@ -180,16 +182,16 @@
 
 
                             ?>
-                                    <form action="fixdata.php" method="post">
+                                    <form action="fixdata.php" method="post" enctype="multipart/form-data">
                                         <div class="search_box1">
                                             <div class="up3" style="display: flex;margin-left: 320px;">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="out" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio1">已出售</label>
+                                                    <input class="form-check-input" type="radio" name="rentyesno"  value="rentyes" >
+                                                    <label class="form-check-label" for="rentyesno">已出售</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="stay" value="option2">
-                                                    <label class="form-check-label" for="inlineRadio2">出租中</label>
+                                                    <input class="form-check-input" type="radio" name="rentyesno"  value="rentno" checked>
+                                                    <label class="form-check-label" for="rentyesno">出租中</label>
                                                 </div>
                                             </div>
                                             <div class="search_box_content1" style="height: auto;">
@@ -201,7 +203,7 @@
                                                             <li class="dropdown_item">
                                                                 <div class="dropdown_item_title1">房屋編號</div>
                                                                 <div class="mb-3">
-                                                                    <input type="text" class="form-control" name="fid" value=<?php echo $id; ?>>
+                                                                    <input type="text" class="form-control" name="fid" value=<?php echo $id; ?> readonly>
                                                                 </div>
                                                             </li>
                                                             <li class="dropdown_item">
@@ -219,7 +221,8 @@
                                                             <li class="dropdown_item">
                                                                 <div class="dropdown_item_title1">上傳房屋圖片</div>
                                                                 <div class="mb-3">
-                                                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                                                    <input class="form-control" type="file" id="i_photo" name="i_photo">
+                                                                    <img src="<?php echo $path; ?>" alt="House Photo"  width="300" height="200">
                                                                 </div>
                                                             </li>
                                                             <li class="dropdown_item">
@@ -233,12 +236,11 @@
                                                                 </div>
                                                             </li>
 
-                                                            
-                                                                <h6 style="color: #FFFFFF;">性別:</h6>
+                                                                <h6 style="color: #FFFFFF;margin-left: 30px;">性別:</h6>
                                                                 <?php
                                                                 if ($gender == "男") {
                                                                 ?>
-                                                                    <select name="fixgender">
+                                                                    <select name="fixgender" style="margin-left: 30px;">
                                                                         <option value="男" selected>男</option>
                                                                         <option value="女">女</option>
                                                                         <option value="不限制">不限制</option>
@@ -249,7 +251,7 @@
 
                                                                 if ($gender == "女") {
                                                                 ?>
-                                                                    <select name="fixgender">
+                                                                    <select name="fixgender" style="margin-left: 30px;">
                                                                         <option value="男">男</option>
                                                                         <option value="女" selected>女</option>
                                                                         <option value="不限制">不限制</option>
@@ -260,7 +262,7 @@
 
                                                                 if ($gender == "不限制") {
                                                                 ?>
-                                                                    <select name="fixgender">
+                                                                    <select name="fixgender" style="margin-left: 30px;">
                                                                         <option value="男">男</option>
                                                                         <option value="女">女</option>
                                                                         <option value="不限制" selected>不限制</option>
@@ -270,6 +272,8 @@
                                                                 }
                                                                 ?>
                                                                 <br><br>
+                                                                
+                                                                <div class="up2" style="margin-left: 30px;">
                                                                 <h6 style="color: #FFFFFF;">租屋設備:</h6>
 
                                                                 <li class="search_features_item">
@@ -642,12 +646,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '大門') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="front" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="大門" checked>
                                                                     <label for="search_features_5">大門</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="front">
+                                                                    <input type="checkbox" name="fixentrance[]" value="大門">
                                                                     <label for="search_features_5">大門</label>
                                                                 <?php
                                                                 }
@@ -660,12 +664,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '514側門') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="next" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="514側門" checked>
                                                                     <label for="search_features_5">514側門</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="next">
+                                                                    <input type="checkbox" name="fixentrance[]" value="514側門">
                                                                     <label for="search_features_5">514側門</label>
                                                                 <?php
                                                                 }
@@ -678,12 +682,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '貴子路後門') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="back" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="貴子路後門" checked>
                                                                     <label for="search_features_5">貴子路後門</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="back">
+                                                                    <input type="checkbox" name="fixentrance[]" value="貴子路後門">
                                                                     <label for="search_features_5">貴子路後門</label>
                                                                 <?php
                                                                 }
@@ -696,12 +700,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運輔大站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="fu" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運輔大站" checked>
                                                                     <label for="search_features_5">捷運輔大站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="fu">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運輔大站">
                                                                     <label for="search_features_5">捷運輔大站</label>
                                                                 <?php
                                                                 }
@@ -714,12 +718,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運新莊站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xing" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新莊站" checked>
                                                                     <label for="search_features_5">捷運新莊站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xing">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新莊站">
                                                                     <label for="search_features_5">捷運新莊站</label>
                                                                 <?php
                                                                 }
@@ -732,12 +736,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運丹鳳站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="dan" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運丹鳳站" checked>
                                                                     <label for="search_features_5">捷運丹鳳站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="dan">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運丹鳳站">
                                                                     <label for="search_features_5">捷運丹鳳站</label>
                                                                 <?php
                                                                 }
@@ -750,12 +754,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運迴龍站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="hui" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運迴龍站" checked>
                                                                     <label for="search_features_5">捷運迴龍站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="hui">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運迴龍站">
                                                                     <label for="search_features_5">捷運迴龍站</label>
                                                                 <?php
                                                                 }
@@ -768,12 +772,12 @@
                                                                 <?php
                                                                 if (strpos($entrance, '捷運新埔站') !== false) {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xinpu" checked>
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新埔站" checked>
                                                                     <label for="search_features_5">捷運新埔站</label>
                                                                 <?php
                                                                 } else {
                                                                 ?>
-                                                                    <input type="checkbox" name="fixentrance[]" value="xinpu">
+                                                                    <input type="checkbox" name="fixentrance[]" value="捷運新埔站">
                                                                     <label for="search_features_5">捷運新埔站</label>
                                                                 <?php
                                                                 }
@@ -791,21 +795,21 @@
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限" selected>不限</option>
-                                                                        <option value="房間">房間</option>
+                                                                        <option value="雅房">雅房</option>
                                                                         <option value="套房">套房</option>
-                                                                        <option value="整棟">整棟</option>
+                                                                        <option value="家庭式">家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
                                                                 }
 
-                                                                if ($roomstyle == "房間") {
+                                                                if ($roomstyle == "雅房") {
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限">不限</option>
-                                                                        <option value="房間" selected>房間</option>
+                                                                        <option value="雅房" selected>雅房</option>
                                                                         <option value="套房">套房</option>
-                                                                        <option value="整棟">整棟</option>
+                                                                        <option value="家庭式">家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -815,21 +819,21 @@
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限">不限</option>
-                                                                        <option value="房間">房間</option>
+                                                                        <option value="雅房">雅房</option>
                                                                         <option value="套房" selected>套房</option>
-                                                                        <option value="整棟">整棟</option>
+                                                                        <option value="家庭式">家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
                                                                 }
 
-                                                                if ($roomstyle == "整棟") {
+                                                                if ($roomstyle == "家庭式") {
                                                                 ?>
                                                                     <select name="fixroomstyle" style="width: 100px;margin-left: 35px;">
                                                                         <option value="不限">不限</option>
-                                                                        <option value="房間">房間</option>
+                                                                        <option value="雅房">雅房</option>
                                                                         <option value="套房">套房</option>
-                                                                        <option value="整棟" selected>整棟</option>
+                                                                        <option value="家庭式" selected>家庭式</option>
                                                                     </select>
                                                                 <?php
                                                                 } else {
@@ -902,47 +906,53 @@
                                                             <?php
                                                                 if ($deposit == "yes") {
                                                                 ?>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" checked><label for="fixdeposit" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no" ><label for="fixdeposit" style="color: #FFFFFF;">否</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" onclick="showDepositAmount()" checked><label for="fixdeposit" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no" onclick="hideDepositAmount()"><label for="fixdeposit" style="color: #FFFFFF;">否</label>
                                                                 <?php
                                                                 } else {
                                                                 }
 
                                                                 if ($deposit == "no") {
                                                                 ?>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" ><label for="fixdeposit" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no"  checked><label for="fixdeposit" style="color: #FFFFFF;">否</label> 
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="yes" onclick="showDepositAmount()" ><label for="fixdeposit" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixdeposit" name="fixdeposit" value="no"  onclick="hideDepositAmount()" checked><label for="fixdeposit" style="color: #FFFFFF;">否</label> 
                                                                 <?php
                                                                 } else {
                                                                 }
                                                                 ?>
                                                                 <br>
-                                                                <label for="deposit_amount" style="color: #FFFFFF;">押金金額(若無則不用填寫)：</label>
-                                                                <input type="text" id="deposit_amount" name="fixdeposit_amount" value=<?php echo $deposit_amount; ?>>
+                                                                
+                                                                <div id="depositAmountInput" style="display: none;">
+																	<label for="deposit_amount" style="color: #FFFFFF;">押金金額：</label>
+																	<input type="text" id="deposit_amount" name="fixdeposit_amount" value=<?php echo $deposit_amount; ?>>
+																	<br><br>
+																</div>
 															<br>	
                                                             <label style="color: #FFFFFF;">需要水電費：</label>
                                                             <?php
                                                                 if ($utility == "yes") {
                                                                 ?>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" checked><label for="fixutility" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="no" ><label for="fixutility" style="color: #FFFFFF;">否</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" onclick="showUtilityInput()" checked><label for="fixutility" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="no" onclick="hideUtilityInput()" ><label for="fixutility" style="color: #FFFFFF;">否</label>
                                                                 <?php
                                                                 } else {
                                                                 }
 
                                                                 if ($utility == "no") {
                                                                 ?>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" ><label for="fixutility" style="color: #FFFFFF;">是</label>
-                                                                    <input type="radio" id="fixutility" name="fixutility" value="no"  checked><label for="fixutility" style="color: #FFFFFF;">否</label> 
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="yes" onclick="showUtilityInput()" ><label for="fixutility" style="color: #FFFFFF;">是</label>
+                                                                    <input type="radio" id="fixutility" name="fixutility" value="no"  onclick="hideUtilityInput()" checked><label for="fixutility" style="color: #FFFFFF;">否</label> 
                                                                 <?php
                                                                 } else {
                                                                 }
                                                                 ?>
-                                                                <br>
-                                                                <label for="utility_amount" style="color: #FFFFFF;">水電費金額(若無則不用填寫)：</label>
-																<input type="text" id="utility_amount" name="fixuamount" value=<?php echo $uamount; ?>>	
-                                                                <br>
-                                                                <label for="utility_calculation" style="color: #FFFFFF;">計算方式(若無則不用填寫)：</label>
+                                                                <div id="utilityInput" style="display: none;">
+																	<label for="utility_amount" style="color: #FFFFFF;">水電費金額：</label>
+																	<input type="text" id="utility_amount"  name="fixuamount" value=<?php echo $uamount; ?>>
+																	<br><br>
+                                                                    <label for="utility_calculation" style="color: #FFFFFF;">計算方式：</label>
+
+																
                                                                 <?php
 
 
@@ -982,6 +992,7 @@
                                                                 }
                                                                 ?>
 															</div>
+                                                            </div>
 														
 													</div>
 
@@ -1143,6 +1154,27 @@
             <!-- Credits -->
 
         </div>
+        <script>
+			function showDepositAmount() {
+				var depositAmountInput = document.getElementById("depositAmountInput");
+				depositAmountInput.style.display = "block";
+			}
+		
+			function hideDepositAmount() {
+				var depositAmountInput = document.getElementById("depositAmountInput");
+				depositAmountInput.style.display = "none";
+			}
+		
+			function showUtilityInput() {
+				var utilityInput = document.getElementById("utilityInput");
+				utilityInput.style.display = "block";
+			}
+		
+			function hideUtilityInput() {
+				var utilityInput = document.getElementById("utilityInput");
+				utilityInput.style.display = "none";
+			}
+		</script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/f869dac2a8.js" crossorigin="anonymous"></script>
         <script src="js/jquery-3.2.1.min.js"></script>

@@ -19,10 +19,6 @@
     <!-- 自定義CSS -->
     <style>
         /* 表格背景和文字顏色 */
-        #myTable {
-            background-color: #A1A8C6;
-            color: white;
-        }
 
         #myTable th,
         #myTable td {
@@ -97,6 +93,8 @@
         <thead>
             <tr>
                 <th>帳號</th>
+                <th>姓</th>
+                <th>名</th>
                 <th>身分證照片</th>
                 <th>狀態</th>
                 <th>操作</th>
@@ -105,6 +103,10 @@
         <tbody>
             <?php
                 session_start();
+                if (!isset($_SESSION['admin'])) {
+                    header("Location: login.html");
+                    exit();
+                }
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
@@ -131,10 +133,14 @@
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {  
                         $account = $row["account"];
+                        $lastname = $row["lastname"];
+                        $firstname = $row["firstname"];
                         $iden = $row["iden"];
                         $status = $row["status"];
 						echo "<tr>";
                         echo "<td>{$row['account']}</td>";
+                        echo "<td>{$row['lastname']}</td>";
+                        echo "<td>{$row['firstname']}</td>";
                         echo "<td><a href='#' onclick='showImage(\"{$row['iden']}\")'>查看照片</a></td>";
                         echo "<td>{$row['status']}</td>";
                         echo "<td>";
