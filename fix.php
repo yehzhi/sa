@@ -21,7 +21,14 @@
 </head>
 
 <body>
+            <?php
+                session_start();
 
+                if (!isset($_SESSION['landlord'])) {
+                    header("Location: login.html");
+                    exit;
+                }
+            ?>
     <div class="super_container">
 
         <!-- Home -->
@@ -57,24 +64,35 @@
                             <!-- Main Navigation -->
 
                             <nav class="main_nav">
-                                <ul class="main_nav_list">
-                                    <li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>
-                                    <li class="main_nav_item">
-                                        <div class="dropdown">
-                                            <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                新增房屋
-                                            </a>
-
-                                            <ul class="dropdown-menu" style="background-color: #a1a8c6;">
-                                                <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">驗證房屋</a></li>
-                                                <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="upload.html">上架房屋</a></li>
-                                            </ul>
-                                        </div>
+								<ul class="main_nav_list">
+									<li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>
+									<li class="main_nav_item">
+										<a href="" class="dropdown-toggle" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">新增房屋</a>
+										<div class="dropdown-menu" style="background-color: #a1a8c6;">
+											<a class="dropdown-item" href="verifyhouse.html">驗證房屋</a>
+											<a class="dropdown-item" href="uploadpage.php">上架房屋</a>
+										</div>
+									</li>
+									<li class="main_nav_item">
+										<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown"
+											aria-haspopup="true" aria-expanded="false">討論區</a>
+										<div class="dropdown-menu" style="background-color: #a1a8c6;">
+											<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
+											<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
+										</div>
+									</li>
+									<li class="main_nav_item">
+                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
+                                        <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+                                        </ul>
                                     </li>
-                                    <li class="main_nav_item"><a href="about.html">討論區</a></li>
-                                    <li class="main_nav_item"><a href="discuss.html"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a></li>
-                                </ul>
-                            </nav>
+								</ul>
+							</nav>
+
 
 
 
@@ -154,7 +172,8 @@
                                     $entrance = $row["i_entrance"];
                                     $walktime = $row["i_walktime"];
                                     $introduce = $row["i_introduce"];
-
+                                    $i_photo = $row["i_photo"];
+                                    $path = "file/" . $i_photo;
                                     $deposit = $row["i_deposit"];
                                     $deposit_amount = $row["i_deposit_amount"];
                                     $utility = $row["i_utility"];
@@ -163,7 +182,7 @@
 
 
                             ?>
-                                    <form action="fixdata.php" method="post">
+                                    <form action="fixdata.php" method="post" enctype="multipart/form-data">
                                         <div class="search_box1">
                                             <div class="up3" style="display: flex;margin-left: 320px;">
                                                 <div class="form-check form-check-inline">
@@ -202,7 +221,8 @@
                                                             <li class="dropdown_item">
                                                                 <div class="dropdown_item_title1">上傳房屋圖片</div>
                                                                 <div class="mb-3">
-                                                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                                                    <input class="form-control" type="file" id="i_photo" name="i_photo">
+                                                                    <img src="<?php echo $path; ?>" alt="House Photo"  width="300" height="200">
                                                                 </div>
                                                             </li>
                                                             <li class="dropdown_item">
@@ -216,12 +236,11 @@
                                                                 </div>
                                                             </li>
 
-                                                            <div class="up2" style="margin-left: 30px;">
-                                                                <h6 style="color: #FFFFFF;">性別:</h6>
+                                                                <h6 style="color: #FFFFFF;margin-left: 30px;">性別:</h6>
                                                                 <?php
                                                                 if ($gender == "男") {
                                                                 ?>
-                                                                    <select name="fixgender">
+                                                                    <select name="fixgender" style="margin-left: 30px;">
                                                                         <option value="男" selected>男</option>
                                                                         <option value="女">女</option>
                                                                         <option value="不限制">不限制</option>
@@ -232,7 +251,7 @@
 
                                                                 if ($gender == "女") {
                                                                 ?>
-                                                                    <select name="fixgender">
+                                                                    <select name="fixgender" style="margin-left: 30px;">
                                                                         <option value="男">男</option>
                                                                         <option value="女" selected>女</option>
                                                                         <option value="不限制">不限制</option>
@@ -243,7 +262,7 @@
 
                                                                 if ($gender == "不限制") {
                                                                 ?>
-                                                                    <select name="fixgender">
+                                                                    <select name="fixgender" style="margin-left: 30px;">
                                                                         <option value="男">男</option>
                                                                         <option value="女">女</option>
                                                                         <option value="不限制" selected>不限制</option>
@@ -253,6 +272,8 @@
                                                                 }
                                                                 ?>
                                                                 <br><br>
+                                                                
+                                                                <div class="up2" style="margin-left: 30px;">
                                                                 <h6 style="color: #FFFFFF;">租屋設備:</h6>
 
                                                                 <li class="search_features_item">
@@ -976,7 +997,7 @@
 													</div>
 
 
-                                                        <div class="yo" style="margin-left: -42px;">
+                                                        <div class="yo" style="margin-left: -15px;">
                                                             <li class="dropdown_item">
                                                                 <br>
                                                                 <div class="dropdown_item_title1">詳細介紹</div>
