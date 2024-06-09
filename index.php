@@ -112,9 +112,9 @@
                                                 <div class="dropdown_item_title">出租類型</div>
                                                 <select name="roomstyle" id="kroomstyle" class="dropdown_item_select">
                                                     <option value="">不限</option>
-                                                    <option value="房間">房間</option>
+                                                    <option value="房間">雅房</option>
                                                     <option value="套房">套房</option>
-                                                    <option value="整棟">整棟</option>
+                                                    <option value="整棟">家庭式</option>
                                                 </select>
                                             </li>
                                             <li class="dropdown_item dropdown_item_5">
@@ -124,7 +124,13 @@
                                                     <option value="大門">大門</option>
                                                     <option value="514側門">514側門</option>
                                                     <option value="貴子路門(後門)">貴子路門(後門)</option>
+                                                    <option value="捷運輔大站">捷運輔大站</option>
+                                                    <option value="捷運新莊站">捷運新莊站</option>
+                                                    <option value="捷運丹鳳站">捷運丹鳳站</option>
+                                                    <option value="捷運迴龍站">捷運迴龍站</option>
+                                                    <option value="捷運新埔站">捷運新埔站</option>
                                                 </select>
+                                                          
                                             </li>
                                             <li class="dropdown_item dropdown_item_5">
                                                 <div class="dropdown_item_title">步行時間</div>
@@ -419,7 +425,7 @@
             $password = "";
             $dbname = "sa";
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $username, $password, $dbname, 3307);
             if ($conn->connect_error) {
                 die('連線失敗' . $conn->connect_error);
             }

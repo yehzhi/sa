@@ -77,7 +77,7 @@ if (!empty($_GET['walktime'])) {
 }
 
 // 性別
-if (!empty($_GET['gender']) && $_GET['gender'] != '不限') {
+if (!empty($_GET['gender'])) {
     $conditions[] = "i_gender = ?";
     $params[] = $conn->real_escape_string($_GET['gender']);
 }
