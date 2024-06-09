@@ -437,7 +437,7 @@
 
                     $i_photo = $row["i_photo"];
                     $path = "file/" . $i_photo;
-                    echo "<a href='detail_page.php?id=$i_photo'>";
+                    echo "<a href='detail.php?vid=".$row["vid"]."'>";
                     echo "<div class='image_wrapper'>";
                     echo "<img src='$path' alt=''>";
                     $s = $row["i_roomstyle"];

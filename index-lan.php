@@ -84,7 +84,7 @@
 									<li class="main_nav_item">
                                         <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></i></a>
                                         <ul class="dropdown-menu" style="background-color: #a1a8c6;">
-                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.php">修改個人資料</a></li>
                                             <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
                                             <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
                                         </ul>
@@ -193,11 +193,12 @@ $dbname = "sa";
         <div class="house_item">
             <!-- 文字部分 -->
             <div class="house_text">
-                <h2><?php echo $row['i_title']; ?></h2>
+                <h2><?php echo $title; ?></h2>
                 <p>地址: <?php echo $address; ?></p>
                         <p>房屋編號: <?php echo $id; ?></p>
                         <p>租金: <?php echo $price_min; ?>-<?php echo $price_max; ?> </p>
                         <p>性別: <?php echo $gender; ?></p>
+                        <p>出租類型: <?php echo $roomstyle; ?></p>
                         <p>設備: <?php echo $equip; ?></p>
                         <p>押金: <?php echo $deposit_amount; ?></p>
                         <p>水電費: <?php echo $u_amount; ?><?php echo $u_cal; ?></p>
@@ -213,7 +214,7 @@ $dbname = "sa";
             <!-- 圖片部分 -->
             <div class="house_photo">
                 <?php 
-                     echo "<a href='detail_page.php?id=$i_photo'>";
+                     
                      echo "<div class='image_wrapper'>";
                      echo "<img src='$path' alt='' width='600' height='450'>";
                 ?>
