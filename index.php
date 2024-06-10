@@ -289,13 +289,13 @@
                                         </li>
                                         <li class="search_features_item">
                                             <div>
-                                                <input type="checkbox" name="equipment[]" value="需付押金">
+                                                <input type="checkbox" name="deposit" value="需付押金">
                                                 <label for="search_features_24">需付押金</label>
                                             </div>
                                         </li>
                                         <li class="search_features_item">
                                             <div>
-                                                <input type="checkbox" name="equipment[]" value="水電另計">
+                                                <input type="checkbox" name="utility" value="水電另計">
                                                 <label for="search_features_25">水電另計</label>
                                             </div>
                                         </li>

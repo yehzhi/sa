@@ -5,7 +5,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sa";
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, 3307);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -88,8 +88,20 @@ if (!empty($_GET['equipment'])) {
     }
 }
 
+// 押金
+if (!empty($_GET['deposit'])) {
+    $conditions[] = "i_deposit = ?";
+    $params[] = $conn->real_escape_string($_GET['deposit']);
+}
+
+// 水電
+if (!empty($_GET['utility'])) {
+    $conditions[] = "i_utility = ?";
+    $params[] = $conn->real_escape_string($_GET['utility']);
+}
+
 // 建立 SQL 查詢
-$sql = "SELECT vid, i_title, i_address, i_equip, i_min, i_max, i_roomstyle, i_gender, i_walktime, i_photo FROM information";
+$sql = "SELECT vid, i_title, i_address, i_equip, i_min, i_max, i_roomstyle, i_gender, i_walktime, i_photo, i_deposit, i_deposit_amount, i_utility, u_amount, u_cal FROM information";
 if (count($conditions) > 0) {
     $sql .= " WHERE " . implode(' AND ', $conditions);
 }
@@ -226,6 +238,13 @@ if ($stmt) {
             echo "<h2>" . htmlspecialchars($row['i_title']) . "</h2>";
             echo "<p>房屋編號: " . htmlspecialchars($row['vid']) . "</p>";
             echo "<p>地址: " . htmlspecialchars($row['i_address']) . "</p>";
+            if (!empty($row['i_deposit'])) {
+                echo "<p>押金: " . htmlspecialchars($row['i_deposit']) . " " . htmlspecialchars($row['i_deposit_amount']) . "元</p>";
+            }
+            if (!empty($row['i_utility'])) {
+                echo "<p>水電: " . htmlspecialchars($row['i_utility']) . " " . htmlspecialchars($row['u_amount']) . "</p>";
+                echo "<p>水電計算方式: " . htmlspecialchars($row['u_cal']) . "</p>";
+            }
             echo "<div class='equip'>";
             $equipments = explode(',', $row['i_equip']);
             foreach ($equipments as $equipment) {

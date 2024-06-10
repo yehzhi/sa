@@ -53,7 +53,6 @@ session_start();
                             </a>
                         </div>
 						<?php
-                            session_start();
                             if (isset($_SESSION['tenant']['account'])) {
                                 // 如果用戶已登入
                                 echo '<nav class="main_nav">';
@@ -353,13 +352,13 @@ session_start();
                                         </li>
 										<li class="search_features_item">
                                             <div>
-                                                <input type="checkbox" name="equipment[]" value="需付押金">
+                                                <input type="checkbox" name="deposit" value="需付押金">
                                                 <label for="search_features_24">需付押金</label>
                                             </div>
                                         </li>
                                         <li class="search_features_item">
                                             <div>
-                                                <input type="checkbox" name="equipment[]" value="水電另計">
+                                                <input type="checkbox" name="utility" value="水電另計">
                                                 <label for="search_features_25">水電另計</label>
                                             </div>
                                         </li>
@@ -484,13 +483,13 @@ session_start();
         <div class="flat-container">
 
             <?php
-
+            
             $servername = "localhost";
             $username = "root";
             $password = "";
             $dbname = "sa";
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $username, $password, $dbname,3307);
             if ($conn->connect_error) {
                 die('連線失敗' . $conn->connect_error);
             }
