@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 確保使用者已登入，可以根據你的登入驗證方法進行修改
+    // 確保使用者已登入
     if (!isset($_SESSION['tenant']['account'])) {
         header("Location: login.php"); // 轉發到登入頁面
         exit;
@@ -32,10 +32,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 執行刪除操作
     $sql = "DELETE FROM collect WHERE collect_id = '$collect_id'";
     if ($conn->query($sql) === TRUE) {
-        // 刪除成功，重新導向到收藏頁面
+        // 刪除成功
         header("Location: collect.php");
     } else {
-        // 刪除失敗，顯示錯誤消息
+        // 刪除失敗
         echo "刪除收藏失敗: " . $conn->error;
     }
 

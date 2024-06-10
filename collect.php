@@ -154,12 +154,12 @@
 					position: relative;
 				}
 
-				.delete_button {
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					margin: 10px;
-				}
+					.delete_button {
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						margin: 10px;
+					}
 				</style>
 			</div>
 		</div>
