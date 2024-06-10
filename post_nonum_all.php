@@ -70,7 +70,7 @@
                                 echo '<i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i>';
                                 echo '</a>';
                                 echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
-                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
+                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.php">修改個人資料</a></li>';
                                 echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
                                 echo '</ul>';
                                 echo '</li>';
@@ -97,7 +97,7 @@
 								echo '<li class="main_nav_item">';
 								echo '<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>';
 								echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
-								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
+								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.php">修改個人資料</a></li>';
 								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
 								echo '</ul>';
 								echo '</li>';
@@ -199,17 +199,18 @@
                                 <div class="listing_item">
                                     <div class="listing_item_inner d-flex flex-md-row-reverse flex-column trans_300">
                                         <div class="listing_content">
-                                            <div class="listing_title"><a href="post_nonum_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
+                                            <div class="listing_title"><a href="post_num_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
                                             <div class="listing_text">
+                                                房屋編號: <?php echo $verify_id; ?> <?php echo $listing_status; ?><br>
                                                 評分: <?php echo $star_rate; ?>分<br>
-                                                <?php echo $content; ?><br>
+                                                地址: <?php echo $address; ?><br>
+                                                <span class="highlighted-content"><?php echo $content; ?></span><br> <!-- 使用highlighted-content類 -->
                                                 日期: <?php echo $post_date; ?><br>
                                                 發文者: <?php echo $lastname . $prefix; ?>
-                                            <div class="report_button_container">
-                                                <button onclick="showReportForm()">檢舉文章</button>
+                                                <div class="report_button_container">
+                                                    <button onclick="showReportForm()">檢舉文章</button>
+                                                </div>
                                             </div>
-                                            </div>
-                                        </div>
                                         <div class="listing_image ml-md-auto">
                                             <img src="<?php echo $path; ?>" alt="House Photo" width="300" height="200">
                                         </div>

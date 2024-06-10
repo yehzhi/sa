@@ -112,9 +112,9 @@
                                                 <div class="dropdown_item_title">出租類型</div>
                                                 <select name="roomstyle" id="kroomstyle" class="dropdown_item_select">
                                                     <option value="">不限</option>
-                                                    <option value="房間">雅房</option>
+                                                    <option value="雅房">雅房</option>
                                                     <option value="套房">套房</option>
-                                                    <option value="整棟">家庭式</option>
+                                                    <option value="家庭式">家庭式</option>
                                                 </select>
                                             </li>
                                             <li class="dropdown_item dropdown_item_5">
@@ -167,8 +167,8 @@
                                         <li class="search_features_item">
                                             <div>
                                                 <input type="radio" name="gender" id="search_features_4"
-                                                       class="search_features_cb" value="不限">
-                                                <label for="search_features_4">不限</label>
+                                                       class="search_features_cb" value="不限制">
+                                                <label for="search_features_4">不限制</label>
                                             </div>
                                         </li>
                                         <br><br>
@@ -289,13 +289,13 @@
                                         </li>
                                         <li class="search_features_item">
                                             <div>
-                                                <input type="checkbox" name="equipment[]" value="有對外窗">
+                                                <input type="checkbox" name="equipment[]" value="需付押金">
                                                 <label for="search_features_24">需付押金</label>
                                             </div>
                                         </li>
                                         <li class="search_features_item">
                                             <div>
-                                                <input type="checkbox" name="equipment[]" value="有對外窗">
+                                                <input type="checkbox" name="equipment[]" value="水電另計">
                                                 <label for="search_features_25">水電另計</label>
                                             </div>
                                         </li>
