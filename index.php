@@ -425,7 +425,7 @@
             $password = "";
             $dbname = "sa";
 
-            $conn = new mysqli($servername, $username, $password, $dbname, 3307);
+            $conn = new mysqli($servername, $username, $password, $dbname);
             if ($conn->connect_error) {
                 die('連線失敗' . $conn->connect_error);
             }
