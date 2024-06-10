@@ -1,8 +1,6 @@
 <?php
-// 開始 session
 session_start();
 
-// 連接到數據庫
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -24,7 +22,7 @@ if (!empty($_GET['keyword'])) {
     $params[] = $keyword;
 }
 
-// 檢查房屋租金
+// 租金
 if (!empty($_GET['rent'])) {
     switch ($_GET['rent']) {
         case '3000以下':
@@ -77,7 +75,7 @@ if (!empty($_GET['walktime'])) {
 }
 
 // 性別
-if (!empty($_GET['gender']) && $_GET['gender'] != '不限') {
+if (!empty($_GET['gender'])) {
     $conditions[] = "i_gender = ?";
     $params[] = $conn->real_escape_string($_GET['gender']);
 }
@@ -232,7 +230,7 @@ if ($stmt) {
             $equipments = explode(',', $row['i_equip']);
             foreach ($equipments as $equipment) {
                 
-                echo "<p class='e_text'>" . htmlspecialchars(trim($equipment)) . "</p>";
+            echo "<p class='e_text'>" . htmlspecialchars(trim($equipment)) . "</p>";
             }
             echo "</div>";
             echo "<div class='room_tags'>";

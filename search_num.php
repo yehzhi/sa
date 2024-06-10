@@ -5,10 +5,8 @@ $username = "root";
 $password = "";
 $dbname = "sa";
 
-// 建立連接
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// 檢查連接
 if ($conn->connect_error) {
     die("連接失敗: " . $conn->connect_error);
 }
@@ -22,8 +20,6 @@ $star_rate = isset($_GET['star_rate']) ? $_GET['star_rate'] : '-1';
 $address = isset($_GET['address']) ? $_GET['address'] : '';
 
 
-
-// 構建基本的 SQL 查詢
 $sql = "SELECT * FROM numbered_post WHERE 1=1";
 
 // 添加搜索條件
@@ -37,7 +33,7 @@ if (!empty($article)) {
     $sql .= " AND article LIKE '%$article%'";
 }
 if (!empty($month)) {
-    $formatted_month = date('Y-m', strtotime($month)); // 格式化選擇的月份為 YYYY-MM
+    $formatted_month = date('Y-m', strtotime($month));
     $sql .= " AND DATE_FORMAT(post_date, '%Y-%m') = '$formatted_month'";
 }
 if ($star_rate != '-1') {
@@ -50,7 +46,6 @@ if (!empty($address)) {
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // 輸出數據
     while($row = $result->fetch_assoc()) {  
         $post_id = $row["post_id"];
         $verify_id = $row["verify_id"];
