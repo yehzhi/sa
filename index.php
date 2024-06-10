@@ -533,8 +533,7 @@
                     echo "<div class='room_tags'>";
                     echo "<span class='room_tag'>" . $row["i_gender"] . "</span>";
                     echo "<span class='room_tag'>離" . $row["i_entrance"] . " " . $row["i_walktime"] . "</span>";
-                    echo "<br>";
-                    echo "<a href='detail.php?vid=".$row["vid"]."'>詳細資料</a><br>";
+                    
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";

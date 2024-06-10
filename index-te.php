@@ -598,7 +598,6 @@ session_start();
                     echo "<span class='room_tag'>" . $row["i_gender"] . "</span>";
                     echo "<span class='room_tag'>離" . $row["i_entrance"] . " " . $row["i_walktime"] . "</span>";
 		    echo "<br>";
-                    echo "<a href='detail.php?vid=".$row["vid"]."'>詳細資料</a><br>";
 
                     echo "</div>";
                     echo "</div>";
@@ -620,7 +619,7 @@ session_start();
 
 					echo "<style>
 					.featured_card_box {
-						position: relative; /*  */
+						position: relative; 
 					}
 					
 					.heart-icon {
@@ -632,19 +631,20 @@ session_start();
 					
 					/* 點擊前的愛心 */
 					.heart-empty::before {
-						content: '♡'; /* 使用 Unicode 字符代表空心愛心 */
+						content: '♡'; 
 						color: white; /* 白色的線條 */
 					}
 					
 					/* 點擊後的愛心 */
 					.heart-filled::before {
-						content: '♡'; /* 使用 Unicode 字符代表實心愛心 */
+						content: '♡'; 
 						color: red; /* 紅色 */
 					}
 					</style>";
 					
 					echo "<script>
 						document.addEventListener('DOMContentLoaded', function() {
+                            // 獲取所有具有 'heart-icon' 類的元素
 							const heartIcons = document.querySelectorAll('.heart-icon');
 							
 							// 獲取用戶收藏列表
