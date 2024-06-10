@@ -50,92 +50,34 @@
 
                             <!-- Main Navigation -->
 
-                            <?php
-                            if (isset($_SESSION['tenant']['account'])) {
-                                // 如果用戶已登入
-                                echo '<nav class="main_nav">';
-                                echo '<ul class="main_nav_list">';
-                                echo '<li class="main_nav_item"><a href="index-te.php">首頁</a></li>';
-                                echo '<li class="main_nav_item">';
-                                echo '<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
-                                echo '<div class="dropdown-menu"  style="background-color: #a1a8c6;">';
-                                echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
-                                echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
-								echo '<a class="dropdown-item" href="my_post_num.php">我的發文</a>';
-                                echo '</div>';
-                                echo '</li>';
-                                echo '<li class="main_nav_item"><a href="collect.php">我的收藏</a></li>';
-                                echo '<li class="main_nav_item">';
-                                echo '<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                                echo '<i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i>';
-                                echo '</a>';
-                                echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
-                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
-                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>';
-                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
-                                echo '</ul>';
-                                echo '</li>';
-                                echo '</ul>';
-                                echo '</nav>';
-                            }   elseif(isset($_SESSION['landlord']['account'])){
-								echo '<nav class="main_nav">';
-								echo '<ul class="main_nav_list">';
-								echo '<li class="main_nav_item"><a href="index-lan.php">我的房屋</a></li>';
-								echo '<li class="main_nav_item">';
-								echo '<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">新增房屋</a>';
-								echo '<div class="dropdown-menu" style="background-color: #a1a8c6;">';
-								echo '<a class="dropdown-item" href="verifyhouse.html">驗證房屋</a>';
-								echo '<a class="dropdown-item" href="uploadpage.php">上架房屋</a>';
-								echo '</div>';
-								echo '</li>';
-								echo '<li class="main_nav_item">';
-								echo '<a href="discuss.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
-								echo '<div class="dropdown-menu" style="background-color: #a1a8c6;">';
-								echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
-								echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
-								echo '</div>';
-								echo '</li>';
-								echo '<li class="main_nav_item">';
-								echo '<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>';
-								echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
-								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
-								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>';
-								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
-								echo '</ul>';
-								echo '</li>';
-								echo '</ul>';
-								echo '</nav>';
+                            <nav class="main_nav">
+                                <ul class="main_nav_list">
+                                    <li class="main_nav_item"><a href="index-te.php">首頁</a></li>
+                                    <li class="main_nav_item">
+                                        <a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>
+                                        <div class="dropdown-menu" style="background-color: #a1a8c6;">
+                                            <a class="dropdown-item" href="discuss_num.php">有編號房屋</a>
+                                            <a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>
+                                            <a class="dropdown-item" href="my_post_num.php">我的發文</a>
+                                        </div>
+                                    </li>
+                                    <li class="main_nav_item"><a href="collect.php">我的收藏</a></li>
+                                    <li class="main_nav_item">
+                                        <a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>
+                                        <ul class="dropdown-menu" style="background-color: #a1a8c6;">
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
+                                            <li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
 
-						}else {
-                                // 如果用戶未登入
-								echo '<nav class="main_nav">';
-                                echo '<ul class="main_nav_list">';
-                                echo '<li class="main_nav_item"><a href="index.php">首頁</a></li>';
-                                echo '<li class="main_nav_item">';
-                                echo '<a href="discuss_num.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">討論區</a>';
-                                echo '<div class="dropdown-menu"  style="background-color: #a1a8c6;">';
-                                echo '<a class="dropdown-item" href="discuss_num.php">有編號房屋</a>';
-                                echo '<a class="dropdown-item" href="discuss_nonum.php">無編號房屋</a>';
-                                echo '</div>';
-                                echo '</li>';
-								echo '</li>';
-                                echo '</ul>';
-                                echo '</nav>';
-                                echo '<div class="phone_home text-center" style="border-radius: 10px;">';
-                                echo '<span><a href="login.html">登入</a></span>';
-                                echo '</div>';
-                            }
-                            ?>
-					<div class="hamburger_container menu_mm">
-						<div class="hamburger menu_mm">
-							<i class="fas fa-bars trans_200 menu_mm"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
         <div class="featured">
             <div class="container">
@@ -194,12 +136,6 @@
 				                } else {
 				                    $prefix = "";
 				                }
-                                $vid_check_sql = "SELECT COUNT(*) FROM information WHERE vid = '" . $verify_id . "'";
-                                $vid_result = $conn->query($vid_check_sql);
-                                $vid_exists = $vid_result->fetch_row()[0] > 0;
-
-                                // 使用條件判斷來決定是否顯示 "(已下架)"
-                                $listing_status = $vid_exists ? "" : "(已下架)";
 
 
                                 ?>
@@ -208,23 +144,15 @@
                                         <div class="listing_content">
                                             <div class="listing_title"><a href="post_num_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
                                             <div class="listing_text">
-                                                房屋編號: <?php echo $verify_id; ?> <?php echo $listing_status; ?><br>
+                                                房屋編號: <?php echo $verify_id; ?><br>
                                                 評分: <?php echo $star_rate; ?>分<br>
-                                                地址: <?php echo $address; ?><br>
-                                                <span class="highlighted-content"><?php echo $content; ?></span><br> <!-- 使用highlighted-content類 -->
+                                                <?php echo $content; ?><br>
                                                 日期: <?php echo $post_date; ?><br>
                                                 發文者: <?php echo $lastname . $prefix; ?>
                                                 <div class="report_button_container">
                                                     <button onclick="showReportForm()">檢舉文章</button>
                                                 </div>
                                             </div>
-                                            <style>
-                                    .highlighted-content {
-                                        font-size: 16px; /* 設置字體大小 */
-                                        color: #5A6493; /* 設置字體顏色 */
-                                        font-weight: bold; /* 加粗字體 */
-                                    }
-                                    </style>
                                         </div>
                                         <div class="listing_image ml-md-auto">
                                             <img src="<?php echo $path; ?>" alt="House Photo" width="300" height="200">
