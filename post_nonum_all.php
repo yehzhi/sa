@@ -196,21 +196,28 @@
                                 ?>
 
                                 
-                                <div class="listing_item">
+<div class="listing_item">
                                     <div class="listing_item_inner d-flex flex-md-row-reverse flex-column trans_300">
                                         <div class="listing_content">
-                                            <div class="listing_title"><a href="post_num_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
+                                            <div class="listing_title"><a href="post_nonum_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
                                             <div class="listing_text">
-                                                房屋編號: <?php echo $verify_id; ?> <?php echo $listing_status; ?><br>
                                                 評分: <?php echo $star_rate; ?>分<br>
                                                 地址: <?php echo $address; ?><br>
                                                 <span class="highlighted-content"><?php echo $content; ?></span><br> <!-- 使用highlighted-content類 -->
                                                 日期: <?php echo $post_date; ?><br>
                                                 發文者: <?php echo $lastname . $prefix; ?>
-                                                <div class="report_button_container">
-                                                    <button onclick="showReportForm()">檢舉文章</button>
-                                                </div>
+                                            <div class="report_button_container">
+                                                <button onclick="showReportForm()">檢舉文章</button>
                                             </div>
+                                            </div>
+                                            <style>
+                                            .highlighted-content {
+                                                font-size: 16px; /* 設置字體大小 */
+                                                color: #5A6493; /* 設置字體顏色 */
+                                                font-weight: bold; /* 加粗字體 */
+                                            }
+                                            </style>
+                                        </div>
                                         <div class="listing_image ml-md-auto">
                                             <img src="<?php echo $path; ?>" alt="House Photo" width="300" height="200">
                                         </div>

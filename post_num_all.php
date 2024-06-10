@@ -192,7 +192,12 @@
 				                } else {
 				                    $prefix = "";
 				                }
+                                $vid_check_sql = "SELECT COUNT(*) FROM information WHERE vid = '" . $verify_id . "'";
+                                $vid_result = $conn->query($vid_check_sql);
+                                $vid_exists = $vid_result->fetch_row()[0] > 0;
 
+                                // 使用條件判斷來決定是否顯示 "(已下架)"
+                                $listing_status = $vid_exists ? "" : "(已下架)";
 
                                 ?>
                                  <div class="listing_item">
@@ -200,6 +205,7 @@
                                         <div class="listing_content">
                                             <div class="listing_title"><a href="post_nonum_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
                                             <div class="listing_text">
+                                                房屋編號: <?php echo $verify_id; ?> <?php echo $listing_status; ?><br>
                                                 評分: <?php echo $star_rate; ?>分<br>
                                                 地址: <?php echo $address; ?><br>
                                                 <span class="highlighted-content"><?php echo $content; ?></span><br> <!-- 使用highlighted-content類 -->
