@@ -88,16 +88,10 @@ if (!empty($_GET['equipment'])) {
     }
 }
 
-/// 押金
+// 押金
 if (!empty($_GET['deposit'])) {
-    $depositValue = $conn->real_escape_string($_GET['deposit']);
-    if ($depositValue === 'yes') {
-        $conditions[] = "i_deposit = ?";
-        $params[] = $depositValue;
-        $showDepositAmount = true; // 如果押金需要顯示金額，設置為 true
-    } else {
-        $showDepositAmount = false; // 如果押金不需要顯示金額，設置為 false
-    }
+    $conditions[] = "i_deposit = ?";
+    $params[] = $conn->real_escape_string($_GET['deposit']);
 }
 
 // 水電
@@ -245,12 +239,18 @@ if ($stmt) {
             echo "<h2>" . htmlspecialchars($row['i_title']) . "</h2>";
             echo "<p>房屋編號: " . htmlspecialchars($row['vid']) . "</p>";
             echo "<p>地址: " . htmlspecialchars($row['i_address']) . "</p>";
-            if ($showDepositAmount) {
-                echo "<p>押金: " . htmlspecialchars($row['i_deposit_amount']) . "元</p>";
+            echo "<p>押金: ";
+            if ($row['i_deposit'] === 'yes') {
+                echo htmlspecialchars($row['i_deposit_amount']) . "元";
+            } else {
+                echo "無需押金";
             }
-            if (!empty($row['i_utility'])) {
-                echo "<p>水電: " . htmlspecialchars($row['i_utility']) . " " . htmlspecialchars($row['u_amount']) . "</p>";
+            echo "<p>水電: ";
+            if ($row['i_utility'] === 'yes') {
+                echo htmlspecialchars($row['u_amount']) . "元";
                 echo "<p>水電計算方式: " . htmlspecialchars($row['u_cal']) . "</p>";
+            } else {
+                echo "水電不另計";
             }
             echo "<div class='equip'>";
             $equipments = explode(',', $row['i_equip']);
