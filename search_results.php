@@ -218,7 +218,7 @@ if ($stmt) {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             echo "<div class='flat'>";
-            echo "<a href='detail_page.php?id=" . htmlspecialchars($row['vid']) . "'>";
+            echo "<a href='detail.php?vid=" . htmlspecialchars($row['vid']) . "'>";
             echo "<div class='image_wrapper'>";
             echo "<img src='file/" . htmlspecialchars($row['i_photo']) . "' alt=''>";
             echo "<div class='featured_panel'> " . htmlspecialchars($row['i_roomstyle']) . " </div>";
