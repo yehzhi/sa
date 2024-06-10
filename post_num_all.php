@@ -70,7 +70,7 @@
                                 echo '<i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i>';
                                 echo '</a>';
                                 echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
-                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
+                                echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.php">修改個人資料</a></li>';
                                 echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
                                 echo '</ul>';
                                 echo '</li>';
@@ -97,7 +97,7 @@
 								echo '<li class="main_nav_item">';
 								echo '<a href="info.html" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-circle-user fa-2xl" style="color: #f9e46c;"></i></a>';
 								echo '<ul class="dropdown-menu" style="background-color: #a1a8c6;">';
-								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>';
+								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.php">修改個人資料</a></li>';
 								echo '<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>';
 								echo '</ul>';
 								echo '</li>';
