@@ -105,7 +105,7 @@
 								echo '</li>';
 								echo '</ul>';
 								echo '</nav>';
-
+							
 						}else {
                                 // 如果用戶未登入
 								echo '<nav class="main_nav">';
@@ -204,21 +204,13 @@
                                             <div class="listing_title"><a href="post_nonum_all.php?post_id=<?php echo $post_id; ?>"><?php echo $article; ?></a></div>
                                             <div class="listing_text">
                                                 評分: <?php echo $star_rate; ?>分<br>
-                                                地址: <?php echo $address; ?><br>
-                                                <span class="highlighted-content"><?php echo $content; ?></span><br> <!-- 使用highlighted-content類 -->
+                                                <?php echo $content; ?><br>
                                                 日期: <?php echo $post_date; ?><br>
                                                 發文者: <?php echo $lastname . $prefix; ?>
                                             <div class="report_button_container">
                                                 <button onclick="showReportForm()">檢舉文章</button>
                                             </div>
                                             </div>
-                                            <style>
-                                            .highlighted-content {
-                                                font-size: 16px; /* 設置字體大小 */
-                                                color: #5A6493; /* 設置字體顏色 */
-                                                font-weight: bold; /* 加粗字體 */
-                                            }
-                                            </style>
                                         </div>
                                         <div class="listing_image ml-md-auto">
                                             <img src="<?php echo $path; ?>" alt="House Photo" width="300" height="200">
