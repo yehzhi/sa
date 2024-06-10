@@ -44,7 +44,6 @@
 								</a>
 								<ul class="dropdown-menu" style="background-color: #a1a8c6;">
 									<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="info.html">修改個人資料</a></li>
-									<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="#">檢舉</a></li>
 									<li style="background-color: #a1a8c6;"><a class="dropdown-item" href="logout.php">登出</a></li>
 								</ul>
 							</li>
