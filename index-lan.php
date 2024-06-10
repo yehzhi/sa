@@ -90,19 +90,11 @@
                                     </li>
 								</ul>
 							</nav>
-
-
-
-
-
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-
-
-</header>
+        </header>
 
 
 
@@ -118,10 +110,7 @@
         </div>
     </div>
     <hr>
-   
-
-
-                <br>
+   <br>
                 
 <?php
 $servername = "localhost";
