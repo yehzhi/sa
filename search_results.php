@@ -1,13 +1,11 @@
 <?php
-// 開始 session
 session_start();
 
-// 連接到數據庫
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sa";
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname,3307);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -24,7 +22,7 @@ if (!empty($_GET['keyword'])) {
     $params[] = $keyword;
 }
 
-// 檢查房屋租金
+// 租金
 if (!empty($_GET['rent'])) {
     switch ($_GET['rent']) {
         case '3000以下':
@@ -232,7 +230,7 @@ if ($stmt) {
             $equipments = explode(',', $row['i_equip']);
             foreach ($equipments as $equipment) {
                 
-                echo "<p class='e_text'>" . htmlspecialchars(trim($equipment)) . "</p>";
+            echo "<p class='e_text'>" . htmlspecialchars(trim($equipment)) . "</p>";
             }
             echo "</div>";
             echo "<div class='room_tags'>";
