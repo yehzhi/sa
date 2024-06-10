@@ -17,11 +17,11 @@ if ($conn->connect_error) {
 // 獲取當前用戶的帳號
 $account = $_SESSION['tenant']['account'];
 
-// 查詢用户的收藏列表
+// 查詢用戶的收藏列表
 $sql = "SELECT * FROM collect WHERE account = '$account'";
 $result = $conn->query($sql);
 
-// 儲存用户的收藏列表
+// 儲存用戶的收藏列表
 $favorites = array();
 
 // 將收藏列表存到數組中
