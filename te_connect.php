@@ -54,5 +54,4 @@ if ($conn->query($sql) === TRUE) {
     echo $error_message;
 }
 $conn->close();
-//}
 

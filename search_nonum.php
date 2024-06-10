@@ -5,10 +5,8 @@ $username = "root";
 $password = "";
 $dbname = "sa";
 
-// 建立連接
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// 檢查連接
 if ($conn->connect_error) {
     die("連接失敗: " . $conn->connect_error);
 }
@@ -33,7 +31,7 @@ if (!empty($article)) {
     $sql .= " AND article LIKE '%$article%'";
 }
 if (!empty($month)) {
-    $formatted_month = date('Y-m', strtotime($month)); // 格式化選擇的月份為 YYYY-MM
+    $formatted_month = date('Y-m', strtotime($month)); 
     $sql .= " AND DATE_FORMAT(post_date, '%Y-%m') = '$formatted_month'";
 }
 if ($star_rate != '-1') {
