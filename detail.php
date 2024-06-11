@@ -220,7 +220,9 @@
                         <p>出租類型: <?php echo $roomstyle; ?></p>
                         <p>鄰近入口: <?php echo $entrance; ?></p>
                         <p>步行時間: <?php echo $walktime; ?></p>
+                        <?php if (isset($_SESSION['tenant']['account'])) {?>
                         <p>聯絡方式: <a href="mailto:<?php echo $lname; ?>"><?php echo $lname; ?></a></p>
+                        <?php }?>
                 <p> <?php echo $row['i_introduce']; ?></p>
             
                 
